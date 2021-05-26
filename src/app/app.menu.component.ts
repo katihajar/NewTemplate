@@ -91,6 +91,8 @@ export class AppMenuComponent implements OnInit {
                     {label: 'Commande', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/commande']},
                     {label: 'Quiz-Create', icon: 'pi pi-fw pi-pencil', routerLink: ['/view/quiz-create']},
                     {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/view/schedule']},
+                    {label: 'FAQ ANSWER', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/pages/faq-admin']},
+                    {label: 'CREATE NEWS', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/pages/news-admin']},
                     {label: 'Crud', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/crud']},
                     {label: 'Calendar', icon: 'pi pi-fw pi-calendar-plus', routerLink: ['/pages/calendar']},
                     {label: 'Timeline', icon: 'pi pi-fw pi-calendar', routerLink: ['/pages/timeline']},
@@ -110,6 +112,8 @@ export class AppMenuComponent implements OnInit {
                     {label: 'Parcours', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/courses']},
                     {label: 'Classes', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/classes']},
                     {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/view/schedule']},
+                    {label: 'NEWS', icon: 'pi pi-fw pi-calendar-times', routerLink: ['pages/news-teacher']},
+                    {label: 'FAQ', icon: 'pi pi-fw pi-calendar-times', routerLink: ['pages/faq-teacher']},
                 ]
             },
             { label: 'Admin', icon: 'pi pi-fw pi-folder', routerLink: ['/admin'],
@@ -119,6 +123,8 @@ export class AppMenuComponent implements OnInit {
                     {label: 'Student List', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/etudiant']},
                     {label: 'Quiz-Create', icon: 'pi pi-fw pi-pencil', routerLink: ['/view/quiz-create']},
                     {label: 'Manage Parcours', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/parcours']},
+                    {label: 'FAQ ANSWER', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/pages/faq-admin']},
+                    {label: 'CREATE NEWS', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/pages/news-admin']},
                 ]
             },
             { label: 'Student', icon: 'pi pi-fw pi-folder', routerLink: ['/student'],

@@ -1,0 +1,14 @@
+<h5>FAQ</h5>
+<p-tree [value]="nodes">
+    <ng-template let-node pTemplate="default">
+        <b class="libelle">{{node.label}}</b>
+    </ng-template>
+    <ng-template let-node pTemplate="string">
+        <b class="description">{{node.label}}</b>
+        <div id="answer">
+            <textarea [rows]="5" [cols]="50" pInputTextarea [(ngModel)]="answer" placeholder="Your answer"></textarea>
+        </div>
+        <button pButton pRipple class="p-button-rounded p-button-success p-mr-2" label="Answer" (click)="update(node.parent.key)"></button>
+    </ng-template>
+
+</p-tree>

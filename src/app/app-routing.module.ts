@@ -54,6 +54,11 @@ import {QuizPreviewComponent} from './view/Prof/quiz/quiz-preview/quiz-preview.c
 import {ClassRoomListComponent} from './view/Prof/Classes/profclasses/class-room-list/class-room-list.component';
 import {EtudiantCoursesComponent} from './view/etudiant/etudiant-courses/etudiant-courses.component';
 import {EtudiantSectionsComponent} from './view/etudiant/etudiant-sections/etudiant-sections.component';
+import {FaqAnswerComponent} from './view/admin/faq-admin/faq-answer/faq-answer.component';
+import {NewsAdminListComponent} from './view/admin/news-admin/news-admin-list/news-admin-list.component';
+import {NewsTeacherListComponent} from './view/teacher/news/news-teacher-list/news-teacher-list.component';
+import {FaqListComponent} from './view/teacher/faq/faq-list/faq-list.component';
+
 
 
 
@@ -80,6 +85,10 @@ import {EtudiantSectionsComponent} from './view/etudiant/etudiant-sections/etudi
                     {path: 'pages/etudiantsections', component: EtudiantSectionsComponent},
                     {path: 'pages/cours', component: CoursesComponent},
                     {path: 'pages/sections', component: SectionsComponent},
+                    {path: 'pages/faq-admin', component: FaqAnswerComponent},
+                    {path: 'pages/news-admin', component: NewsAdminListComponent},
+                    {path: 'pages/news-teacher', component: NewsTeacherListComponent},
+                    {path: 'pages/faq-teacher', component: FaqListComponent},
                     {path: 'view/quiz-create', component: QuizCreateComponent},
                     {path: 'view/quiz-preview', component: QuizPreviewComponent},
                     {path: 'view/schedule', component: ScheduleComponent},

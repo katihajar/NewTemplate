@@ -185,6 +185,14 @@ import { QuizConfigComponent } from './view/Prof/quiz/quiz-config/quiz-config.co
 import { ScheduleComponent } from './view/Prof/schedule/schedule.component';
 import {EtudiantCoursesComponent} from './view/etudiant/etudiant-courses/etudiant-courses.component';
 import {EtudiantSectionsComponent} from './view/etudiant/etudiant-sections/etudiant-sections.component';
+import { FaqAnswerComponent } from './view/admin/faq-admin/faq-answer/faq-answer.component';
+import { NewsAdminListComponent } from './view/admin/news-admin/news-admin-list/news-admin-list.component';
+import { NewsAdminViewComponent } from './view/admin/news-admin/news-admin-view/news-admin-view.component';
+import { NewsAdminCreateComponent } from './view/admin/news-admin/news-admin-create/news-admin-create.component';
+import { NewsTeacherListComponent } from './view/teacher/news/news-teacher-list/news-teacher-list.component';
+import { NewsTeacherViewComponent } from './view/teacher/news/news-teacher-view/news-teacher-view.component';
+import { FaqListComponent } from './view/teacher/faq/faq-list/faq-list.component';
+import { FaqContactComponent } from './view/teacher/faq/faq-contact/faq-contact.component';
 
 
 
@@ -369,7 +377,15 @@ import {EtudiantSectionsComponent} from './view/etudiant/etudiant-sections/etudi
         QuizConfigComponent,
         EtudiantCoursesComponent,
         EtudiantSectionsComponent,
-        ScheduleComponent
+        ScheduleComponent,
+        FaqAnswerComponent,
+        NewsAdminListComponent,
+        NewsAdminViewComponent,
+        NewsAdminCreateComponent,
+        NewsTeacherListComponent,
+        NewsTeacherViewComponent,
+        FaqListComponent,
+        FaqContactComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
