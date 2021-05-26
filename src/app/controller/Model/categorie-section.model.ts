@@ -1,5 +1,7 @@
 import {Section} from './section.model';
 import {SuperCategorieSection} from './super-categorie-section.model';
+
+
 export class CategorieSection {
   public  id: number ;
   public  code: string ;

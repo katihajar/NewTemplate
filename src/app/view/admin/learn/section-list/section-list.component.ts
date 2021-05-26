@@ -37,30 +37,30 @@ export class SectionListComponent implements OnInit {
       {field: 'superCategorieSection', header: 'SuperCategorieSection'}
     ];
   }
-  set section(value: Section) {
-    this.service.section = value;
+  set selectedsection(value: Section) {
+    this.service.selectedsection = value;
   }
 
-  set sectionList(value: Array<Section>) {
-    this.service.sectionList = value;
+  set itemssection(value: Array<Section>) {
+    this.service.itemssection = value;
   }
 
-  get sectionList(): Array<Section> {
-    return this.service.sectionList;
+  get itemssection(): Array<Section> {
+    return this.service.itemssection;
   }
-  get sectionLists(): Array<Section> {
-    return this.service.sectionLists;
+  get selectessection(): Array<Section> {
+    return this.service.selectessection;
   }
 
-  set sectionLists(value: Array<Section>) {
-    this.service.sectionLists = value;
+  set selectessection(value: Array<Section>) {
+    this.service.selectessection = value;
   }
   public editSection(sections: Section) {
-    this.section = {...sections};
+    this.selectedsection = {...sections};
     this.editDialogSection = true;
   }
   public view(sections: Section) {
-    this.section = {...sections};
+    this.selectedsection = {...sections};
     this.viewDialogSection = true;
   }
   get createDialogSection(): boolean {
@@ -96,20 +96,20 @@ export class SectionListComponent implements OnInit {
   }
 
   // tslint:disable-next-line:adjacent-overload-signatures
-  get section(): Section {
-    return this.service.section;
+  get selectedsection(): Section {
+    return this.service.selectedsection;
   }
 
   public delete(sections: Section) {
-    this.section = sections;
+    this.selectedsection = sections;
     this.confirmationService.confirm({
       message: 'Are you sure you want to delete ' + sections.libelle + '?',
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.service.deleteSection().subscribe(data => {
-          this.sectionList = this.sectionList.filter(val => val.id !== this.section.id);
-          this.section = new Section();
+          this.itemssection = this.itemssection.filter(val => val.id !== this.selectedsection.id);
+          this.selectedsection = new Section();
           this.messageService.add({
             severity: 'success',
             summary: 'Successful',
@@ -130,7 +130,7 @@ export class SectionListComponent implements OnInit {
       accept: () => {
         this.service.deleteMultipleSectionByid().subscribe(data => {
           this.service.deleteMultipleSectionIndexById();
-          this.sectionLists = null;
+          this.selectessection = null;
           this.messageService.add({
             severity: 'success',
             summary: 'Successful',

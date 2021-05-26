@@ -24,15 +24,15 @@ export class CoursCreateComponent implements OnInit {
   }
   findAllParcours() {
     this.service.init().subscribe(data => {
-      this.parcoursList = data;
+      this.itemsparcours = data;
     });
   }
   public saveCours() {
     this.submittedCours = true;
-    if (this.cours.id == null) {
+    if (this.selectedcours.id == null) {
       this.service.SaveCours().subscribe(data => {
         // @ts-ignore
-        this.coursList.push({...data});
+        this.itemscours.push({...data});
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
@@ -41,40 +41,34 @@ export class CoursCreateComponent implements OnInit {
         });
       });
       this.createDialogCours = false;
-      this.cours = new Cours();
+      this.selectedcours = new Cours();
     }
   }
-  get centreList(): Array<Centre> {
-    return this.service.centreList;
+  get itemscentre(): Array<Centre> {
+    return this.service.itemscentre;
   }
-  get parcours(): Parcours {
-    return this.service.parcours;
+  get selectedcours(): Cours {
+    return this.service.selectedcours;
   }
-  set parcours(value: Parcours) {
-    this.service.parcours = value;
+  set selectedcours(value: Cours) {
+    this.service.selectedcours = value;
   }
-  get cours(): Cours {
-    return this.service.cours;
-  }
-  set cours(value: Cours) {
-    this.service.cours = value;
-  }
-  set parcoursList(value: Array<Parcours>) {
-    this.service.parcoursList = value;
+  set itemsparcours(value: Array<Parcours>) {
+    this.service.itemsparcours = value;
   }
 
-  get parcoursList(): Array<Parcours> {
-    return this.service.parcoursList;
+  get itemsparcours(): Array<Parcours> {
+    return this.service.itemsparcours;
   }
   get createDialogCours(): boolean {
     return this.service.createDialogCours;
   }
-  set coursList(value: Array<Cours>) {
-    this.service.coursList = value;
+  set itemscours(value: Array<Cours>) {
+    this.service.itemscours = value;
   }
 
-  get coursList(): Array<Cours> {
-    return this.service.coursList;
+  get itemscours(): Array<Cours> {
+    return this.service.itemscours;
   }
   // tslint:disable-next-line:adjacent-overload-signatures
   set createDialogCours(value: boolean) {

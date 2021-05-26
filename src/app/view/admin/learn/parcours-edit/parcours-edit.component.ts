@@ -17,34 +17,34 @@ export class ParcoursEditComponent implements OnInit {
   }
   public editParcours() {
     this.submitted = true;
-    if (this.parcours.id) {
-        this.parcoursList[this.service.findParcoursIndexById(this.parcours.id)] = this.parcours;
-        this.service.updateParcours().subscribe(data => {
-          this.parcours = data;
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Successful',
-            detail: 'Commande Updated',
-            life: 3000
-          });
+    if (this.selectedparcours.id) {
+      this.itemsparcours[this.service.findParcoursIndexById(this.selectedparcours.id)] = this.selectedparcours;
+      this.service.updateParcours().subscribe(data => {
+        this.selectedparcours = data;
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Successful',
+          detail: 'Commande Updated',
+          life: 3000
         });
-      }
+      });
+    }
     this.editDialog = false;
-    this.parcours = new Parcours();
+    this.selectedparcours = new Parcours();
 
   }
-  get parcours(): Parcours {
-    return this.service.parcours;
+  get selectedparcours(): Parcours {
+    return this.service.selectedparcours;
   }
-  set parcours(value: Parcours) {
-    this.service.parcours = value;
+  set selectedparcours(value: Parcours) {
+    this.service.selectedparcours = value;
   }
-  set parcoursList(value: Array<Parcours>) {
-    this.service.parcoursList = value;
+  set itemsparcours(value: Array<Parcours>) {
+    this.service.itemsparcours = value;
   }
 
-  get parcoursList(): Array<Parcours> {
-    return this.service.parcoursList;
+  get itemsparcours(): Array<Parcours> {
+    return this.service.itemsparcours;
   }
   public hideEditDialog() {
     this.editDialog = false;
@@ -66,14 +66,14 @@ export class ParcoursEditComponent implements OnInit {
   }
   findAllCentre() {
     this.service.findAllCentre().subscribe(data => {
-      this.centreList = data;
+      this.itemscentre = data;
     });
   }
-  get centreList(): Array<Centre> {
-    return this.service.centreList;
+  get itemscentre(): Array<Centre> {
+    return this.service.itemscentre;
   }
 
-  set centreList(value: Array<Centre>) {
-    this.service.centreList = value;
+  set itemscentre(value: Array<Centre>) {
+    this.service.itemscentre = value;
   }
 }

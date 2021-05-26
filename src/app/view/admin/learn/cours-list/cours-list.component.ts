@@ -19,7 +19,7 @@ export class CoursListComponent implements OnInit {
     this.initCol();
   }
   public openCreateCours() {
-    this.cours = new Cours();
+    this.selectedcours = new Cours();
     this.submittedCours = false;
     this.createDialogCours = true;
   }
@@ -29,18 +29,18 @@ export class CoursListComponent implements OnInit {
   }
 
   public editCours(cour: Cours) {
-    this.cours = {...cour};
+    this.selectedcours = {...cour};
     this.editDialogCours = true;
   }
   public FindSection(cour: Cours) {
-    this.cours = cour;
+    this.selectedcours = cour;
     this.service.affichelistSection().subscribe(
         data => {
-          this.sectionList = data;
+          this.itemssection = data;
         });
   }
-  set sectionList(value: Array<Section>) {
-    this.service.sectionList = value;
+  set itemssection(value: Array<Section>) {
+    this.service.itemssection = value;
   }
   get createDialogCours(): boolean {
     return this.service.createDialogCours;
@@ -66,29 +66,29 @@ export class CoursListComponent implements OnInit {
     this.service.viewDialogCours = value;
   }
   // tslint:disable-next-line:adjacent-overload-signatures
-  get sectionList(): Array<Section> {
-    return this.service.sectionList;
+  get itemssection(): Array<Section> {
+    return this.service.itemssection;
   }
-  get cours(): Cours{
-    return this.service.cours;
+  get selectedcours(): Cours{
+    return this.service.selectedcours;
   }
-  set cours(value: Cours) {
-    this.service.cours = value;
+  set selectedcours(value: Cours) {
+    this.service.selectedcours = value;
   }
-  get coursList(): Array<Cours> {
-    return this.service.coursList;
+  get itemscours(): Array<Cours> {
+    return this.service.itemscours;
   }
-  get coursLists(): Array<Cours> {
-    return this.service.coursLists;
+  get selectescours(): Array<Cours> {
+    return this.service.selectescours;
   }
   // tslint:disable-next-line:adjacent-overload-signatures
-  set coursList(value: Array<Cours>) {
-    this.service.coursList = value;
+  set itemscours(value: Array<Cours>) {
+    this.service.itemscours = value;
   }
 
   // tslint:disable-next-line:adjacent-overload-signatures
-  set coursLists(value: Array<Cours>) {
-    this.service.coursLists = value;
+  set selectescours(value: Array<Cours>) {
+    this.service.selectescours = value;
   }
   private initCol() {
     this.cols = [
@@ -106,28 +106,28 @@ export class CoursListComponent implements OnInit {
     ];
   }
   public delete(cour: Cours) {
-    this.cours = cour;
+    this.selectedcours = cour;
     this.confirmationService.confirm({
       message: 'Are you sure you want to delete ' + cour.libelle + '?',
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.service.deleteCours().subscribe(data => {
-          this.coursList = this.coursList.filter(val => val.id !== this.cours.id);
-          this.cours = new Cours();
-          this.sectionList = null;
+          this.itemscours = this.itemscours.filter(val => val.id !== this.selectedcours.id);
+          this.selectedcours = new Cours();
           this.messageService.add({
             severity: 'success',
             summary: 'Successful',
             detail: 'Cours Deleted',
             life: 3000
           });
+          this.itemssection = null;
         });
       }
     });
   }
   public AjoutSection(cour: Cours) {
-    this.cours = cour;
+    this.selectedcours = cour;
     this.confirmationService.confirm({
       message: 'Are you sure you want to add sections of '  + cour.libelle + '?',
       header: 'Confirm',
@@ -153,14 +153,14 @@ export class CoursListComponent implements OnInit {
       accept: () => {
         this.service.deleteMultipleCoursByid().subscribe(data => {
           this.service.deleteMultipleCoursIndexById();
-          this.coursLists = null;
-          this.sectionList = null;
           this.messageService.add({
             severity: 'success',
             summary: 'Successful',
             detail: 'Commandes Deleted',
             life: 3000
           });
+          this.itemscours = null;
+          this.itemssection = null;
         });
       }
     });

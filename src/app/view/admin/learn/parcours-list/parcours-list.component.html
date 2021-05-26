@@ -1,11 +1,11 @@
 <div class="p-grid " >
     <div class="p-col">
         <p-toast></p-toast>
-        <div class="card" style="position: ">
+        <div class="card" >
             <p-toolbar styleClass="p-mb-4 ">
                 <ng-template pTemplate="left">
                     <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openCreateParcours()" ></button>
-                    <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteMultiple()" [disabled]="!parcoursList || !parcoursList.length"></button>
+                    <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteMultiple()" [disabled]="!itemsparcours || !itemsparcours.length"></button>
                 </ng-template>
 
                 <ng-template pTemplate="right">
@@ -14,17 +14,13 @@
                 </ng-template>
             </p-toolbar>
 
-            <p-table #dt [value]="parcoursList" [columns]="cols" [rows]="6" [paginator]="true" [globalFilterFields]="['libelle']"
-                     [(selection)]="parcoursLists" [rowHover]="true" dataKey="id"
+            <p-table #dt [value]="itemsparcours" [columns]="cols" [rows]="6" [paginator]="true" [globalFilterFields]="['libelle']"
+                     [(selection)]="selectesparcours" [rowHover]="true" dataKey="id"
                      styleClass="p-datatable-customers"
                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         <h5 class="p-m-0">Manage Parcours</h5>
-                        <span class="p-input-icon-left">
-                        <i class="pi pi-search"></i>
-                        <input pInputText type="text"  placeholder="Search..." />
-                    </span>
                     </div>
                 </ng-template>
                 <ng-template pTemplate="header">
@@ -32,8 +28,8 @@
                         <th style="width: 3rem">
                             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                         </th>
-                        <th pSortableColumn="libelle">Libelle <p-sortIcon field="libelle"></p-sortIcon></th>
-                        <th >Action </th>
+                        <th pSortableColumn="libelle">Title <p-sortIcon field="libelle"></p-sortIcon></th>
+                        <th >Actions </th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-parcours>
@@ -53,7 +49,7 @@
                 </ng-template>
                 <ng-template pTemplate="summary">
                     <div class="p-d-flex p-ai-center p-jc-between">
-                        In total there are {{parcoursList ? parcoursList.length : 0 }} items.
+                        In total there are {{itemsparcours ? itemsparcours.length : 0 }} items.
                     </div>
                 </ng-template>
             </p-table>

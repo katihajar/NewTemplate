@@ -1,42 +1,42 @@
 <p-dialog [(visible)]="editDialogSection" [style]="{width: '550px'}" header="Commande Edit" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="p-field">
         <div class="p-field">
-            <label for="cours" > cours </label>
-            <select type="text" class="btn btn-block btn-outline-light form-control" id="cours" style="background-color: lightblue" name="Parcours" (click)="findAllCours()" [(ngModel)]="section.cours.id" >
-                <option  selected="selected" *ngFor="let c of coursList"  [ngValue]="c.id"> {{c.libelle}}</option>
+            <label for="cours" > Courses </label>
+            <select type="text" class="btn btn-block btn-outline-light form-control" id="cours" style="background-color: lightblue" name="Parcours" (click)="findAllCours()" [(ngModel)]="selectedsection.cours.id" >
+                <option  selected="selected" *ngFor="let c of itemscours"  [ngValue]="c.id"> {{c.libelle}}</option>
             </select>
-            <small class="p-invalid" *ngIf="submittedSection && !section.cours.libelle">parcours is required.</small>
-            <label for="categorie" > CategorieSection </label>
-            <select type="text" class="btn btn-block btn-outline-light form-control" id="categorie" style="background-color: lightblue" name="Parcours" (click)="findAllCategorie()" [(ngModel)]="section.categorieSection.id" >
-                <option  selected="selected" *ngFor="let s of categoriesectionList"  [ngValue]="s.id"> {{s.libelle}}</option>
+            <small class="p-invalid" *ngIf="submittedSection && !selectedsection.cours.libelle">parcours is required.</small>
+            <label for="categorie" > CategorieSections </label>
+            <select type="text" class="btn btn-block btn-outline-light form-control" id="categorie" style="background-color: lightblue" name="Parcours" (click)="findAllCategorie()" [(ngModel)]="selectedsection.categorieSection.id" >
+                <option  selected="selected" *ngFor="let s of itemscategoriesection"  [ngValue]="s.id"> {{s.libelle}}</option>
             </select>
-            <small class="p-invalid" *ngIf="submittedSection && !section.categorieSection.libelle">parcours is required.</small>
+            <small class="p-invalid" *ngIf="submittedSection && !selectedsection.categorieSection.libelle">parcours is required.</small>
         </div>
         <div class="p-field">
-            <label for="libelle">libelle</label>
-            <input type="text" pInputText id="libelle" [(ngModel)]="section.libelle" required autofocus />
-            <small class="p-invalid" *ngIf="submittedSection && !section.libelle">ref is required.</small>
+            <label for="libelle">Title</label>
+            <input type="text" pInputText id="libelle" [(ngModel)]="selectedsection.libelle" required autofocus />
+            <small class="p-invalid" *ngIf="submittedSection && !selectedsection.libelle">ref is required.</small>
         </div>
         <div class="p-field">
-            <label for="contenu">Contenu</label>
-            <input type="text" pInputText id="contenu" [(ngModel)]="section.contenu" required autofocus />
-               </div>
+            <label for="contenu">Content</label>
+            <input type="text" pInputText id="contenu" [(ngModel)]="selectedsection.contenu" required autofocus />
+        </div>
         <div class="p-field">
-            <label for="questions">questions </label>
-            <input type="text" pInputText id="questions" [(ngModel)]="section.questions" required autofocus />
-            </div>
+            <label for="questions">Questions </label>
+            <input type="text" pInputText id="questions" [(ngModel)]="selectedsection.questions" required autofocus />
+        </div>
         <div class="p-field">
-            <label for="indicationProf">Indication Prof </label>
-            <input type="text" pInputText id="indicationProf" [(ngModel)]="section.indicationProf" required autofocus />
-              </div>
+            <label for="indicationProf">Indication of Teacher's </label>
+            <input type="text" pInputText id="indicationProf" [(ngModel)]="selectedsection.indicationProf" required autofocus />
+        </div>
         <div class="p-field">
             <label for="urlImage"> Url Image </label>
-            <input type="text" pInputText id="urlImage" [(ngModel)]="section.urlImage" required autofocus />
-              </div>
+            <input type="text" pInputText id="urlImage" [(ngModel)]="selectedsection.urlImage" required autofocus />
+        </div>
         <div class="p-field">
             <label for="urlVideo"> Url Video </label>
-            <input type="text" pInputText id="urlVideo" [(ngModel)]="section.urlVideo" required autofocus />
-            </div>
+            <input type="text" pInputText id="urlVideo" [(ngModel)]="selectedsection.urlVideo" required autofocus />
+        </div>
     </ng-template>
 
     <ng-template pTemplate="footer">

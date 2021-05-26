@@ -1,26 +1,26 @@
 <p-dialog [(visible)]="editDialog" [style]="{width: '550px'}" header="Commande Edit" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="p-field">
         <div class="p-field">
-            <label for="centre" > centre </label>
-            <select type="text" class="btn btn-block btn-outline-light form-control" id="centre" style="background-color: lightblue" name="Parcours" (click)="findAllCentre()" [(ngModel)]="parcours.centre.ref" >
-                <option  selected="selected" *ngFor="let c of centreList"  [ngValue]="c.ref"> {{c.libelle}}</option>
+            <label for="centre" > Center </label>
+            <select type="text" class="btn btn-block btn-outline-light form-control" id="centre" style="background-color: lightblue" name="Parcours" (click)="findAllCentre()" [(ngModel)]="selectedparcours.centre.ref" >
+                <option  selected="selected" *ngFor="let c of itemscentre"  [ngValue]="c.ref"> {{c.libelle}}</option>
             </select>
-            <small class="p-invalid" *ngIf="submitted && !parcours.centre.libelle">centre is required.</small>
+            <small class="p-invalid" *ngIf="submitted && !selectedparcours.centre.libelle">centre is required.</small>
         </div>
         <div class="p-field">
-            <label for="ref">libelle</label>
-            <input type="text" pInputText id="ref" [(ngModel)]="parcours.libelle" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !parcours.libelle">ref is required.</small>
+            <label for="ref">Title</label>
+            <input type="text" pInputText id="ref" [(ngModel)]="selectedparcours.libelle" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selectedparcours.libelle">ref is required.</small>
         </div>
         <div class="p-field">
             <label for="libelle">Description</label>
-            <input type="text" pInputText id="libelle" [(ngModel)]="parcours.description" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !parcours.description">ref is required.</small>
+            <input type="text" pInputText id="libelle" [(ngModel)]="selectedparcours.description" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selectedparcours.description">ref is required.</small>
         </div>
         <div class="p-field">
-            <label for="nombreCours">Nombre Cours</label>
-            <input type="text" pInputText id="nombreCours" [(ngModel)]="parcours.nombreCours" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !parcours.nombreCours">total is required.</small>
+            <label for="nombreCours">Number of Courses</label>
+            <input type="text" pInputText id="nombreCours" [(ngModel)]="selectedparcours.nombreCours" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selectedparcours.nombreCours">total is required.</small>
         </div>
 
     </ng-template>

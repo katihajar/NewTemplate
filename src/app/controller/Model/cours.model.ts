@@ -13,6 +13,4 @@ export class Cours {
   public numeroOrder: number;
   public parcours = new  Parcours() ;
   public  sectionList = new Array<Section>();
-  constructor() {
-  }
 }

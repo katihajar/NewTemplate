@@ -20,7 +20,7 @@ export class ParcoursListComponent implements OnInit {
   constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private service: ParcoursService ) { }
   ngOnInit(): void {
     this.initCol();
-    this.service.init().subscribe(data => this.parcoursList = data);
+    this.service.init().subscribe(data => this.itemsparcours = data);
   }
   private initCol() {
     this.cols = [
@@ -40,13 +40,13 @@ export class ParcoursListComponent implements OnInit {
     return this.service.submitted;
   }
   public openCreateParcours() {
-    this.parcours = new Parcours();
+    this.selectedparcours = new Parcours();
     this.submitted = false;
     this.createDialog = true;
   }
 
   public editParcours(parcour: Parcours) {
-    this.parcours = {...parcour};
+    this.selectedparcours = {...parcour};
     this.editDialog = true;
   }
   // tslint:disable-next-line:adjacent-overload-signatures
@@ -77,32 +77,32 @@ export class ParcoursListComponent implements OnInit {
   set viewDialog(value: boolean) {
     this.service.viewDialog = value;
   }
-  get section(): Section {
-    return this.service.section;
+  get selectedsection(): Section {
+    return this.service.selectedsection;
   }
-  get cours(): Cours {
-    return this.service.cours;
+  get selectedcours(): Cours {
+    return this.service.selectedcours;
   }
-  get parcoursList(): Array<Parcours> {
-    return this.service.parcoursList;
+  get itemsparcours(): Array<Parcours> {
+    return this.service.itemsparcours;
   }
-  get parcoursLists(): Array<Parcours> {
-    return this.service.parcoursLists;
+  get selectesparcours(): Array<Parcours> {
+    return this.service.selectesparcours;
   }
-  set parcoursLists(value: Array<Parcours>) {
-    this.service.parcoursLists = value;
+  set selectesparcours(value: Array<Parcours>) {
+    this.service.selectesparcours = value;
   }
-  get centreList(): Array<Centre> {
-    return this.service.centreList;
+  get itemscentre(): Array<Centre> {
+    return this.service.itemscentre;
   }
-  get parcours(): Parcours {
-    return this.service.parcours;
+  get selectedparcours(): Parcours {
+    return this.service.selectedparcours;
   }
-  set parcours(value: Parcours) {
-    this.service.parcours = value;
+  set selectedparcours(value: Parcours) {
+    this.service.selectedparcours = value;
   }
-  get coursList(): Array<Cours> {
-    return this.service.coursList;
+  get itemscours(): Array<Cours> {
+    return this.service.itemscours;
   }
   public deleteCours(){
     this.service.deleteCours();
@@ -113,17 +113,17 @@ export class ParcoursListComponent implements OnInit {
     this.service.save();
   }
   public delete(parcour: Parcours) {
-    this.parcours = parcour;
+    this.selectedparcours = parcour;
     this.confirmationService.confirm({
       message: 'Are you sure you want to delete ' + parcour.libelle + '?',
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.service.deleteParcours().subscribe(data => {
-          this.parcoursList = this.parcoursList.filter(val => val.id !== this.parcours.id);
-          this.parcours = new Parcours();
-          this.coursList = null;
-          this.sectionList = null;
+          this.itemsparcours = this.itemsparcours.filter(val => val.id !== this.selectedparcours.id);
+          this.selectedparcours = new Parcours();
+          this.itemscours = null;
+          this.itemssection = null;
           this.messageService.add({
             severity: 'success',
             summary: 'Successful',
@@ -134,23 +134,23 @@ export class ParcoursListComponent implements OnInit {
       }
     });
   }
-  set sectionList(value: Array<Section>) {
-    this.service.sectionList = value;
+  set itemssection(value: Array<Section>) {
+    this.service.itemssection = value;
   }
 
-  get sectionList(): Array<Section> {
-    return this.service.sectionList;
+  get itemssection(): Array<Section> {
+    return this.service.itemssection;
   }
   // tslint:disable-next-line:adjacent-overload-signatures
-  set coursList(value: Array<Cours>) {
-    this.service.coursList = value;
+  set itemscours(value: Array<Cours>) {
+    this.service.itemscours = value;
   }
   public FindCours(parcour: Parcours) {
-    this.parcours = parcour;
+    this.selectedparcours = parcour;
     this.service.afficheCours().subscribe(
         data => {
-          this.coursList = data;
-          this.sectionList = null;
+          this.itemscours = data;
+          this.itemssection = null;
         });
   }
   public deleteMultiple() {
@@ -161,9 +161,9 @@ export class ParcoursListComponent implements OnInit {
       accept: () => {
         this.service.deleteMultipleParcoursByid().subscribe(data => {
           this.service.deleteMultipleParcoursIndexById();
-          this.parcoursLists = null;
-          this.coursList = null;
-          this.sectionList = null;
+          this.selectesparcours = null;
+          this.itemscours = null;
+          this.itemssection = null;
           this.messageService.add({
             severity: 'success',
             summary: 'Successful',
@@ -175,8 +175,8 @@ export class ParcoursListComponent implements OnInit {
     });
   }
   // tslint:disable-next-line:adjacent-overload-signatures
-  set parcoursList(value: Array<Parcours>) {
-    this.service.parcoursList = value;
+  set itemsparcours(value: Array<Parcours>) {
+    this.service.itemsparcours = value;
   }
 
 }

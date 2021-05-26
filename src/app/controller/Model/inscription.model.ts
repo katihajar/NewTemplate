@@ -4,7 +4,7 @@ import {Etudiant} from './etudiant.model';
 import {EtatInscription} from './etat-inscription.model';
 
 export class Inscription {
-  public id: string;
+  public id: number;
   public numeroInscription: string;
   public datedebutinscription: string;
   public datefininscription: string;

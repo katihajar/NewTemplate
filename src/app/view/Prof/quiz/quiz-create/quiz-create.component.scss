@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.buttonAdd{
+  float: right;
+  position: page;
+  bottom: 0px;
+  right: 100px;
+}
+#quizTitre{
+  font-size: 55px;
+  font-family: Algerian;
+
+  color: #0c799f;
+}

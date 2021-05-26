@@ -1,0 +1,41 @@
+<p-dialog [(visible)]="createDialog" [style]="{width: '450px'}" header="Etudiant Details"
+          [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="nom">Nom</label>
+            <input type="text" pInputText id="nom" [(ngModel)]="selected.nom" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.nom">nom is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="prenom">prenom</label>
+            <input type="text" pInputText id="prenom" [(ngModel)]="selected.prenom" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.prenom">prenom is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="login">login</label>
+            <input type="text" pInputText id="login" [(ngModel)]="selected.login" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.login">loginis required.</small>
+        </div>
+        <div class="p-field">
+            <label for="parcours">parcours</label>
+            <input type="text" pInputText id="login" [(ngModel)]="selected.parcours.libelle" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.parcours.libelle">parcours is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="centre">centre</label>
+            <input type="text" pInputText id="centre" [(ngModel)]="selected.parcours.centre.libelle" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.parcours.centre.libelle">centre is required.</small>
+        </div>
+
+
+
+
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+    </ng-template>
+</p-dialog>
+

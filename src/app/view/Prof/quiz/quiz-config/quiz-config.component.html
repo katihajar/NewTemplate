@@ -1,0 +1,48 @@
+<p-dialog [(visible)]="createDialog" [style]="{width: '450px'}" header="Paramètres" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <div class="p-field-checkbox">
+                <p-checkbox name="group1" ></p-checkbox>
+                <label>Afficher la barre de progression</label>
+                <br/>
+                <p-checkbox name="group1" ></p-checkbox>
+                <label>Trier les questions en mode aléatoire</label>
+            </div>
+        </div>
+        <p style="justify-content: space-between"></p>
+        <div class="p-field">
+            <h6>Le répondant peut voir les éléments suivants :</h6>
+            <div class="p-field-checkbox">
+                <p-checkbox name="group2"  ></p-checkbox>
+                <label>Questions aux réponses incorrectes</label>
+            </div>
+            <div class="p-field-checkbox">
+                <p-checkbox name="group2"  ></p-checkbox>
+                <label>Bonnes réponses</label>
+            </div>
+            <div class="p-field-checkbox">
+                <p-checkbox name="group2"  ></p-checkbox>
+                <label>Nombre de points</label>
+            </div>
+        </div>
+        <div class="p-field">
+            <h6>Publier la note :</h6>
+            <div class="p-field-radiobutton">
+                <p-radioButton name="note" value="option1" inputId="note1"></p-radioButton>
+                <label>Immédiatement après chaque envoi</label>
+            </div>
+            <div class="p-field-radiobutton">
+                <p-radioButton name="note" value="option2" inputId="note2"></p-radioButton>
+                <label>Plus tard, après examen manuel</label>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveConfig()"></button>
+    </ng-template>
+</p-dialog>
+
+
+

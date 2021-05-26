@@ -1,0 +1,110 @@
+
+<div class="p-grid" >
+    <div class="p-col-12 ">
+        <p-toast></p-toast>
+        <div class="card toolbar-demo">
+            <p-toolbar>
+                <div class="p-toolbar-group-left">
+                    <button pButton pRipple  icon="pi pi-cog" class="p-button-secondary p-button-rounded p-mr-2 p-mb-2" (click)="openConfig()"></button>
+                    <button pButton pRipple  icon="pi pi-eye" class="p-button-secondary p-button-rounded p-mr-2 p-mb-2" (click)="openPreview()"></button>
+                </div>
+
+                <div class="p-toolbar-group-right">
+                    <button pButton pRipple type="button"  label="Save" icon="pi pi-check" (click)="save()"></button>
+                </div>
+            </p-toolbar>
+        </div>
+        <p-card   [style]="{width: '900px'}" id="mainCard" styleClass="p-card-shadow" class="container">
+            <ng-template pTemplate="header">
+                <div>
+                    <h1  style=" text-align: center" id="quizTitre">Quiz</h1>
+                </div>
+                <div class="p-field p-md-6">
+                    <p-dropdown inputId="quiz"  [options]="quizs" [(ngModel)]="question.quiz" placeholder="reference Quiz"  optionLabel="ref"></p-dropdown>
+                </div>
+                <!--<div class="p-field p-col-12 p-md-6">
+            <input  type="text" pInputText placeholder="Reference Quiz" [(ngModel)]="selected && selected.ref">
+                </div>
+                <div class="p-field p-col-12 p-md-6">
+                    <input  type="text" pInputText placeholder="Nom Quiz" [(ngModel)]="selected && selected.lib">
+                </div>-->
+            </ng-template>
+            <div class="p-col-8 " style="margin: auto"  id="formCard"  >
+                <div class="card"*ngFor="let q of questions">
+                    <div class="p-fluid p-formgrid p-grid">
+                        <div class="p-field p-col-12 p-md-6">
+                            <p-inputNumber id="firstname6"  placeholder="Numero Question" [(ngModel)]="question.numero"></p-inputNumber>
+                        </div>
+                        <div class="p-field p-col-12 p-md-6">
+                            <p-dropdown inputId="type"  [options]="types" [(ngModel)]="question.typeDeQuestion" placeholder="TypeQuestion" optionLabel="lib"></p-dropdown>
+                        </div>
+                        <div class="p-field p-col-12">
+                            <textarea type="text" rows="4" pInputTextarea placeholder="Question" [(ngModel)]="question.libelle"></textarea>
+                        </div>
+                        <h5>Reponse</h5>
+                        <div class="p-formgroup-inline">
+                            <div class="p-field p-col-12 p-md-3">
+                                <p-inputNumber [(ngModel)]="reponse.numero" placeholder="Numero"></p-inputNumber>
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <p-inputNumber [(ngModel)]="question.pointReponseJuste" placeholder="pointJust"  [minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
+                            </div>
+                            <div class="p-field p-col-12 p-md-4">
+                                <p-inputNumber [(ngModel)]="question.pointReponsefausse" placeholder="pointfausse"  [minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
+                            </div>
+                        </div>
+                        <div class="p-field  p-col-10 ">
+                            <textarea type="text" rows="2" placeholder="Reponse" pInputTextarea [(ngModel)]="reponse.lib"></textarea>
+                        </div>
+                        <div class="p-field  p-col-2" >
+                            <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-primary" (click)="addReponse()"></button>
+                        </div>
+                        <div class="p-formgroup-inline p-col-12">
+                            <h6>Correct : </h6>
+                            <div class="p-field-radiobutton p-md-1">
+                                <p-radioButton name="etat" value="vrai" [(ngModel)]="reponse.etatReponse" inputId="city1"></p-radioButton>
+                                <label>Vrai</label>
+                            </div>
+                            <div class="p-field-radiobutton p-md-1">
+                                <p-radioButton name="etat" value="faux" [(ngModel)]="reponse.etatReponse" inputId="city2"></p-radioButton>
+                                <label>Faux</label>
+                            </div>
+                        </div>
+                        <div class="p-md-6" style="margin: auto">
+                            <p-table>
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Libelle Reponse</th>
+                                        <th>Correct</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </ng-template>
+                                <div class="card"   style="visibility: hidden ; margin: auto">
+                                    <ng-template pTemplate="body" let-reponse>
+                                        <tr *ngFor="let r of reponses; let i = index">
+                                            <td>{{r.lib}}</td>
+                                            <td>{{r.etatReponse}}</td>
+                                            <td><span (click)="delete(i)"><i class="pi pi-trash p-button-rounded p-button-danger"></i></span></td>
+                                        </tr>
+                                    </ng-template>
+                                </div>
+                            </p-table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="p-field  p-col-2 buttonAdd" >
+                <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-primary" (click)="addFormule()"></button>
+            </div>
+            <div class="p-field  p-col buttonAdd" >
+                <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteCard(1)"></button>
+            </div>
+            <ng-template pTemplate="footer">
+            </ng-template>
+        </p-card>
+        <app-quiz-config></app-quiz-config>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>
+

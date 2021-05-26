@@ -1,7 +1,6 @@
 import {Cours} from './cours.model';
 import {Centre} from './centre.model';
 
-
 export class Parcours {
   public  id: number ;
   public  code: string ;

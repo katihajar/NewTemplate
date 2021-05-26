@@ -18,18 +18,18 @@ export class SectionViewComponent implements OnInit {
   public hideViewDialog() {
     this.viewDialogSection = false;
   }
-  get section(): Section {
-    return this.service.section;
+  get selectedsection(): Section {
+    return this.service.selectedsection;
   }
 
-  set section(value: Section) {
-    this.service.section = value;
+  set selectedsection(value: Section) {
+    this.service.selectedsection = value;
   }
-  get sectionList(): Array<Section> {
-    return this.service.sectionList;
+  get itemssection(): Array<Section> {
+    return this.service.itemssection;
   }
-  set sectionList(value: Array<Section>) {
-    this.service.sectionList = value;
+  set itemssection(value: Array<Section>) {
+    this.service.itemssection = value;
   }
   get viewDialogSection(): boolean {
     return this.service.viewDialogSection;

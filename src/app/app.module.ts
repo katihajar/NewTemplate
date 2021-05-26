@@ -155,11 +155,37 @@ import {LearnComponent} from './view/admin/learn/learn.component';
 import {CoursCreateComponent} from './view/admin/learn/cours-create/cours-create.component';
 import {ParcoursListComponent} from './view/admin/learn/parcours-list/parcours-list.component';
 import {ConfirmationService, MessageService} from 'primeng/api';
-import {ProfComponent} from './view/admin/prof/prof.component';
-import {ProfListComponent} from './view/admin/prof/prof-list/prof-list.component';
-import {ClassRoomListComponent} from './view/admin/prof/class-room-list/class-room-list.component';
-import { EtudiantViewComponent } from './View/Admin/Prof/etudiant-view/etudiant-view.component';
-import { QuizViewComponent } from './View/Admin/Prof/quiz-view/quiz-view.component';
+import {ProfListComponent} from './view/Prof/Classes/profclasses/prof-list/prof-list.component';
+import {QuizViewComponent} from './view/Prof/Classes/profclasses/quiz-view/quiz-view.component';
+import {EtudiantssViewComponent} from './view/Prof/etudiants/etudiantss-view/etudiantss-view.component';
+import {ClassRoomListComponent} from './view/Prof/Classes/profclasses/class-room-list/class-room-list.component';
+import {HomeComponent} from './view/Prof/home/home.component';
+import {ProfclassesComponent} from './view/Prof/Classes/profclasses/profclasses.component';
+import {EtudiantttViewComponent} from './view/Prof/Classes/profclasses/etudianttt-view/etudianttt-view.component';
+import {EtudiantCreateComponent} from './view/Prof/etudiants/etudiant-create/etudiant-create.component';
+import {EtudiantEditComponent} from './view/Prof/etudiants/etudiant-edit/etudiant-edit.component';
+import {EtudiantListComponent} from './view/Prof/etudiants/etudiant-list/etudiant-list.component';
+import {InscriptionCreateComponent} from './view/Prof/inscriptions/inscription-create/inscription-create.component';
+import {InscriptionEditComponent} from './view/Prof/inscriptions/inscription-edit/inscription-edit.component';
+import {InscriptionListComponent} from './view/Prof/inscriptions/inscription-list/inscription-list.component';
+import {InscriptionViewComponent} from './view/Prof/inscriptions/inscription-view/inscription-view.component';
+import {InscriptionsComponent} from './view/Prof/inscriptions/inscriptions.component';
+import {CategorieProfViewComponent} from './view/Prof/parcrs/categorie-prof-view/categorie-prof-view.component';
+import {CoursesComponent} from './view/Prof/parcrs/courses/courses.component';
+import {EdCoursesComponent} from './view/Prof/parcrs/ed-courses/ed-courses.component';
+import {SalaryComponent} from './view/Prof/parcrs/salary/salary.component';
+import {SectionsComponent} from './view/Prof/parcrs/sections/sections.component';
+import {ParcrsComponent} from './view/Prof/parcrs/parcrs.component';
+import {RecommendComponent} from './view/Prof/recommend/recommend.component';
+import {InscriptionComponent} from './view/admin/inscript/inscription/inscription.component';
+import {EtudiantsComponent} from './view/Prof/etudiants/etudiants.component';
+import { QuizCreateComponent } from './view/Prof/quiz/quiz-create/quiz-create.component';
+import { QuizPreviewComponent } from './view/Prof/quiz/quiz-preview/quiz-preview.component';
+import { QuizConfigComponent } from './view/Prof/quiz/quiz-config/quiz-config.component';
+import { ScheduleComponent } from './view/Prof/schedule/schedule.component';
+import {EtudiantCoursesComponent} from './view/etudiant/etudiant-courses/etudiant-courses.component';
+import {EtudiantSectionsComponent} from './view/etudiant/etudiant-sections/etudiant-sections.component';
+
 
 
 @NgModule({
@@ -310,11 +336,40 @@ import { QuizViewComponent } from './View/Admin/Prof/quiz-view/quiz-view.compone
         SectionListComponent,
         SectionViewComponent,
         SectionEditComponent,
-       ProfComponent,
         ProfListComponent,
         ClassRoomListComponent,
-        EtudiantViewComponent,
-        QuizViewComponent
+        EtudiantssViewComponent,
+        HomeComponent,
+        QuizViewComponent,
+        EtudiantCreateComponent,
+        EtudiantEditComponent,
+        EtudiantListComponent,
+        InscriptionCreateComponent,
+        InscriptionListComponent,
+        InscriptionViewComponent,
+        CategorieProfViewComponent,
+        SectionsComponent,
+        ParcrsComponent,
+        RecommendComponent,
+        CoursesComponent,
+        EdCoursesComponent,
+        SalaryComponent,
+        InscriptionEditComponent,
+        EtudiantttViewComponent,
+        EtudiantsComponent,
+        EtudiantssViewComponent,
+        EtudiantCreateComponent,
+        EtudiantListComponent,
+        EtudiantEditComponent,
+        InscriptionsComponent,
+        InscriptionComponent,
+        ProfclassesComponent,
+        QuizCreateComponent,
+        QuizPreviewComponent,
+        QuizConfigComponent,
+        EtudiantCoursesComponent,
+        EtudiantSectionsComponent,
+        ScheduleComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

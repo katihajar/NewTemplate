@@ -39,7 +39,22 @@ import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
 import {AppLoginComponent} from './pages/app.login.component';
 import {CommandesComponent} from './view/admin/commandes/commandes.component';
 import {LearnComponent} from './view/admin/learn/learn.component';
-import {ProfComponent} from './view/admin/prof/prof.component';
+import {SectionsComponent} from './view/Prof/parcrs/sections/sections.component';
+import {CoursesComponent} from './view/Prof/parcrs/courses/courses.component';
+import {EdCoursesComponent} from './view/Prof/parcrs/ed-courses/ed-courses.component';
+import {SalaryComponent} from './view/Prof/parcrs/salary/salary.component';
+import {InscriptionComponent} from './view/admin/inscript/inscription/inscription.component';
+import {HomeComponent} from './view/Prof/home/home.component';
+import {RecommendComponent} from './view/Prof/recommend/recommend.component';
+import {InscriptionsComponent} from './view/Prof/inscriptions/inscriptions.component';
+import {EtudiantsComponent} from './view/Prof/etudiants/etudiants.component';
+import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.component';
+import {ScheduleComponent} from './view/Prof/schedule/schedule.component';
+import {QuizPreviewComponent} from './view/Prof/quiz/quiz-preview/quiz-preview.component';
+import {ClassRoomListComponent} from './view/Prof/Classes/profclasses/class-room-list/class-room-list.component';
+import {EtudiantCoursesComponent} from './view/etudiant/etudiant-courses/etudiant-courses.component';
+import {EtudiantSectionsComponent} from './view/etudiant/etudiant-sections/etudiant-sections.component';
+
 
 
 
@@ -51,9 +66,23 @@ import {ProfComponent} from './view/admin/prof/prof.component';
                 path: '', component: AppMainComponent,
                 children: [
                     {path: '', component: DashboardDemoComponent},
+                    {path: 'pages/etudiant', component: EtudiantsComponent},
+                    {path: 'view/inscription', component: InscriptionsComponent},
+                    {path: 'pages/recommend', component: RecommendComponent},
+                    {path: 'pages/home', component: HomeComponent},
+                    {path: 'pages/Inscrit', component: InscriptionComponent},
                     {path: 'pages/commande', component: CommandesComponent},
                     {path: 'pages/parcours', component: LearnComponent},
-                    {path: 'pages/classRoom', component: ProfComponent},
+                    {path: 'pages/classes', component: ClassRoomListComponent},
+                    {path: 'pages/salary', component: SalaryComponent},
+                    {path: 'pages/courses', component: EdCoursesComponent},
+                    {path: 'pages/etudiantcours', component: EtudiantCoursesComponent},
+                    {path: 'pages/etudiantsections', component: EtudiantSectionsComponent},
+                    {path: 'pages/cours', component: CoursesComponent},
+                    {path: 'pages/sections', component: SectionsComponent},
+                    {path: 'view/quiz-create', component: QuizCreateComponent},
+                    {path: 'view/quiz-preview', component: QuizPreviewComponent},
+                    {path: 'view/schedule', component: ScheduleComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},

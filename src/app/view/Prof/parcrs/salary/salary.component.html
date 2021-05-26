@@ -1,0 +1,41 @@
+<div class="p-grid " style="margin-left: 10%">
+    <div class="p-col-10 ">
+        <div class="expenses card card-w-title">
+            <div class="p-grid">
+                <div class="p-col "  > <h5 (click)="view()" style="color: #0c799f"> MyLevel: <u style="cursor: pointer"> Junior </u></h5></div>
+                <div class="p-col" ><h7 style="margin-left: 40%">EnglishDom Experience: <b>44 months</b></h7></div>
+        </div></div></div>
+</div>
+<div class="p-grid layout-dashboard" style="margin-left: 10%">
+    <div class="p-col-10 ">
+        <div class="expenses card card-w-title">
+            <h5>Salary</h5>
+            <div class="p-grid" style="margin-left: 10%" >
+                <div class="p-col" >
+                    <h6>Current Pay</h6>
+                    <h1>4000$</h1>
+            </div>
+            <div class="p-col"  ><p-chart  type="pie" [data]="data"></p-chart> </div>
+
+
+            </div>
+
+
+            <div class="p-col " style="margin-left: 2% " >
+                <p-menubar [model]="items" >
+
+                </p-menubar>
+
+            </div>
+            <div class="p-grid card" style="margin-top: 5%; border-color: #84bfdd; ">
+                <div class="p-col "  style="margin-left: 5% ; height:50px ;"> <h5> LessonComplete <br/><u><b> 30 Lesson </b></u></h5></div>
+                <div class="p-col " style="margin-left: 4% ; height:50px ;" > <h2> X </h2></div>
+                <div class="p-col" style="margin-right: 7% ; height:50px ;" ><h5 >LessonRate <br/><b><u>30$ </u></b></h5></div>
+                <div class="p-col " style="margin-right: 10% ; height:50px ;"> <h1> = </h1></div>
+                <div class="p-col" style="margin-right: 15% ; height:50px ;"><h5  >Total <br/><b><u>900$ </u></b></h5></div>
+            </div>
+
+        </div>
+    </div>
+    <app-categorie-prof-view></app-categorie-prof-view>
+</div>

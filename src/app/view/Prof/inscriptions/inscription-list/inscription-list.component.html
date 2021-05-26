@@ -1,0 +1,96 @@
+<div class="p-grid">
+    <div class="p-col-12">
+
+        <p-toast></p-toast>
+
+
+        <div class="card">
+
+            <p-toolbar styleClass="p-mb-4">
+
+                <ng-template pTemplate="left">
+                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openCreate()"></button>
+                    <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length"></button>
+                </ng-template>
+
+                <ng-template pTemplate="right">
+                    <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>
+                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help p-mb-2" (click)="dt.exportCSV()"></button>
+                </ng-template>
+            </p-toolbar>
+
+            <p-table #dt [value]="items" [columns]="cols" [rows]="6" [paginator]="true" [globalFilterFields]="['numeroInscription','datedebutinscription','datefininscription , etudiant , prof , etatInscription']"
+                     [(selection)]="selectes" [rowHover]="true" dataKey="id"
+                     styleClass="p-datatable-customers"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Manage Inscriptions</h5>
+                        <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text"  placeholder="Search..."  />
+
+
+                    </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th pSortableColumn="numeroInscription">NumeroInscription<p-sortIcon field="numeroInscription"></p-sortIcon></th>
+                        <th pSortableColumn="datedebutinscription">datedebutinscription <p-sortIcon field="datedebutinscription"></p-sortIcon></th>
+                        <th pSortableColumn="datefininscription">datefininscription<p-sortIcon field="datefininscription"></p-sortIcon></th>
+                        <th pSortableColumn="Etudiant">Etudiant<p-sortIcon field="Etudiant"></p-sortIcon></th>
+
+                        <th pSortableColumn="Etudiant">Login<p-sortIcon field="Etudiant"></p-sortIcon></th>
+
+                        <th pSortableColumn="etatInscription">etatInscription<p-sortIcon field="etatInscription" ></p-sortIcon></th>
+                        <th pSortableColumn="Prof">Prof<p-sortIcon field="Prof"></p-sortIcon></th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-inscription>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="inscription"></p-tableCheckbox>
+                        </td>
+                        <td>{{inscription.numeroInscription }}</td>
+                        <td>{{inscription.datedebutinscription}}</td>
+                        <td>{{inscription.datefininscription}}</td>
+                        <td>{{inscription.etudiant.nom}}</td>
+
+                        <td>{{inscription.etudiant.login}}</td>
+
+                        <td>{{inscription.etatInscription.libelle}}</td>
+                        <td>{{inscription.prof.nom}}</td>
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="edit(inscription)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2" (click)="view(inscription)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="delete(inscription)"></button>
+
+
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        In total there are {{items ? items.length : 0 }} items.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+
+        <app-inscription-create></app-inscription-create>
+
+        <app-inscription-edit></app-inscription-edit>
+
+        <app-inscription-view></app-inscription-view>
+        <app-inscription-valider></app-inscription-valider>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>
+

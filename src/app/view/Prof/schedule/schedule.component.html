@@ -1,0 +1,61 @@
+<div class="p-formgroup p-col-12" >
+    <div class="p-field">
+        <h3 class="titleS">Schedule</h3>
+    </div>
+    <div class="p-col-6">
+        <button pButton pRipple (click)="showBasicDialog()" class="p-button-sm p-button-rounded p-button-secondary p-button-outlined p-button-text" icon="pi pi-question" ></button>
+        <label style="color: #0c799f;font-weight: bold; font-size: 15px">Instruction</label>
+    </div>
+</div>
+<div class="p-col container">
+    <button pRipple pButton class="p-button-sm p-button-outlined p-button-secondary" label="add Student" (click)="addEtudiant()"></button>
+</div>
+<div class="p-col" style=" float: left">
+
+    <p-dialog  [(visible)]="displayBasic" [style]="{width: '30vw'}" [baseZIndex]="10000">
+        <p>This is the schedule of your part of teaching , the students how are in color green are the students that they are just start the courses, the others how are in color orange are the students active in your courses.</p>
+        <ng-template pTemplate="footer">
+            <p-button icon="pi pi-check" (click)="displayBasic=false" label="Ok" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-dialog>
+</div>
+<div class="p-grid container"  style="text-align:center; margin: 0 auto" >
+    <div class="p-col-10" >
+        <div class="card " >
+            <p-fullCalendar #fc [events]="items" [options]="options"></p-fullCalendar>
+
+            <p-dialog [(visible)]="eventDialog" [style]="{width: '450px'}" header="Event Details" [modal]="true" [closable]="true">
+                <ng-template pTemplate="content">
+                    <div class="p-fluid">
+                        <div class="p-field">
+                            <label for="title">Title</label>
+                            <input id="title" type="text" pInputText *ngIf="clickedEvent" [(ngModel)]="changedEvent.title" [required]="true">
+                        </div>
+                        <div class="p-field">
+                            <label for="etat">Etat</label>
+                            <input id="etat" type="text" pInputText *ngIf="clickedEvent" [(ngModel)]="changedEvent.etat" [required]="true">
+                        </div>
+                        <div class="p-field">
+                            <label for="start">From</label>
+                            <p-calendar id="start" *ngIf="clickedEvent" [(ngModel)]="changedEvent.start" [showTime]="true" appendTo="body"></p-calendar>
+                        </div>
+                        <div class="p-field">
+                            <label for="end">To</label>
+                            <p-calendar id="end" *ngIf="clickedEvent" [(ngModel)]="changedEvent.end" [showTime]="true" appendTo="body"></p-calendar>
+                        </div>
+                        <div class="p-field-checkbox">
+                            <p-checkbox id="allday" *ngIf="clickedEvent" [(ngModel)]="changedEvent.allday"></p-checkbox>
+                            <label for="allday">All Day</label>
+                        </div>
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="footer">
+                    <button pButton label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+                    <button pButton label="Reset" icon="pi pi-refresh" class="p-button-text" (click)="reset()"></button>
+                </ng-template>
+            </p-dialog>
+        </div>
+    </div>
+</div>
+

@@ -19,10 +19,10 @@ export class CoursEditComponent implements OnInit {
   }
   public edit() {
     this.submittedCours = true;
-    if (this.cours.id) {
-      this.coursList[this.service.findCoursIndexById(this.cours.id)] = this.cours;
+    if (this.selectedcours.id) {
+      this.itemscours[this.service.findCoursIndexById(this.selectedcours.id)] = this.selectedcours;
       this.service.updateCours().subscribe(data => {
-        this.cours = data;
+        this.selectedcours = data;
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
@@ -32,21 +32,21 @@ export class CoursEditComponent implements OnInit {
       });
     }
     this.editDialogCours = false;
-    this.cours = new Cours();
+    this.selectedcours = new Cours();
 
   }
-  get cours(): Cours {
-    return this.service.cours;
+  get selectedcours(): Cours {
+    return this.service.selectedcours;
   }
-  set cours(value: Cours) {
-    this.service.cours = value;
+  set selectedcours(value: Cours) {
+    this.service.selectedcours = value;
   }
-  set coursList(value: Array<Cours>) {
-    this.service.coursList = value;
+  set itemscours(value: Array<Cours>) {
+    this.service.itemscours = value;
   }
 
-  get coursList(): Array<Cours> {
-    return this.service.coursList;
+  get itemscours(): Array<Cours> {
+    return this.service.itemscours;
   }
   public hideEditDialog() {
     this.editDialogCours = false;
@@ -68,15 +68,15 @@ export class CoursEditComponent implements OnInit {
   }
   findAllParcours() {
     this.service.init().subscribe(data => {
-      this.parcoursList = data;
+      this.itemsparcours = data;
     });
   }
-  set parcoursList(value: Array<Parcours>) {
-    this.service.parcoursList = value;
+  set itemsparcours(value: Array<Parcours>) {
+    this.service.itemsparcours = value;
   }
 
-  get parcoursList(): Array<Parcours> {
-    return this.service.parcoursList;
+  get itemsparcours(): Array<Parcours> {
+    return this.service.itemsparcours;
   }
 
 }

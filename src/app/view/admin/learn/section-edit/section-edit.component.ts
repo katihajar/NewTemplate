@@ -19,10 +19,10 @@ export class SectionEditComponent implements OnInit {
   }
   public editSection() {
     this.submittedSection = true;
-    if (this.section.id) {
-      this.sectionList[this.service.findSectionIndexById(this.section.id)] = this.section;
+    if (this.selectedsection.id) {
+      this.itemssection[this.service.findSectionIndexById(this.selectedsection.id)] = this.selectedsection;
       this.service.updateSection().subscribe(data => {
-        this.section = data;
+        this.selectedsection = data;
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
@@ -32,14 +32,14 @@ export class SectionEditComponent implements OnInit {
       });
     }
     this.editDialogSection = false;
-    this.section = new Section();
+    this.selectedsection = new Section();
 
   }
-  get section(): Section {
-    return this.service.section;
+  get selectedsection(): Section {
+    return this.service.selectedsection;
   }
-  set section(value: Section) {
-    this.service.section = value;
+  set selectedsection(value: Section) {
+    this.service.selectedsection = value;
   }
   public hideEditDialog() {
     this.editDialogSection = false;
@@ -61,39 +61,39 @@ export class SectionEditComponent implements OnInit {
   }
   findAllCours() {
     this.service.findAllCours().subscribe(data => {
-      this.coursList = data;
+      this.itemscours = data;
     });
   }
   findAllCategorie() {
     this.service.findAllCategorieSection().subscribe(data => {
-      this.categoriesectionList = data;
+      this.itemscategoriesection = data;
     });
   }
 
-  get categoriesectionList(): Array<CategorieSection> {
-    return this.service.categoriesectionList;
+  get itemscategoriesection(): Array<CategorieSection> {
+    return this.service.itemscategoriesection;
   }
 
-  set categoriesectionList(value: Array<CategorieSection>) {
-    this.service.categoriesectionList = value;
+  set itemscategoriesection(value: Array<CategorieSection>) {
+    this.service.itemscategoriesection = value;
   }
-  get categoriesection(): CategorieSection {
-    return this.service.categoriesection;
+  get selectedcategoriesection(): CategorieSection {
+    return this.service.selectedcategoriesection;
   }
 
-  set categoriesection(value: CategorieSection) {
-    this.service.categoriesection = value;
+  set selectedcategoriesection(value: CategorieSection) {
+    this.service.selectedcategoriesection = value;
   }
-  get coursList(): Array<Cours> {
-    return this.service.coursList;
+  get itemscours(): Array<Cours> {
+    return this.service.itemscours;
   }
-  set coursList(value: Array<Cours>) {
-    this.service.coursList = value;
+  set itemscours(value: Array<Cours>) {
+    this.service.itemscours = value;
   }
-  get sectionList(): Array<Section> {
-    return this.service.sectionList;
+  get itemssection(): Array<Section> {
+    return this.service.itemssection;
   }
-  set sectionList(value: Array<Section>) {
-    this.service.sectionList = value;
+  set itemssection(value: Array<Section>) {
+    this.service.itemssection = value;
   }
 }

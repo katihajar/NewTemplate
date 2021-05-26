@@ -79,9 +79,18 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Pages', icon: 'pi pi-fw pi-copy', routerLink: ['/pages'],
                 items: [
+                    {label: 'Inscription', icon: 'pi pi-fw pi-pencil', routerLink: ['/view/inscription']},
+                    {label: 'Etudiants', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/etudiant']},
+                    {label: 'Recommend A teacher', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/recommend']},
+                    {label: 'Home', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/home']},
+                    {label: 'List Inscrit', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/Inscrit']},
+                    {label: 'Salary', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/salary']},
+                    {label: 'Courses', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/courses']},
                     {label: 'Parcours', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/parcours']},
-                    {label: 'ClassRoom', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/classRoom']},
+                    {label: 'Classes', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/classes']},
                     {label: 'Commande', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/commande']},
+                    {label: 'Quiz-Create', icon: 'pi pi-fw pi-pencil', routerLink: ['/view/quiz-create']},
+                    {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/view/schedule']},
                     {label: 'Crud', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/crud']},
                     {label: 'Calendar', icon: 'pi pi-fw pi-calendar-plus', routerLink: ['/pages/calendar']},
                     {label: 'Timeline', icon: 'pi pi-fw pi-calendar', routerLink: ['/pages/timeline']},
@@ -91,6 +100,30 @@ export class AppMenuComponent implements OnInit {
                     {label: '404', icon: 'pi pi-fw pi-times', routerLink: ['/404'], target: '_blank'},
                     {label: 'Access Denied', icon: 'pi pi-fw pi-ban', routerLink: ['/accessdenied'], target: '_blank'},
                     {label: 'Empty', icon: 'pi pi-fw pi-clone', routerLink: ['/pages/empty']},
+                ]
+            },
+            { label: 'Teachers', icon: 'pi pi-fw pi-chevron-circle-right', routerLink: ['/teacher'],
+                items: [
+                    {label: 'Recommend A teacher', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/recommend']},
+                    {label: 'Home', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/home']},
+                    {label: 'Salary', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/salary']},
+                    {label: 'Parcours', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/courses']},
+                    {label: 'Classes', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/classes']},
+                    {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/view/schedule']},
+                ]
+            },
+            { label: 'Admin', icon: 'pi pi-fw pi-folder', routerLink: ['/admin'],
+                items: [
+                    {label: 'Formular Inscriptions', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/Inscrit']},
+                    {label: 'Inscriptions List', icon: 'pi pi-fw pi-pencil', routerLink: ['/view/inscription']},
+                    {label: 'Student List', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/etudiant']},
+                    {label: 'Quiz-Create', icon: 'pi pi-fw pi-pencil', routerLink: ['/view/quiz-create']},
+                    {label: 'Manage Parcours', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/parcours']},
+                ]
+            },
+            { label: 'Student', icon: 'pi pi-fw pi-folder', routerLink: ['/student'],
+                items: [
+                    {label: 'Courses ', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/etudiantcours']},
                 ]
             },
             {

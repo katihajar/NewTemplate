@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Commande} from '../../../../controller/Model/commande.model';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
 import {Parcours} from '../../../../controller/Model/parcours.model';
@@ -24,10 +23,12 @@ export class ParcoursCreateComponent implements OnInit {
 
   public save() {
     this.submitted = true;
-    if (this.parcours.id == null) {
+    if (this.selectedparcours.id == null) {
       this.service.save().subscribe(data => {
         // @ts-ignore
-        this.parcoursList.push({...data});
+        this.itemsparcours.push({...data});
+        // tslint:disable-next-line:no-shadowed-variable
+        this.service.init().subscribe(data => this.itemsparcours = data);
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
@@ -35,40 +36,40 @@ export class ParcoursCreateComponent implements OnInit {
           life: 3000
         });
       });
-      this.service.init().subscribe(data => this.parcoursList = data);
+      this.service.init().subscribe(data => this.itemsparcours = data);
       this.createDialog = false;
-      this.parcours = new Parcours();
+      this.selectedparcours = new Parcours();
     }
   }
-  get centreList(): Array<Centre> {
-    return this.service.centreList;
+  get itemscentre(): Array<Centre> {
+    return this.service.itemscentre;
   }
-  get parcours(): Parcours {
-    return this.service.parcours;
+  get selectedparcours(): Parcours {
+    return this.service.selectedparcours;
   }
-  set parcours(value: Parcours) {
-    this.service.parcours = value;
+  set selectedparcours(value: Parcours) {
+    this.service.selectedparcours = value;
   }
   findAllCentre() {
     this.service.findAllCentre().subscribe(data => {
-      this.centreList = data;
+      this.itemscentre = data;
     });
   }
-  get parcoursList(): Array<Parcours> {
-    return this.service.parcoursList;
+  get itemsparcours(): Array<Parcours> {
+    return this.service.itemsparcours;
   }
-  get parcoursLists(): Array<Parcours> {
-    return this.service.parcoursLists;
+  get selectesparcours(): Array<Parcours> {
+    return this.service.selectesparcours;
   }
-  set parcoursLists(value: Array<Parcours>) {
-    this.service.parcoursLists = value;
+  set selectesparcours(value: Array<Parcours>) {
+    this.service.selectesparcours = value;
   }
   get createDialog(): boolean {
     return this.service.createDialog;
   }
   // tslint:disable-next-line:adjacent-overload-signatures
-  set centreList(value: Array<Centre>) {
-    this.service.centreList = value;
+  set itemscentre(value: Array<Centre>) {
+    this.service.itemscentre = value;
   }
   // tslint:disable-next-line:adjacent-overload-signatures
   set createDialog(value: boolean) {
@@ -83,7 +84,7 @@ export class ParcoursCreateComponent implements OnInit {
     this.service.submitted = value;
   }
   // tslint:disable-next-line:adjacent-overload-signatures
-  set parcoursList(value: Array<Parcours>) {
-    this.service.parcoursList = value;
+  set itemsparcours(value: Array<Parcours>) {
+    this.service.itemsparcours = value;
   }
 }

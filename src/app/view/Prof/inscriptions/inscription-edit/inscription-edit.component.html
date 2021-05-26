@@ -1,0 +1,30 @@
+<p-dialog [(visible)]="editDialog" [style]="{width: '450px'}" header="Commande Edit" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="numeroInscription">numeroInscription</label>
+            <input type="text" pInputText id="numeroInscription" [(ngModel)]="selected.numeroInscription" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.numeroInscription">ref is required.</small>
+        </div>
+        <div>
+            <label class="primaryLab">etat</label><br>
+            <select type="text" class="btn btn-block btn-outline-light form-control" name="fieldName" style="background-color: lightblue" name="etat" (click)="findAllEtat()" [(ngModel)]="etudiant.etatInscription.ref" >
+                <option  selected="selected" *ngFor="let e of etatInscriptionList"  [ngValue]="e.ref" > {{e.libelle}}</option>
+            </select>
+        </div>
+
+        <div class="p-field">
+            <label class="primaryLab">Prof</label>
+            <select type="text" class="btn btn-block btn-outline-light form-control " name="fieldName" style="background-color: lightblue" name="prof" (click)="findAllProf()" [(ngModel)]="etudiant.prof.id" >
+                <option  selected="selected" *ngFor="let c of profList " [ngValue]="c.id"> {{c.prenom}}</option>
+            </select>
+        </div>
+
+
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="edit()"></button>
+    </ng-template>
+</p-dialog>
