@@ -82,7 +82,8 @@ export class FaqListComponent implements OnInit {
       this.itemsType = data;
       this.menu = [
       ];
-      for( let i = 0 ; i < this.itemsType.length ; i++)
+      // tslint:disable-next-line:prefer-for-of
+      for ( let i = 0 ; i < this.itemsType.length ; i++)
       {
         this.menu.push({label: this.itemsType[i].libelle, command: (event) => {
             this.selectedType = this.itemsType[i];
@@ -96,7 +97,8 @@ export class FaqListComponent implements OnInit {
     this.service.findByFaqType(this.ref).subscribe(data => {
       this.items = data;
       this.nodes = [];
-      for(let i = 0 ; i < this.items.length ; i++)
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0 ; i < this.items.length ; i++)
       {
         this.nodes.push(
             {
@@ -114,7 +116,8 @@ export class FaqListComponent implements OnInit {
     this.service.findFirstFaq().subscribe(data => {
       this.items = data;
       this.nodes = [];
-      for(let i = 0 ; i < this.items.length ; i++)
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0 ; i < this.items.length ; i++)
       {
         this.nodes.push(
             {

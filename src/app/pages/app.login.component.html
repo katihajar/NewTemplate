@@ -10,8 +10,8 @@
                         <!-- <h:panelGroup> -->
                             <label>Username</label>
                             <div class="login-input">
-                                <input type="text" pInputText id="login" [(ngModel)]="prof.login" required autofocus />
-                                <small class="p-invalid"  *ngIf="submittedProf && !prof.login">ref is required.</small>
+                                <input type="text" pInputText id="login"  required autofocus />
+
                             </div>
                         <!-- </h:panelGroup> -->
                     </div>
@@ -19,8 +19,7 @@
                         <!-- <h:panelGroup> -->
                             <label>Password</label>
                             <div class="login-input">
-                                <input type="text" pInputText id="password" #prt [(ngModel)]="prof.password" required autofocus />
-                                <small class="p-invalid" *ngIf="submittedProf && !prof.password">ref is required.</small>
+                                <input type="text" pInputText id="password" required autofocus />
 
                             </div>
                         <!-- </h:panelGroup> -->
@@ -35,7 +34,7 @@
                     </div>
     
                     <div class="p-col-12 p-sm-6 p-md-6" >
-                            <button   pButton type="button" icon="pi pi-check" label="Sign In"(click)="FindClass(prof)" [routerLink]="['/pages/classRoom']" ></button>
+                            <button   pButton type="button" icon="pi pi-check" label="Sign In"  ></button>
                     </div>
                 </div>
             </div>
