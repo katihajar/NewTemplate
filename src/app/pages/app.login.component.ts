@@ -87,17 +87,19 @@ export class AppLoginComponent {
 
   public findPersonne()
   {
-    if(this.role == 'prof')
+    // tslint:disable-next-line:triple-equals
+    if (this.role == 'prof')
     {
       this.service.findProf(this.login, this.password).subscribe(
           data => {
             this.prof = data;
-            //this.routeurLink = '[\'/view/schedule\']';
+            // this.routeurLink = '[\'/view/schedule\']';
             console.log(this.prof);
           });
 
     }
-    else if(this.role == 'etudiant')
+    // tslint:disable-next-line:triple-equals
+    else if (this.role == 'etudiant')
     {
       this.service.findEtudiant(this.login, this.password).subscribe(
           data => {
@@ -105,7 +107,8 @@ export class AppLoginComponent {
             console.log(this.etudiant);
           });
     }
-    else if(this.role == 'admin')
+    // tslint:disable-next-line:triple-equals
+    else if (this.role == 'admin')
     {
       this.service.findAdmin(this.login, this.password).subscribe(
           data => {

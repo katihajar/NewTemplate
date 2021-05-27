@@ -185,23 +185,23 @@ export class ClassRoomService {
     this._viewDialogQuiz = value;
   }
   public findAllProf(): Observable<Array<Prof>> {
-   return  this.http.get< Array<Prof> >('http://localhost:8036/centre/prof/');
+   return  this.http.get< Array<Prof> >('http://localhost:8036/learn/prof/');
   }
   public findAllClass(): Observable<Array<ClassRoom>> {
-    return this.http.get< Array<ClassRoom> >('http://localhost:8036/E-learning/classRoom/');
+    return this.http.get< Array<ClassRoom> >('http://localhost:8036/learn/classRoom/');
 
   }
   public afficheClass(): Observable<Array<ClassRoom>> {
-   return  this.http.get<Array<ClassRoom>>('http://localhost:8036/E-learning/classRoom/Prof/id/15' );
+   return  this.http.get<Array<ClassRoom>>('http://localhost:8036/learn/classRoom/Prof/id/15' );
   }
   public afficheEtudiant(): Observable<Array<EtudiantClassRoom>> {
-  return   this.http.get<Array<EtudiantClassRoom>>('http://localhost:8036/E-learning/etudiant-classRoom/id/' + this.selectedclassRoom.id );
+  return   this.http.get<Array<EtudiantClassRoom>>('http://localhost:8036/learn/etudiant-classRoom/id/' + this.selectedclassRoom.id );
   }
   public afficheQuiz(): Observable<Array<QuizClassRoom>> {
-   return  this.http.get<Array<QuizClassRoom>>('http://localhost:8036/E-learning/quiz-classRoom/id/' + this.selectedclassRoom.id );
+   return  this.http.get<Array<QuizClassRoom>>('http://localhost:8036/learn/quiz-classRoom/id/' + this.selectedclassRoom.id );
   }
   public findAllCategorieProf(): Observable<Array<CategorieProf>> {
-    return this.http.get< Array<CategorieProf> >('http://localhost:8036/E-learning/categorieprof/');
+    return this.http.get< Array<CategorieProf> >('http://localhost:8036/learn/categorieprof/');
 
   }
 }

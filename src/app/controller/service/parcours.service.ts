@@ -249,13 +249,13 @@ export class ParcoursService {
   }
 
   public deleteMultipleParcoursByid(): Observable<number> {
-    return this.http.post<number>('http://localhost:8036/E-learning/parcours/delete-multiple-by-id' , this.selectesparcours);
+    return this.http.post<number>('http://localhost:8036/learn/parcours/delete-multiple-by-id' , this.selectesparcours);
   }
   public deleteMultipleCoursByid(): Observable<number> {
-    return this.http.post<number>('http://localhost:8036/E-learning/cours/delete-multiple-by-id' , this.selectescours);
+    return this.http.post<number>('http://localhost:8036/learn/cours/delete-multiple-by-id' , this.selectescours);
   }
   public deleteMultipleSectionByid(): Observable<number> {
-    return this.http.post<number>('http://localhost:8036/E-learning/section/delete-multiple-by-id' , this.selectessection);
+    return this.http.post<number>('http://localhost:8036/learn/section/delete-multiple-by-id' , this.selectessection);
   }
   get createDialog(): boolean {
     return this._createDialog;
@@ -289,30 +289,30 @@ export class ParcoursService {
     this._submitted = value;
   }
   public updateCours(): Observable<Cours> {
-    return this.http.put<Cours>('http://localhost:8036/E-learning/cours/', this.selectedcours);
+    return this.http.put<Cours>('http://localhost:8036/learn/cours/', this.selectedcours);
   }
   public SaveCours(): Observable<number> {
     if (this.selectedcours.id == null){
-      return this.http.post<number>('http://localhost:8036/E-learning/cours/', this.selectedcours);
+      return this.http.post<number>('http://localhost:8036/learn/cours/', this.selectedcours);
     }
   }
   public AjoutSection(id: number): Observable<number> {
-      return this.http.get<number>('http://localhost:8036/E-learning/cours/id/' + id);
+      return this.http.get<number>('http://localhost:8036/learn/cours/id/' + id);
   }
   public updateSection(): Observable<Section> {
-    return this.http.put<Section>('http://localhost:8036/E-learning/section/', this.selectedsection);
+    return this.http.put<Section>('http://localhost:8036/learn/section/', this.selectedsection);
 
   }
   public updateParcours(): Observable<Parcours>  {
-    return this.http.put<Parcours>('http://localhost:8036/E-learning/parcours/', this.selectedparcours);
+    return this.http.put<Parcours>('http://localhost:8036/learn/parcours/', this.selectedparcours);
   }
   public save(): Observable<number> {
     if (this.selectedparcours.id == null){
-      return this.http.post<number>('http://localhost:8036/E-learning/parcours/', this.selectedparcours); }
+      return this.http.post<number>('http://localhost:8036/learn/parcours/', this.selectedparcours); }
   }
 
   public init(): Observable<Array<Parcours>> {
-    return this.http.get< Array<Parcours> >('http://localhost:8036/E-learning/parcours/');
+    return this.http.get< Array<Parcours> >('http://localhost:8036/learn/parcours/');
 
   }
   public findAllCentre(): Observable<Array<Centre>> {
@@ -320,27 +320,27 @@ export class ParcoursService {
   }
 
   public findAllCours(): Observable<Array<Cours>> {
-    return this.http.get< Array<Cours> >('http://localhost:8036/E-learning/cours/');
+    return this.http.get< Array<Cours> >('http://localhost:8036/learn/cours/');
   }
   public findAllSection(): Observable<Array<Section>> {
-   return this.http.get< Array<Section> >('http://localhost:8036/E-learning/section/');
+   return this.http.get< Array<Section> >('http://localhost:8036/learn/section/');
   }
   public findAllCategorieSection(): Observable< Array<CategorieSection> > {
-   return this.http.get< Array<CategorieSection> >('http://localhost:8036/E-learning/categoriesection/');
+   return this.http.get< Array<CategorieSection> >('http://localhost:8036/learn/categoriesection/');
 
   }
   public findAllSuperCategorieSection(): Observable< Array<SuperCategorieSection> > {
-   return this.http.get< Array<SuperCategorieSection> >('http://localhost:8036/E-learning/supercategoriesection/');
+   return this.http.get< Array<SuperCategorieSection> >('http://localhost:8036/learn/supercategoriesection/');
   }
   public deleteSection(): Observable<number> {
-   return this.http.delete<number>('http://localhost:8036/E-learning/section/id/' + this.selectedsection.id);
+   return this.http.delete<number>('http://localhost:8036/learn/section/id/' + this.selectedsection.id);
   }
   public deleteCours(): Observable<number>{
-    return this.http.delete<number >('http://localhost:8036/E-learning/cours/id/' + this.selectedcours.id );
+    return this.http.delete<number >('http://localhost:8036/learn/cours/id/' + this.selectedcours.id );
 
   }
   public deleteParcours(): Observable<number>{
-   return  this.http.delete<number>('http://localhost:8036/E-learning/parcours/id/' + this.selectedparcours.id);
+   return  this.http.delete<number>('http://localhost:8036/learn/parcours/id/' + this.selectedparcours.id);
   }
 
   public findSectionIndexById(id: number): number {
@@ -453,39 +453,39 @@ export class ParcoursService {
     return myClone;
   }
   public FindCoursByParcours(): Observable<Array<Cours>> {
-    return this.http.get<Array<Cours>>('http://localhost:8036/E-learning/cours/parcours/id/5' );
+    return this.http.get<Array<Cours>>('http://localhost:8036/learn/cours/parcours/id/5' );
   }
   public afficheCours(): Observable<Array<Cours>> {
-   return this.http.get<Array<Cours>>('http://localhost:8036/E-learning/cours/parcours/id/' + this.selectedparcours.id );
+   return this.http.get<Array<Cours>>('http://localhost:8036/learn/cours/parcours/id/' + this.selectedparcours.id );
   }
 
   affichelistSection(): Observable<Array<Section>> {
-    return this.http.get<Array<Section>>('http://localhost:8036/E-learning/section/cours/id/' + this.selectedcours.id  );
+    return this.http.get<Array<Section>>('http://localhost:8036/learn/section/cours/id/' + this.selectedcours.id  );
   }
 
   public findSectionByLibelle(libel: string): Observable<Array<Section>> {
-   return this.http.get<Array<Section>>('http://localhost:8036/E-learning/section/libelle/' + libel );
+   return this.http.get<Array<Section>>('http://localhost:8036/learn/section/libelle/' + libel );
   }
   public findCoursByLibelle(libel: string): Observable<Array<Cours>> {
-    return this.http.get<Array<Cours>>('http://localhost:8036/E-learning/cours/libelle/' + libel );
+    return this.http.get<Array<Cours>>('http://localhost:8036/learn/cours/libelle/' + libel );
   }
 
   public findParcoursByLibelle(libel: string): Observable<Array<Parcours>> {
-    return this.http.get<Array<Parcours>>('http://localhost:8036/E-learning/parcours/libelle/' + libel );
+    return this.http.get<Array<Parcours>>('http://localhost:8036/learn/parcours/libelle/' + libel );
   }
   public findCategorieSectionByLibelle(libel: string): Observable<Array<CategorieSection>> {
-    return this.http.get<Array<CategorieSection>>('http://localhost:8036/E-learning/categoriesection/libelle/' + libel );
+    return this.http.get<Array<CategorieSection>>('http://localhost:8036/learn/categoriesection/libelle/' + libel );
   }
 
   public findSuperCategorieSectionByLibelle(libel: string): Observable<Array<SuperCategorieSection>> {
-    return this.http.get<Array<SuperCategorieSection>>('http://localhost:8036/E-learning/supercategoriesection/libelle/' + libel );
+    return this.http.get<Array<SuperCategorieSection>>('http://localhost:8036/learn/supercategoriesection/libelle/' + libel );
   }
 
   public findCoursByid(id: number): Observable<Array<Cours>> {
-   return  this.http.get<Array<Cours>>('http://localhost:8036/E-learning/cours/cours/id/' + id );
+   return  this.http.get<Array<Cours>>('http://localhost:8036/learn/cours/cours/id/' + id );
   }
 
   public findSectionByid(id: number): Observable<Section> {
-    return this.http.get<Section>('http://localhost:8036/E-learning/section/section/id/' + id );
+    return this.http.get<Section>('http://localhost:8036/learn/section/section/id/' + id );
   }
 }
