@@ -10,7 +10,6 @@ import {Etudiant} from '../controller/Model/etudiant.model';
   templateUrl: './app.login.component.html',
 })
 export class AppLoginComponent {
-  
   constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
               private service: LoginService) {
 
@@ -115,12 +114,10 @@ export class AppLoginComponent {
           });
     }
   }
-  public hideViewDialog()
-  {
+  public hideViewDialog(){
     this.viewDialogRole = false;
   }
-  public openVideDialog()
-  {
+  public openVideDialog() {
     this.viewDialogRole = true;
   }
 }
