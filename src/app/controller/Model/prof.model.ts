@@ -8,7 +8,13 @@ export class Prof {
   public numero: number;
   public nom: string;
   public prenom: string;
-  public  etudiantList = new Array<Etudiant>();
+  public login: string;
+  public password: string;
+  public email: string;
+  public ref: string;
+  public lessonComplete: number;
+  public salary: number;
   public  classRoomList = new Array<ClassRoom>();
   public categorieProf = new CategorieProf();
+
 }

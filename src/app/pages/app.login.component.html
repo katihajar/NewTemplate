@@ -10,8 +10,8 @@
                         <!-- <h:panelGroup> -->
                             <label>Username</label>
                             <div class="login-input">
-                                <input type="text" pInputText id="login" [(ngModel)]="prof.login" required autofocus />
-                                <small class="p-invalid"  *ngIf="submittedProf && !prof.login">ref is required.</small>
+                                <input type="text" pInputText id="login" [(ngModel)]="login" required autofocus />
+                                <small class="p-invalid"  *ngIf="!login">ref is required.</small>
                             </div>
                         <!-- </h:panelGroup> -->
                     </div>
@@ -19,8 +19,8 @@
                         <!-- <h:panelGroup> -->
                             <label>Password</label>
                             <div class="login-input">
-                                <input type="text" pInputText id="password" #prt [(ngModel)]="prof.password" required autofocus />
-                                <small class="p-invalid" *ngIf="submittedProf && !prof.password">ref is required.</small>
+                                <input type="text" pInputText id="password" #prt [(ngModel)]="password" required autofocus />
+                               <small class="p-invalid" *ngIf="!password">ref is required.</small>
 
                             </div>
                         <!-- </h:panelGroup> -->
@@ -29,15 +29,42 @@
                         <p-checkbox></p-checkbox>
                         <label> Remember me</label>
                     </div>
-    
+
                     <div class="p-col-12 p-sm-6 p-md-6 forgetpassword-container">
                         <a href="#" class="forget-password">Forget Password</a>
                     </div>
-    
+
                     <div class="p-col-12 p-sm-6 p-md-6" >
-                            <button   pButton type="button" icon="pi pi-check" label="Sign In"(click)="FindClass(prof)" [routerLink]="['/pages/classRoom']" ></button>
+                            <button   pButton type="button" icon="pi pi-check" label="Sign In"(click)="findPersonne()"></button>
+                            <button   pButton type="button" icon="pi pi-check" label="Choose"(click)="openVideDialog()"></button>
                     </div>
                 </div>
             </div>
         </div>
+    <p-dialog [(visible)]="viewDialogRole" [style]="{width: '800px'}"  [modal]="true" styleClass="p-fluid">
+        <ng-template pTemplate="content" >
+            <div class="box">
+                <div class="p-d-flex" >
+                    <div class="p-grid" >
+                        <div class="p-col-4" style="background-color: #67c0e0;border-radius: 4px;box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);">
+                            <p-radioButton name="groupname" value="prof" label="Teacher" [(ngModel)]="role"></p-radioButton>
+                        </div>
+                        <div class="p-col-4" style="background-color: #67c0e0;border-radius: 4px;box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);">
+                            <p-radioButton name="groupname" value="admin" label="Admin" [(ngModel)]="role"></p-radioButton>
+                        </div>
+                        <div class="p-col-4" style="background-color: #67c0e0;border-radius: 4px;box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);">
+                            <p-radioButton name="groupname" value="etudiant" label="Student" [(ngModel)]="role"></p-radioButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+        </ng-template>
+    </p-dialog>
+
 </div>
+
+
+<!--[routerLink]="['/pages/classRoom']"-->
