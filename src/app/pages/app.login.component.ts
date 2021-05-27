@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ConfirmationService, MessageService} from 'primeng/api';
+import {ConfirmationService, Message, MessageService} from 'primeng/api';
 import {LoginService} from '../controller/service/login.service';
 import {Prof} from '../controller/Model/prof.model';
 import {Admin} from '../controller/Model/admin.model';
@@ -17,9 +17,18 @@ export class AppLoginComponent {
   private _role: string;
   private _login: string;
   private _password: string;
-  private _routeurLink: string;
+  private _routeurLink= '[\'/pages/home\']';
   private _viewDialogRole: boolean;
+  private _error: string;
 
+
+  get error(): string {
+    return this._error;
+  }
+
+  set error(value: string) {
+    this._error = value;
+  }
 
   get viewDialogRole(): boolean {
     return this._viewDialogRole;
@@ -87,14 +96,25 @@ export class AppLoginComponent {
 
   public findPersonne()
   {
+    /*this.messageService.add({
+      severity: 'success',
+      summary: 'Successful',
+      detail: 'Commande Created',
+      life: 3000
+    });*/
     // tslint:disable-next-line:triple-equals
     if (this.role == 'prof')
     {
       this.service.findProf(this.login, this.password).subscribe(
           data => {
             this.prof = data;
-            // this.routeurLink = '[\'/view/schedule\']';
-            console.log(this.prof);
+            this.admin = null;
+            this.etudiant = null;
+            this.routeurLink = '[\'/pages/home\']';
+          },error =>
+          {
+            document.getElementById('log-pass').style.visibility = 'visible';
+            this.error = 'Login or Password invalid';
           });
 
     }
@@ -104,7 +124,13 @@ export class AppLoginComponent {
       this.service.findEtudiant(this.login, this.password).subscribe(
           data => {
             this.etudiant = data;
+            this.admin = null;
+            this.prof = null;
             console.log(this.etudiant);
+          },error =>
+          {
+            document.getElementById('log-pass').style.visibility = 'visible';
+            this.error = 'Login or Password invalid';
           });
     }
     // tslint:disable-next-line:triple-equals
@@ -113,9 +139,25 @@ export class AppLoginComponent {
       this.service.findAdmin(this.login, this.password).subscribe(
           data => {
             this.admin = data;
+            this.prof = null;
+            this.etudiant = null;
             console.log(this.admin);
+          },error =>
+          {
+            document.getElementById('log-pass').style.visibility = 'visible';
+            this.error = 'Login or Password invalid';
           });
     }
+    else if(this.role == null)
+    {
+      document.getElementById('log-pass').style.visibility = 'visible';
+      this.error = 'Choose your responsability (Admin / Teacher / Student)';
+    }
+  }
+
+  public choose()
+  {
+    document.getElementById('log-pass').style.visibility = 'hidden';
   }
   public hideViewDialog(){
     this.viewDialogRole = false;
