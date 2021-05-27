@@ -58,6 +58,7 @@ import {FaqAnswerComponent} from './view/admin/faq-admin/faq-answer/faq-answer.c
 import {NewsAdminListComponent} from './view/admin/news-admin/news-admin-list/news-admin-list.component';
 import {NewsTeacherListComponent} from './view/teacher/news/news-teacher-list/news-teacher-list.component';
 import {FaqListComponent} from './view/teacher/faq/faq-list/faq-list.component';
+import {FormulaireComponent} from './view/etudiant/quizs/formulaire/formulaire.component';
 
 
 
@@ -75,7 +76,7 @@ import {FaqListComponent} from './view/teacher/faq/faq-list/faq-list.component';
                     {path: 'view/inscription', component: InscriptionsComponent},
                     {path: 'pages/recommend', component: RecommendComponent},
                     {path: 'pages/home', component: HomeComponent},
-                    {path: 'pages/Inscrit', component: InscriptionComponent},
+                    {path: 'pages/Inscrit', component: FormulaireComponent},
                     {path: 'pages/commande', component: CommandesComponent},
                     {path: 'pages/parcours', component: LearnComponent},
                     {path: 'pages/classes', component: ClassRoomListComponent},

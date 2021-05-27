@@ -85,18 +85,21 @@ export class AppLoginComponent {
     this.service.etudiant = value;
   }
 
-  public findPersonne()
-  {
+  public findPersonne() {
     // tslint:disable-next-line:triple-equals
-    if (this.role == 'prof')
-    {
+    if (this.role == 'prof') {
       this.service.findProf(this.login, this.password).subscribe(
           data => {
             this.prof = data;
             // this.routeurLink = '[\'/view/schedule\']';
             console.log(this.prof);
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Successful',
+              detail: 'Commandes Deleted',
+              life: 3000
+            });
           });
-
     }
     // tslint:disable-next-line:triple-equals
     else if (this.role == 'etudiant')
