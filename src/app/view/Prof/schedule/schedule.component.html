@@ -8,7 +8,7 @@
     </div>
 </div>
 <div class="p-col container">
-    <button pRipple pButton class="p-button-sm p-button-outlined p-button-secondary" label="add Student" (click)="addEtudiant()"></button>
+    <button pRipple pButton class="p-button-sm p-button-outlined p-button-secondary" label="add Student" (click)="openCreate()"></button>
 </div>
 <div class="p-col" style=" float: left">
 
@@ -58,4 +58,33 @@
         </div>
     </div>
 </div>
-
+<p-dialog [(visible)]="createDialog" [style]="{width: '450px'}"  [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="ref">Name</label>
+            <input type="text" pInputText id="name" [(ngModel)]="selected && selected.etudiant.nom" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.etudiant.nom">name is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="ref">Ref</label>
+            <input type="text" pInputText id="ref" [(ngModel)]="selected && selected.ref" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.ref">ref is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="start">Start</label>
+            <p-calendar inputId="start" [showTime]="true" [(ngModel)]="selected && selected.dateDebut" dateFormat="yy-mm-dd"></p-calendar>
+            <small class="p-invalid" *ngIf="submitted && !selected.dateDebut">start date is required.</small>
+        </div>
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="end">End</label>
+                <p-calendar inputId="basic" [showTime]="true" [(ngModel)]="selected && selected.dateFin" dateFormat="yy-mm-dd"></p-calendar>
+                <small class="p-invalid" *ngIf="submitted && !selected.dateFin">end date is required.</small>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="addEvent()"></button>
+    </ng-template>
+</p-dialog>

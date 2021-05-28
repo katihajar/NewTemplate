@@ -44,7 +44,7 @@ export class QuizPreviewComponent implements OnInit {
   }
 
   get reponses(): Array<Reponse> {
-    return this.service.question.reponses;
+    return this.service.question?.reponses;
   }
 
   get type(): TypeDeQuestion {
@@ -106,13 +106,14 @@ export class QuizPreviewComponent implements OnInit {
     this.service.findAll();
     this.service.getQuiz().subscribe(data => {
       let i : number = 0;
-      i = i+1;
       this.items[i] = data[i];
+      i = i+1;
     });
     //this.service.getReponses().subscribe(data => this.service.reponses = data);
     this.startTimer();
-    this.service.getReponsesByQuestion(this.question);
+    //this.service.getReponsesByQuestion(this.question);
     this.service.CorrectAnswer();
+    this.service.findByQuestionRef();
 
   }
 

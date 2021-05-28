@@ -1,14 +1,16 @@
 import {Injectable} from '@angular/core';
 import {ScheduleProf} from "../model/calendrier-prof.model";
 import {HttpClient} from "@angular/common/http";
+import {ScheduleVo} from "../Model/schedule-vo.model";
 
 @Injectable({
     providedIn: 'root'
 })
 export class ScheduleService {
-
     private _selected: ScheduleProf;
     private _items: Array<ScheduleProf>;
+    private _selectedVo: ScheduleVo;
+    private _itemsVo: Array<ScheduleVo>;
     private _displayBasic: boolean;
     private _events: any[];
     private _options: any;
@@ -16,8 +18,8 @@ export class ScheduleService {
     private _eventDialog: boolean;
     private _changedEvent: any;
     private _clickedEvent = null;
-
-
+    private _createDialog: boolean;
+    private _submitted: boolean;
 
     constructor(private http: HttpClient) {
     }
@@ -38,6 +40,22 @@ export class ScheduleService {
         this._items = value;
     }
 
+    get selectedVo(): ScheduleVo {
+        return this._selectedVo;
+    }
+
+    set selectedVo(value: ScheduleVo) {
+        this._selectedVo = value;
+    }
+
+    get itemsVo(): Array<ScheduleVo> {
+        return this._itemsVo;
+    }
+
+    set itemsVo(value: Array<ScheduleVo>) {
+        this._itemsVo = value;
+    }
+
     get displayBasic(): boolean {
         return this._displayBasic;
     }
@@ -46,7 +64,7 @@ export class ScheduleService {
         this._displayBasic = value;
     }
 
-  get events(): any[] {
+    get events(): any[] {
         return this._events;
     }
 
@@ -60,6 +78,21 @@ export class ScheduleService {
 
     set options(value: any) {
         this._options = value;
+    }
+    get createDialog(): boolean {
+        return this._createDialog;
+    }
+
+    set createDialog(value: boolean) {
+        this._createDialog = value;
+    }
+
+    get submitted(): boolean {
+        return this._submitted;
+    }
+
+    set submitted(value: boolean) {
+        this._submitted = value;
     }
 
     get header(): any {
@@ -94,35 +127,19 @@ export class ScheduleService {
         this._clickedEvent = value;
     }
 
-    public getEvents1() {
+    public findAll() {
 
-        return this.http.get<any>('http://localhost:8036/centre/scheduleProf/').subscribe(data => {
+        return this.http.get<any>('http://localhost:8036/learn/scheduleProf/').subscribe(data => {
             this.items = data;
         });
     }
-   /* public getEvents() {
-        return this.http.get<any>('assets/demo/data/package.json')
-            .toPromise()
-            .then(res => res.data as any[])
-            .then(data => data);
 
-    }*/
-
-    addEtudiant() {
-        let dateStr = prompt('Enter a date in YYYY-MM-DD format');
-        let date = new Date(dateStr + 'T00:00:00');
-        if (!isNaN(date.valueOf())) {
-            this.options.addEvent({
-                title: 'dynamic event',
-                start: date,
-                allDay: true
-            });
-            alert('Great. Now, update your database...');
-        } else {
-            alert('Invalid date.');
-        }
-        this.options.render();
-
+    public findSchedule() {
+        return this.http.get<any>('http://localhost:8036/learn/scheduleProf/vo/').subscribe(
+            data => {
+                this.itemsVo = data;
+            }
+        );
     }
 
     save() {
@@ -136,11 +153,29 @@ export class ScheduleService {
         this.changedEvent = {title: '', start: null, end: '', allDay: null};
     }
 
+
     reset() {
         this.changedEvent.title = this.clickedEvent.title;
         this.changedEvent.start = this.clickedEvent.start;
         this.changedEvent.end = this.clickedEvent.end;
     }
+    public  addEvent(){
+        return this.http.post<ScheduleProf>('http://localhost:8036/learn/scheduleProf/', this.selected);
+    }
+    public clone(schedule: ScheduleProf){
+        const myClone= new ScheduleProf();
+        myClone.id = schedule.id;
+        myClone.ref = schedule.ref;
+        myClone.etudiant.nom = schedule.etudiant.nom;
+        myClone.dateDebut = schedule.dateDebut;
+        myClone.dateFin = schedule.dateFin;
+        myClone.etudiant.etat = schedule.etudiant.etat;
+        myClone.prof = schedule.prof;
+        return myClone;
+    }
 
+public getSelected(){
+    this.selected = new ScheduleProf();
+}
 
 }

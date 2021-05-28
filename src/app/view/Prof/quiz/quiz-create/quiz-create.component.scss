@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
+
 }
 .buttonAdd{
   float: right;
@@ -11,7 +12,15 @@
 }
 #quizTitre{
   font-size: 55px;
-  font-family: Algerian;
+  font-family: Algerian, serif;
 
-  color: #0c799f;
+  color: white ;
+
+}
+.reponseLib{
+  text-align: center;
+  margin: auto;
+  font-family: "Chaparral Pro", serif;
+  font-weight: bold;
+  font-size: 20px;
 }

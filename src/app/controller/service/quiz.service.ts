@@ -15,7 +15,6 @@ import {ScheduleProf} from "../model/calendrier-prof.model";
     providedIn: 'root'
 })
 export class QuizService {
-
     private _qnprogress: number;
     private _correctAnswerCount: number;
     private _resultat: string;
@@ -34,6 +33,7 @@ export class QuizService {
     private _types: Array<TypeDeQuestion>;
     private _items: Array<Quiz>;
     private _question: Question;
+    private _selectedQuestion: Question;
     private _selectedItemsRadio: Array<Reponse>;
     private _reponsesCorrect: Array<Reponse>;
     private _a: number;
@@ -44,10 +44,10 @@ export class QuizService {
     private _note: number;
     private _questions: Array<Question>;
     public _url = 'http://localhost:8036/';
-    public _urlQuestion = 'centre/question';
-    private _urlReponse = 'centre/reponse';
-    public _urlType = 'centre/TypeDeQuestion';
-    private _urlQuiz = 'centre/quiz';
+    public _urlQuestion = 'learn/question';
+    private _urlReponse = 'learn/reponse';
+    public _urlType = 'learn/TypeDeQuestion';
+    private _urlQuiz = 'learn/quiz';
     private _j = 0;
     private _nbrRep: string;
     private _selectedItemsCheckBox: Array<Reponse>;
@@ -79,6 +79,13 @@ export class QuizService {
     set resultat(value: string) {
         this._resultat = value;
     }
+    get selectedQuestion(): Question {
+        return this._selectedQuestion;
+    }
+
+    set selectedQuestion(value: Question) {
+        this._selectedQuestion = value;
+    }
     get createDialog(): boolean {
         return this._createDialog;
     }
@@ -94,7 +101,6 @@ export class QuizService {
         this._viewDialog = value;
     }
     get type(): TypeDeQuestion {
-        // this.http.get(this._urlBase + this._urlType + '/');
         if (this._typeDeQuestion == null) {
             this._typeDeQuestion = new TypeDeQuestion();
         }
@@ -106,9 +112,6 @@ export class QuizService {
     }
 
     get reponse(): Reponse {
-        if (this._reponse == null) {
-            this._reponse = new Reponse();
-        }
         return this._reponse;
     }
 
@@ -128,9 +131,6 @@ export class QuizService {
     }
 
     get question(): Question {
-        if (this._question == null) {
-            this._question = new Question();
-        }
         return this._question;
     }
 
@@ -308,7 +308,6 @@ export class QuizService {
         this._qnprogress = value;
     }
 
-    // tslint:disable-next-line:typedef
     get timer() {
         return this._timer;
     }
@@ -325,10 +324,8 @@ export class QuizService {
         this._seconds = value;
     }
 
-    // tslint:disable-next-line:variable-name
     private _seconds: number;
 
-    // tslint:disable-next-line:adjacent-overload-signatures
     set nbrRep(value: string) {
         this._nbrRep = value;
     }
@@ -342,7 +339,7 @@ export class QuizService {
     }
     public CorrectAnswer() {
         this.k = this.k + 1;
-        this.http.get<Array<Reponse>>('http://localhost:8036/centre/reponse/criteria/numero/' + this.k).subscribe(
+        this.http.get<Array<Reponse>>('http://localhost:8036/learn/reponse/criteria/numero/' + this.k).subscribe(
             data => {
                 this.reponsesCorrect = data;
             }
@@ -351,12 +348,10 @@ export class QuizService {
 
     saveConfig() {
     }
-// tslint:disable-next-line:typedef
     public getAnswers(id, choice) {
         this.reponses = choice;
     }
 
-    // tslint:disable-next-line:typedef
     public answer() {
         this.CorrectAnswer();
         this.button = 'Next';
@@ -366,20 +361,17 @@ export class QuizService {
         document.getElementById('progression').style.visibility = 'visible';
         document.getElementById('file').style.visibility = 'visible';
         document.getElementById('quiz').style.backgroundColor = 'white';
-        // tslint:disable-next-line:triple-equals
         if (this.question.typeDeQuestion.ref == 't1') {
             this.typeQst = 'radio';
             document.getElementById('nbrRep').style.visibility = 'hidden';
             document.getElementById('reponse-radio').style.visibility = 'visible';
             document.getElementById('reponse-text').style.visibility = 'hidden';
-            // tslint:disable-next-line:triple-equals
         } else if (this.question.typeDeQuestion.ref == 't2') {
             this.typeQst = 'checkbox';
             document.getElementById('reponse-radio').style.visibility = 'visible';
             document.getElementById('reponse-text').style.visibility = 'hidden';
             document.getElementById('nbrRep').style.visibility = 'visible';
             this.nbrRep = 'multiple choice';
-            // tslint:disable-next-line:triple-equals
         } else if (this.question.typeDeQuestion.ref == 't3') {
             document.getElementById('nbrRep').style.visibility = 'hidden';
             document.getElementById('reponse-radio').style.visibility = 'hidden';
@@ -389,9 +381,8 @@ export class QuizService {
         }
     }
 
-    // tslint:disable-next-line:typedef
+
     shuffle(reponses: Array<Reponse>) {
-        // tslint:disable-next-line:one-variable-per-declaration
         let currentIndex = reponses.length, temporaryValue, randomIndex;
         while (0 !== currentIndex) {
             randomIndex = Math.floor(Math.random() * currentIndex);
@@ -407,7 +398,7 @@ export class QuizService {
         return this.http.get<any>(this._url + this._urlReponse + '/');
     }
 
-// tslint:disable-next-line:typedef
+
     public itemChecked(event: any) {
         if (event.target.checked) {
             this.shuffle(this.reponses);
@@ -460,7 +451,7 @@ export class QuizService {
         return index;
     }
 
-    // tslint:disable-next-line:typedef
+
     public saveQuiz() {
         this.http.post<any>(this._url + this._urlQuiz + '/', this.selected).subscribe(
             data => {
@@ -476,7 +467,6 @@ export class QuizService {
     validateForm() {
         // @ts-ignore
         const x = document.forms.myForm.fname.value;
-        // tslint:disable-next-line:triple-equals
         if (x == '' || x == null) {
             alert('Name must be filled out');
             return false;
@@ -484,12 +474,10 @@ export class QuizService {
     }
 
     public addReponse() {
-        this.question.reponses.push(this.cloneRep(this.reponse));
+        this.question?.reponses.push(this.cloneRep(this.reponse))   &&  this.question.reponses.push(this.cloneRep(this.reponse));
         this.reponse = null;
-        /*this.question.pointReponseJuste = null;
-        this.question.pointReponsefausse = null;*/
-
     }
+
     public questionType() {
         if (this.question.typeDeQuestion.ref == 't1') {
             this.typeQst = 'checkbox';
@@ -551,7 +539,7 @@ export class QuizService {
 
     public findByNumero() {
         this.findType();
-        this.http.get<Question>('http://localhost:8036/centre/question/numero/1').subscribe(
+        this.http.get<Question>('http://localhost:8036/learn/question/numero/1').subscribe(
             data => {
                 this.question = data;
             }
@@ -560,22 +548,24 @@ export class QuizService {
 
     public findByQuestionRef() {
         this.j = 1;
-        this.j = this.j + 1;
-        this.http.get<Array<Reponse>>('http://localhost:8036/centre/reponse/question/numero/' + this.j).subscribe(
+        this.http.get<Array<Reponse>>('http://localhost:8036/learn/reponse/question/numero/' + this.j).subscribe(
             data => {
-                this.question.reponses = data;
+                this.reponses = data;
+                this.j = this.j + 1;
+                console.log(this.reponses);
             }
         );
     }
-public getReponsesByQuestion(question: Question){
+    public getReponsesByQuestion(question: Question){
         this.a = 1;
-        question.numero = this.a;
-        this.http.get<Array<Reponse>>(this._url + this._urlReponse + '/question/numero/' + question.numero).subscribe(
+    question && question.numero == this.a;
+        this.http.get<Array<Reponse>>(this._url + this._urlReponse + '/question/numero/' + question?.numero).subscribe(
             data =>{
                 this.question.reponses = data;
             }
         );
-}
+    }
+
     public displayTime() {
         return Math.floor(this.seconds / 3600) + ' Hs  ' + Math.floor(this.seconds / 60) + '  :Min  ' + Math.floor(this.seconds % 60) + '  s';
     }
@@ -607,7 +597,7 @@ public getReponsesByQuestion(question: Question){
 
     public findByNumeroNext() {
         this.i = this.i + 1;
-        this.http.get<Question>('http://localhost:8036/centre/question/numero/' + this.i).subscribe(
+        this.http.get<Question>('http://localhost:8036/learn/question/numero/' + this.i).subscribe(
             data => {
                 this.question = data;
             }
@@ -615,7 +605,7 @@ public getReponsesByQuestion(question: Question){
     }
 
     public findQuizRef() {
-        this.http.get<Quiz>('http://localhost:8036/centre/quiz/ref/Q4').subscribe(
+        this.http.get<Quiz>('http://localhost:8036/learn/quiz/ref/Q4').subscribe(
             data => {
                 this.selected = data;
             }
@@ -637,7 +627,7 @@ public getReponsesByQuestion(question: Question){
     }
 
     public findQuiz() {
-      this.http.get<Array<Quiz>>(this._url + this._urlQuiz + '/').subscribe(
+        this.http.get<Array<Quiz>>(this._url + this._urlQuiz + '/').subscribe(
             data => {
                 console.log(data);
                 // @ts-ignore
@@ -647,13 +637,13 @@ public getReponsesByQuestion(question: Question){
             }
         );
     }
-public getQuiz(): Observable<Array<Quiz>>{
+    public getQuiz(): Observable<Array<Quiz>>{
         return this.http.get<Array<Quiz>>(this._url + this._urlQuiz + '/');
-}
+    }
     public cloneRep(reponse: Reponse) {
-        const mycloneRep = new Reponse();
+        let mycloneRep: Reponse;
+        mycloneRep = new Reponse();
         mycloneRep.id = reponse.id;
-        // @ts-ignore
         mycloneRep.lib = reponse.lib;
         mycloneRep.etatReponse = reponse.etatReponse;
         mycloneRep.ref = reponse.ref;
@@ -749,11 +739,11 @@ public getQuiz(): Observable<Array<Quiz>>{
         var myDivClone = myDiv.cloneNode(true);
         document.body.appendChild(myDivClone);
     }
-   /* public addCard() {
-        const elem = document.getElementById('addCard');
-        const elemclone = elem.cloneNode(true);
-        elem.appendChild(elemclone);
-    }*/
+    /* public addCard() {
+         const elem = document.getElementById('addCard');
+         const elemclone = elem.cloneNode(true);
+         elem.appendChild(elemclone);
+     }*/
     public deleteCard(index: number) {
         this.questions.splice(index, 1);
     }
@@ -762,7 +752,6 @@ public getQuiz(): Observable<Array<Quiz>>{
         const reponse = this.reponse[index];
         this.question.reponses.splice(index, 1);
     }
-
 
 }
 

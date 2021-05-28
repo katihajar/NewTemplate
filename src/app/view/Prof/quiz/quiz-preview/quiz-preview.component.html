@@ -3,7 +3,7 @@
 </div>
 <p-card  [style]="{width: '900px'}" styleClass="p-card-shadow" id="container" >
     <ng-template pTemplate="header">
-        <h1 *ngFor="let quiz of items" style="text-align: center">{{quiz?.lib}}</h1>
+        <h1 *ngFor="let quiz of items" style="text-align: center" id="quizTitre">{{quiz?.lib}}</h1>
 
         <span class="m-auto float-left">Time : {{displayTime()}}</span>
         <div class="p-col-2" style="float: right">
@@ -14,9 +14,9 @@
     <div class="p-fieldset-content">
         <span class="p-card-title p-col-2" style="font-family: Palatino Linotype, serif">{{qnprogress+1}} - </span>
         <p class="p-col-10"  style="font-family: Palatino Linotype,serif; font-size: 20px">{{questions[qnprogress]?.libelle}}</p>
-        <ng-container *ngFor="let rep of question.reponses; let i = index" class="reponse-radio" style="margin: auto">
-            <div class="p-field-checkbox" id="reponse-checkbox">
-                <p-checkbox [(ngModel)]="reponse.etatReponse" ngDefaultControl inputId="binary"  id="{{rep.id}}" (change)="checked($event)"></p-checkbox>
+        <ng-container *ngFor="let rep of reponses; let i = index" class="reponse-radio" style="margin: auto">
+            <div class="p-field-radiobutton">
+                <p-radioButton name="etatReponse" value="{{rep.id}}" [(ngModel)]="reponse.etatReponse" inputId="city1"></p-radioButton>
                 <label>{{rep.lib}}</label>
             </div>
         </ng-container>

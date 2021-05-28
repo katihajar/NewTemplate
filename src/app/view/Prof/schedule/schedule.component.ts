@@ -5,16 +5,18 @@ import interactionPlugin from "@fullcalendar/interaction";
 import {FullCalendar} from "primeng/fullcalendar";
 import {ScheduleProf} from "../../../controller/Model/calendrier-prof.model";
 import {ScheduleService} from "../../../controller/service/schedule.service";
+import {ConfirmationService, MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
-  styleUrls: ['./schedule.component.scss']
+  styleUrls: ['./schedule.component.scss'],
+  providers: [MessageService, ConfirmationService]
 })
 export class ScheduleComponent implements OnInit {
 
 
-  constructor(private service: ScheduleService) {
+  constructor(private service: ScheduleService,private messageService: MessageService) {
   }
 
   get selected(): ScheduleProf {
@@ -31,6 +33,21 @@ export class ScheduleComponent implements OnInit {
 
   set items(value: Array<ScheduleProf>) {
     this.service.items = value;
+  }
+  get createDialog(): boolean {
+    return this.service.createDialog;
+  }
+
+  set createDialog(value: boolean) {
+    this.service.createDialog = value;
+  }
+
+  get submitted(): boolean {
+    return this.service.submitted;
+  }
+
+  set submitted(value: boolean) {
+    this.service.submitted = value;
   }
 
   get displayBasic(): boolean {
@@ -88,10 +105,8 @@ export class ScheduleComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getEvents1();
-    /*this.service.getEvents().then(events => {
-     this.events = events;
-    });*/
+    //this.service.findAll();
+    this.service.findSchedule();
     this.changedEvent = {title: '', etat: '', start: null, end: '', allDay: null};
     this.options = {
       plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
@@ -115,7 +130,7 @@ export class ScheduleComponent implements OnInit {
         this.clickedEvent = e.event;
 
         this.changedEvent.title = this.clickedEvent.title;
-        this.changedEvent.etat = this.changedEvent.etat;
+        this.changedEvent.etat = this.clickedEvent.etat;
         this.changedEvent.start = this.clickedEvent.start;
         this.changedEvent.end = this.clickedEvent.end;
       }
@@ -125,7 +140,7 @@ export class ScheduleComponent implements OnInit {
   @ViewChild('fc') fc: FullCalendar;
 
   public getEvents1() {
-    return this.service.getEvents1();
+    return this.service.findAll();
   }
 
   save() {
@@ -139,9 +154,30 @@ export class ScheduleComponent implements OnInit {
   showBasicDialog() {
     this.displayBasic = true;
   }
+  public openCreate() {
 
-  addEtudiant() {
-    return this.service.addEtudiant();
+    this.submitted = false;
+    this.createDialog = true;
+  }
+  public hideCreateDialog() {
+    this.createDialog = false;
+    this.submitted = false;
+  }
+  public addEvent() {
+    this.submitted = true;
+    if (this.selected.ref.trim()) {
+      this.service.addEvent().subscribe(data => {
+        this.items.push(this.service.clone(this.selected));
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Successful',
+          detail: 'Student Created',
+          life: 3000
+        })
+      });
+      this.createDialog = false;
+      this.selected = new ScheduleProf();
+    }
   }
 }
 

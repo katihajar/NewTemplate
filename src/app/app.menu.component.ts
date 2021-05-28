@@ -122,6 +122,7 @@ export class AppMenuComponent implements OnInit {
                     {label: 'Inscriptions List', icon: 'pi pi-fw pi-pencil', routerLink: ['/view/inscription']},
                     {label: 'Student List', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/etudiant']},
                     {label: 'Quiz-Create', icon: 'pi pi-fw pi-pencil', routerLink: ['/view/quiz-create']},
+                    {label: 'Create-Quiz', icon: 'pi pi-fw pi-pencil', routerLink: ['/view/create-quiz']},
                     {label: 'Manage Parcours', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/parcours']},
                     {label: 'FAQ ANSWER', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/pages/faq-admin']},
                     {label: 'CREATE NEWS', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/pages/news-admin']},

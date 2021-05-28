@@ -15,11 +15,10 @@ import {Router} from "@angular/router";
 })
 export class QuizCreateComponent implements OnInit {
 
-
   constructor(private service: QuizService,private messageService: MessageService,private confirmationService: ConfirmationService,private router: Router) { }
   cols: any[];
   get question(): Question {
-    return this.service.question;
+    return   this.service.question;
   }
 
   set question(value: Question) {
@@ -107,8 +106,8 @@ export class QuizCreateComponent implements OnInit {
   }
 
   public addFormule() {
-    this.question = new Question();
-    this.questions.push(this.question);
+ let question = new Question();
+    this.questions.push(question);
   }
 
   public save() {
@@ -182,7 +181,13 @@ export class QuizCreateComponent implements OnInit {
   shuffle(reponses: Array<Reponse>) {
     return this.service.shuffle(reponses);
   }
+  getSafe(fn) {
+    try {
+      return fn();
+    } catch (e) {
 
+    }
+  }
   public itemChecked(event: any) {
     return this.service.itemChecked(event);
   }

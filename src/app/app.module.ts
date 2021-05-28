@@ -193,6 +193,7 @@ import { NewsTeacherListComponent } from './view/teacher/news/news-teacher-list/
 import { NewsTeacherViewComponent } from './view/teacher/news/news-teacher-view/news-teacher-view.component';
 import { FaqListComponent } from './view/teacher/faq/faq-list/faq-list.component';
 import { FaqContactComponent } from './view/teacher/faq/faq-contact/faq-contact.component';
+import { CreateQuizComponent } from './view/Prof/quiz/create-quiz/create-quiz.component';
 
 
 
@@ -386,6 +387,7 @@ import { FaqContactComponent } from './view/teacher/faq/faq-contact/faq-contact.
         NewsTeacherViewComponent,
         FaqListComponent,
         FaqContactComponent,
+        CreateQuizComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

@@ -14,13 +14,14 @@
                 </div>
             </p-toolbar>
         </div>
-        <p-card   [style]="{width: '900px'}" id="mainCard" styleClass="p-card-shadow" class="container">
-            <ng-template pTemplate="header">
+        <p-card   [style]="{width: '900px', backgroundColor: '#5299D7'}" id="mainCard" styleClass="p-card-shadow" class="container" >
+            <ng-template pTemplate="header" >
+
                 <div>
                     <h1  style=" text-align: center" id="quizTitre">Quiz</h1>
                 </div>
                 <div class="p-field p-md-6">
-                    <p-dropdown inputId="quiz"  [options]="quizs" [(ngModel)]="question.quiz" placeholder="reference Quiz"  optionLabel="ref"></p-dropdown>
+                    <p-dropdown inputId="quiz"  [options]="quizs" [(ngModel)]="question && question.quiz" placeholder="reference Quiz"  optionLabel="ref"></p-dropdown>
                 </div>
                 <!--<div class="p-field p-col-12 p-md-6">
             <input  type="text" pInputText placeholder="Reference Quiz" [(ngModel)]="selected && selected.ref">
@@ -33,40 +34,42 @@
                 <div class="card"*ngFor="let q of questions">
                     <div class="p-fluid p-formgrid p-grid">
                         <div class="p-field p-col-12 p-md-6">
-                            <p-inputNumber id="firstname6"  placeholder="Numero Question" [(ngModel)]="question.numero"></p-inputNumber>
+                            <p-inputNumber id="firstname6" name="numero"  placeholder="Numero Question" [(ngModel)]="question && question.numero"></p-inputNumber>
                         </div>
                         <div class="p-field p-col-12 p-md-6">
-                            <p-dropdown inputId="type"  [options]="types" [(ngModel)]="question.typeDeQuestion" placeholder="TypeQuestion" optionLabel="lib"></p-dropdown>
+                            <p-dropdown inputId="type"  [options]="types" [(ngModel)]="question && question.typeDeQuestion" placeholder="TypeQuestion" optionLabel="lib"></p-dropdown>
                         </div>
                         <div class="p-field p-col-12">
-                            <textarea type="text" rows="4" pInputTextarea placeholder="Question" [(ngModel)]="question.libelle"></textarea>
+                            <textarea type="text" rows="4" pInputTextarea placeholder="Question" [(ngModel)]="question && question.libelle"></textarea>
                         </div>
-                        <h5>Reponse</h5>
+                        <div class="p-col-12 " style="text-align: center; margin: 5px">
+                            <h5 class="reponseLib">Reponse</h5>
+                        </div>
                         <div class="p-formgroup-inline">
                             <div class="p-field p-col-12 p-md-3">
-                                <p-inputNumber [(ngModel)]="reponse.numero" placeholder="Numero"></p-inputNumber>
+                                <p-inputNumber [(ngModel)]="reponse && reponse.numero" placeholder="Numero"></p-inputNumber>
                             </div>
                             <div class="p-field p-col-12 p-md-4">
-                                <p-inputNumber [(ngModel)]="question.pointReponseJuste" placeholder="pointJust"  [minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
+                                <p-inputNumber [(ngModel)]="question && question.pointReponseJuste" placeholder="pointJust"  [minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
                             </div>
                             <div class="p-field p-col-12 p-md-4">
-                                <p-inputNumber [(ngModel)]="question.pointReponsefausse" placeholder="pointfausse"  [minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
+                                <p-inputNumber [(ngModel)]="question && question.pointReponsefausse" placeholder="pointfausse"  [minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
                             </div>
                         </div>
                         <div class="p-field  p-col-10 ">
-                            <textarea type="text" rows="2" placeholder="Reponse" pInputTextarea [(ngModel)]="reponse.lib"></textarea>
+                            <textarea type="text" rows="2" placeholder="Reponse" pInputTextarea [(ngModel)]="reponse && reponse.lib"></textarea>
                         </div>
                         <div class="p-field  p-col-2" >
-                            <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-primary" (click)="addReponse()"></button>
+                            <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-primary p-button-raised" (click)="addReponse()"></button>
                         </div>
                         <div class="p-formgroup-inline p-col-12">
                             <h6>Correct : </h6>
                             <div class="p-field-radiobutton p-md-1">
-                                <p-radioButton name="etat" value="vrai" [(ngModel)]="reponse.etatReponse" inputId="city1"></p-radioButton>
+                                <p-radioButton name="etat" value="vrai" [(ngModel)]="reponse && reponse.etatReponse" inputId="city1"></p-radioButton>
                                 <label>Vrai</label>
                             </div>
                             <div class="p-field-radiobutton p-md-1">
-                                <p-radioButton name="etat" value="faux" [(ngModel)]="reponse.etatReponse" inputId="city2"></p-radioButton>
+                                <p-radioButton name="etat" value="faux" [(ngModel)]="reponse && reponse.etatReponse" inputId="city2"></p-radioButton>
                                 <label>Faux</label>
                             </div>
                         </div>
@@ -95,10 +98,10 @@
                 </div>
             </div>
             <div class="p-field  p-col-2 buttonAdd" >
-                <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-primary" (click)="addFormule()"></button>
+                <button pButton pRipple type="button" style="background-color: white;" icon="pi pi-plus" class="p-button-rounded p-button-raised p-button-text" (click)="addFormule()"></button>
             </div>
             <div class="p-field  p-col buttonAdd" >
-                <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteCard(1)"></button>
+                <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-raised" (click)="deleteCard(1)"></button>
             </div>
             <ng-template pTemplate="footer">
             </ng-template>
@@ -107,4 +110,3 @@
         <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
     </div>
 </div>
-

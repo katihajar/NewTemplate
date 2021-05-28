@@ -58,6 +58,7 @@ import {FaqAnswerComponent} from './view/admin/faq-admin/faq-answer/faq-answer.c
 import {NewsAdminListComponent} from './view/admin/news-admin/news-admin-list/news-admin-list.component';
 import {NewsTeacherListComponent} from './view/teacher/news/news-teacher-list/news-teacher-list.component';
 import {FaqListComponent} from './view/teacher/faq/faq-list/faq-list.component';
+import {CreateQuizComponent} from "./view/Prof/quiz/create-quiz/create-quiz.component";
 
 
 
@@ -84,13 +85,14 @@ import {FaqListComponent} from './view/teacher/faq/faq-list/faq-list.component';
                     {path: 'pages/etudiantcours', component: EtudiantCoursesComponent},
                     {path: 'pages/etudiantsections', component: EtudiantSectionsComponent},
                     {path: 'pages/cours', component: CoursesComponent},
+                    {path: 'view/quiz-create', component: QuizCreateComponent},
+                    {path: 'view/create-quiz', component: CreateQuizComponent},
+                    {path: 'view/quiz-preview', component: QuizPreviewComponent},
                     {path: 'pages/sections', component: SectionsComponent},
                     {path: 'pages/faq-admin', component: FaqAnswerComponent},
                     {path: 'pages/news-admin', component: NewsAdminListComponent},
                     {path: 'pages/news-teacher', component: NewsTeacherListComponent},
                     {path: 'pages/faq-teacher', component: FaqListComponent},
-                    {path: 'view/quiz-create', component: QuizCreateComponent},
-                    {path: 'view/quiz-preview', component: QuizPreviewComponent},
                     {path: 'view/schedule', component: ScheduleComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
