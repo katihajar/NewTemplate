@@ -1,4 +1,4 @@
-<p-dialog [(visible)]="createDialog" [style]="{width: '450px'}" header="Etudiant Details"
+<p-dialog [(visible)]="createDialogEtud" [style]="{width: '450px'}" header="Etudiant Details"
           [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="p-field">
@@ -18,7 +18,7 @@
         </div>
         <div class="p-field">
             <label for="parcours">parcours</label>
-            <input type="text" pInputText id="login" [(ngModel)]="selected.parcours.libelle" required autofocus />
+            <input type="text" pInputText id="parcours" [(ngModel)]="selected.parcours.libelle" required autofocus />
             <small class="p-invalid" *ngIf="submitted && !selected.parcours.libelle">parcours is required.</small>
         </div>
         <div class="p-field">
