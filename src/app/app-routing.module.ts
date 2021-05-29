@@ -82,7 +82,7 @@ import {SalaireeComponent} from './view/Proffff/salairee/salairee.component';
                     {path: 'pages/commande', component: CommandesComponent},
                     {path: 'pages/parcours', component: LearnComponent},
                     {path: 'pages/classes', component: ClassRoomListComponent},
-                    {path: 'pages/salary', component: SalaireeComponent},
+                    {path: 'pages/salary', component: SalaryComponent},
                     {path: 'pages/courses', component: EdCoursesComponent},
                     {path: 'pages/etudiantcours', component: EtudiantCoursesComponent},
                     {path: 'pages/etudiantsections', component: EtudiantSectionsComponent},
