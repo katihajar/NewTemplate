@@ -194,6 +194,8 @@ import { NewsTeacherViewComponent } from './view/teacher/news/news-teacher-view/
 import { FaqListComponent } from './view/teacher/faq/faq-list/faq-list.component';
 import { FaqContactComponent } from './view/teacher/faq/faq-contact/faq-contact.component';
 import {FormulaireComponent} from './view/etudiant/quizs/formulaire/formulaire.component';
+import { SalairComponent } from './View/Teacher/salair/salair.component';
+import { SalaireeComponent } from './View/Proffff/salairee/salairee.component';
 
 
 
@@ -387,7 +389,9 @@ import {FormulaireComponent} from './view/etudiant/quizs/formulaire/formulaire.c
         NewsTeacherViewComponent,
         FaqListComponent,
         FaqContactComponent,
-        FormulaireComponent
+        FormulaireComponent,
+        SalairComponent,
+        SalaireeComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

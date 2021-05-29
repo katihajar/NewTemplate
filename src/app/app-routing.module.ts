@@ -59,6 +59,8 @@ import {NewsAdminListComponent} from './view/admin/news-admin/news-admin-list/ne
 import {NewsTeacherListComponent} from './view/teacher/news/news-teacher-list/news-teacher-list.component';
 import {FaqListComponent} from './view/teacher/faq/faq-list/faq-list.component';
 import {FormulaireComponent} from './view/etudiant/quizs/formulaire/formulaire.component';
+import {SalairComponent} from './view/teacher/salair/salair.component';
+import {SalaireeComponent} from './view/Proffff/salairee/salairee.component';
 
 
 
@@ -80,7 +82,7 @@ import {FormulaireComponent} from './view/etudiant/quizs/formulaire/formulaire.c
                     {path: 'pages/commande', component: CommandesComponent},
                     {path: 'pages/parcours', component: LearnComponent},
                     {path: 'pages/classes', component: ClassRoomListComponent},
-                    {path: 'pages/salary', component: SalaryComponent},
+                    {path: 'pages/salary', component: SalaireeComponent},
                     {path: 'pages/courses', component: EdCoursesComponent},
                     {path: 'pages/etudiantcours', component: EtudiantCoursesComponent},
                     {path: 'pages/etudiantsections', component: EtudiantSectionsComponent},

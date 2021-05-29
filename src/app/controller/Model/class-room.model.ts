@@ -1,6 +1,6 @@
-import {Prof} from "./prof.model";
-import {QuizClassRoom} from "./quiz-class-room.model";
-import {EtudiantClassRoom} from "./etudiant-class-room.model";
+import {Prof} from './prof.model';
+import {QuizClassRoom} from './quiz-class-room.model';
+import {EtudiantClassRoom} from './etudiant-class-room.model';
 
 
 export class ClassRoom {
