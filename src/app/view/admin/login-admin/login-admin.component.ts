@@ -88,6 +88,7 @@ export class LoginAdminComponent implements OnInit {
             this.etudiant = null;
             console.log(this.admin);
             this.correct = true;
+            document.getElementById('log-pass').style.visibility = 'hidden';
           }, error =>
           {
             document.getElementById('log-pass').style.visibility = 'visible';

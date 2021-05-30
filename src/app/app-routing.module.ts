@@ -59,8 +59,8 @@ import {NewsAdminListComponent} from './view/admin/news-admin/news-admin-list/ne
 import {NewsTeacherListComponent} from './view/teacher/news/news-teacher-list/news-teacher-list.component';
 import {FaqListComponent} from './view/teacher/faq/faq-list/faq-list.component';
 import {LoginAdminComponent} from './view/admin/login-admin/login-admin.component';
-import {LoginEtudiantComponent} from './view/etudiant/login-etudiant/login-etudiant.component';
 import {LoginProfComponent} from './view/teacher/login-prof/login-prof.component';
+import {LoginEtudiantComponent} from './view/etudiant/login-etudiant/login-etudiant.component';
 
 
 
@@ -97,6 +97,7 @@ import {LoginProfComponent} from './view/teacher/login-prof/login-prof.component
                     {path: 'pages/login-etudiant', component: LoginEtudiantComponent},
                     {path: 'view/quiz-create', component: QuizCreateComponent},
                     {path: 'view/quiz-preview', component: QuizPreviewComponent},
+                    {path: 'view/schedule', component: ScheduleComponent},
                     {path: 'view/schedule', component: ScheduleComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},

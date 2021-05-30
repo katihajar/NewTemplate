@@ -34,9 +34,15 @@ export class FormulaireComponent implements OnInit {
   public findAllCentre(){
     this.service.findAllCentre();
   }
+  public findAllParcours(){
+    this.service.findAllParcours().subscribe(data => this.parcoursList = data);
+  }
   get centreList(): Array<Centre> {
 
     return this.service.centreList;
+  }
+  set parcoursList(value: Array<Parcours>) {
+    this.service.parcoursList = value;
   }
   get parcoursList(): Array<Parcours> {
     return this.service.parcoursList;

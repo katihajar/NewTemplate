@@ -6,6 +6,7 @@ import {EtudiantClassRoom} from '../Model/etudiant-class-room.model';
 import {QuizClassRoom} from '../Model/quiz-class-room.model';
 import {Observable} from 'rxjs';
 import {CategorieProf} from '../Model/categorie-prof.model';
+import {SalaryVo} from '../Model/salary-vo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,16 @@ export class ClassRoomService {
 
   constructor(private http: HttpClient) { }
   private _selectedclassRoom: ClassRoom;
+  private _selectedsalaryVo: SalaryVo;
   private _selectedcategorieProf: CategorieProf;
   private _selectedetudiantClassRoom: EtudiantClassRoom;
   private _selectedquizClassRoom: QuizClassRoom;
   private _selectedprof: Prof;
   private _itemsclassRoom: Array<ClassRoom>;
+  private _itemssalaryVo: Array<SalaryVo>;
   private _itemscategorieProf: Array<CategorieProf>;
   private _selectesclassRoom: Array<ClassRoom>;
+  private _selectessalaryVo: Array<SalaryVo>;
   private _selectescategorieProf: Array<CategorieProf>;
   private _itemsprof: Array<Prof>;
   private _selectesprof: Array<Prof>;
@@ -33,6 +37,30 @@ export class ClassRoomService {
   private _submittedProf: boolean;
   private _viewDialogCategorie: boolean;
 
+
+  get selectedsalaryVo(): SalaryVo {
+    return this._selectedsalaryVo;
+  }
+
+  set selectedsalaryVo(value: SalaryVo) {
+    this._selectedsalaryVo = value;
+  }
+
+  get itemssalaryVo(): Array<SalaryVo> {
+    return this._itemssalaryVo;
+  }
+
+  set itemssalaryVo(value: Array<SalaryVo>) {
+    this._itemssalaryVo = value;
+  }
+
+  get selectessalaryVo(): Array<SalaryVo> {
+    return this._selectessalaryVo;
+  }
+
+  set selectessalaryVo(value: Array<SalaryVo>) {
+    this._selectessalaryVo = value;
+  }
 
   get selectedclassRoom(): ClassRoom {
     return this._selectedclassRoom;
@@ -203,5 +231,8 @@ export class ClassRoomService {
   public findAllCategorieProf(): Observable<Array<CategorieProf>> {
     return this.http.get< Array<CategorieProf> >('http://localhost:8036/learn/categorieprof/');
 
+  }
+  public findSalary(): Observable<Array<SalaryVo>> {
+    return this.http.get<Array<SalaryVo> >('http://localhost:8036/learn/salary/prof/id/15');
   }
 }

@@ -193,9 +193,9 @@ import { NewsTeacherListComponent } from './view/teacher/news/news-teacher-list/
 import { NewsTeacherViewComponent } from './view/teacher/news/news-teacher-view/news-teacher-view.component';
 import { FaqListComponent } from './view/teacher/faq/faq-list/faq-list.component';
 import { FaqContactComponent } from './view/teacher/faq/faq-contact/faq-contact.component';
-import { LoginAdminComponent } from './view/admin/login-admin/login-admin.component';
-import { LoginEtudiantComponent } from './view/etudiant/login-etudiant/login-etudiant.component';
-import { LoginProfComponent } from './view/teacher/login-prof/login-prof.component';
+import {LoginEtudiantComponent} from './view/etudiant/login-etudiant/login-etudiant.component';
+import {LoginProfComponent} from './view/teacher/login-prof/login-prof.component';
+import {LoginAdminComponent} from './view/admin/login-admin/login-admin.component';
 
 
 
@@ -389,9 +389,9 @@ import { LoginProfComponent } from './view/teacher/login-prof/login-prof.compone
         NewsTeacherViewComponent,
         FaqListComponent,
         FaqContactComponent,
-        LoginAdminComponent,
         LoginEtudiantComponent,
         LoginProfComponent,
+        LoginAdminComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

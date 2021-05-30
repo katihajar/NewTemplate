@@ -23,21 +23,22 @@
         <h2 style="margin-left: 400px;color: white">Recommend a teacher</h2>
         <div class="p-fluid p-formgrid p-grid" style="margin-left: 50px" >
             <div class="p-field p-col-3 p-md-3" style="width: 300px" >
-                 <span class="p-float-label">
-    <input id="float-input" type="text" pInputText >
-    <label for="float-input">Name</label>
-</span>
+                 <div class="p-field">
+                <label for="centre" > Parcours </label>
+                <select  class="btn btn-block btn-outline-light form-control" id="centre" style="background-color: lightblue" name="Parcours" (click)="FindAllProf()" [(ngModel)]="selected.prof.id" >
+                    <option  selected="selected" *ngFor="let c of itemsprof"  [ngValue]="c.id"> {{c.nom}}</option>
+                </select>
+            </div>
             </div>
             <div class="p-field p-col-3 p-md-3" style="width: 300px">
 
 
 
-                <div ><p-inputNumber inputId="integeronly" >
-                </p-inputNumber></div>
+
             </div>
             <div class="p-field p-col-3 p-md-3" style="width: 300px">
                 <div>
-                    <button  pButton pRipple label="Send Teacher's Contact" class="p-button-outlined" style="color: green"></button>
+                    <button  pButton pRipple label="Send Teacher's Contact" class="p-button-outlined" style="color: green" (click)="save()"></button>
                 </div> </div>
 
         </div>
@@ -65,4 +66,3 @@
         </div>
     </div>
 </div>
-
