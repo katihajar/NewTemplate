@@ -89,7 +89,7 @@ export class LoginProfComponent implements OnInit {
           this.etudiant = null;
           this.correct = true;
           console.log(this.prof);
-        },error =>
+        }, error =>
         {
           document.getElementById('log-pass').style.visibility = 'visible';
           this.correct = false;

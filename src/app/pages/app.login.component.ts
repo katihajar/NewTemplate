@@ -111,7 +111,7 @@ export class AppLoginComponent {
             this.admin = null;
             this.etudiant = null;
             this.routeurLink = '[\'/pages/home\']';
-          },error =>
+          }, error =>
           {
             document.getElementById('log-pass').style.visibility = 'visible';
             this.error = 'Login or Password invalid';
@@ -127,7 +127,7 @@ export class AppLoginComponent {
             this.admin = null;
             this.prof = null;
             console.log(this.etudiant);
-          },error =>
+          }, error =>
           {
             document.getElementById('log-pass').style.visibility = 'visible';
             this.error = 'Login or Password invalid';
@@ -142,13 +142,13 @@ export class AppLoginComponent {
             this.prof = null;
             this.etudiant = null;
             console.log(this.admin);
-          },error =>
+          }, error =>
           {
             document.getElementById('log-pass').style.visibility = 'visible';
             this.error = 'Login or Password invalid';
           });
     }
-    else if(this.role == null)
+    else if (this.role == null)
     {
       document.getElementById('log-pass').style.visibility = 'visible';
       this.error = 'Choose your responsability (Admin / Teacher / Student)';
