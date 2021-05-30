@@ -1,21 +1,29 @@
-<div class="p-grid " style="margin-left: 10%">
+
+    <p-dataView [value]="itemssalaryVo" >
+    <ng-template let-s pTemplate="listItem" style="background-color: transparent">
+<div class="p-grid-transparent p-col-10" style="margin-left: 15%; background-color: transparent" >
     <div class="p-col-10 ">
-        <div class="expenses card card-w-title">
-            <div class="p-grid">
-                <div class="p-col "  > <h5 (click)="view()" style="color: #0c799f"> MyLevel: <u style="cursor: pointer"> Junior </u></h5></div>
-                <div class="p-col" ><h7 style="margin-left: 40%">EnglishDom Experience: <b>44 months</b></h7></div>
+        <div class="expenses card card-w-title" style="background-color: #add3e0">
+            <div class="p-grid" >
+                <div class="p-col "  > <h5 (click)="view()" style="color: #0c799f"> MyLevel: <u style="cursor: pointer"> {{s.prof.categorieProf.level}} </u></h5></div>
+                <div class="p-col" ><p style="margin-left: 45%">EnglishDom Experience: <b>{{s.mois}} months</b></p></div>
         </div></div></div>
-</div>
-<div class="p-grid layout-dashboard" style="margin-left: 10%">
+
+
     <div class="p-col-10 ">
-        <div class="expenses card card-w-title">
+        <div class="expenses card card-w-title"style="background-color: #add3e0">
             <h5>Salary</h5>
-            <div class="p-grid" style="margin-left: 10%" >
+            <div class="p-grid" style="margin-left: 15%"  >
                 <div class="p-col" >
-                    <h6>Current Pay</h6>
-                    <h1>4000$</h1>
-            </div>
-            <div class="p-col"  ><p-chart  type="pie" [data]="data"></p-chart> </div>
+
+
+                    <h6>Current Month Pay</h6>
+                    <h1>{{s.montantMensuel}}$</h1>
+                    <h6>Global Pay</h6>
+                    <h1>{{s.montantGlobale}}$</h1>
+
+                    </div>
+            <div class="p-col"  ><p-chart  type="pie" [data]="data" ></p-chart> </div>
 
 
             </div>
@@ -27,10 +35,10 @@
                 </p-menubar>
 
             </div>
-            <div class="p-grid card" style="margin-top: 5%; border-color: #84bfdd; ">
+            <div class="p-grid card" style="margin-top: 10%; border-color: #84bfdd; ">
                 <div class="p-col "  style="margin-left: 5% ; height:50px ;"> <h5> LessonComplete <br/><u><b> 30 Lesson </b></u></h5></div>
                 <div class="p-col " style="margin-left: 4% ; height:50px ;" > <h2> X </h2></div>
-                <div class="p-col" style="margin-right: 7% ; height:50px ;" ><h5 >LessonRate <br/><b><u>30$ </u></b></h5></div>
+                <div class="p-col" style="margin-right: 7% ; height:50px ;" ><h5 >LessonRate <br/><b><u>{{s.prof.categorieProf.lessonRate}}$ </u></b></h5></div>
                 <div class="p-col " style="margin-right: 10% ; height:50px ;"> <h1> = </h1></div>
                 <div class="p-col" style="margin-right: 15% ; height:50px ;"><h5  >Total <br/><b><u>900$ </u></b></h5></div>
             </div>
@@ -39,3 +47,29 @@
     </div>
     <app-categorie-prof-view></app-categorie-prof-view>
 </div>
+    </ng-template>
+</p-dataView>
+
+
+<!--
+<h5 style="width: 500px">Company News</h5><br>
+
+<div class="card">
+    <button (click)="Console()">vv</button>
+    <p-dataView [value]="itemssalaryVo">
+        <ng-template let-news >
+            <div class="p-grid">
+                <div class="p-col-4" >
+                    <div class="box">
+                        <h4>{{news.montantGlobale}}</h4>
+                        <h6>{{news.montantMensuel}}</h6>
+
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+    <app-news-teacher-view></app-news-teacher-view>
+</div>
+
+-->
