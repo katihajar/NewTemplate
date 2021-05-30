@@ -9,7 +9,7 @@
             <p-panel >
                 <ng-template pTemplate="header">
                     <h5>NEAREST LESSON</h5>
-                    <p style="margin-left: 600px"><a routerLink="Schedule" style="color: green" >SCHEDULE</a></p>
+                    <p style="margin-left: 600px"><a routerLink="/view/schedule" style="color: green" >SCHEDULE</a></p>
                 </ng-template>
                 <div class="p-fluid p-formgrid p-grid" style="height: 167px">
                     <div class="p-field p-col-4 p-md-2"  >
@@ -97,9 +97,12 @@
     <div class="p-field p-col-6 p-md-4" style="width:   300px;height: 90px;margin-left: 30px">
         <div class="timeline card card-w-title" >
             <ul>
-                <li>
+                <li><p-dataView [value]="itemssalaryVo" >
+                    <ng-template let-s pTemplate="listItem" >
                     <span style="color: green" >CURRENT PAY </span>
-                    <h4 >	11000 rub</h4>
+                    <h4 >{{s.montantGlobale}} $</h4>
+                    </ng-template>
+                </p-dataView>
                 </li>
                 <li>
                     <i class="pi pi-chevron-circle-down"></i> <span style="color: green">Workload </span>
@@ -107,8 +110,10 @@
                     <h4 >30 lessons</h4>
                 </li>
                 <li>
+
                     <span style="color: green" >PREMIEUM STUDENTS</span>
-                    <h4 >12 STUDENTS</h4>
+                    <h4 >{{this.itemsetudiant.length}} STUDENTS</h4>
+
                 </li>
                 <li>
                     <i class="pi pi-users"></i> <span style="color: green">Class avarage</span>

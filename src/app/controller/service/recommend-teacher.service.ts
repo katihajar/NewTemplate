@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { RecommendTeacher } from '../Model/recommend-teacher.model';
 import { Observable } from 'rxjs';
 import {Prof} from '../Model/prof.model';
+import {Etudiant} from '../Model/etudiant.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class RecommendTeacherService {
   private _selected: RecommendTeacher;
   private _items: Array<RecommendTeacher>;
   private _itemsprof: Array<Prof>;
+  private _itemsetudiant: Array<Etudiant>;
   private _prof : Prof;
   private _item: Array<RecommendTeacher>;
 
@@ -25,6 +27,14 @@ export class RecommendTeacherService {
   private _submitted: boolean;
 
   constructor(private http: HttpClient) { }
+
+  get itemsetudiant(): Array<Etudiant> {
+    return this._itemsetudiant;
+  }
+
+  set itemsetudiant(value: Array<Etudiant>) {
+    this._itemsetudiant = value;
+  }
 
   get itemsprof(): Array<Prof> {
     return this._itemsprof;
@@ -104,7 +114,8 @@ export class RecommendTeacherService {
     this._selectes = value;
   }
   public save(): Observable<number> {
-   return this.http.post<number>('http://localhost:8036/learn/teacher/', this.selected);}
+   return this.http.post<number>('http://localhost:8036/learn/teacher/', this.selected);
+  }
 
   get prof(): Prof {
     return this._prof;
@@ -132,5 +143,8 @@ export class RecommendTeacherService {
   }
   public findAllProf(): Observable<Array<Prof>> {
     return  this.http.get< Array<Prof> >('http://localhost:8036/learn/prof/');
+  }
+  public findAllEtudiantByProf(): Observable<Array<Etudiant>> {
+    return  this.http.get< Array<Etudiant> >('http://localhost:8036/learn/etudiant/prof/id/15');
   }
 }

@@ -5,6 +5,9 @@ import {Prof} from '../../../controller/Model/prof.model';
 import {RecommendTeacherService} from '../../../controller/service/recommend-teacher.service';
 import {ParcoursService} from '../../../controller/service/parcours.service';
 import {ConfirmationService, MessageService} from 'primeng/api';
+import {Etudiant} from '../../../controller/Model/etudiant.model';
+import {ClassRoomService} from '../../../controller/service/class-room.service';
+import {SalaryVo} from '../../../controller/Model/salary-vo.model';
 
 @Component({
   selector: 'app-home',
@@ -15,11 +18,37 @@ export class HomeComponent implements OnInit {
 
   lastUpdate = new Date();
   constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
-              private service: ParcoursService, private servicerecommend: RecommendTeacherService) { }
+              // tslint:disable-next-line:max-line-length
+              private service: ParcoursService, private servicerecommend: RecommendTeacherService, private seviceClass: ClassRoomService) { }
 
   ngOnInit(): void {
+    this.findSalary();
+    this.servicerecommend.findAllEtudiantByProf().subscribe(data => this.itemsetudiant = data);
   }
 
+  get itemssalaryVo(): Array<SalaryVo> {
+    return this.seviceClass.itemssalaryVo;
+  }
+
+  set itemssalaryVo(value: Array<SalaryVo>) {
+    this.seviceClass.itemssalaryVo = value;
+  }
+
+  get selectessalaryVo(): Array<SalaryVo> {
+    return this.seviceClass.selectessalaryVo;
+  }
+
+  set selectessalaryVo(value: Array<SalaryVo>) {
+    this.seviceClass.selectessalaryVo = value;
+  }
+  public findSalary(){
+    this.seviceClass.findSalary().subscribe(data =>
+    {
+      this.selectessalaryVo = data;
+      this.itemssalaryVo = this.selectessalaryVo;
+      console.log(this.selectessalaryVo);
+    });
+  }
   get itemsprof(): Array<Prof> {
     return this.servicerecommend.itemsprof;
   }
@@ -65,5 +94,11 @@ export class HomeComponent implements OnInit {
   set createDialogCours(value: boolean) {
     this.service.createDialogCours = value;
   }
+  get itemsetudiant(): Array<Etudiant> {
+    return this.servicerecommend.itemsetudiant;
+  }
 
+  set itemsetudiant(value: Array<Etudiant>) {
+    this.servicerecommend.itemsetudiant = value;
+  }
 }

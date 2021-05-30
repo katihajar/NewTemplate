@@ -152,6 +152,16 @@ export class AppMenuComponent implements OnInit {
                     {label: 'Courses ', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/etudiantcours']},
                 ]
             },
+            { label: 'Teacher', icon: 'pi pi-fw pi-folder', routerLink: ['/teacher'],
+                items: [
+                    {label: 'Home', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/home']},
+                    {label: 'Recommend A teacher', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/recommend']},
+                    {label: 'Salary', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/salary']},
+                    {label: 'Parcours', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/parcours']},
+                    {label: 'Classes', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/classes']},
+                    {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/view/schedule']},
+                ]
+            },
             {
                 label: 'Hierarchy', icon: 'pi pi-fw pi-sitemap',
                 items: [

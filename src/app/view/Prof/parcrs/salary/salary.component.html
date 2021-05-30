@@ -1,7 +1,8 @@
 
     <p-dataView [value]="itemssalaryVo" >
     <ng-template let-s pTemplate="listItem" style="background-color: transparent">
-<div class="p-grid-transparent p-col-10" style="margin-left: 15%; background-color: transparent" >
+<input type="month" id="start" name="start"  style="margin-left: 1100px; margin-top: 10px"     >
+        <div class="p-grid-transparent p-col-10" style="margin-left: 15%; background-color: transparent" >
     <div class="p-col-10 ">
         <div class="expenses card card-w-title" style="background-color: #add3e0">
             <div class="p-grid" >
@@ -50,26 +51,3 @@
     </ng-template>
 </p-dataView>
 
-
-<!--
-<h5 style="width: 500px">Company News</h5><br>
-
-<div class="card">
-    <button (click)="Console()">vv</button>
-    <p-dataView [value]="itemssalaryVo">
-        <ng-template let-news >
-            <div class="p-grid">
-                <div class="p-col-4" >
-                    <div class="box">
-                        <h4>{{news.montantGlobale}}</h4>
-                        <h6>{{news.montantMensuel}}</h6>
-
-                    </div>
-                </div>
-            </div>
-        </ng-template>
-    </p-dataView>
-    <app-news-teacher-view></app-news-teacher-view>
-</div>
-
--->
