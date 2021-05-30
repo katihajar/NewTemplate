@@ -1,44 +1,27 @@
 <div class="p-grid layout-dashboard">
     <div class="p-col-12 p-md-6 p-lg-3">
         <div class="overview-box card">
-            <div class="overview-box-value">90</div>
-            <div class="overview-box-title">TASKS</div>
-            <img src="assets/layout/images/dashboard/graph-tasks.svg" alt="">
-            <div class="overview-box-status">
-                +8.9% <i class="pi pi-arrow-circle-up"></i>
-            </div>
+            <div class="overview-box-value">Space Admin</div>
+            <img src="assets/layout/images/admin.png" style="margin-left: 200px; margin-top: -30px; width: 100px; height: 100px" alt="">
+            <button   pButton type="button" icon="pi pi-user" style="margin-left: 50px" label="Go to Login Page" [routerLink]="['/pages/login-admin']"></button>
         </div>
     </div>
-    <div class="p-col-12 p-md-6 p-lg-3">
+     <div class="p-col-12 p-md-6 p-lg-3">
         <div class="overview-box card">
-            <div class="overview-box-value">1259</div>
-            <div class="overview-box-title">PURCHASES</div>
-            <img src="assets/layout/images/dashboard/graph-purchases.svg" alt="">
-            <div class="overview-box-status">
-                +67.2% <i class="pi pi-arrow-circle-up"></i>
-            </div>
+            <div class="overview-box-value">Space Prof</div>
+            <img src="assets/layout/images/prof.png" style="margin-left: 200px; margin-top: -30px; width: 100px; height: 100px" alt="">
+            <button   pButton type="button" icon="pi pi-user" style="margin-left: 50px" label="Go to Login Page" [routerLink]="['/pages/login-prof']"></button>
         </div>
     </div>
-    <div class="p-col-12 p-md-6 p-lg-3">
+     <div class="p-col-12 p-md-6 p-lg-3">
         <div class="overview-box card">
-            <div class="overview-box-value">21</div>
-            <div class="overview-box-title">ISSUES</div>
-            <img src="assets/layout/images/dashboard/graph-issues.svg" alt="">
-            <div class="overview-box-status">
-                +3.0% <i class="pi pi-arrow-circle-up"></i>
-            </div>
+            <div class="overview-box-value">Space Etudiant</div>
+            <img src="assets/layout/images/etudiant.png" style="margin-left: 200px; margin-top: -30px; width: 100px; height: 100px" alt="">
+            <button   pButton type="button" icon="pi pi-user"  label="Go to Login Page" [routerLink]="['/pages/login-etudiant']"></button>
+            <button   pButton type="button" icon="pi pi-user-plus" style="background-color: green; margin-left: 20px"  label="Inscription" [routerLink]="['/pages/home']"></button>
         </div>
     </div>
-    <div class="p-col-12 p-md-6 p-lg-3">
-        <div class="overview-box card">
-            <div class="overview-box-value">42</div>
-            <div class="overview-box-title">MESSAGES</div>
-            <img src="assets/layout/images/dashboard/graph-messages.svg" alt="">
-            <div class="overview-box-status">
-                +12.5% <i class="pi pi-arrow-circle-up"></i>
-            </div>
-        </div>
-    </div>
+
     <div class="p-col-12 p-md-8 p-lg-8">
         <div class="card card-w-title">
             <h5>Statistics</h5>
