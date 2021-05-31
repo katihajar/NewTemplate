@@ -197,6 +197,7 @@ import {LoginEtudiantComponent} from './view/etudiant/login-etudiant/login-etudi
 import {LoginProfComponent} from './view/teacher/login-prof/login-prof.component';
 import {LoginAdminComponent} from './view/admin/login-admin/login-admin.component';
 import { QuizEtudiantComponent } from './view/etudiant/quiz-etudiant/quiz-etudiant.component';
+import { InscriptionsssComponent } from './View/Teacher/inscriptionsss/inscriptionsss.component';
 
 
 
@@ -393,7 +394,8 @@ import { QuizEtudiantComponent } from './view/etudiant/quiz-etudiant/quiz-etudia
         LoginEtudiantComponent,
         LoginProfComponent,
         LoginAdminComponent,
-        QuizEtudiantComponent
+        QuizEtudiantComponent,
+        InscriptionsssComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

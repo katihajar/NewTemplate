@@ -97,14 +97,15 @@ export class LoginProfComponent implements OnInit {
           this.correct = true;
           console.log(this.prof);
           this.model = [
-            {label: 'Home', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/home']},
-            {label: 'Recommend A teacher', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/recommend']},
-            {label: 'Salary', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/salary']},
-            {label: 'Parcours', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/parcours']},
-            {label: 'Classes', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/classes']},
+            {label: 'Home', icon: 'pi pi-fw pi-home', routerLink: ['/pages/home']},
+            {label: 'Recommend A teacher', icon: 'pi pi-fw pi-comment', routerLink: ['/pages/recommend']},
+            {label: 'Salary', icon: 'pi pi-fw pi-money-bill', routerLink: ['/pages/salary']},
+            {label: 'Parcours', icon: 'pi pi-fw pi-list', routerLink: ['/pages/parcours']},
+            {label: 'Classes', icon: 'pi pi-fw pi-table', routerLink: ['/pages/classes']},
             {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/view/schedule']},
+            {label: 'FAQ', icon: 'pi pi-fw pi-question-circle', routerLink: ['/pages/faq-teacher']},
           ];
-        },error =>
+        }, error =>
         {
           document.getElementById('log-pass').style.visibility = 'visible';
           this.correct = false;

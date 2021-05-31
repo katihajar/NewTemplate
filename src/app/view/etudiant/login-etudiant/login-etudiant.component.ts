@@ -97,9 +97,9 @@ export class LoginEtudiantComponent implements OnInit {
           console.log(this.etudiant);
           this.correct = true;
           this.model = [
-            {label: 'Courses ', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/etudiantcours']},
+            {label: 'Courses ', icon: 'pi pi-fw pi-list', routerLink: ['/pages/etudiantcours']},
             ];
-        },error =>
+        }, error =>
         {
           document.getElementById('log-pass').style.visibility = 'visible';
           this.correct = false;

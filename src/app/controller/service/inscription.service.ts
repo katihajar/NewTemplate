@@ -5,10 +5,11 @@ import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Prof} from '../model/prof.model';
 import {EtatInscription} from '../model/etat-inscription.model';
-import {Etudiant} from '../model/etudiant.model';
+
 import {EtudiantVo} from '../model/etudiant-vo.model';
 import { Centre } from '../model/centre.model';
 import { Parcours } from '../model/parcours.model';
+import {Etudiant} from '../model/etudiant.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class InscriptionService {
   private _selectes: Array<Inscription>;
   private  _etatInscription: EtatInscription;
   private _etudiant: Etudiant;
+  private _selectedetudiant: Etudiant;
 
   private _createDialog: boolean;
   private _editDialog: boolean;
@@ -39,6 +41,14 @@ export class InscriptionService {
   //             private confirmationService: ConfirmationService, private http: HttpClient) {
   // }
   constructor(private http: HttpClient) {
+  }
+
+  get selectedetudiant(): Etudiant {
+    return this._selectedetudiant;
+  }
+
+  set selectedetudiant(value: Etudiant) {
+    this._selectedetudiant = value;
   }
 
   get parcoursList(): Array<Parcours> {

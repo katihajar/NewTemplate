@@ -15,10 +15,8 @@
             </p-toolbar>
 
             <p-table #dt [value]="itemscours" [columns]="cols" [rows]="4" [paginator]="true" [globalFilterFields]="['libelle','nombreLinkFinalise','nombreSectionFinalise']"
-                     [(selection)]="selectescours" [rowHover]="true" dataKey="id"
-                     styleClass="p-datatable-customers"
-                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
-                <ng-template pTemplate="caption">
+                     [(selection)]="selectescours" [rowHover]="true" dataKey="id">
+                   <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         <h5 class="p-m-0">Manage Cours</h5>
                     </div>
@@ -50,7 +48,7 @@
                 </ng-template>
                 <ng-template pTemplate="summary">
                     <div class="p-d-flex p-ai-center p-jc-between">
-                        In total there are {{itemscoursList ? itemscoursList.length : 0 }} items.
+                        In total there are {{itemscours ? itemscours.length : 0 }} items.
                     </div>
                 </ng-template>
             </p-table>
