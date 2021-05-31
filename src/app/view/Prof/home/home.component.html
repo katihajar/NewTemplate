@@ -5,33 +5,33 @@
 <body>
 <div class="p-fluid p-formgrid p-grid" style="margin-left: 100px">
     <div class="p-field p-col-6 p-md-5 " style="width: 800px">
-    <div class=" card" style="width: 800px; colo">
-        <p-panel >
-            <div class="card-header">
-                <h5>NEAREST LESSON</h5>
-                <p style="margin-left: 600px"><a href="#"style="color: green" >SCHEDULE</a></p>
-            </div>
-            <div class="p-fluid p-formgrid p-grid" style="height: 167px">
-                <div class="p-field p-col-4 p-md-2"  >
-                    <img src="https://png.pngtree.com/element_pic/00/16/08/2657c01bddd9754.jpg" alt="roma-layout" style="height: 150px"></div>
-                <div class="p-field p-col-4 " style="margin-top: 20px ;margin-left: 25px">
-                    <p >Skupe: klubochek87</p>
-                    <p> Balance: 6</p>
-                </div>
+        <div  style="width: 800px">
+            <p-panel >
+                <ng-template pTemplate="header">
+                    <h5>NEAREST LESSON</h5>
+                    <p style="margin-left: 600px"><a routerLink="/view/schedule" style="color: green" >SCHEDULE</a></p>
+                </ng-template>
+                <div class="p-fluid p-formgrid p-grid" style="height: 167px">
+                    <div class="p-field p-col-4 p-md-2"  >
+                        <img src="https://png.pngtree.com/element_pic/00/16/08/2657c01bddd9754.jpg" alt="roma-layout" style="height: 150px"></div>
+                    <div class="p-field p-col-4 " style="margin-top: 20px ;margin-left: 25px">
+                        <p >Skupe: klubochek87</p>
+                        <p> Balance: 6</p>
+                    </div>
 
-                <div class="p-field p-col-4 p-md-4" style="margin-left: 97px;margin-top: 20px;height: 100px" >
-                    <h5 style="margin-left: 100px">Tue , 16:00</h5>
-                    <p style="margin-top: 20px" > Pre-intermediate for Teens</p>
-                    <button pButton pRipple type="button" label="Entrer Lesson" style="margin-top: 10px;;width: 200px ;background-color: green"></button>
+                    <div class="p-field p-col-4 p-md-4" style="margin-left: 97px;margin-top: 20px;height: 100px" >
+                        <p> {{lastUpdate}}</p>
+                        <p style="margin-top: 20px" > Pre-intermediate for Teens</p>
+                        <button pButton pRipple type="button" label="Entrer Lesson" style="margin-top: 10px;;width: 200px ;background-color: green" (click)="openCreateCours()"></button>
+                    </div>
                 </div>
-            </div>
-        </p-panel></div>
-        <div class="card" style="margin-top: 20px " style="width: 800px" >
+            </p-panel></div>
+        <div  style="margin-top: 20px " style="width: 800px" >
             <p-panel  >
-                <div class="card-header">
+                <ng-template pTemplate="header">
                     <h5>Recommande New Teacher</h5>
                     <i class="pi pi-chevron-circle-down" style="font-size: 24px;margin-left: 400px;margin-bottom: 10px;color: green"></i><p style="color: green">How it's work</p>
-                </div>
+                </ng-template>
                 <div class="p-fluid p-formgrid p-grid">
                     <div class="p-field p-col-3 p-md-3" style="height: 30px">
                         <img src="https://png.pngtree.com/element_pic/00/16/08/2657c01bddd9754.jpg" alt="roma-layout" style="height: 130px"></div>
@@ -40,15 +40,15 @@
                         <div>reward for each teacher</div>
                     </div>
                     <div class="p-field p-col-6 p-md-6">
-            <span class="p-float-label">
-    <input id="float-input" type="text" pInputText >
-    <label for="float-input">Name</label>
-</span>
-                        <div style="margin-top: 12px"><p-inputNumber inputId="integeronly" >
-                        </p-inputNumber></div>
+                        <div class="p-field">
+                            <label for="prof" > prof </label>
+                            <select  pInputText class="btn btn-block btn-outline-light form-control" id="prof" style="background-color: lightblue" name="prof" (click)="FindAllProf()" [(ngModel)]="selected.prof.id" >
+                                <option  selected="selected" *ngFor="let c of itemsprof"  [ngValue]="c.id"> {{c.nom}}</option>
+                            </select>
+                        </div>
 
-                        <div style="margin-top: 20px">
-                            <button  pButton pRipple label="Send Teacher's Contact" class="p-button-outlined" style="color: green"></button>
+                        <div>
+                            <button  pButton pRipple label="Send Teacher's Contact" class="p-button-outlined" style="color: green" (click)="save()"></button>
                         </div>
 
                     </div>
@@ -58,48 +58,51 @@
         </div>
 
         <div class="p-field p-col-7 p-md-8 " style="margin-top: 40px;width: 1090px">
-        <div class="card " >
-            <p-panel >
-                <div class="card-header">
-                    <h5>what's New</h5>
-                </div>
+            <div  >
+                <p-panel >
+                    <ng-template pTemplate="header">
+                        <h5>what's New</h5>
+                    </ng-template>
 
-                <div class="timeline card card-w-title">
-                    <ul>
-                        <li style="height: 60px;color: black">
-                            <span >04 Oct:</span>
-                            <a href="https://www.w3schools.com" style="margin-left: 30px;color: green">Happy Teachers Day 2019</a>
-                        </li>
-                        <li  style="height: 60px;color: black">
-                            <span >31 Juil:</span>
-                            <a href="https://www.w3schools.com" style="margin-left: 30px;color: green">Summer 2019 Champions</a>
-                        </li>
-                        <li  style="height: 60px;color: black">
-                            <span >11 juin:</span>
-                            <a href="https://www.w3schools.com" style="margin-left: 30px;color: green">Webinars for Teacher</a>
-                        </li>
-                        <li  style="height: 60px;color: black">
-                            <span >31 May:</span>
-                            <a href="https://www.w3schools.com" style="margin-left: 30px;color: green">Summer plan 2019</a>
-                        </li>
-                        <li  style="height: 60px;color: black">
-                            <span >18 April</span>
-                            <a href="www.w3schools.com" style="margin-left: 30px;color: green">May Lifehack</a>
+                    <div class="timeline card card-w-title">
+                        <ul>
+                            <li style="height: 60px;color: black">
+                                <span >04 Oct:</span>
+                                <a routerLink="news" style="margin-left: 30px;color: green">Happy Teachers Day 2019</a>
+                            </li>
+                            <li  style="height: 60px;color: black">
+                                <span >31 Juil:</span>
+                                <a routerLink="news" style="margin-left: 30px;color: green">Summer 2019 Champions</a>
+                            </li>
+                            <li  style="height: 60px;color: black">
+                                <span >11 juin:</span>
+                                <a routerLink="news" style="margin-left: 30px;color: green">Webinars for Teacher</a>
+                            </li>
+                            <li  style="height: 60px;color: black">
+                                <span >31 May:</span>
+                                <a routerLink="news" style="margin-left: 30px;color: green">Summer plan 2019</a>
+                            </li>
+                            <li  style="height: 60px;color: black">
+                                <span >18 April</span>
+                                <a routerLink="news" style="margin-left: 30px;color: green">May Lifehack</a>
 
-                        </li>
+                            </li>
 
-                    </ul>
-                </div>
-            </p-panel>
-        </div></div>
+                        </ul>
+                    </div>
+                </p-panel>
+            </div></div>
     </div>
 
-    <div class="p-field p-col-6 p-md-4" style="width:   300px;height: 90px">
+    <div class="p-field p-col-6 p-md-4" style="width:   300px;height: 90px;margin-left: 30px">
         <div class="timeline card card-w-title" >
             <ul>
-                <li>
+                <li><p-dataView [value]="itemssalaryVo" >
+                    <ng-template let-s pTemplate="listItem" >
                     <span style="color: green" >CURRENT PAY </span>
-                    <h4 >	11000 rub</h4>
+                    <h4 >{{s.montantGlobale}} $</h4>
+                    </ng-template>
+                </p-dataView>
                 </li>
                 <li>
                     <i class="pi pi-chevron-circle-down"></i> <span style="color: green">Workload </span>
@@ -107,8 +110,10 @@
                     <h4 >30 lessons</h4>
                 </li>
                 <li>
+
                     <span style="color: green" >PREMIEUM STUDENTS</span>
-                    <h4 >12 STUDENTS</h4>
+                    <h4 >{{this.itemsetudiant.length}} STUDENTS</h4>
+
                 </li>
                 <li>
                     <i class="pi pi-users"></i> <span style="color: green">Class avarage</span>
@@ -121,10 +126,8 @@
                 </li>
             </ul>
         </div>
-
+        <app-cours-create></app-cours-create>
     </div>
-
-
 </div>
 </body>
 </html>
