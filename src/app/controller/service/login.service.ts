@@ -14,7 +14,16 @@ export class LoginService {
   private _prof: Prof;
   private _admin: Admin;
   private _etudiant: Etudiant;
+  private _model: any[];
 
+
+  get model(): any[] {
+    return this._model;
+  }
+
+  set model(value: any[]) {
+    this._model = value;
+  }
 
   get prof(): Prof {
     return this._prof;

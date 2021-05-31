@@ -33,9 +33,17 @@ import {Etudiant} from './controller/Model/etudiant.model';
 })
 export class AppMenuComponent implements OnInit {
 
-    model: any[];
+   // model: any[];
 
     constructor(public app: AppComponent, public appMain: AppMainComponent, private service: LoginService) { }
+
+    get model(): any[] {
+        return this.service.model;
+    }
+
+    set model(value: any[]) {
+        this.service.model = value;
+    }
 
     get prof(): Prof {
         return this.service.prof;
@@ -60,12 +68,13 @@ export class AppMenuComponent implements OnInit {
     set etudiant(value: Etudiant) {
         this.service.etudiant = value;
     }
+
     ngOnInit() {
 
         console.log(this.prof);
         console.log(this.admin);
         console.log(this.etudiant);
-        this.model = [
+        /*this.model = [
             {
                 label: 'Favorites', icon: 'pi pi-fw pi-home',
                 items: [
@@ -205,7 +214,7 @@ export class AppMenuComponent implements OnInit {
                     }
                 ]
             }
-        ];
+        ];*/
 
     }
 

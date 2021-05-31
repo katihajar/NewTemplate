@@ -61,6 +61,7 @@ import {FaqListComponent} from './view/teacher/faq/faq-list/faq-list.component';
 import {LoginAdminComponent} from './view/admin/login-admin/login-admin.component';
 import {LoginProfComponent} from './view/teacher/login-prof/login-prof.component';
 import {LoginEtudiantComponent} from './view/etudiant/login-etudiant/login-etudiant.component';
+import {QuizEtudiantComponent} from './view/etudiant/quiz-etudiant/quiz-etudiant.component';
 
 
 
@@ -95,9 +96,9 @@ import {LoginEtudiantComponent} from './view/etudiant/login-etudiant/login-etudi
                     {path: 'pages/login-admin', component: LoginAdminComponent},
                     {path: 'pages/login-prof', component: LoginProfComponent},
                     {path: 'pages/login-etudiant', component: LoginEtudiantComponent},
+                    {path: 'pages/quiz-etudiant', component: QuizEtudiantComponent},
                     {path: 'view/quiz-create', component: QuizCreateComponent},
                     {path: 'view/quiz-preview', component: QuizPreviewComponent},
-                    {path: 'view/schedule', component: ScheduleComponent},
                     {path: 'view/schedule', component: ScheduleComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},

@@ -22,6 +22,13 @@ export class LoginAdminComponent implements OnInit {
   private _correct: boolean;
 
 
+  get model(): any[] {
+    return this.service.model;
+  }
+
+  set model(value: any[]) {
+    this.service.model = value;
+  }
 
   get correct(): boolean {
     return this._correct;
@@ -88,6 +95,15 @@ export class LoginAdminComponent implements OnInit {
             this.etudiant = null;
             console.log(this.admin);
             this.correct = true;
+            this.model = [
+                  {label: 'Formular Inscriptions', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/Inscrit']},
+                  {label: 'Inscriptions List', icon: 'pi pi-fw pi-pencil', routerLink: ['/view/inscription']},
+                  {label: 'Student List', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/etudiant']},
+                  {label: 'Quiz-Create', icon: 'pi pi-fw pi-pencil', routerLink: ['/view/quiz-create']},
+                  {label: 'Manage Parcours', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/parcours']},
+                  {label: 'FAQ ANSWER', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/pages/faq-admin']},
+                  {label: 'CREATE NEWS', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/pages/news-admin']},
+            ];
             document.getElementById('log-pass').style.visibility = 'hidden';
           }, error =>
           {
