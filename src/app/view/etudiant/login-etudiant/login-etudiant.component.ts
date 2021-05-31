@@ -21,7 +21,13 @@ export class LoginEtudiantComponent implements OnInit {
   private _password: string;
   private _correct: boolean;
 
+  get model(): any[] {
+    return this.service.model;
+  }
 
+  set model(value: any[]) {
+    this.service.model = value;
+  }
 
   get correct(): boolean {
     return this._correct;
@@ -90,6 +96,9 @@ export class LoginEtudiantComponent implements OnInit {
           this.prof = null;
           console.log(this.etudiant);
           this.correct = true;
+          this.model = [
+            {label: 'Courses ', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/etudiantcours']},
+            ];
         },error =>
         {
           document.getElementById('log-pass').style.visibility = 'visible';

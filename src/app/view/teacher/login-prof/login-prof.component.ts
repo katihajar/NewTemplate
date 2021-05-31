@@ -22,6 +22,13 @@ export class LoginProfComponent implements OnInit {
   private _correct: boolean;
 
 
+  get model(): any[] {
+    return this.service.model;
+  }
+
+  set model(value: any[]) {
+    this.service.model = value;
+  }
 
   get correct(): boolean {
     return this._correct;
@@ -89,6 +96,14 @@ export class LoginProfComponent implements OnInit {
           this.etudiant = null;
           this.correct = true;
           console.log(this.prof);
+          this.model = [
+            {label: 'Home', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/home']},
+            {label: 'Recommend A teacher', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/recommend']},
+            {label: 'Salary', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/salary']},
+            {label: 'Parcours', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/parcours']},
+            {label: 'Classes', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/classes']},
+            {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/view/schedule']},
+          ];
         },error =>
         {
           document.getElementById('log-pass').style.visibility = 'visible';
