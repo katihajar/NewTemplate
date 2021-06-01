@@ -176,22 +176,23 @@ export class QuizEtudiantComponent implements OnInit {
           this.selected = data;
         }
     );
-    if(this.numQuestion == this.items.length)
+      // tslint:disable-next-line:triple-equals
+    if (this.numQuestion == this.items.length)
     {
       this.button = 'Finish the test';
     }
-    else if(this.numQuestion > this.items.length)
+    else if (this.numQuestion > this.items.length)
     {
       document.getElementById('finish').style.visibility = 'visible';
       document.getElementById('btn-next').style.visibility = 'hidden';
       document.getElementById('question').remove();
 
       this.quizEtudiant.note = this.noteQuiz;
-      if(this.noteQuiz >= this.quiz.seuilReussite)
+      if (this.noteQuiz >= this.quiz.seuilReussite)
       {
         this.quizEtudiant.resultat = 'validé';
       }
-      else if(this.noteQuiz < this.quiz.seuilReussite)
+      else if (this.noteQuiz < this.quiz.seuilReussite)
       {
         this.quizEtudiant.resultat = 'non validé';
       }
@@ -212,9 +213,11 @@ export class QuizEtudiantComponent implements OnInit {
           this.correctAnswers = data;
         }
     );
-    for(let i = 0 ; i < this.correctAnswers.length ; i++)
+      // tslint:disable-next-line:prefer-for-of
+    for (let i = 0 ; i < this.correctAnswers.length ; i++)
     {
-      if(this.correctAnswers[i].ref == this.selectedValue)
+        // tslint:disable-next-line:triple-equals
+      if (this.correctAnswers[i].ref == this.selectedValue)
       {
         this.noteQst = this.selected.pointReponseJuste;
         this.noteQuiz = this.noteQuiz + this.selected.pointReponseJuste;
@@ -229,11 +232,13 @@ export class QuizEtudiantComponent implements OnInit {
           this.reponsesEtudiant = data;
 
           this.service.findMyAnswer(this.selectedValue).subscribe(
+              // tslint:disable-next-line:no-shadowed-variable
               data => {
 
                 this.myAnswer = data;
 
                 this.service.findFirstReponseEtudiant().subscribe(
+                    // tslint:disable-next-line:no-shadowed-variable
                     data => {
                       this.reponseEtudiant = data;
                       this.reponseEtudiant.quizEtudiant = this.quizEtudiant;
@@ -242,7 +247,8 @@ export class QuizEtudiantComponent implements OnInit {
                       this.reponseEtudiant.ref = 're' + (this.reponsesEtudiant.length + 1);
                       this.reponseEtudiant.id = this.reponseEtudiant.id + (this.reponsesEtudiant.length + 1);
                       this.service.insertReponseEtudiant().subscribe(
-                          data => {
+                          // tslint:disable-next-line:no-shadowed-variable
+                           data => {
                           }
                       );
                     }
@@ -267,6 +273,7 @@ export class QuizEtudiantComponent implements OnInit {
           this.quizsEtudiant = data;
 
           this.service.findFirstQuizEtudiant().subscribe(
+              // tslint:disable-next-line:no-shadowed-variable
               data => {
 
                 this.quizEtudiant = data;
@@ -281,6 +288,7 @@ export class QuizEtudiantComponent implements OnInit {
                 this.quizEtudiant.ref = 'qe' + (this.quizsEtudiant.length + 1);
 
                 this.service.insertQuizEtudiant().subscribe(
+                    // tslint:disable-next-line:no-shadowed-variable
                     data => {
 
                     }
