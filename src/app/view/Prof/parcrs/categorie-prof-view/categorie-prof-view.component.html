@@ -5,9 +5,7 @@
             <div class="card">
 
 
-                <p-table #dt [value]="itemscategorieProf" [columns]="cols" [rows]="6" [paginator]="true" [globalFilterFields]="['level','lessonRate']"
-                         [(selection)]="selectescategorieProf" [rowHover]="true" dataKey="id"
-                         styleClass="p-datatable-customers">
+                <p-table #dt [value]="itemscategorieProf" >
 
                     <ng-template pTemplate="header">
                         <tr>
@@ -29,8 +27,6 @@
 
                 </p-table>
             </div>
-
-            <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
         </div>
     </div>
 

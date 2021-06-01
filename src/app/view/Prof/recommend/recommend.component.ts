@@ -18,17 +18,6 @@ export class RecommendComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  private _i: number;
-
-  get i(): number {
-    return this._i;
-  }
-
-  set i(value: number) {
-    this._i = value;
-  }
-
   get recommendTeacher(): RecommendTeacher {
     return this.service.recommendTeacher;
   }

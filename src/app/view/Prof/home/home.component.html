@@ -1,7 +1,4 @@
 <html>
-<head>
-
-</head>
 <body>
 <div class="p-fluid p-formgrid p-grid" style="margin-left: 100px">
     <div class="p-field p-col-6 p-md-5 " style="width: 800px">
@@ -26,7 +23,7 @@
                     </div>
                 </div>
             </p-panel></div>
-        <div  style="margin-top: 20px " style="width: 800px" >
+        <div  style="width: 800px;margin-top: 20px" >
             <p-panel  >
                 <ng-template pTemplate="header">
                     <h5>Recommande New Teacher</h5>
@@ -99,8 +96,8 @@
             <ul>
                 <li><p-dataView [value]="itemssalaryVo" >
                     <ng-template let-s pTemplate="listItem" >
-                    <span style="color: green" >CURRENT PAY </span>
-                    <h4 >{{s.montantGlobale}} $</h4>
+                        <span style="color: green" >CURRENT PAY </span>
+                        <h4 >{{s.montantGlobale}} $</h4>
                     </ng-template>
                 </p-dataView>
                 </li>

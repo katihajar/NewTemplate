@@ -352,12 +352,12 @@ export class QuizEtudiantComponent implements OnInit {
         }
     );*/
       this.etudiant = this.login.etudiant;
-    this.service.findQuiz().subscribe(
+      this.service.findQuiz().subscribe(
         data => {
           this.quiz = data;
         }
     );
-    this.service.findAllQuestions().subscribe(
+      this.service.findAllQuestions().subscribe(
         data => {
           this.items = data;
         }
