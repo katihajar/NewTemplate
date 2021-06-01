@@ -26,7 +26,7 @@
                  <div class="p-field">
                 <label for="centre" > Parcours </label>
                 <select  class="btn btn-block btn-outline-light form-control" id="centre" style="background-color: lightblue" name="Parcours" (click)="FindAllProf()" [(ngModel)]="selected.prof.id" >
-                    <option  selected="selected" *ngFor="let c of itemsprof"  [ngValue]="c.id"> {{c.nom}}</option>
+                    <option  selected="selected" *ngFor="let c of itemsprof"  [ngValue]="c.id" style="width: 90px"> {{c.nom}}</option>
                 </select>
             </div>
             </div>
