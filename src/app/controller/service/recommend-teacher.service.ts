@@ -1,3 +1,4 @@
+/* tslint:disable:variable-name */
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -12,11 +13,12 @@ import {Etudiant} from '../Model/etudiant.model';
 export class RecommendTeacherService {
   private url = environment.baseUrl + 'teacher/';
   private _recommendTeacher: RecommendTeacher;
+  private _selectedTeacher: RecommendTeacher;
   private _selected: RecommendTeacher;
   private _items: Array<RecommendTeacher>;
   private _itemsprof: Array<Prof>;
   private _itemsetudiant: Array<Etudiant>;
-  private _prof : Prof;
+  private _prof: Prof;
   private _item: Array<RecommendTeacher>;
 
   private _selectes: Array<RecommendTeacher>;
@@ -27,6 +29,14 @@ export class RecommendTeacherService {
   private _submitted: boolean;
 
   constructor(private http: HttpClient) { }
+
+  get selected(): RecommendTeacher {
+    return this._selected;
+  }
+
+  set selected(value: RecommendTeacher) {
+    this._selected = value;
+  }
 
   get itemsetudiant(): Array<Etudiant> {
     return this._itemsetudiant;
@@ -55,15 +65,15 @@ export class RecommendTeacherService {
     this._recommendTeacher = value;
   }
 
-  get selected(): RecommendTeacher {
-    if (this._selected == null){
-      this._selected = new RecommendTeacher();
+  get selectedTeacher(): RecommendTeacher {
+    if (this._selectedTeacher == null){
+      this._selectedTeacher = new RecommendTeacher();
     }
-    return this._selected;
+    return this._selectedTeacher;
   }
 
-  set selected(value: RecommendTeacher) {
-    this._selected = value;
+  set selectedTeacher(value: RecommendTeacher) {
+    this._selectedTeacher = value;
   }
 
   get items(): Array<RecommendTeacher> {
@@ -114,7 +124,7 @@ export class RecommendTeacherService {
     this._selectes = value;
   }
   public save(): Observable<number> {
-    return this.http.post<number>('http://localhost:8036/learn/teacher/', this.selected);
+    return this.http.post<number>('http://localhost:8036/learn/teacher/', this.selectedTeacher);
   }
 
   get prof(): Prof {

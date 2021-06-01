@@ -75,7 +75,7 @@ export class InscriptionService {
   }
 
   public findAllProf(){
-    this.http.get<Array<Prof>>( 'http://localhost:8036/centre/prof/').subscribe(
+    this.http.get<Array<Prof>>( 'http://localhost:8036/learn/prof/').subscribe(
         data => {
           this.prof = data;
         }, error => {
@@ -121,9 +121,6 @@ export class InscriptionService {
   }
 
   get inscription(): Inscription {
-    if (this._inscription == null){
-      this._inscription = new Inscription();
-    }
     return this._inscription;
   }
   public valider(): void {
@@ -160,7 +157,7 @@ export class InscriptionService {
   }
 
   public edit(): Observable<Inscription> {
-    return this.http.put<Inscription>(this.url, this.selected);
+    return this.http.put<Inscription>(this.url, this.inscription);
   }
 
   public deleteByNumeroInscription(): Observable<number> {
@@ -251,12 +248,10 @@ export class InscriptionService {
 
 
   get prof(): Array<Prof> {
-    // @ts-ignore
     return this._prof;
   }
 
   set prof(value: Array<Prof>) {
-    // @ts-ignore
     this._prof = value;
   }
 

@@ -29,7 +29,7 @@ export class RecommendComponent implements OnInit {
     this.service.itemsprof = value;
   }
   public FindAllProf(){
-    console.log(this.selected);
+    console.log(this.itemsprof);
     this.service.findAllProf().subscribe(data => this.itemsprof = data);
   }
   // tslint:disable-next-line:adjacent-overload-signatures

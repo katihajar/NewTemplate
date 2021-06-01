@@ -39,9 +39,9 @@
                     <div class="p-field p-col-6 p-md-6">
                         <div class="p-field">
                             <label for="prof" > prof </label>
-                            <select  pInputText class="btn btn-block btn-outline-light form-control" id="prof" style="background-color: lightblue" name="prof" (click)="FindAllProf()" [(ngModel)]="selected.prof.id" >
-                                <option  selected="selected" *ngFor="let c of itemsprof"  [ngValue]="c.id"> {{c.nom}}</option>
-                            </select>
+                            <select  pInputText class="btn btn-block btn-outline-light form-control" id="prof" style="background-color: lightblue" name="prof" (click)="FindAllProf()"  >
+                                 <option  selected="selected" *ngFor="let c of itemsprof"  [ngValue]="c.id"> {{c.nom}}</option>
+                             </select>
                         </div>
 
                         <div>

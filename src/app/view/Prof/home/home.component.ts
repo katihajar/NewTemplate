@@ -57,21 +57,22 @@ export class HomeComponent implements OnInit {
     this.servicerecommend.itemsprof = value;
   }
   public FindAllProf(){
-    console.log(this.selected);
+    console.log(this.itemsprof);
     this.servicerecommend.findAllProf().subscribe(data => this.itemsprof = data);
   }
   public save() {
-    this.servicerecommend.save().subscribe(data => {
-      console.log(this.selected);
+    this.servicerecommend.save().subscribe(
+        data => {
+      console.log(this.selectedTeacher);
       console.log('meryem');
     });
   }
-  get selected(): RecommendTeacher {
-    return this.servicerecommend.selected;
+  get selectedTeacher(): RecommendTeacher {
+    return this.servicerecommend.selectedTeacher;
   }
 
-  set selected(value: RecommendTeacher) {
-    this.servicerecommend.selected = value;
+  set selectedTeacher(value: RecommendTeacher) {
+    this.servicerecommend.selectedTeacher = value;
   }
   public openCreateCours() {
     this.selectedcours = new Cours();
