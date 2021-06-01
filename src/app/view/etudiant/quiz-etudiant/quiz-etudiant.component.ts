@@ -7,6 +7,7 @@ import {Etudiant} from '../../../controller/Model/etudiant.model';
 import {Quiz} from '../../../controller/Model/quiz.model';
 import {QuizEtudiantService} from '../../../controller/service/quiz-etudiant.service';
 import {TypeDeQuestion} from '../../../controller/Model/type-de-question.model';
+import {LoginService} from '../../../controller/service/login.service';
 
 @Component({
   selector: 'app-quiz-etudiant',
@@ -15,7 +16,7 @@ import {TypeDeQuestion} from '../../../controller/Model/type-de-question.model';
 })
 export class QuizEtudiantComponent implements OnInit {
 
-  constructor(private service: QuizEtudiantService) { }
+  constructor(private service: QuizEtudiantService, private login: LoginService) { }
 
   private selectedValue: string;
   private _button: string;
@@ -345,11 +346,12 @@ export class QuizEtudiantComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.findEtudiant().subscribe(
+    /*this.service.findEtudiant().subscribe(
         data => {
           this.etudiant = data;
         }
-    );
+    );*/
+      this.etudiant = this.login.etudiant;
     this.service.findQuiz().subscribe(
         data => {
           this.quiz = data;
