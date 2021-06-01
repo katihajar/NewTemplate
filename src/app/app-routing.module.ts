@@ -62,7 +62,8 @@ import {LoginAdminComponent} from './view/admin/login-admin/login-admin.componen
 import {LoginProfComponent} from './view/teacher/login-prof/login-prof.component';
 import {LoginEtudiantComponent} from './view/etudiant/login-etudiant/login-etudiant.component';
 import {QuizEtudiantComponent} from './view/etudiant/quiz-etudiant/quiz-etudiant.component';
-import {InscriptionsssComponent} from './view/teacher/inscriptionsss/inscriptionsss.component';
+import {CreateInscriptionComponent} from './view/Prof/create-inscription/create-inscription.component';
+
 
 
 
@@ -80,7 +81,7 @@ import {InscriptionsssComponent} from './view/teacher/inscriptionsss/inscription
                     {path: 'view/inscription', component: InscriptionsComponent},
                     {path: 'pages/recommend', component: RecommendComponent},
                     {path: 'pages/home', component: HomeComponent},
-                    {path: 'pages/Inscrit', component: InscriptionsssComponent},
+                    {path: 'pages/Inscrit', component: CreateInscriptionComponent},
                     {path: 'pages/commande', component: CommandesComponent},
                     {path: 'pages/parcours', component: LearnComponent},
                     {path: 'pages/classes', component: ClassRoomListComponent},
