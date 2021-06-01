@@ -1,19 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {InscriptionService} from '../../../controller/service/inscription.service';
-import {Inscription} from '../../../controller/model/inscription.model';
-import {Etudiant} from '../../../controller/model/etudiant.model';
-import {Parcours} from '../../../controller/model/parcours.model';
-import {Centre} from '../../../controller/model/centre.model';
+import {Inscription} from '../../../controller/Model/inscription.model';
+import {Etudiant} from '../../../controller/Model/etudiant.model';
+import {Parcours} from '../../../controller/Model/parcours.model';
+import {Centre} from '../../../controller/Model/centre.model';
 
 @Component({
-  selector: 'app-inscriptionsss',
-  templateUrl: './inscriptionsss.component.html',
-  styles: [
-  ]
+  selector: 'app-create-inscription',
+  templateUrl: './create-inscription.component.html',
+  styleUrls: ['./create-inscription.component.scss']
 })
-export class InscriptionsssComponent implements OnInit {
-
+export class CreateInscriptionComponent implements OnInit {
 
   constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
               private service: InscriptionService ) { }
@@ -77,5 +75,6 @@ export class InscriptionsssComponent implements OnInit {
   get parcoursList(): Array<Parcours> {
     return this.service.parcoursList;
   }
+
 
 }
