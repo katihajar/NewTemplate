@@ -1,0 +1,62 @@
+<div class="card p-grid p-col" style="margin-top: 10px">
+    <div class="p-grid card-w-title">
+        <h1 style="margin-left: 10px">Inscription</h1>
+    </div>
+
+
+    <div class="p-grid p-field  " style="margin-left: 10px">
+
+        <div class="p-col-10 " style="margin-top: 30px ;margin-left: 10px">
+            <label for="firstname6"><b>Firstname:</b></label>
+            <input id="firstname6" class="p-col-8" type="text" style="margin-left: 5px" pInputText >
+        </div>
+        <div class="p-col-10"  style="margin-top: 30px ;margin-left: 10px">
+            <label for="lastname9"><b>login:</b></label>
+            <input id="lastname9" class="p-col-8" style="margin-left: 35px" type="text" pInputText  >
+        </div>
+    </div>
+    <div class="p-grid p-field" style="margin-left: 10px" >
+
+        <div class="p-col-10"  style="margin-Top: 30px">
+            <label for="lastname8"><b> Lastname: </b></label>
+            <input id="lastname8" type="text" class="p-col-8" style="margin-left: 5px" pInputText  >
+        </div>
+        <div class="p-col-10 " style="margin-Top: 30px">
+            <label for="Password"><b> Password: </b></label>
+            <input pInputText class="p-col-8" style="margin-left: 5px" id="Password" >
+        </div>
+
+    </div>
+
+    <div class="p-field p-col-10 " style="margin-left: 175px; margin-top: 20px">
+        <label for="address"><b>Address : </b></label>
+        <textarea id="address" type="text" class="p-col-8"  style="margin-left: 5px" pInputTextarea  ></textarea>
+    </div>
+
+
+
+    <div class="p-field p-col-12 p-md-3" style="margin-left: 175px;margin-top: 20px">
+        <label class="primaryLab"><b> Parcours </b></label>
+        <select type="text" class="btn btn-block btn-outline-light form-control"  style="background-color: lightblue;margin-left: 5px" name="Parcours"  style="width: 300px; height: 30px ; border-color: darkgray" (click)="findAllParcours()"  >
+          <option  selected="selected" *ngFor="let p of parcoursList"  [ngValue]="p.id"> {{p.libelle}}</option>
+
+        </select>
+    </div>
+    <div class="p-field p-col-12 p-md-3" style="margin-left: 210px; margin-top: 30px">
+        <label class="primaryLab"><b> centre </b></label>
+        <select type="text"  class="btn btn-block btn-outline-light form-control"   name="Centre"  style="width: 300px; height: 30px ; border-color: darkgray;margin-left: 5px" (click)="findAllCentre()" >
+            <option  selected="selected" *ngFor="let c of centreList"  [ngValue]="c.id"> {{c.libelle}} </option>
+        </select>
+    </div>
+
+    <div class=" p-card-footer" style="margin-top: 60px; margin-left: 50px" >
+
+        <button pButton pRipple type="button" label="Envoyer" class="p-button-rounded" (click)="save()" ></button></div>
+
+
+</div>
+
+
+
+
+

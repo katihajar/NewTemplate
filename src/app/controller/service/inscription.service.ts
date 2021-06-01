@@ -66,18 +66,6 @@ export class InscriptionService {
   set centreList(value: Array<Centre>) {
     this._centreList = value;
   }
-
-  public findAllCentre(){
-    this.http.get<Array<Centre>>( 'http://localhost:8036/learn/centre/').subscribe(
-        data => {
-          console.log(data);
-          this.centreList = data;
-        }, error => {
-          console.log(error);
-        }
-    );
-  }
-
   get etatinscriptionslist(): Array<EtatInscription> {
     return this._etatinscriptionslist;
   }
@@ -95,8 +83,13 @@ export class InscriptionService {
         }
     );
   }
+  public findAllCentre(): Observable<Array<Centre>> {
+    return this.http.get< Array<Centre> >('http://localhost:8036/learn/centre/');
+  }
+
   public findAllParcours(): Observable<Array<Parcours>> {
-    return this.http.get< Array<Parcours> >('http://localhost:8036/E-learning/parcours/');
+    return this.http.get< Array<Parcours> >('http://localhost:8036/learn/parcours/');
+
   }
   public findAllEtat(){
     this.http.get<Array<EtatInscription>>( 'http://localhost:8036/learn/etatInscription/').subscribe(
