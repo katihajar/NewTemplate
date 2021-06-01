@@ -391,7 +391,7 @@ import { QuizEtudiantComponent } from './view/etudiant/quiz-etudiant/quiz-etudia
         LoginEtudiantComponent,
         LoginProfComponent,
         LoginAdminComponent,
-        QuizEtudiantComponent
+        QuizEtudiantComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
