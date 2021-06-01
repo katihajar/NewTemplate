@@ -5,6 +5,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { ProductService } from '../service/productservice';
+import {LoginService} from '../../controller/service/login.service';
 
 @Component({
     templateUrl: './dashboard.component.html',
@@ -24,9 +25,22 @@ export class DashboardDemoComponent implements OnInit {
 
     fullcalendarOptions: any;
 
-    constructor(private eventService: EventService, private productService: ProductService) {}
+    constructor(private eventService: EventService, private productService: ProductService, private login: LoginService) {}
+
+
+    get model(): any[] {
+        return this.login.model;
+    }
+
+    set model(value: any[]) {
+        this.login.model = value;
+    }
 
     ngOnInit() {
+        this.login.etudiant = null;
+        this.login.admin = null;
+        this.login.prof = null;
+        this.model = [];
         this.productService.getProducts().then(data => this.products = data);
 
         this.items = [

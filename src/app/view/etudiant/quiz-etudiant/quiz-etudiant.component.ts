@@ -280,7 +280,7 @@ export class QuizEtudiantComponent implements OnInit {
                 this.quizEtudiant = data;
 
                 this.quizEtudiant.quiz = this.quiz;
-                this.quizEtudiant.etudiant = this.etudiant;
+                this.quizEtudiant.etudiant = this.login.etudiant;
                 this.quizEtudiant.resultat = null;
                 this.quizEtudiant.note = 0;
                 this.quizEtudiant.id = (this.quizsEtudiant.length + 1);

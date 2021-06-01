@@ -102,6 +102,7 @@ export class LoginAdminComponent implements OnInit {
                   {label: 'Manage Parcours', icon: 'pi pi-fw pi-table', routerLink: ['/pages/parcours']},
                   {label: 'FAQ ANSWER', icon: 'pi pi-fw pi-reply', routerLink: ['/pages/faq-admin']},
                   {label: 'CREATE NEWS', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/pages/news-admin']},
+                  {label: 'LogOut ', icon: 'pi pi-fw pi-sign-out', routerLink: ['']},
             ];
             document.getElementById('log-pass').style.visibility = 'hidden';
           }, error =>
