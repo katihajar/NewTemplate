@@ -61,6 +61,7 @@ import {LoginAdminComponent} from './view/admin/login-admin/login-admin.componen
 import {LoginProfComponent} from './view/teacher/login-prof/login-prof.component';
 import {LoginEtudiantComponent} from './view/etudiant/login-etudiant/login-etudiant.component';
 import {QuizEtudiantComponent} from './view/etudiant/quiz-etudiant/quiz-etudiant.component';
+import {SectionSimulateComponent} from './view/Prof/parcrs/section-simulate/section-simulate.component';
 
 
 
@@ -89,6 +90,7 @@ import {QuizEtudiantComponent} from './view/etudiant/quiz-etudiant/quiz-etudiant
                     {path: 'pages/etudiantsections', component: EtudiantSectionsComponent},
                     {path: 'pages/cours', component: CoursesComponent},
                     {path: 'pages/sections', component: SectionsComponent},
+                    {path: 'pages/sectionsSimulate', component: SectionSimulateComponent},
                     {path: 'pages/faq-admin', component: FaqAnswerComponent},
                     {path: 'pages/news-admin', component: NewsAdminListComponent},
                     {path: 'pages/news-teacher', component: NewsTeacherListComponent},

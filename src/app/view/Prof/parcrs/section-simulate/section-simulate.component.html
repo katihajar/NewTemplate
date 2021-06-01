@@ -1,0 +1,57 @@
+
+<div class=" card">
+    <div class="p-grid">
+
+
+
+            <div class="p-col">
+
+
+                        <div class="product-grid-item card">
+                            <div class="product-grid-item-content" style="cursor: pointer">
+                                <div class="product-name"><h1>{{this.selectedsection.libelle}}</h1></div>
+                                <img [src]="this.selectedsection.urlImage" [alt]="this.selectedsection.libelle"/>
+                                <div class="product-description"><h6>{{this.selectedsection.urlVideo}}</h6></div>
+                                <div ><p>{{this.selectedsection.contenu}}</p></div>
+                                <div class="product-description"><h6>{{this.selectedsection.indicationProf}}</h6></div>
+
+                            </div>
+
+                        </div>
+
+            </div>
+
+<div class=" p-col" style="width:   300px;height: 90px">
+
+                <p-table  [value]="itemssection"  [rows]="10" >
+                    <ng-template pTemplate="header">
+                        <tr>
+
+                            <th pSortableColumn="libelle">CategorieSection<p-sortIcon field="libelle"></p-sortIcon></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-section>
+                        <tr>
+
+                            <td [style.color]="(section.categorieSection.libelle) == (this.selectedsection.categorieSection.libelle)? 'green' :'orange' "  ><u >{{section.categorieSection.libelle}}</u></td>
+
+
+                        </tr>
+
+
+                    </ng-template>
+
+                </p-table>
+
+    </div>
+
+
+    </div>
+
+
+
+<div class="card-footer " style="margin-left: 500px" >
+    <button pButton pRipple type="button" label="Previews" class="p-button-rounded" (click)="NextSection()" ></button>
+    <button pButton pRipple type="button" label="Next" class="p-button-rounded" style="margin-left: 30px" (click)="PreviewsSection()" ></button>
+   </div>
+</div>

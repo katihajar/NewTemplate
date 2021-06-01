@@ -36,6 +36,7 @@ export class ParcoursService {
   private _createDialog: boolean;
   private _editDialog: boolean;
   private _viewDialog: boolean;
+  private _viewChooseType: boolean;
   private _submitted: boolean;
   private _createDialogCours: boolean;
   private _editDialogCours: boolean;
@@ -45,8 +46,43 @@ export class ParcoursService {
   private _editDialogSection: boolean;
   private _viewDialogSection: boolean;
   private _submittedSection: boolean;
+  private _progress: number;
+  private _a: number;
+  private _timer;
   constructor(private http: HttpClient ) {  }
 
+
+  get timer() {
+    return this._timer;
+  }
+
+  set timer(value) {
+    this._timer = value;
+  }
+
+  get a(): number {
+    return this._a;
+  }
+
+  set a(value: number) {
+    this._a = value;
+  }
+
+  get progress(): number {
+    return this._progress;
+  }
+
+  set progress(value: number) {
+    this._progress = value;
+  }
+
+  get viewChooseType(): boolean {
+    return this._viewChooseType;
+  }
+
+  set viewChooseType(value: boolean) {
+    this._viewChooseType = value;
+  }
 
   get selectesscours(): Array<Cours> {
     return this._selectesscours;
@@ -69,6 +105,9 @@ export class ParcoursService {
   }
 
   set selectedparcours(value: Parcours) {
+    if (this._selectedparcours == null){
+      this._selectedparcours = new Parcours();
+    }
     this._selectedparcours = value;
   }
 
@@ -109,6 +148,9 @@ export class ParcoursService {
   }
 
   set selectedcours(value: Cours) {
+    if (this._selectedcours == null){
+      this._selectedcours = new Cours();
+    }
     this._selectedcours = value;
   }
 
@@ -462,7 +504,15 @@ export class ParcoursService {
   affichelistSection(): Observable<Array<Section>> {
     return this.http.get<Array<Section>>('http://localhost:8036/learn/section/cours/id/' + this.selectedcours.id  );
   }
-
+  afficheOneSection2(): Observable<Section> {
+    this.selectedsection.numeroOrder = this.selectedsection.numeroOrder++;
+    // tslint:disable-next-line:max-line-length
+    return this.http.get<Section>('http://localhost:8036/learn/section/cours/id/' + this.selectedcours.id + '/numeroOrder/' + this.selectedsection.numeroOrder   );
+  }
+  afficheOneSection(): Observable<Section> {
+    // tslint:disable-next-line:max-line-length
+    return this.http.get<Section>('http://localhost:8036/learn/section/cours/id/' + this.selectedcours.id + '/numeroOrder/1'  );
+  }
   public findSectionByLibelle(libel: string): Observable<Array<Section>> {
    return this.http.get<Array<Section>>('http://localhost:8036/learn/section/libelle/' + libel );
   }
@@ -488,4 +538,5 @@ export class ParcoursService {
   public findSectionByid(id: number): Observable<Section> {
     return this.http.get<Section>('http://localhost:8036/learn/section/section/id/' + id );
   }
+
 }

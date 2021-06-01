@@ -23,10 +23,12 @@
                     <ng-template pTemplate="body" let-cours>
                         <tr>
 
-                            <td style="color: #0c799f" routerLink="/pages/sections"    (click)="FindSection(cours)"><u style="cursor: pointer">{{cours.libelle}}</u></td>
+                            <td style="color: #0c799f" (click)="viewType(cours)" ><u style="cursor: pointer">{{cours.libelle}}</u></td>
                             <td >{{cours.nombreSectionFinalise+cours.nombreSectionEnCours}}</td>
 
                         </tr>
+
+
                     </ng-template>
                     <ng-template pTemplate="summary">
                         <div class="p-d-flex p-ai-center p-jc-between">
@@ -38,5 +40,6 @@
 
         </div>
     </div>
-
+    <app-choose-view></app-choose-view>
+    <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
 </div>

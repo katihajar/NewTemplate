@@ -197,6 +197,9 @@ import {LoginAdminComponent} from './view/admin/login-admin/login-admin.componen
 import { QuizEtudiantComponent } from './view/etudiant/quiz-etudiant/quiz-etudiant.component';
 import {ParcoursCreateComponent} from './view/admin/learn/parcours-create/parcours-create.component';
 import {CoursCreateComponent} from './view/admin/learn/cours-create/cours-create.component';
+import {SectionSimulateComponent} from './view/Prof/parcrs/section-simulate/section-simulate.component';
+import {ChooseViewComponent} from './view/Prof/parcrs/choose-view/choose-view.component';
+
 
 
 
@@ -393,6 +396,8 @@ import {CoursCreateComponent} from './view/admin/learn/cours-create/cours-create
         LoginProfComponent,
         LoginAdminComponent,
         QuizEtudiantComponent,
+        ChooseViewComponent,
+        SectionSimulateComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

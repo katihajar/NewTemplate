@@ -19,6 +19,13 @@ export class CoursesComponent implements OnInit {
   ngOnInit(): void {
     this.initCol();
   }
+  get viewChooseType(): boolean {
+    return this.service.viewChooseType;
+  }
+
+  set viewChooseType(value: boolean) {
+    this.service.viewChooseType = value;
+  }
   public openCreateCours() {
     this.selectedcours = new Cours();
     this.submittedCours = false;
@@ -58,7 +65,10 @@ export class CoursesComponent implements OnInit {
   set editDialogCours(value: boolean) {
     this.service.editDialogCours = value;
   }
-
+  public viewType(cours: Cours) {
+    this.selectedcours = {...cours};
+    this.viewChooseType = true;
+  }
   get viewDialogCours(): boolean {
     return this.service.viewDialogCours;
   }
@@ -88,7 +98,7 @@ export class CoursesComponent implements OnInit {
   }
 
   // tslint:disable-next-line:adjacent-overload-signatures
-  set selectescoursLists(value: Array<Cours>) {
+  set selectescours(value: Array<Cours>) {
     this.service.selectescours = value;
   }
   private initCol() {

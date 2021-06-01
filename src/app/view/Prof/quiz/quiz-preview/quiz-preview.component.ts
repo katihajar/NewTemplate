@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Question} from "../../../../controller/Model/question.model";
-import {Quiz} from "../../../../controller/Model/quiz.model";
-import {TypeDeQuestion} from "../../../../controller/Model/type-de-question.model";
-import {Reponse} from "../../../../controller/Model/reponse.model";
-import {QuizService} from "../../../../controller/service/quiz.service";
-import {Router} from "@angular/router";
+import {Question} from '../../../../controller/Model/question.model';
+import {Quiz} from '../../../../controller/Model/quiz.model';
+import {TypeDeQuestion} from '../../../../controller/Model/type-de-question.model';
+import {Reponse} from '../../../../controller/Model/reponse.model';
+import {QuizService} from '../../../../controller/service/quiz.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-quiz-preview',
@@ -14,7 +14,7 @@ import {Router} from "@angular/router";
 export class QuizPreviewComponent implements OnInit {
 
 
-  value: number = 0;
+  value = 0;
   constructor(private  service: QuizService, private router: Router) { }
   get question(): Question {
     return this.service.question;
@@ -83,6 +83,7 @@ export class QuizPreviewComponent implements OnInit {
     this.service.a++;
     this.service.qnprogress++;
     this.value++;
+    // tslint:disable-next-line:triple-equals
     if (this.service.qnprogress == this.service.questions.length) {
       document.getElementById('container').style.visibility = 'hidden';
       document.getElementById('mainCard').style.visibility = 'visible';
@@ -105,11 +106,11 @@ export class QuizPreviewComponent implements OnInit {
     this.service.qnprogress = 0;
     this.service.findAll();
     this.service.getQuiz().subscribe(data => {
-      let i : number = 0;
-      i = i+1;
+      let i = 0;
+      i = i + 1;
       this.items[i] = data[i];
     });
-    //this.service.getReponses().subscribe(data => this.service.reponses = data);
+    // this.service.getReponses().subscribe(data => this.service.reponses = data);
     this.startTimer();
     this.service.getReponsesByQuestion(this.question);
     this.service.CorrectAnswer();
@@ -117,6 +118,7 @@ export class QuizPreviewComponent implements OnInit {
   }
 
   checked(e) {
+    // tslint:disable-next-line:triple-equals
     if (e.target.checked == true){
       this.service.correctAnswerCount++;
     }else {
