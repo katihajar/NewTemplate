@@ -25,15 +25,15 @@
             <div class="p-field p-col-3 p-md-3" style="width: 300px ;margin-left: 100px" >
                  <div class="p-field p-col-8" >
                 <label for="centre" >Recommended Teacher</label>
-                <select  class="btn btn-block btn-outline-light " id="centre" style="background-color: lightblue" name="Parcours" (click)="FindAllProf()" >
+                <select pInputText  class="btn btn-block btn-outline-light " id="centre" style="background-color: lightblue" name="Parcours" (click)="FindAllProf()" >
                     <option  selected="selected" *ngFor="let c of itemsprof"  [ngValue]="c.id" style="width: 200px;margin-left: 500px"> {{c.nom}}</option>
                 </select>
             </div>
             </div>
 
-            <div class="p-field p-col-3 p-md-3" style="width: 300px;;margin-left: 20px;margin-top: 10px">
+            <div class="p-field p-col-3 p-md-3" style="width: 300px;;margin-left: 20px;margin-top: 20px">
                 <div>
-                    <button  pButton pRipple label="Send Teacher's Contact" class="p-button-outlined" style="color: green" (click)="save()"></button>
+                    <button  pButton pRipple label="Send Teacher's Contact" class="p-button-outlined btn" style="background-color: lightblue;border-color: #0c6439;color: #0c6439 " (click)="save()"></button>
                 </div> </div>
 
         </div>
