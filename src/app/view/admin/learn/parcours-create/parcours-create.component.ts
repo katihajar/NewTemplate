@@ -58,12 +58,6 @@ export class ParcoursCreateComponent implements OnInit {
   get itemsparcours(): Array<Parcours> {
     return this.service.itemsparcours;
   }
-  get selectesparcours(): Array<Parcours> {
-    return this.service.selectesparcours;
-  }
-  set selectesparcours(value: Array<Parcours>) {
-    this.service.selectesparcours = value;
-  }
   get createDialog(): boolean {
     return this.service.createDialog;
   }

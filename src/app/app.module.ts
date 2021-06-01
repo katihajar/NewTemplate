@@ -144,7 +144,7 @@ import {CommandesComponent} from './view/admin/commandes/commandes.component';
 import {CommandeListComponent} from './view/admin/commandes/commande-list/commande-list.component';
 import {CommandeViewComponent} from './view/admin/commandes/commande-view/commande-view.component';
 import {CommandeEditComponent} from './view/admin/commandes/commande-edit/commande-edit.component';
-import {ParcoursCreateComponent} from './view/admin/learn/parcours-create/parcours-create.component';
+
 import {ParcoursEditComponent} from './view/admin/learn/parcours-edit/parcours-edit.component';
 import {CoursListComponent} from './view/admin/learn/cours-list/cours-list.component';
 import {CoursEditComponent} from './view/admin/learn/cours-edit/cours-edit.component';
@@ -152,7 +152,6 @@ import {SectionListComponent} from './view/admin/learn/section-list/section-list
 import {SectionViewComponent} from './view/admin/learn/section-view/section-view.component';
 import {SectionEditComponent} from './view/admin/learn/section-edit/section-edit.component';
 import {LearnComponent} from './view/admin/learn/learn.component';
-import {CoursCreateComponent} from './view/admin/learn/cours-create/cours-create.component';
 import {ParcoursListComponent} from './view/admin/learn/parcours-list/parcours-list.component';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ProfListComponent} from './view/Prof/Classes/profclasses/prof-list/prof-list.component';
@@ -196,6 +195,8 @@ import {LoginEtudiantComponent} from './view/etudiant/login-etudiant/login-etudi
 import {LoginProfComponent} from './view/teacher/login-prof/login-prof.component';
 import {LoginAdminComponent} from './view/admin/login-admin/login-admin.component';
 import { QuizEtudiantComponent } from './view/etudiant/quiz-etudiant/quiz-etudiant.component';
+import {ParcoursCreateComponent} from './view/admin/learn/parcours-create/parcours-create.component';
+import {CoursCreateComponent} from './view/admin/learn/cours-create/cours-create.component';
 
 
 

@@ -159,7 +159,8 @@ export class ParcoursListComponent implements OnInit {
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        this.service.deleteMultipleParcoursByid().subscribe(data => {
+        this.service.deleteMultipleParcoursByid().subscribe(
+            data => {
           this.service.deleteMultipleParcoursIndexById();
           this.selectesparcours = null;
           this.itemscours = null;

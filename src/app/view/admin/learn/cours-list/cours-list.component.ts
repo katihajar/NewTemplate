@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
 import {Cours} from '../../../../controller/Model/cours.model';
-import {Parcours} from '../../../../controller/Model/parcours.model';
 import {Section} from '../../../../controller/Model/section.model';
 
 @Component({

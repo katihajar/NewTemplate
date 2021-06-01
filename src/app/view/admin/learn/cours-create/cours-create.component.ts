@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
-import {ParcoursService} from '../../../../controller/service/parcours.service';
 import {Parcours} from '../../../../controller/Model/parcours.model';
+import {Cours} from '../../../../controller/Model/cours.model';
 import {Centre} from '../../../../controller/Model/centre.model';
-import { Cours } from 'src/app/controller/model/cours.model';
+import {ParcoursService} from '../../../../controller/service/parcours.service';
+
 
 @Component({
   selector: 'app-cours-create',
@@ -60,9 +61,6 @@ export class CoursCreateComponent implements OnInit {
   get itemsparcours(): Array<Parcours> {
     return this.service.itemsparcours;
   }
-  get createDialogCours(): boolean {
-    return this.service.createDialogCours;
-  }
   set itemscours(value: Array<Cours>) {
     this.service.itemscours = value;
   }
@@ -70,11 +68,6 @@ export class CoursCreateComponent implements OnInit {
   get itemscours(): Array<Cours> {
     return this.service.itemscours;
   }
-  // tslint:disable-next-line:adjacent-overload-signatures
-  set createDialogCours(value: boolean) {
-    this.service.createDialogCours = value;
-  }
-
   get submittedCours(): boolean {
     return this.service.submittedCours;
   }
@@ -82,5 +75,11 @@ export class CoursCreateComponent implements OnInit {
   set submittedCours(value: boolean) {
     this.service.submittedCours = value;
   }
+  get createDialogCours(): boolean {
+    return this.service.createDialogCours;
+  }
 
+  set createDialogCours(value: boolean) {
+    this.service.createDialogCours = value;
+  }
 }
