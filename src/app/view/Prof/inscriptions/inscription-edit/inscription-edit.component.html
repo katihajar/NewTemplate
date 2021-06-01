@@ -7,15 +7,15 @@
         </div>
         <div>
             <label class="primaryLab">etat</label><br>
-            <select type="text" class="btn btn-block btn-outline-light form-control" name="fieldName" style="background-color: lightblue" name="etat" (click)="findAllEtat()" [(ngModel)]="selected.etudiant.etatInscription.libelle" >
+            <select type="text" pInputText class="btn btn-block btn-outline-light form-control" name="fieldName" style="background-color: lightblue" name="etat" (click)="findAllEtat()" [(ngModel)]="selected.etudiant.etatInscription.libelle" >
                 <option  selected="selected" *ngFor="let e of etatinscriptionslist"  [ngValue]="e.libelle" pInputText > {{e.libelle}}</option>
             </select>
         </div>
 
         <div class="p-field">
             <label class="primaryLab">Prof</label>
-            <select type="text" class="btn btn-block btn-outline-light form-control " name="fieldName" style="background-color: lightblue" name="prof" (click)="findAllProf()" [(ngModel)]="selected.etudiant.prof.id" >
-                <option  selected="selected" *ngFor="let c of profList " [ngValue]="c.id" pInputText> {{c.prenom}}</option>
+            <select type="text" pInputText class="btn btn-block btn-outline-light form-control " name="fieldName" style="background-color: lightblue" name="prof" (click)="findAllProf()" [(ngModel)]="selected.etudiant.prof.id" >
+                <option  selected="selected" *ngFor="let c of profList " [ngValue]="c.id" > {{c.prenom}}</option>
             </select>
         </div>
 
