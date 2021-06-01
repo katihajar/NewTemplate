@@ -17,276 +17,27 @@ export class QuizEtudiantComponent implements OnInit {
 
   constructor(private service: QuizEtudiantService) { }
 
-  ngOnInit(): void {
-    this.service.findAllQuizs().subscribe(data => this.quizs = data);
+  private selectedValue: string;
+  private _button: string;
+  private _radio: string;
+  private _checkbox: string;
+  private _noteQst: number;
+  private _noteQuiz: number;
 
-    this.service.findFirstQuestion().subscribe(data => {
-      this.question = data;
-    });
-
-    this.service.findReponses();
-
-    this.service.findQuizRef().subscribe(data => {
-      this.quiz = data;
-    });
-
-    this.service.findAllQuizEtudiant().subscribe(
-        data => {
-          this.quizEtudiants = data;
-          this.q = data.length;
-        }
-    );
-
-    this.service.findAllReponseEtudiant().subscribe(
-        data =>{
-          this.reponsesEtudiant = data;
-          this.r = data.length;
-        }
-    );
-
-    this.service.CorrectAnswer().subscribe(
-        data => {
-          this.reponsesCorrect = data;
-        }
-    );
-
-    this.service.findEtudiant().subscribe(
-        data => {
-          this.etudiant = data;
-        }
-    )
+  get reponsesEtudiant(): Array<ReponseEtudiant> {
+    return this.service.reponsesEtudiant;
   }
 
-  get etudiant(): Etudiant {
-    return this.service.etudiant;
+  set reponsesEtudiant(value: Array<ReponseEtudiant>) {
+    this.service.reponsesEtudiant = value;
   }
 
-  set etudiant(value: Etudiant) {
-    this.service.etudiant = value;
+  get myAnswer(): Reponse {
+    return this.service.myAnswer;
   }
 
-  get questions(): Array<Question> {
-    return this.service.questions;
-  }
-
-  set questions(value: Array<Question>) {
-    this.service.questions = value;
-  }
-
-  get questionsAll(): Array<Question> {
-    return this.service.questionsAll;
-  }
-
-  set questionsAll(value: Array<Question>) {
-    this.service.questionsAll = value;
-  }
-
-  get question(): Question {
-    return this.service.question;
-  }
-
-  set question(value: Question) {
-    this.service.question = value;
-  }
-
-  get reponses(): Array<Reponse> {
-    return this.service.reponses;
-  }
-
-  set reponses(value: Array<Reponse>) {
-    this.service.reponses = value;
-  }
-
-  get reponsesCorrect(): Array<Reponse> {
-    return this.service.reponsesCorrect;
-  }
-
-  set reponsesCorrect(value: Array<Reponse>) {
-    this.service.reponsesCorrect = value;
-  }
-
-  get quizs(): Array<Quiz> {
-    return this.service.quizs;
-  }
-
-  set quizs(value: Array<Quiz>) {
-    this.service.quizs = value;
-  }
-
-  get reponse(): Reponse {
-    return this.service.reponse;
-  }
-
-  set reponse(value: Reponse) {
-    this.service.reponse = value;
-  }
-
-  get reponseCorr(): Reponse {
-    return this.service.reponseCorr;
-  }
-
-  set reponseCorr(value: Reponse) {
-    this.service.reponseCorr = value;
-  }
-
-  get numQuestion(): number {
-    return this.service.numQuestion;
-  }
-
-  set numQuestion(value: number) {
-    this.service.numQuestion = value;
-  }
-
-  get numResponses(): number {
-    return this.service.numResponses;
-  }
-
-  set numResponses(value: number) {
-    this.service.numResponses = value;
-  }
-
-  get a(): number {
-    return this.service.a;
-  }
-
-  set a(value: number) {
-    this.service.a = value;
-  }
-
-  get k(): number {
-    return this.service.k;
-  }
-
-  set k(value: number) {
-    this.service.k = value;
-  }
-
-  get n(): number {
-    return this.service.n;
-  }
-
-  set n(value: number) {
-    this.service.n = value;
-  }
-
-  get note(): number {
-    return this.service.note;
-  }
-
-  set note(value: number) {
-    this.service.note = value;
-  }
-
-  get q(): number {
-    return this.service.q;
-  }
-
-  set q(value: number) {
-    this.service.q = value;
-  }
-
-  get r(): number {
-    return this.service.r;
-  }
-
-  set r(value: number) {
-    this.service.r = value;
-  }
-
-  get typeQst(): string {
-    return this.service.typeQst;
-  }
-
-  set typeQst(value: string) {
-    this.service.typeQst = value;
-  }
-
-  get button(): string {
-    return this.service.button;
-  }
-
-  set button(value: string) {
-    this.service.button = value;
-  }
-
-  get nbrRep(): string {
-    return this.service.nbrRep;
-  }
-
-  set nbrRep(value: string) {
-    this.service.nbrRep = value;
-  }
-
-  get selectedItemsRadio(): Array<Reponse> {
-    return this.service.selectedItemsRadio;
-  }
-
-  set selectedItemsRadio(value: Array<Reponse>) {
-    this.service.selectedItemsRadio = value;
-  }
-
-  get selectedItemsCheckBox(): Array<Reponse> {
-    return this.service.selectedItemsCheckBox;
-  }
-
-  set selectedItemsCheckBox(value: Array<Reponse>) {
-    this.service.selectedItemsCheckBox = value;
-  }
-
-  get nombreQuestion(): number {
-    return this.service.nombreQuestion;
-  }
-
-  set nombreQuestion(value: number) {
-    this.service.nombreQuestion = value;
-  }
-
-  get quiz(): Quiz {
-    return this.service.quiz;
-  }
-
-  set quiz(value: Quiz) {
-    this.service.quiz = value;
-  }
-
-  get quizEtudiant(): QuizEtudiant {
-    return this.service.quizEtudiant;
-  }
-
-  set quizEtudiant(value: QuizEtudiant) {
-    this.service.quizEtudiant = value;
-  }
-
-  get type(): TypeDeQuestion {
-    return this.service.type;
-  }
-
-  set type(value: TypeDeQuestion) {
-    this.service.type = value;
-  }
-
-  get types(): Array<TypeDeQuestion> {
-    return this.service.types;
-  }
-
-  set types(value: Array<TypeDeQuestion>) {
-    this.service.types = value;
-  }
-
-  get quizEtudiants(): Array<QuizEtudiant> {
-    return this.service.quizEtudiants;
-  }
-
-  set quizEtudiants(value: Array<QuizEtudiant>) {
-    this.service.quizEtudiants = value;
-  }
-
-  get quizEtudiantsInsert(): Array<QuizEtudiant> {
-    return this.service.quizEtudiantsInsert;
-  }
-
-  set quizEtudiantsInsert(value: Array<QuizEtudiant>) {
-    this.service.quizEtudiantsInsert = value;
+  set myAnswer(value: Reponse) {
+    this.service.myAnswer = value;
   }
 
   get reponseEtudiant(): ReponseEtudiant {
@@ -297,104 +48,310 @@ export class QuizEtudiantComponent implements OnInit {
     this.service.reponseEtudiant = value;
   }
 
-  get reponsesEtudiant(): Array<ReponseEtudiant> {
-    return this.service.reponsesEtudiant;
+  get noteQst(): number {
+    return this._noteQst;
   }
 
-  set reponsesEtudiant(value: Array<ReponseEtudiant>) {
-    this.service.reponsesEtudiant = value;
+  set noteQst(value: number) {
+    this._noteQst = value;
   }
 
-  get reponsesEtudiantNote(): Array<ReponseEtudiant> {
-    return this.service.reponsesEtudiantNote;
+  get noteQuiz(): number {
+    return this._noteQuiz;
   }
 
-  set reponsesEtudiantNote(value: Array<ReponseEtudiant>) {
-    this.service.reponsesEtudiantNote = value;
+  set noteQuiz(value: number) {
+    this._noteQuiz = value;
   }
 
-  public findAllQuestions(){
-    this.service.findAllQuestions().subscribe(
-        data=>{
-          this.questionsAll = data;
-          this.nombreQuestion = data.length;
-        }
-    );
+  get correctAnswers(): Array<Reponse> {
+    return this.service.correctAnswers;
   }
 
-  public findNextQuestion(){
-    this.numQuestion = this.numQuestion + 1;
+  set correctAnswers(value: Array<Reponse>) {
+    this.service.correctAnswers = value;
+  }
+
+  get checkbox(): string {
+    return this._checkbox;
+  }
+
+  set checkbox(value: string) {
+    this._checkbox = value;
+  }
+
+  get radio(): string {
+    return this._radio;
+  }
+
+  set radio(value: string) {
+    this._radio = value;
+  }
+
+  get button(): string {
+    return this._button;
+  }
+
+  set button(value: string) {
+    this._button = value;
+  }
+
+  get etudiant(): Etudiant {
+    return this.service.etudiant;
+  }
+
+  set etudiant(value: Etudiant) {
+    this.service.etudiant = value;
+  }
+
+  get quiz(): Quiz {
+    return this.service.quiz;
+  }
+
+  set quiz(value: Quiz) {
+    this.service.quiz = value;
+  }
+
+  get items(): Array<Question> {
+    return this.service.items;
+  }
+
+  set items(value: Array<Question>) {
+    this.service.items = value;
+  }
+
+  get selected(): Question {
+    return this.service.selected;
+  }
+
+  set selected(value: Question) {
+    this.service.selected = value;
+  }
+
+  get reponses(): Array<Reponse> {
+    return this.service.reponses;
+  }
+
+  set reponses(value: Array<Reponse>) {
+    this.service.reponses = value;
+  }
+
+  get numReponses(): number {
+    return this.service.numReponses;
+  }
+
+  set numReponses(value: number) {
+    this.service.numReponses = value;
+  }
+
+  get numQuestion(): number {
+    return this.service.numQuestion;
+  }
+
+  set numQuestion(value: number) {
+    this.service.numQuestion = value;
+  }
+
+  get quizsEtudiant(): Array<QuizEtudiant> {
+    return this.service.quizsEtudiant;
+  }
+
+  set quizsEtudiant(value: Array<QuizEtudiant>) {
+    this.service.quizsEtudiant = value;
+  }
+
+  get quizEtudiant(): QuizEtudiant {
+    return this.service.quizEtudiant;
+  }
+
+  set quizEtudiant(value: QuizEtudiant) {
+    this.service.quizEtudiant = value;
+  }
+
+  ///////////////////////////// Next() //////////////////////
+  public next()
+  {
     this.service.findNextQuestion().subscribe(
         data => {
-          this.question = data;
-          this.typeQst = data.typeDeQuestion.ref;
-          //this.answerNext();
+          this.selected = data;
         }
     );
-  }
+    if(this.numQuestion == this.items.length)
+    {
+      this.button = 'Finish the test';
+    }
+    else if(this.numQuestion > this.items.length)
+    {
+      document.getElementById('finish').style.visibility = 'visible';
+      document.getElementById('btn-next').style.visibility = 'hidden';
+      document.getElementById('question').remove();
 
-  public findReponses(){
-    this.numQuestion = this.numQuestion + 1;
+      this.quizEtudiant.note = this.noteQuiz;
+      if(this.noteQuiz >= this.quiz.seuilReussite)
+      {
+        this.quizEtudiant.resultat = 'validé';
+      }
+      else if(this.noteQuiz < this.quiz.seuilReussite)
+      {
+        this.quizEtudiant.resultat = 'non validé';
+      }
+      this.service.updateQuizEtudiant().subscribe(
+          data => {
+          }
+      );
+    }
+
     this.service.findReponses().subscribe(
         data => {
           this.reponses = data;
         }
     );
-  }
 
-  public check(){
-    this.service.check().subscribe(data => {});
-  }
-
-  public findQuiz(){
-    this.service.findQuiz().subscribe(data => {
-      this.quiz = data;
-    });
-  }
-
-  public checkInput(rep){
-    this.service.checkInput(rep).subscribe(data => {});
-  }
-
-  public insertQuizEtudiant()
-  {
-    this.service.insertQuizEtudiant().subscribe(data => {});
-  }
-
-  public findQuizEtudiant()
-  {
-    //this.findAllQuizEtudiant();
-    this.service.findQuizEtudiant().subscribe(
+    this.service.findCorrectAnswers().subscribe(
         data => {
-          this.quizEtudiant = data;
+          this.correctAnswers = data;
+        }
+    );
+    for(let i = 0 ; i < this.correctAnswers.length ; i++)
+    {
+      if(this.correctAnswers[i].ref == this.selectedValue)
+      {
+        this.noteQst = this.selected.pointReponseJuste;
+        this.noteQuiz = this.noteQuiz + this.selected.pointReponseJuste;
+      }
+      else {
+        this.noteQst = this.selected.pointReponsefausse;
+        this.noteQuiz = this.noteQuiz + this.selected.pointReponsefausse;
+      }
+    }
+    this.service.findAllReponseEtudiant().subscribe(
+        data => {
+          this.reponsesEtudiant = data;
+
+          this.service.findMyAnswer(this.selectedValue).subscribe(
+              data => {
+
+                this.myAnswer = data;
+
+                this.service.findFirstReponseEtudiant().subscribe(
+                    data => {
+                      this.reponseEtudiant = data;
+                      this.reponseEtudiant.quizEtudiant = this.quizEtudiant;
+                      this.reponseEtudiant.note = this.noteQst;
+                      this.reponseEtudiant.reponse = this.myAnswer;
+                      this.reponseEtudiant.ref = 're' + (this.reponsesEtudiant.length + 1);
+                      this.reponseEtudiant.id = this.reponseEtudiant.id + (this.reponsesEtudiant.length + 1);
+                      this.service.insertReponseEtudiant().subscribe(
+                          data => {
+                          }
+                      );
+                    }
+                );
+              }
+          );
         }
     );
   }
 
-  public insertReponseEtudiant(z: number, rep: string){
-    //this.findAllQuizEtudiant();
-    this.findQuizEtudiant();
-    this.service.insertReponseEtudiant(z,rep).subscribe(
-        data =>{
-          //this.findAllQuizEtudiant();
-          this.reponseEtudiant = null;
-          this.r = this.r + 1;
-        }
-    );
-  }
-
-  public answer(){
-    this.insertQuizEtudiant();
-    return this.service.answer();
-  }
-
-  public answerNext(){
-    return this.service.answerNext();
-  }
-
-  public getAnswerRadio(event: any,ref: Reponse)
+  ///////////////////////////// Start() ///////////////////
+  public start()
   {
-    return this.service.getAnswerRadio(event, ref);
+    this.noteQuiz = 0;
+    document.getElementById('start').remove();
+    document.getElementById('question').style.visibility = 'visible';
+    document.getElementById('quiz').style.backgroundColor = 'white';
+    document.getElementById('btn-next').style.visibility = 'visible';
+    this.button = 'Next';
+    this.service.findAllQuizEtudiant().subscribe(
+        data => {
+          this.quizsEtudiant = data;
+
+          this.service.findFirstQuizEtudiant().subscribe(
+              data => {
+
+                this.quizEtudiant = data;
+
+                this.quizEtudiant.quiz = this.quiz;
+                this.quizEtudiant.etudiant = this.etudiant;
+                this.quizEtudiant.resultat = null;
+                this.quizEtudiant.note = 0;
+                this.quizEtudiant.id = (this.quizsEtudiant.length + 1);
+                this.quizEtudiant.dateFin = null;
+                this.quizEtudiant.dateDebut = null;
+                this.quizEtudiant.ref = 'qe' + (this.quizsEtudiant.length + 1);
+
+                this.service.insertQuizEtudiant().subscribe(
+                    data => {
+
+                    }
+                );
+              }
+          );
+        }
+    );
+    this.service.findFirstQuestion().subscribe(
+        data => {
+          this.selected = data;
+          /*if(this.selected.typeDeQuestion.ref = 't1')
+          {
+            this.radio = 'visible';
+            this.checkbox = 'hidden';
+          }
+          else if(this.selected.typeDeQuestion.ref = 't2')
+          {
+            this.radio = 'hidden';
+            this.checkbox = 'visible';
+          }*/
+        }
+    );
+
+    this.service.findReponses().subscribe(
+        data => {
+          this.reponses = data;
+        }
+    );
+    this.service.findCorrectAnswers().subscribe(
+        data => {
+          this.correctAnswers = data;
+        }
+    );
+
+  }
+
+  public selectionChanged(): void
+  {
+    /*for(let i=0 ; i < this.reponses.length ; i++)
+    {
+      if(ref.ref == this.reponses[i].ref)
+      {
+        document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#268a9e';
+        document.getElementById('div-' + this.reponses[i].ref).style.width = '320px';
+        document.getElementById('div-' + this.reponses[i].ref).style.height = '43px';
+      }
+      else {
+        document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#90eef0';
+        document.getElementById('div-' + this.reponses[i].ref).style.width = '300px';
+        document.getElementById('div-' + this.reponses[i].ref).style.height = '40px';
+      }
+    }*/
+  }
+
+  ngOnInit(): void {
+    this.service.findEtudiant().subscribe(
+        data => {
+          this.etudiant = data;
+        }
+    );
+    this.service.findQuiz().subscribe(
+        data => {
+          this.quiz = data;
+        }
+    );
+    this.service.findAllQuestions().subscribe(
+        data => {
+          this.items = data;
+        }
+    );
   }
 
 }

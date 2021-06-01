@@ -6,16 +6,16 @@ div{
   width: 800px;
   text-align: center;
   margin-left: 200px;
-  background-image: linear-gradient(to right, #90eef0, #aef1f2);
+  background-color: white;
 }
 .card-body{
   height: 350px;
   width: 775px;
 }
 .card-header{
-  background-color: black;
+  background-color: #1f82cf;
   height: 80px;
-  color: cyan;
+  color: white;
 }
 #quizGrammar{
   margin-left: 250px;
@@ -40,12 +40,13 @@ div{
   margin-bottom: 10px;
   display: block;
   padding: 8px 15px;
-  background-color: #90eef0;
+  background-color: #1f82cf;
+  color: white;
   border-radius: 15px;
   transition: all 0.3s ease-out;
   width: 300px;
   height: 40px;
-  margin-left: 200px;
+  margin-left: 225px;
   margin-top: 40px;
 }
 
@@ -68,6 +69,7 @@ div{
 
 #finish {
   visibility: hidden;
+  margin-top: 50px;
 }
 
 #btn-next{
