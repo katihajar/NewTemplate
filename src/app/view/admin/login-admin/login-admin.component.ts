@@ -96,7 +96,6 @@ export class LoginAdminComponent implements OnInit {
             console.log(this.admin);
             this.correct = true;
             this.model = [
-                  {label: 'Formular Inscriptions', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/Inscrit']},
                   {label: 'Inscriptions List', icon: 'pi pi-fw pi-check-square', routerLink: ['/view/inscription']},
                   {label: 'Student List', icon: 'pi pi-fw pi-list', routerLink: ['/pages/etudiant']},
                   {label: 'Quiz-Create', icon: 'pi pi-fw pi-book', routerLink: ['/view/quiz-create']},

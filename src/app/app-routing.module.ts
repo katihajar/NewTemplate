@@ -43,7 +43,6 @@ import {SectionsComponent} from './view/Prof/parcrs/sections/sections.component'
 import {CoursesComponent} from './view/Prof/parcrs/courses/courses.component';
 import {EdCoursesComponent} from './view/Prof/parcrs/ed-courses/ed-courses.component';
 import {SalaryComponent} from './view/Prof/parcrs/salary/salary.component';
-import {InscriptionComponent} from './view/admin/inscript/inscription/inscription.component';
 import {HomeComponent} from './view/Prof/home/home.component';
 import {RecommendComponent} from './view/Prof/recommend/recommend.component';
 import {InscriptionsComponent} from './view/Prof/inscriptions/inscriptions.component';
@@ -62,7 +61,7 @@ import {LoginAdminComponent} from './view/admin/login-admin/login-admin.componen
 import {LoginProfComponent} from './view/teacher/login-prof/login-prof.component';
 import {LoginEtudiantComponent} from './view/etudiant/login-etudiant/login-etudiant.component';
 import {QuizEtudiantComponent} from './view/etudiant/quiz-etudiant/quiz-etudiant.component';
-import {CreateInscriptionComponent} from './view/Prof/create-inscription/create-inscription.component';
+
 
 
 
@@ -81,7 +80,6 @@ import {CreateInscriptionComponent} from './view/Prof/create-inscription/create-
                     {path: 'view/inscription', component: InscriptionsComponent},
                     {path: 'pages/recommend', component: RecommendComponent},
                     {path: 'pages/home', component: HomeComponent},
-                    {path: 'pages/Inscrit', component: CreateInscriptionComponent},
                     {path: 'pages/commande', component: CommandesComponent},
                     {path: 'pages/parcours', component: LearnComponent},
                     {path: 'pages/classes', component: ClassRoomListComponent},

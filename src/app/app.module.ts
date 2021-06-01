@@ -177,7 +177,6 @@ import {SalaryComponent} from './view/Prof/parcrs/salary/salary.component';
 import {SectionsComponent} from './view/Prof/parcrs/sections/sections.component';
 import {ParcrsComponent} from './view/Prof/parcrs/parcrs.component';
 import {RecommendComponent} from './view/Prof/recommend/recommend.component';
-import {InscriptionComponent} from './view/admin/inscript/inscription/inscription.component';
 import {EtudiantsComponent} from './view/Prof/etudiants/etudiants.component';
 import { QuizCreateComponent } from './view/Prof/quiz/quiz-create/quiz-create.component';
 import { QuizPreviewComponent } from './view/Prof/quiz/quiz-preview/quiz-preview.component';
@@ -197,7 +196,6 @@ import {LoginEtudiantComponent} from './view/etudiant/login-etudiant/login-etudi
 import {LoginProfComponent} from './view/teacher/login-prof/login-prof.component';
 import {LoginAdminComponent} from './view/admin/login-admin/login-admin.component';
 import { QuizEtudiantComponent } from './view/etudiant/quiz-etudiant/quiz-etudiant.component';
-import { CreateInscriptionComponent } from './View/Prof/create-inscription/create-inscription.component';
 
 
 
@@ -375,7 +373,6 @@ import { CreateInscriptionComponent } from './View/Prof/create-inscription/creat
         EtudiantListComponent,
         EtudiantEditComponent,
         InscriptionsComponent,
-        InscriptionComponent,
         ProfclassesComponent,
         QuizCreateComponent,
         QuizPreviewComponent,
@@ -394,8 +391,7 @@ import { CreateInscriptionComponent } from './View/Prof/create-inscription/creat
         LoginEtudiantComponent,
         LoginProfComponent,
         LoginAdminComponent,
-        QuizEtudiantComponent,
-        CreateInscriptionComponent
+        QuizEtudiantComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
