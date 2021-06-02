@@ -44,7 +44,7 @@ export class ParcoursListComponent implements OnInit {
 
     this.submitted = false;
     this.createDialog = true;
-    this.selectedparcours = new Parcours();
+    this.selecteddparcours = new Parcours();
   }
 
   public editParcours(parcour: Parcours) {
@@ -102,6 +102,12 @@ export class ParcoursListComponent implements OnInit {
   }
   set selectedparcours(value: Parcours) {
     this.service.selectedparcours = value;
+  }
+  get selecteddparcours(): Parcours {
+    return this.service.selecteddparcours;
+  }
+  set selecteddparcours(value: Parcours) {
+    this.service.selecteddparcours = value;
   }
   get itemscours(): Array<Cours> {
     return this.service.itemscours;

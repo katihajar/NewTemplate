@@ -15,12 +15,10 @@
         <div class="p-field">
             <label for="libelle">Description</label>
             <input type="text" pInputText id="libelle" [(ngModel)]="selectedparcours.description" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !selectedparcours.description">ref is required.</small>
         </div>
         <div class="p-field">
             <label for="nombreCours">Number of Courses</label>
             <input type="text" pInputText id="nombreCours" [(ngModel)]="selectedparcours.nombreCours" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !selectedparcours.nombreCours">total is required.</small>
         </div>
 
     </ng-template>

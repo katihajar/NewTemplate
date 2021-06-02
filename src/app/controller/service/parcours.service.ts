@@ -16,6 +16,7 @@ import {Observable} from 'rxjs';
 })
 export class ParcoursService {
   private _selectedparcours: Parcours;
+  private _selecteddparcours: Parcours;
   private _itemsparcours: Array<Parcours>;
   private _selectesparcours: Array<Parcours>;
   private _selectescours: Array<Cours>;
@@ -33,6 +34,7 @@ export class ParcoursService {
   private _itemssection2: Array<Section>;
   private _selectedcentre: Centre;
   private _itemscentre: Array<Centre>;
+  private _itemsscentre: Array<Centre>;
   private _index: number;
   private _createDialog: boolean;
   private _editDialog: boolean;
@@ -52,6 +54,17 @@ export class ParcoursService {
   private _timer;
   constructor(private http: HttpClient ) {  }
 
+
+  get selecteddparcours(): Parcours {
+    if (this._selecteddparcours == null){
+      this._selecteddparcours = new Parcours();
+    }
+    return this._selecteddparcours;
+  }
+
+  set selecteddparcours(value: Parcours) {
+    this._selecteddparcours = value;
+  }
 
   get itemssection2(): Array<Section> {
     if (this._itemssection2 == null){
@@ -262,6 +275,16 @@ export class ParcoursService {
   set selectedcentre(value: Centre) {
     this._selectedcentre = value;
   }
+  get itemsscentre(): Array<Centre> {
+    if (this._itemsscentre == null){
+      this._itemsscentre = new Array<Centre>();
+    }
+    return this._itemsscentre;
+  }
+
+  set itemsscentre(value: Array<Centre>) {
+    this._itemsscentre = value;
+  }
   get itemscentre(): Array<Centre> {
     if (this._itemscentre == null){
       this._itemscentre = new Array<Centre>();
@@ -394,8 +417,8 @@ export class ParcoursService {
     return this.http.put<Parcours>('http://localhost:8036/learn/parcours/', this.selectedparcours);
   }
   public save(): Observable<number> {
-    if (this.selectedparcours.id == null){
-      return this.http.post<number>('http://localhost:8036/learn/parcours/', this.selectedparcours); }
+    if (this.selecteddparcours.id == null){
+      return this.http.post<number>('http://localhost:8036/learn/parcours/', this.selecteddparcours); }
   }
 
   public init(): Observable<Array<Parcours>> {

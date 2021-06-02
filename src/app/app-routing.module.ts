@@ -106,7 +106,7 @@ import {InscriptionProfComponent} from './view/Prof/inscription-prof/inscription
                     {path: 'view/quiz-create', component: QuizCreateComponent},
                     {path: 'view/quiz-preview', component: QuizPreviewComponent},
                     {path: 'view/schedule', component: ScheduleComponent},
-                    {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
+                    {path: 'inscriptionEtudiant', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
                     {path: 'uikit/input', component: InputDemoComponent},

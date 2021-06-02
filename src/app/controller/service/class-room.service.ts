@@ -62,8 +62,8 @@ export class ClassRoomService {
   }
 
   get selectessalaryVo(): Array<SalaryVo> {
-    if (this._selectedsalaryVo == null){
-      this._selectedsalaryVo = new SalaryVo();
+    if (this._selectessalaryVo == null){
+      this._selectessalaryVo = new Array<SalaryVo>();
     }
     return this._selectessalaryVo;
   }

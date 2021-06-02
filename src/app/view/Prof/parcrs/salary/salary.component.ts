@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MenuItem, MessageService} from 'primeng/api';
 import {ClassRoomService} from '../../../../controller/service/class-room.service';
-import {SalaryVo} from '../../../../controller/Model/salary-vo.model';
+import {SalaryVo} from '../../../../controller/model/salary-vo.model';
 
 
 

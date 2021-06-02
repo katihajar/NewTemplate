@@ -23,7 +23,7 @@ export class ParcoursCreateComponent implements OnInit {
 
   public save() {
     this.submitted = true;
-    if (this.selectedparcours.id == null) {
+    if (this.selecteddparcours.id == null) {
       this.service.save().subscribe(data => {
         // @ts-ignore
         this.itemsparcours.push({...data});
@@ -38,21 +38,21 @@ export class ParcoursCreateComponent implements OnInit {
       });
       this.service.init().subscribe(data => this.itemsparcours = data);
       this.createDialog = false;
-      this.selectedparcours = new Parcours();
+      this.selecteddparcours = new Parcours();
     }
   }
-  get itemscentre(): Array<Centre> {
-    return this.service.itemscentre;
+  get itemsscentre(): Array<Centre> {
+    return this.service.itemsscentre;
   }
-  get selectedparcours(): Parcours {
-    return this.service.selectedparcours;
+  get selecteddparcours(): Parcours {
+    return this.service.selecteddparcours;
   }
-  set selectedparcours(value: Parcours) {
-    this.service.selectedparcours = value;
+  set selecteddparcours(value: Parcours) {
+    this.service.selecteddparcours = value;
   }
   findAllCentre() {
     this.service.findAllCentre().subscribe(data => {
-      this.itemscentre = data;
+      this.itemsscentre = data;
     });
   }
   get itemsparcours(): Array<Parcours> {
@@ -62,8 +62,8 @@ export class ParcoursCreateComponent implements OnInit {
     return this.service.createDialog;
   }
   // tslint:disable-next-line:adjacent-overload-signatures
-  set itemscentre(value: Array<Centre>) {
-    this.service.itemscentre = value;
+  set itemsscentre(value: Array<Centre>) {
+    this.service.itemsscentre = value;
   }
   // tslint:disable-next-line:adjacent-overload-signatures
   set createDialog(value: boolean) {

@@ -200,7 +200,7 @@ import {ChooseViewComponent} from './view/Prof/parcrs/choose-view/choose-view.co
 import {InscriptionAdminComponent} from './view/admin/inscription-admin/inscription-admin.component';
 import {ParcoursCreateComponent} from './view/admin/learn/parcours-create/parcours-create.component';
 import {CoursCreateComponent} from './view/admin/learn/cours-create/cours-create.component';
-import { InscriptionProfComponent } from './View/Prof/inscription-prof/inscription-prof.component';
+import { InscriptionProfComponent } from './view/Prof/inscription-prof/inscription-prof.component';
 
 
 

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
 import {ConfirmationService, MessageService} from 'primeng/api';
-
 import {ProfService} from '../../../controller/service/prof.service';
-import { Prof } from 'src/app/controller/Model/prof.model';
+import {Prof} from '../../../controller/Model/prof.model';
 import {CategorieProf} from '../../../controller/Model/categorie-prof.model';
+
 
 @Component({
   selector: 'app-inscription-prof',
@@ -20,7 +19,8 @@ export class InscriptionProfComponent implements OnInit {
   }
   public save() {
     this.selectedProf.categorieProf.id = 89;
-    this.service.save().subscribe(data => {
+    this.service.save().subscribe(
+        data => {
       console.log(this.selectedProf);
       console.log('meryem');
     });
