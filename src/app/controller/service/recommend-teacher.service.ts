@@ -15,8 +15,10 @@ export class RecommendTeacherService {
   private _recommendTeacher: RecommendTeacher;
   private _selectedTeacher: RecommendTeacher;
   private _selected: RecommendTeacher;
+  private _selectedRecommend: RecommendTeacher;
   private _items: Array<RecommendTeacher>;
   private _itemsprof: Array<Prof>;
+  private _itemssprof: Array<Prof>;
   private _itemsetudiant: Array<Etudiant>;
   private _prof: Prof;
   private _item: Array<RecommendTeacher>;
@@ -30,7 +32,26 @@ export class RecommendTeacherService {
 
   constructor(private http: HttpClient) { }
 
+  get selectedRecommend(): RecommendTeacher {
+    return this._selectedRecommend;
+  }
+
+  set selectedRecommend(value: RecommendTeacher) {
+    this._selectedRecommend = value;
+  }
+
+  get itemssprof(): Array<Prof> {
+    return this._itemssprof;
+  }
+
+  set itemssprof(value: Array<Prof>) {
+    this._itemssprof = value;
+  }
+
   get selected(): RecommendTeacher {
+    if (this._selected == null){
+      this._selected = new RecommendTeacher();
+    }
     return this._selected;
   }
 
@@ -39,6 +60,9 @@ export class RecommendTeacherService {
   }
 
   get itemsetudiant(): Array<Etudiant> {
+    if (this._itemsetudiant == null){
+      this._itemsetudiant = new Array<Etudiant>();
+    }
     return this._itemsetudiant;
   }
 
@@ -47,6 +71,9 @@ export class RecommendTeacherService {
   }
 
   get itemsprof(): Array<Prof> {
+    if (this._itemsprof == null){
+      this._itemsprof = new Array<Prof>();
+    }
     return this._itemsprof;
   }
 
@@ -77,6 +104,9 @@ export class RecommendTeacherService {
   }
 
   get items(): Array<RecommendTeacher> {
+    if (this._items == null){
+      this._items = new Array<RecommendTeacher>();
+    }
     return this._items;
   }
 
@@ -117,6 +147,9 @@ export class RecommendTeacherService {
   }
 
   get selectes(): Array<RecommendTeacher> {
+    if (this._selectes == null){
+      this._selectes = new Array<RecommendTeacher>();
+    }
     return this._selectes;
   }
 
@@ -124,10 +157,13 @@ export class RecommendTeacherService {
     this._selectes = value;
   }
   public save(): Observable<number> {
-    return this.http.post<number>('http://localhost:8036/learn/teacher/', this.selectedTeacher);
+    return this.http.post<number>('http://localhost:8036/learn/teacher/', this.selected);
   }
 
   get prof(): Prof {
+    if (this._prof == null){
+      this._prof = new Prof();
+    }
     return this._prof;
   }
 
@@ -145,6 +181,9 @@ export class RecommendTeacherService {
   }
 
   get item(): Array<RecommendTeacher> {
+    if (this._item == null){
+      this._item = new Array<RecommendTeacher>();
+    }
     return this._item;
   }
 

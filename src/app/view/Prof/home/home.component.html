@@ -18,9 +18,7 @@
 
                     <div class="p-field p-col-4 p-md-4" style="margin-left: 97px;margin-top: 20px;height: 100px" >
                         <p> {{lastUpdate}}</p>
-                        <p style="margin-top: 20px" > Pre-intermediate for Teens</p>
-                        <button pButton pRipple type="button" label="Entrer Lesson" style="margin-top: 10px;;width: 200px ;background-color: green" (click)="openCreateCours()"></button>
-                    </div>
+                       </div>
                 </div>
             </p-panel></div>
         <div  style="width: 800px;margin-top: 20px" >
@@ -35,19 +33,6 @@
                     <div class="p-field p-col-3 p-md-3" style="margin-top:25px">
                         <h2>2500-3750 rub</h2>
                         <div>reward for each teacher</div>
-                    </div>
-                    <div class="p-field p-col-6 p-md-6">
-                        <div class="p-field">
-                            <label for="prof" > prof </label>
-                            <select  pInputText class="btn btn-block btn-outline-light form-control" id="prof" style="background-color: lightblue" name="prof" (click)="FindAllProf()"  >
-                                 <option  selected="selected" *ngFor="let c of itemsprof"  [ngValue]="c.id"> {{c.nom}}</option>
-                             </select>
-                        </div>
-
-                        <div>
-                            <button  pButton pRipple label="Send Teacher's Contact" class="p-button-outlined" style="color: green" (click)="save()"></button>
-                        </div>
-
                     </div>
 
                 </div>

@@ -44,6 +44,9 @@ export class InscriptionService {
   }
 
   get selectedetudiant(): Etudiant {
+    if (this._selectedetudiant == null){
+      this._selectedetudiant = new Etudiant();
+    }
     return this._selectedetudiant;
   }
 
@@ -52,6 +55,9 @@ export class InscriptionService {
   }
 
   get parcoursList(): Array<Parcours> {
+    if (this._parcoursList == null){
+      this._parcoursList = new Array<Parcours>();
+    }
     return this._parcoursList;
   }
 
@@ -60,6 +66,9 @@ export class InscriptionService {
   }
 
   get centreList(): Array<Centre> {
+    if (this._centreList == null){
+      this._centreList = new Array<Centre>();
+    }
     return this._centreList;
   }
 
@@ -67,6 +76,9 @@ export class InscriptionService {
     this._centreList = value;
   }
   get etatinscriptionslist(): Array<EtatInscription> {
+    if (this._etatinscriptionslist == null){
+      this._etatinscriptionslist = new Array<EtatInscription>();
+    }
     return this._etatinscriptionslist;
   }
 
@@ -121,6 +133,9 @@ export class InscriptionService {
   }
 
   get inscription(): Inscription {
+    if (this._inscription == null){
+      this._inscription = new Inscription();
+    }
     return this._inscription;
   }
   public valider(): void {
@@ -141,6 +156,9 @@ export class InscriptionService {
   }
 
   get etudiantVo(): EtudiantVo {
+    if (this._etudiantVo == null){
+      this._etudiantVo = new EtudiantVo();
+    }
     return this._etudiantVo;
   }
 
@@ -190,6 +208,9 @@ export class InscriptionService {
   }
 
   get items(): Array<Inscription> {
+    if (this._items == null){
+      this._items = new Array<Inscription>();
+    }
     return this._items;
   }
 
@@ -198,6 +219,9 @@ export class InscriptionService {
   }
 
   get selected(): Inscription {
+    if (this._selected == null){
+      this._selected = new Inscription();
+    }
     return this._selected;
   }
 
@@ -206,6 +230,9 @@ export class InscriptionService {
   }
 
   get selectes(): Array<Inscription> {
+    if (this._selectes == null){
+      this._selectes = new Array<Inscription>();
+    }
     return this._selectes;
   }
 
@@ -248,6 +275,9 @@ export class InscriptionService {
 
 
   get prof(): Array<Prof> {
+    if (this._prof == null){
+      this._prof = new Array<Prof>();
+    }
     return this._prof;
   }
 
@@ -256,6 +286,9 @@ export class InscriptionService {
   }
 
   get etatInscription(): EtatInscription {
+    if (this._etatInscription == null){
+      this._etatInscription = new EtatInscription();
+    }
     return this._etatInscription;
   }
 
@@ -264,6 +297,9 @@ export class InscriptionService {
   }
 
   get etudiant(): Etudiant {
+    if (this._etudiant == null){
+      this._etudiant = new Etudiant();
+    }
     return this._etudiant;
   }
 

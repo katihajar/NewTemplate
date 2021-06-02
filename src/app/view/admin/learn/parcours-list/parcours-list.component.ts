@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
-import {Parcours} from '../../../../controller/Model/parcours.model';
+
 import {Section} from '../../../../controller/Model/section.model';
 import {Cours} from '../../../../controller/Model/cours.model';
 import {Centre} from '../../../../controller/Model/centre.model';
 import {ConfirmationService, MessageService} from 'primeng/api';
+import {Parcours} from '../../../../controller/Model/parcours.model';
 
 
 
@@ -40,9 +41,10 @@ export class ParcoursListComponent implements OnInit {
     return this.service.submitted;
   }
   public openCreateParcours() {
-    this.selectedparcours = new Parcours();
+
     this.submitted = false;
     this.createDialog = true;
+    this.selectedparcours = new Parcours();
   }
 
   public editParcours(parcour: Parcours) {

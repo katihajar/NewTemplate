@@ -33,7 +33,7 @@ export class SectionSimulateComponent implements OnInit {
   PreviewsSection() {
     this.service.affichelistSection().subscribe(
         data => {
-          this.itemssection = data;
+          this.itemssection2 = data;
           // tslint:disable-next-line:no-shadowed-variable
         });
     this.selectedsection.numeroOrder = this.selectedsection.numeroOrder - 1;
@@ -48,7 +48,7 @@ export class SectionSimulateComponent implements OnInit {
   NextSection() {
     this.service.affichelistSection().subscribe(
         data => {
-          this.itemssection = data;
+          this.itemssection2 = data;
           // tslint:disable-next-line:no-shadowed-variable
         });
     this.selectedsection.numeroOrder = this.selectedsection.numeroOrder + 1;
@@ -66,11 +66,11 @@ export class SectionSimulateComponent implements OnInit {
   get selectedcours(): Cours{
     return this.service.selectedcours;
   }
-  set itemssection(value: Array<Section>) {
-    this.service.itemssection = value;
+  set itemssection2(value: Array<Section>) {
+    this.service.itemssection2 = value;
   }
-  get itemssection(): Array<Section> {
-    return this.service.itemssection;
+  get itemssection2(): Array<Section> {
+    return this.service.itemssection2;
   }
   get selectessection(): Array<Section> {
     return this.service.selectessection;

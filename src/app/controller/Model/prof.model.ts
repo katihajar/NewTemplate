@@ -2,6 +2,7 @@
 import {Etudiant} from './etudiant.model';
 import {ClassRoom} from './class-room.model';
 import {CategorieProf} from './categorie-prof.model';
+import {RecommendTeacher} from './recommend-teacher.model';
 
 export class Prof {
   public id: number;
@@ -16,5 +17,5 @@ export class Prof {
   public salary: number;
   public  classRoomList = new Array<ClassRoom>();
   public categorieProf = new CategorieProf();
-
+  public recommendList = new Array<RecommendTeacher>();
 }

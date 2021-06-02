@@ -9,10 +9,10 @@
 
                         <div class="product-grid-item card">
                             <div class="product-grid-item-content" style="cursor: pointer">
-                                <div class="product-name"><h1>{{this.selectedsection.libelle}}</h1></div>
+                                <div class="product-name" style="margin-bottom: 15px"><h1>{{this.selectedsection.libelle}}</h1></div>
                                 <img [src]="this.selectedsection.urlImage" [alt]="this.selectedsection.libelle"/>
                                 <div class="product-description"><h6>{{this.selectedsection.urlVideo}}</h6></div>
-                                <div ><p>{{this.selectedsection.contenu}}</p></div>
+                                <div ><p style="box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);">{{this.selectedsection.contenu}}</p></div>
                                 <div class="product-description"><h6>{{this.selectedsection.indicationProf}}</h6></div>
 
                             </div>
@@ -23,7 +23,7 @@
 
 <div class=" p-col" style="width:   300px;height: 90px">
 
-                <p-table  [value]="itemssection"  [rows]="10" >
+                <p-table  [value]="itemssection2"  [rows]="10" >
                     <ng-template pTemplate="header">
                         <tr>
 

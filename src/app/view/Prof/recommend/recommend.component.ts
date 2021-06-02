@@ -21,16 +21,16 @@ export class RecommendComponent implements OnInit {
   get recommendTeacher(): RecommendTeacher {
     return this.service.recommendTeacher;
   }
-  get itemsprof(): Array<Prof> {
-    return this.service.itemsprof;
+  get itemssprof(): Array<Prof> {
+    return this.service.itemssprof;
   }
 
-  set itemsprof(value: Array<Prof>) {
-    this.service.itemsprof = value;
+  set itemssprof(value: Array<Prof>) {
+    this.service.itemssprof = value;
   }
   public FindAllProf(){
-    console.log(this.itemsprof);
-    this.service.findAllProf().subscribe(data => this.itemsprof = data);
+    console.log(this.itemssprof);
+    this.service.findAllProf().subscribe(data => this.itemssprof = data);
   }
   // tslint:disable-next-line:adjacent-overload-signatures
   set recommendTeacher(value: RecommendTeacher) {
@@ -39,16 +39,16 @@ export class RecommendComponent implements OnInit {
 
   public save() {
     this.service.save().subscribe(data => {
-      console.log(this.selected);
+      console.log(this.selectedRecommend);
       console.log('meryem');
   });
   }
-  get selected(): RecommendTeacher {
-    return this.service.selected;
+  get selectedRecommend(): RecommendTeacher {
+    return this.service.selectedRecommend;
   }
 
-  set selected(value: RecommendTeacher) {
-    this.service.selected = value;
+  set selectedRecommend(value: RecommendTeacher) {
+    this.service.selectedRecommend = value;
   }
 
   get createDialog(): boolean {

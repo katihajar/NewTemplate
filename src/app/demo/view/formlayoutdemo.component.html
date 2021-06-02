@@ -121,30 +121,38 @@
 			<div class="p-fluid p-formgrid p-grid">
 				<div class="p-field p-col-12 p-md-6">
 					<label for="firstname6">Firstname</label>
-					<input id="firstname6" type="text" pInputText>
+					<input id="firstname6" type="text" pInputText [(ngModel)]="selected.etudiant.prenom">
 				</div>
 				<div class="p-field p-col-12 p-md-6">
 					<label for="lastname6">Lastname</label>
-					<input id="lastname6" type="text" pInputText>
+					<input id="lastname6" type="text" pInputText [(ngModel)]="selected.etudiant.nom">
+				</div>
+				<div class="p-field p-col-12 p-md-6">
+					<label for="login">UserName</label>
+					<input id="login" type="text" pInputText [(ngModel)]="selected.etudiant.login">
+				</div>
+				<div class="p-field p-col-12 p-md-6">
+					<label for="passwrd">Password</label>
+					<input id="passwrd" type="text" pInputText [(ngModel)]="selected.etudiant.password">
 				</div>
 				<div class="p-field p-col-12">
 					<label for="address">Address</label>
-					<textarea id="address" type="text" rows="4" pInputTextarea></textarea>
+					<textarea id="address" type="text" rows="4" pInputTextarea [(ngModel)]="selected.etudiant.address"></textarea>
 				</div>
 				<div class="p-field p-col-12 p-md-6">
 					<label for="city">City</label>
-					<input id="city" type="text" pInputText>
+					<input id="city" type="text" pInputText [(ngModel)]="selected.etudiant.ville">
 				</div>
 				<div class="p-field p-col-12 p-md-3" style="margin-top: 20px">
 					<label for="parcours">Parcours</label>
-					<select type="text" class="btn btn-block btn-outline-light form-control" id="parcours"  name="Parcours"  style="width: 300px; height: 30px ; border-color: darkgray;margin-left: 5px" (click)="findAllParcours()"  >
+					<select type="text" class="btn btn-block btn-outline-light form-control" id="parcours"  name="Parcours"  style="width: 300px; height: 30px ; border-color: darkgray;margin-left: 5px" (click)="findAllParcours()"  [(ngModel)]="selected.etudiant.parcours.id" >
 						<option  selected="selected" *ngFor="let p of parcoursList"  [ngValue]="p.id"> {{p.libelle}}</option>
 
 					</select>
 				</div>
 				<div class="p-field p-col-12 p-md-3" style="margin-top: 20px">
 					<label for="centre">Centre</label>
-					<select type="text"  class="btn btn-block btn-outline-light form-control" id="centre"  name="Centre"  style="width: 300px; height: 30px ; border-color: darkgray;margin-left: 5px" (click)="findAllCentre()" >
+					<select type="text"  class="btn btn-block btn-outline-light form-control" id="centre"  name="Centre"  style="width: 300px; height: 30px ; border-color: darkgray;margin-left: 5px" (click)="findAllCentre()" [(ngModel)]="selected.etudiant.parcours.centre.id" >
 						<option  selected="selected" *ngFor="let c of centreList"  [ngValue]="c.id"> {{c.libelle}} </option>
 					</select>
 				</div>

@@ -1,3 +1,4 @@
+/* tslint:disable:variable-name */
 import { Injectable } from '@angular/core';
 import {ClassRoom} from '../Model/class-room.model';
 import {Prof} from '../Model/prof.model';
@@ -39,6 +40,9 @@ export class ClassRoomService {
 
 
   get selectedsalaryVo(): SalaryVo {
+    if (this._selectedsalaryVo == null){
+      this._selectedsalaryVo = new SalaryVo();
+    }
     return this._selectedsalaryVo;
   }
 
@@ -47,6 +51,9 @@ export class ClassRoomService {
   }
 
   get itemssalaryVo(): Array<SalaryVo> {
+    if (this._itemssalaryVo == null){
+      this._itemssalaryVo = new Array<SalaryVo>();
+    }
     return this._itemssalaryVo;
   }
 
@@ -55,6 +62,9 @@ export class ClassRoomService {
   }
 
   get selectessalaryVo(): Array<SalaryVo> {
+    if (this._selectedsalaryVo == null){
+      this._selectedsalaryVo = new SalaryVo();
+    }
     return this._selectessalaryVo;
   }
 
@@ -63,6 +73,9 @@ export class ClassRoomService {
   }
 
   get selectedclassRoom(): ClassRoom {
+    if (this._selectedclassRoom == null){
+      this._selectedclassRoom = new ClassRoom();
+    }
     return this._selectedclassRoom;
   }
 
@@ -71,6 +84,9 @@ export class ClassRoomService {
   }
 
   get selectedcategorieProf(): CategorieProf {
+    if (this._selectedcategorieProf == null){
+      this._selectedcategorieProf = new CategorieProf();
+    }
     return this._selectedcategorieProf;
   }
 
@@ -79,6 +95,9 @@ export class ClassRoomService {
   }
 
   get selectedetudiantClassRoom(): EtudiantClassRoom {
+    if (this._selectedetudiantClassRoom == null){
+      this._selectedetudiantClassRoom = new EtudiantClassRoom();
+    }
     return this._selectedetudiantClassRoom;
   }
 
@@ -87,6 +106,9 @@ export class ClassRoomService {
   }
 
   get selectedquizClassRoom(): QuizClassRoom {
+    if (this._selectedquizClassRoom == null){
+      this._selectedquizClassRoom = new QuizClassRoom();
+    }
     return this._selectedquizClassRoom;
   }
 
@@ -95,6 +117,9 @@ export class ClassRoomService {
   }
 
   get selectedprof(): Prof {
+    if (this._selectedprof == null){
+      this._selectedprof = new Prof();
+    }
     return this._selectedprof;
   }
 
@@ -103,6 +128,9 @@ export class ClassRoomService {
   }
 
   get itemsclassRoom(): Array<ClassRoom> {
+    if (this._itemsclassRoom == null){
+      this._itemsclassRoom = new Array<ClassRoom>();
+    }
     return this._itemsclassRoom;
   }
 
@@ -111,6 +139,9 @@ export class ClassRoomService {
   }
 
   get itemscategorieProf(): Array<CategorieProf> {
+    if (this._itemscategorieProf == null){
+      this._itemscategorieProf = new Array<CategorieProf>();
+    }
     return this._itemscategorieProf;
   }
 
@@ -119,6 +150,9 @@ export class ClassRoomService {
   }
 
   get selectesclassRoom(): Array<ClassRoom> {
+    if (this._selectesclassRoom == null){
+      this._selectesclassRoom = new Array<ClassRoom>();
+    }
     return this._selectesclassRoom;
   }
 
@@ -127,6 +161,9 @@ export class ClassRoomService {
   }
 
   get selectescategorieProf(): Array<CategorieProf> {
+    if (this._selectescategorieProf == null){
+      this._selectescategorieProf = new Array<CategorieProf>();
+    }
     return this._selectescategorieProf;
   }
 
@@ -135,6 +172,9 @@ export class ClassRoomService {
   }
 
   get itemsprof(): Array<Prof> {
+    if (this._itemsprof == null){
+      this._itemsprof = new Array<Prof>();
+    }
     return this._itemsprof;
   }
 
@@ -143,6 +183,9 @@ export class ClassRoomService {
   }
 
   get selectesprof(): Array<Prof> {
+    if (this._selectesprof == null){
+      this._selectesprof = new Array<Prof>();
+    }
     return this._selectesprof;
   }
 
@@ -151,6 +194,9 @@ export class ClassRoomService {
   }
 
   get itemsetudiantClassRoom(): Array<EtudiantClassRoom> {
+    if (this._itemsetudiantClassRoom == null){
+      this._itemsetudiantClassRoom = new Array<EtudiantClassRoom>();
+    }
     return this._itemsetudiantClassRoom;
   }
 
@@ -159,6 +205,9 @@ export class ClassRoomService {
   }
 
   get selectesetudiantClassRoom(): Array<EtudiantClassRoom> {
+    if (this._selectesetudiantClassRoom == null){
+      this._selectesetudiantClassRoom = new Array<EtudiantClassRoom>();
+    }
     return this._selectesetudiantClassRoom;
   }
 
@@ -167,6 +216,9 @@ export class ClassRoomService {
   }
 
   get itemsquizClassRoom(): Array<QuizClassRoom> {
+    if (this._itemsquizClassRoom == null){
+      this._itemsquizClassRoom = new Array<QuizClassRoom>();
+    }
     return this._itemsquizClassRoom;
   }
 
@@ -175,6 +227,9 @@ export class ClassRoomService {
   }
 
   get selectesquizClassRoom(): Array<QuizClassRoom> {
+    if (this._selectesquizClassRoom == null){
+      this._selectesquizClassRoom = new Array<QuizClassRoom>();
+    }
     return this._selectesquizClassRoom;
   }
 

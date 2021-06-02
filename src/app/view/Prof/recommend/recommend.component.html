@@ -25,8 +25,8 @@
             <div class="p-field p-col-3 p-md-3" style="width: 300px ;margin-left: 100px" >
                  <div class="p-field p-col-8" >
                 <label for="centre" >Recommended Teacher</label>
-                <select pInputText  class="btn btn-block btn-outline-light " id="centre" style="background-color: lightblue" name="Parcours" (click)="FindAllProf()" >
-                    <option  selected="selected" *ngFor="let c of itemsprof"  [ngValue]="c.id" style="width: 200px;margin-left: 500px"> {{c.nom}}</option>
+                <select pInputText  class="btn btn-block btn-outline-light " id="centre" style="background-color: lightblue" name="Parcours" (click)="FindAllProf()" [(ngModel)]="selectedRecommend.prof.id" >
+                    <option  selected="selected" *ngFor="let c of itemssprof"  [ngValue]="c.id" style="width: 200px;margin-left: 500px"> {{c.nom}}</option>
                 </select>
             </div>
             </div>

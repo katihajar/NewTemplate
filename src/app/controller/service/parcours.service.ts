@@ -30,6 +30,7 @@ export class ParcoursService {
   private _itemssupercategoriesection: Array<SuperCategorieSection>;
   private _selectedsupercategoriesection: SuperCategorieSection;
   private _itemssection: Array<Section>;
+  private _itemssection2: Array<Section>;
   private _selectedcentre: Centre;
   private _itemscentre: Array<Centre>;
   private _index: number;
@@ -51,6 +52,17 @@ export class ParcoursService {
   private _timer;
   constructor(private http: HttpClient ) {  }
 
+
+  get itemssection2(): Array<Section> {
+    if (this._itemssection2 == null){
+      this._itemssection2 = new Array<Section>();
+    }
+    return this._itemssection2;
+  }
+
+  set itemssection2(value: Array<Section>) {
+    this._itemssection2 = value;
+  }
 
   get timer() {
     return this._timer;
@@ -85,6 +97,9 @@ export class ParcoursService {
   }
 
   get selectesscours(): Array<Cours> {
+    if (this._selectesscours == null){
+      this._selectesscours = new Array<Cours>();
+    }
     return this._selectesscours;
   }
 
@@ -93,6 +108,9 @@ export class ParcoursService {
   }
 
   get selectesssection(): Array<Section> {
+    if (this._selectesssection == null){
+      this._selectesssection = new Array<Section>();
+    }
     return this._selectesssection;
   }
 
@@ -101,17 +119,20 @@ export class ParcoursService {
   }
 
   get selectedparcours(): Parcours {
+    if (this._selectedparcours == null){
+      this._selectedparcours = new Parcours();
+    }
     return this._selectedparcours;
   }
 
   set selectedparcours(value: Parcours) {
-    if (this._selectedparcours == null){
-      this._selectedparcours = new Parcours();
-    }
     this._selectedparcours = value;
   }
 
   get itemsparcours(): Array<Parcours> {
+    if (this._itemsparcours == null){
+      this._itemsparcours = new Array<Parcours>();
+    }
     return this._itemsparcours;
   }
 
@@ -120,6 +141,9 @@ export class ParcoursService {
   }
 
   get selectesparcours(): Array<Parcours> {
+    if (this._selectesparcours == null){
+      this._selectesparcours = new Array<Parcours>();
+    }
     return this._selectesparcours;
   }
 
@@ -128,6 +152,9 @@ export class ParcoursService {
   }
 
   get selectescours(): Array<Cours> {
+    if (this._selectescours == null){
+      this._selectescours = new Array<Cours>();
+    }
     return this._selectescours;
   }
 
@@ -136,6 +163,9 @@ export class ParcoursService {
   }
 
   get selectessection(): Array<Section> {
+    if (this._selectessection == null){
+      this._selectessection = new Array<Section>();
+    }
     return this._selectessection;
   }
 
@@ -144,17 +174,20 @@ export class ParcoursService {
   }
 
   get selectedcours(): Cours {
+    if (this._selectedcours == null){
+      this._selectedcours = new Cours();
+    }
     return this._selectedcours;
   }
 
   set selectedcours(value: Cours) {
-    if (this._selectedcours == null){
-      this._selectedcours = new Cours();
-    }
     this._selectedcours = value;
   }
 
   get itemscours(): Array<Cours> {
+    if (this._itemscours == null){
+      this._itemscours = new Array<Cours>();
+    }
     return this._itemscours;
   }
 
@@ -163,6 +196,9 @@ export class ParcoursService {
   }
 
   get selectedsection(): Section {
+    if (this._selectedsection == null){
+      this._selectedsection = new Section();
+    }
     return this._selectedsection;
   }
 
@@ -171,6 +207,9 @@ export class ParcoursService {
   }
 
   get itemscategoriesection(): Array<CategorieSection> {
+    if (this._itemscategoriesection == null){
+      this._itemscategoriesection = new Array<CategorieSection>();
+    }
     return this._itemscategoriesection;
   }
 
@@ -179,6 +218,9 @@ export class ParcoursService {
   }
 
   get selectedcategoriesection(): CategorieSection {
+    if (this._selectedcategoriesection == null){
+      this._selectedcategoriesection = new CategorieSection();
+    }
     return this._selectedcategoriesection;
   }
 
@@ -203,6 +245,9 @@ export class ParcoursService {
   }
 
   get itemssection(): Array<Section> {
+    if (this._itemssection == null){
+      this._itemssection = new Array<Section>();
+    }
     return this._itemssection;
   }
 
@@ -217,12 +262,14 @@ export class ParcoursService {
   set selectedcentre(value: Centre) {
     this._selectedcentre = value;
   }
-
-  get itemscentre() {
+  get itemscentre(): Array<Centre> {
+    if (this._itemscentre == null){
+      this._itemscentre = new Array<Centre>();
+    }
     return this._itemscentre;
   }
 
-  set itemscentre(value) {
+  set itemscentre(value: Array<Centre>) {
     this._itemscentre = value;
   }
 
@@ -334,9 +381,7 @@ export class ParcoursService {
     return this.http.put<Cours>('http://localhost:8036/learn/cours/', this.selectedcours);
   }
   public SaveCours(): Observable<number> {
-    if (this.selectedcours.id == null){
       return this.http.post<number>('http://localhost:8036/learn/cours/', this.selectedcours);
-    }
   }
   public AjoutSection(id: number): Observable<number> {
       return this.http.get<number>('http://localhost:8036/learn/cours/id/' + id);

@@ -41,6 +41,7 @@ export class CoursCreateComponent implements OnInit {
           life: 3000
         });
       });
+      this.service.afficheCours().subscribe(data => this.itemscours = data);
       this.createDialogCours = false;
       this.selectedcours = new Cours();
     }

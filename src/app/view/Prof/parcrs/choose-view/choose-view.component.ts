@@ -28,7 +28,7 @@ export class ChooseViewComponent implements OnInit {
     i = i + 1;
     this.service.affichelistSection().subscribe(
         data => {
-          this.itemssection = data;
+          this.itemssection2 = data;
           // tslint:disable-next-line:no-shadowed-variable
         });
     this.service.afficheOneSection().subscribe( data => { this.selectedsection = data; });
@@ -43,8 +43,8 @@ export class ChooseViewComponent implements OnInit {
     return this.service.viewChooseType;
   }
 // tslint:disable-next-line:adjacent-overload-signatures
-  get itemssection(): Array<Section> {
-    return this.service.itemssection;
+  get itemssection2(): Array<Section> {
+    return this.service.itemssection2;
   }
   get selectedcours(): Cours{
     return this.service.selectedcours;
@@ -63,8 +63,8 @@ export class ChooseViewComponent implements OnInit {
     this.service.itemscours = value;
   }
   // tslint:disable-next-line:adjacent-overload-signatures
-    set itemssection(value: Array<Section>) {
-    this.service.itemssection = value;
+    set itemssection2(value: Array<Section>) {
+    this.service.itemssection2 = value;
   }
   // tslint:disable-next-line:adjacent-overload-signatures
   set viewChooseType(value: boolean) {

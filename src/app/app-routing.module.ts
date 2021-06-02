@@ -63,6 +63,7 @@ import {LoginEtudiantComponent} from './view/etudiant/login-etudiant/login-etudi
 import {QuizEtudiantComponent} from './view/etudiant/quiz-etudiant/quiz-etudiant.component';
 import {SectionSimulateComponent} from './view/Prof/parcrs/section-simulate/section-simulate.component';
 import {InscriptionAdminComponent} from './view/admin/inscription-admin/inscription-admin.component';
+import {InscriptionProfComponent} from './view/Prof/inscription-prof/inscription-prof.component';
 
 
 
@@ -80,6 +81,7 @@ import {InscriptionAdminComponent} from './view/admin/inscription-admin/inscript
                     {path: '', component: DashboardDemoComponent},
                     {path: 'pages/etudiant', component: EtudiantsComponent},
                     {path: 'inscriptionAdmin', component: InscriptionAdminComponent},
+                    {path: 'inscriptionTeacher', component: InscriptionProfComponent},
                     {path: 'view/inscription', component: InscriptionsComponent},
                     {path: 'pages/recommend', component: RecommendComponent},
                     {path: 'pages/home', component: HomeComponent},

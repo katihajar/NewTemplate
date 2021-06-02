@@ -195,11 +195,12 @@ import {LoginEtudiantComponent} from './view/etudiant/login-etudiant/login-etudi
 import {LoginProfComponent} from './view/teacher/login-prof/login-prof.component';
 import {LoginAdminComponent} from './view/admin/login-admin/login-admin.component';
 import { QuizEtudiantComponent } from './view/etudiant/quiz-etudiant/quiz-etudiant.component';
-import {ParcoursCreateComponent} from './view/admin/learn/parcours-create/parcours-create.component';
-import {CoursCreateComponent} from './view/admin/learn/cours-create/cours-create.component';
 import {SectionSimulateComponent} from './view/Prof/parcrs/section-simulate/section-simulate.component';
 import {ChooseViewComponent} from './view/Prof/parcrs/choose-view/choose-view.component';
 import {InscriptionAdminComponent} from './view/admin/inscription-admin/inscription-admin.component';
+import {ParcoursCreateComponent} from './view/admin/learn/parcours-create/parcours-create.component';
+import {CoursCreateComponent} from './view/admin/learn/cours-create/cours-create.component';
+import { InscriptionProfComponent } from './View/Prof/inscription-prof/inscription-prof.component';
 
 
 
@@ -345,10 +346,8 @@ import {InscriptionAdminComponent} from './view/admin/inscription-admin/inscript
         CommandeViewComponent,
         LearnComponent,
         ParcoursListComponent,
-        ParcoursCreateComponent,
         ParcoursEditComponent,
         CoursListComponent,
-        CoursCreateComponent,
         CoursEditComponent,
         SectionListComponent,
         SectionViewComponent,
@@ -400,7 +399,10 @@ import {InscriptionAdminComponent} from './view/admin/inscription-admin/inscript
         QuizEtudiantComponent,
         ChooseViewComponent,
         SectionSimulateComponent,
-        InscriptionAdminComponent
+        ParcoursCreateComponent,
+        CoursCreateComponent,
+        InscriptionAdminComponent,
+        InscriptionProfComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
