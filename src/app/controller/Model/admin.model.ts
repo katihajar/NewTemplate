@@ -5,4 +5,5 @@ export class Admin {
     public prenom: string;
     public login: string;
     public password: string;
+    public addresse: string;
 }
