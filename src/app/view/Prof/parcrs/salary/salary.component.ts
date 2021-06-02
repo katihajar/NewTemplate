@@ -60,7 +60,7 @@ export class SalaryComponent implements OnInit {
   public findSalaryByDate(mois: Date, annee: Date ){
     this.service.findSalaryByDate(mois , annee).subscribe(data =>
     {
-      this.selectessalaryVo = data;
+      this.itemssalaryVo  = data;
       this.itemssalaryVo = this.selectessalaryVo;
       console.log(this.itemssalaryVo);
     });

@@ -175,7 +175,6 @@ import {EdCoursesComponent} from './view/Prof/parcrs/ed-courses/ed-courses.compo
 import {SalaryComponent} from './view/Prof/parcrs/salary/salary.component';
 import {SectionsComponent} from './view/Prof/parcrs/sections/sections.component';
 import {ParcrsComponent} from './view/Prof/parcrs/parcrs.component';
-import {RecommendComponent} from './view/Prof/recommend/recommend.component';
 import {EtudiantsComponent} from './view/Prof/etudiants/etudiants.component';
 import { QuizCreateComponent } from './view/Prof/quiz/quiz-create/quiz-create.component';
 import { QuizPreviewComponent } from './view/Prof/quiz/quiz-preview/quiz-preview.component';
@@ -201,6 +200,17 @@ import {InscriptionAdminComponent} from './view/admin/inscription-admin/inscript
 import {ParcoursCreateComponent} from './view/admin/learn/parcours-create/parcours-create.component';
 import {CoursCreateComponent} from './view/admin/learn/cours-create/cours-create.component';
 import { InscriptionProfComponent } from './view/Prof/inscription-prof/inscription-prof.component';
+import {HomeTeacherComponent} from './view/Prof/home-teacher/home-teacher.component';
+import {TeacherRubComponent} from './view/Prof/home-teacher/teacher-rub/teacher-rub.component';
+import {ProfNewsComponent} from './view/Prof/home-teacher/prof-news/prof-news.component';
+import {NearestComponent} from './view/Prof/home-teacher/nearest/nearest.component';
+import {AjoutEtudiantComponent} from './view/Prof/home-teacher/ajout-etudiant/ajout-etudiant.component';
+import {RecommendEditComponent} from './view/Prof/recommend/recommend-edit/recommend-edit.component';
+
+import {RecommendListComponent} from './view/Prof/recommend/recommend-list/recommend-list.component';
+import {RecommendationComponent} from './view/Prof/recommend/recommendation/recommendation.component';
+import {RecommendViewComponent} from './view/Prof/recommend/recommend-view/recommend-view.component';
+import {RecommendComponent} from './view/Prof/recommend/recommend.component';
 
 
 
@@ -367,6 +377,9 @@ import { InscriptionProfComponent } from './view/Prof/inscription-prof/inscripti
         SectionsComponent,
         ParcrsComponent,
         RecommendComponent,
+        RecommendListComponent,
+        RecommendationComponent,
+        RecommendViewComponent,
         CoursesComponent,
         EdCoursesComponent,
         SalaryComponent,
@@ -402,6 +415,12 @@ import { InscriptionProfComponent } from './view/Prof/inscription-prof/inscripti
         ParcoursCreateComponent,
         CoursCreateComponent,
         InscriptionAdminComponent,
+        HomeTeacherComponent,
+        TeacherRubComponent,
+        ProfNewsComponent,
+        NearestComponent,
+        AjoutEtudiantComponent,
+        RecommendEditComponent,
         InscriptionProfComponent
     ],
     providers: [

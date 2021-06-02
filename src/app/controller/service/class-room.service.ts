@@ -292,6 +292,6 @@ export class ClassRoomService {
   }
   public findSalaryByDate( mois, annee): Observable<Array<SalaryVo>> {
     // tslint:disable-next-line:max-line-length
-    return this.http.get<Array<SalaryVo> >('http://localhost:8036/learn/salary/mois/' + mois + '/annee/' + annee );
+    return this.http.get<Array<SalaryVo> >('http://localhost:8036/learn/salary/mois/' + this + '/annee/' + annee );
   }
 }

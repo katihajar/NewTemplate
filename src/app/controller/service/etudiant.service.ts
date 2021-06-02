@@ -1,3 +1,4 @@
+/* tslint:disable:variable-name */
 import { Injectable } from '@angular/core';
 import {Etudiant} from '../model/etudiant.model';
 
@@ -6,7 +7,7 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import { EtudiantVo } from '../model/etudiant-vo.model';
 import { Prof } from '../model/prof.model';
-import {Parcours} from "../Model/parcours.model";
+
 
 
 
@@ -20,15 +21,47 @@ export class EtudiantService {
   private _submitted: boolean;
   private _createDialog: boolean;
   private _items: Array<Etudiant>;
+  private _itemsprof: Array<Prof>;
+
   private _selectes: Array<Etudiant>;
   private _editDialog: boolean;
   private _viewDialog: boolean;
   private _etudiantVo: EtudiantVo;
   private _prof: Array<Prof>;
+  private _selecteetudiant: Array<Etudiant>;
+  private _submittedetudiant: Etudiant;
 
 
   constructor(private http: HttpClient) { }
 
+
+  get submittedetudiant(): Etudiant {
+    return this._submittedetudiant;
+  }
+
+  set submittedetudiant(value: Etudiant) {
+    this._submittedetudiant = value;
+  }
+
+  get itemsprof(): Array<Prof> {
+    return this._itemsprof;
+  }
+
+  set itemsprof(value: Array<Prof>) {
+    this._itemsprof = value;
+  }
+
+  public findetudiantProf(): Observable<Array<Etudiant>> {
+    return this.http.get<Array<Etudiant>>('http://localhost:8036/learn/prof/id/160' );
+  }
+
+  get selecteetudiant(): Array<Etudiant> {
+    return this._selecteetudiant;
+  }
+
+  set selecteetudiant(value: Array<Etudiant>) {
+    this._selecteetudiant = value;
+  }
 
   get prof(): Array<Prof> {
     return this._prof;
@@ -108,6 +141,9 @@ export class EtudiantService {
   }
 
   get selected(): Etudiant {
+    if (this._selected == null){
+      this._selected = new Etudiant();
+    }
     return this._selected;
   }
 
@@ -151,4 +187,5 @@ export class EtudiantService {
     }
     return index;
   }
+
 }

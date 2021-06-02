@@ -8,6 +8,7 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 import {Etudiant} from '../../../controller/Model/etudiant.model';
 import {ClassRoomService} from '../../../controller/service/class-room.service';
 import {SalaryVo} from '../../../controller/Model/salary-vo.model';
+import {EtudiantService} from '../../../controller/service/etudiant.service';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,10 @@ export class HomeComponent implements OnInit {
   lastUpdate = new Date();
   constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
               // tslint:disable-next-line:max-line-length
-              private service: ParcoursService, private servicerecommend: RecommendTeacherService, private seviceClass: ClassRoomService) { }
+              private service: ParcoursService,
+              private servicerecommend: RecommendTeacherService, private seviceClass: ClassRoomService ,
+              private serviceetudiant: EtudiantService
+  ) { }
 
   ngOnInit(): void {
     this.findSalary();
@@ -57,27 +61,53 @@ export class HomeComponent implements OnInit {
     this.servicerecommend.itemsprof = value;
   }
   public FindAllProf(){
-    console.log(this.itemsprof);
+    console.log(this.selected);
     this.servicerecommend.findAllProf().subscribe(data => this.itemsprof = data);
   }
   public save() {
-    this.servicerecommend.save().subscribe(
-        data => {
-      console.log(this.selectedTeacher);
+    this.servicerecommend.save().subscribe(data => {
+      console.log(this.selected);
       console.log('meryem');
     });
   }
-  get selectedTeacher(): RecommendTeacher {
-    return this.servicerecommend.selectedTeacher;
+  get selected(): RecommendTeacher {
+    return this.servicerecommend.selected;
   }
 
-  set selectedTeacher(value: RecommendTeacher) {
-    this.servicerecommend.selectedTeacher = value;
+  set selected(value: RecommendTeacher) {
+    this.servicerecommend.selected = value;
   }
   public openCreateCours() {
     this.selectedcours = new Cours();
     this.submittedCours = false;
     this.createDialogCours = true;
+  }
+  public openCreateEtud() {
+    this.submittedetudiant = new Etudiant();
+    this.submitted = false;
+    this.createDialogEtud = true;
+  }
+  get createDialogEtud(): boolean {
+    return this.serviceetudiant.createDialog;
+  }
+
+  set createDialogEtud(value: boolean) {
+    this.serviceetudiant.createDialog = value;
+  }
+  get submitted(): boolean {
+    return this.serviceetudiant.submitted;
+  }
+
+  set submitted(value: boolean) {
+    this.serviceetudiant.submitted = value;
+  }
+
+  get submittedetudiant(): Etudiant {
+    return this.serviceetudiant.submittedetudiant;
+  }
+
+  set submittedetudiant(value: Etudiant) {
+    this.serviceetudiant.submittedetudiant = value;
   }
   set submittedCours(value: boolean) {
     this.service.submittedCours = value;
