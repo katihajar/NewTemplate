@@ -63,6 +63,9 @@ import {QuizEtudiantComponent} from './view/etudiant/quiz-etudiant/quiz-etudiant
 import {SectionSimulateComponent} from './view/Prof/parcrs/section-simulate/section-simulate.component';
 import {InscriptionAdminComponent} from './view/admin/inscription-admin/inscription-admin.component';
 import {InscriptionProfComponent} from './view/Prof/inscription-prof/inscription-prof.component';
+import {HomeTeacherComponent} from './view/Prof/home-teacher/home-teacher.component';
+import {RecommendComponent} from './view/Prof/recommend/recommend.component';
+import {RecommendationComponent} from './view/Prof/recommend/recommendation/recommendation.component';
 
 
 
@@ -82,6 +85,9 @@ import {InscriptionProfComponent} from './view/Prof/inscription-prof/inscription
                     {path: 'inscriptionAdmin', component: InscriptionAdminComponent},
                     {path: 'inscriptionTeacher', component: InscriptionProfComponent},
                     {path: 'view/inscription', component: InscriptionsComponent},
+                    {path: 'view/recommendation', component: RecommendationComponent},
+                    {path: 'view/recommendat', component: RecommendComponent},
+                    {path: 'view/home-teacher', component: HomeTeacherComponent},
                     {path: 'pages/home', component: HomeComponent},
                     {path: 'pages/commande', component: CommandesComponent},
                     {path: 'pages/parcours', component: LearnComponent},
