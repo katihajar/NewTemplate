@@ -63,6 +63,9 @@ export class RecommendTeacherService {
   }
 
   get itemsetudiant(): Array<Etudiant> {
+    if (this._itemsetudiant == null){
+      this._itemsetudiant = new Array<Etudiant>();
+    }
     return this._itemsetudiant;
   }
 
@@ -71,6 +74,9 @@ export class RecommendTeacherService {
   }
 
   get itemsprof(): Array<Prof> {
+    if (this._itemsprof == null){
+      this._itemsprof = new Array<Prof>();
+    }
     return this._itemsprof;
   }
 
@@ -101,6 +107,9 @@ export class RecommendTeacherService {
   }
 
   get items(): Array<RecommendTeacher> {
+    if (this._items == null){
+      this._items = new Array<RecommendTeacher>();
+    }
     return this._items;
   }
 
@@ -141,6 +150,9 @@ export class RecommendTeacherService {
   }
 
   get selectes(): Array<RecommendTeacher> {
+    if (this._selectes == null){
+      this._selectes = new Array<RecommendTeacher>();
+    }
     return this._selectes;
   }
 
@@ -152,6 +164,9 @@ export class RecommendTeacherService {
   }
 
   get prof(): Prof {
+    if (this._prof == null){
+      this._prof = new Prof();
+    }
     return this._prof;
   }
 
@@ -179,6 +194,9 @@ export class RecommendTeacherService {
 
 
   get item(): Array<RecommendTeacher> {
+    if (this._item == null){
+      this._item = new Array<RecommendTeacher>();
+    }
     return this._item;
   }
 

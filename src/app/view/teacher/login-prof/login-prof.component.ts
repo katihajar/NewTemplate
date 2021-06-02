@@ -98,8 +98,7 @@ export class LoginProfComponent implements OnInit {
           this.correct = true;
           console.log(this.prof);
           this.model = [
-            {label: 'Home', icon: 'pi pi-fw pi-home', routerLink: ['/view/home-teacher']},
-            {label: 'Home', icon: 'pi pi-fw pi-home', routerLink: ['/pages/home']},
+            {label: 'HomeTeacher', icon: 'pi pi-fw pi-home', routerLink: ['/view/home-teacher']},
             {label: 'List of Recommendation', icon: 'pi pi-fw pi-comment', routerLink: ['/view/recommendat']},
             {label: 'Recommend A teacher', icon: 'pi pi-fw pi-comment', routerLink: ['/view/recommendation']},
             {label: 'Salary', icon: 'pi pi-fw pi-money-bill', routerLink: ['/pages/salary']},

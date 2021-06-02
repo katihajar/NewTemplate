@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import {ConfirmationService, MessageService} from "primeng/api";
-import {RecommendTeacherService} from "../../../../controller/service/recommend-teacher.service";
-import {RecommendTeacher} from "../../../../controller/Model/recommend-teacher.model";
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {RecommendTeacherService} from '../../../../controller/service/recommend-teacher.service';
+import {RecommendTeacher} from '../../../../controller/Model/recommend-teacher.model';
 
 @Component({
   selector: 'app-recommend-view',
