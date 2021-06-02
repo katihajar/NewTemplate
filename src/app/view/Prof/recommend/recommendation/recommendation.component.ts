@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ConfirmationService, MessageService} from 'primeng/api';
+import {ConfirmationService, MessageService} from "primeng/api";
 import { RecommendTeacher } from 'src/app/controller/Model/recommend-teacher.model';
 import { RecommendTeacherService } from 'src/app/controller/service/recommend-teacher.service';
 
@@ -25,7 +25,6 @@ export class RecommendationComponent implements OnInit {
       console.log('meryem');
     });
   }
-  // tslint:disable-next-line:adjacent-overload-signatures
   set selected(value: RecommendTeacher) {
     this.service.selected = value;
   }

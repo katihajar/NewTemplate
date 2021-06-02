@@ -205,12 +205,12 @@ import {TeacherRubComponent} from './view/Prof/home-teacher/teacher-rub/teacher-
 import {ProfNewsComponent} from './view/Prof/home-teacher/prof-news/prof-news.component';
 import {NearestComponent} from './view/Prof/home-teacher/nearest/nearest.component';
 import {AjoutEtudiantComponent} from './view/Prof/home-teacher/ajout-etudiant/ajout-etudiant.component';
-import {RecommendEditComponent} from './view/Prof/recommend/recommend-edit/recommend-edit.component';
-
-import {RecommendListComponent} from './view/Prof/recommend/recommend-list/recommend-list.component';
-import {RecommendationComponent} from './view/Prof/recommend/recommendation/recommendation.component';
-import {RecommendViewComponent} from './view/Prof/recommend/recommend-view/recommend-view.component';
 import {RecommendComponent} from './view/Prof/recommend/recommend.component';
+import {RecommendationComponent} from './view/Prof/recommend/recommendation/recommendation.component';
+import {RecommendEditComponent} from './view/Prof/recommend/recommend-edit/recommend-edit.component';
+import {RecommendListComponent} from './view/Prof/recommend/recommend-list/recommend-list.component';
+import {RecommendViewComponent} from './view/Prof/recommend/recommend-view/recommend-view.component';
+
 
 
 
@@ -376,10 +376,6 @@ import {RecommendComponent} from './view/Prof/recommend/recommend.component';
         CategorieProfViewComponent,
         SectionsComponent,
         ParcrsComponent,
-        RecommendComponent,
-        RecommendListComponent,
-        RecommendationComponent,
-        RecommendViewComponent,
         CoursesComponent,
         EdCoursesComponent,
         SalaryComponent,
@@ -420,7 +416,11 @@ import {RecommendComponent} from './view/Prof/recommend/recommend.component';
         ProfNewsComponent,
         NearestComponent,
         AjoutEtudiantComponent,
+        RecommendComponent,
+        RecommendationComponent,
         RecommendEditComponent,
+        RecommendListComponent,
+        RecommendViewComponent,
         InscriptionProfComponent
     ],
     providers: [

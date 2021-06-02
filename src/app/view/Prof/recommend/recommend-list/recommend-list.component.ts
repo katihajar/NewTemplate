@@ -4,6 +4,7 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 import {RecommendTeacherService} from '../../../../controller/service/recommend-teacher.service';
 import {RecommendTeacherVo} from '../../../../controller/Model/recommend-teacher-vo.model';
 
+
 @Component({
   selector: 'app-recommend-list',
   templateUrl: './recommend-list.component.html',

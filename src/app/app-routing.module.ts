@@ -44,7 +44,6 @@ import {CoursesComponent} from './view/Prof/parcrs/courses/courses.component';
 import {EdCoursesComponent} from './view/Prof/parcrs/ed-courses/ed-courses.component';
 import {SalaryComponent} from './view/Prof/parcrs/salary/salary.component';
 import {HomeComponent} from './view/Prof/home/home.component';
-import {RecommendComponent} from './view/Prof/recommend/recommend.component';
 import {InscriptionsComponent} from './view/Prof/inscriptions/inscriptions.component';
 import {EtudiantsComponent} from './view/Prof/etudiants/etudiants.component';
 import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.component';
@@ -83,7 +82,6 @@ import {InscriptionProfComponent} from './view/Prof/inscription-prof/inscription
                     {path: 'inscriptionAdmin', component: InscriptionAdminComponent},
                     {path: 'inscriptionTeacher', component: InscriptionProfComponent},
                     {path: 'view/inscription', component: InscriptionsComponent},
-                    {path: 'pages/recommend', component: RecommendComponent},
                     {path: 'pages/home', component: HomeComponent},
                     {path: 'pages/commande', component: CommandesComponent},
                     {path: 'pages/parcours', component: LearnComponent},

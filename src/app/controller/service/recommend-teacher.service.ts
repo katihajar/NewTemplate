@@ -1,3 +1,4 @@
+/* tslint:disable:variable-name */
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -6,6 +7,7 @@ import { Observable } from 'rxjs';
 import {Prof} from '../Model/prof.model';
 import {Etudiant} from '../Model/etudiant.model';
 import {RecommendTeacherVo} from '../Model/recommend-teacher-vo.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +19,9 @@ export class RecommendTeacherService {
   private _items: Array<RecommendTeacher>;
   private _itemsprof: Array<Prof>;
   private _itemsetudiant: Array<Etudiant>;
-  private _prof : Prof;
+  private _prof: Prof;
   private _item: Array<RecommendTeacher>;
   private _recommendVo: RecommendTeacherVo;
-
-
   private _selectes: Array<RecommendTeacher>;
 
   private _createDialog: boolean;
