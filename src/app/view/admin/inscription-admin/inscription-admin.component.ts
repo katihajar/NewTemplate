@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
-
 import {AdminService} from '../../../controller/service/admin.service';
 import {Admin} from '../../../controller/Model/admin.model';
+
 
 @Component({
   selector: 'app-inscription-admin',
@@ -18,7 +18,8 @@ export class InscriptionAdminComponent implements OnInit {
   }
 
   public save() {
-    this.service.save().subscribe(data => {
+    this.service.save().subscribe(
+        data => {
       console.log(this.selected);
       console.log('meryem');
     });

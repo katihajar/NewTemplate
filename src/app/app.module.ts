@@ -199,7 +199,8 @@ import {ParcoursCreateComponent} from './view/admin/learn/parcours-create/parcou
 import {CoursCreateComponent} from './view/admin/learn/cours-create/cours-create.component';
 import {SectionSimulateComponent} from './view/Prof/parcrs/section-simulate/section-simulate.component';
 import {ChooseViewComponent} from './view/Prof/parcrs/choose-view/choose-view.component';
-import { InscriptionAdminComponent } from './View/Admin/inscription-admin/inscription-admin.component';
+import {InscriptionAdminComponent} from './view/admin/inscription-admin/inscription-admin.component';
+
 
 
 
