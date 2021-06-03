@@ -22,6 +22,13 @@ export class ChooseViewComponent implements OnInit {
           this.selectessection = data;
         });
   }
+  get image(): string {
+    return this.service.image;
+  }
+
+  set image(value: string) {
+    this.service.image = value;
+  }
   public FindSectionOneByOne(cour: Cours) {
     this.selectedcours = cour;
     let i = 0;
@@ -29,9 +36,25 @@ export class ChooseViewComponent implements OnInit {
     this.service.affichelistSection().subscribe(
         data => {
           this.itemssection2 = data;
+          // tslint:disable-next-line:prefer-for-of
+          for (let n = 0 ; n < this.itemssection2.length ; n++){
+          for (let j = 0; j < 66 ; j++)
+          {
+            this.service.image2 += this.itemssection2[n].urlImage[j];
+          }
+          }
           // tslint:disable-next-line:no-shadowed-variable
         });
-    this.service.afficheOneSection().subscribe( data => { this.selectedsection = data; });
+    this.service.afficheOneSection().subscribe(
+        data => {
+          this.selectedsection = data;
+          for (let j = 0; j < 66 ; j++)
+          {
+            this.service.image += this.selectedsection.urlImage[j];
+          }
+          this.service.image += 'preview';
+          console.log(this.service.image);
+    });
   }
   set selectessection(value: Array<Section>) {
     this.service.selectessection = value;

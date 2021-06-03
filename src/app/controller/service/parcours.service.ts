@@ -52,8 +52,26 @@ export class ParcoursService {
   private _progress: number;
   private _a: number;
   private _timer;
+  private _image = '';
+  private _image2 = '';
   constructor(private http: HttpClient ) {  }
 
+
+  get image2(): string {
+    return this._image2;
+  }
+
+  set image2(value: string) {
+    this._image2 = value;
+  }
+
+  get image(): string {
+    return this._image;
+  }
+
+  set image(value: string) {
+    this._image = value;
+  }
 
   get selecteddparcours(): Parcours {
     if (this._selecteddparcours == null){

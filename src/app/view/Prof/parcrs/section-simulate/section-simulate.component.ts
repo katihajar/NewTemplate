@@ -3,6 +3,7 @@ import {Section} from '../../../../controller/Model/section.model';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
 import {Cours} from '../../../../controller/Model/cours.model';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-section-simulate',
@@ -12,9 +13,19 @@ import {Cours} from '../../../../controller/Model/cours.model';
 export class SectionSimulateComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
-  constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private service: ParcoursService ) { }
+  constructor(private messageService: MessageService, private sanitizer: DomSanitizer, private confirmationService: ConfirmationService, private service: ParcoursService ) { }
   value = 0;
+
+  get image(): string {
+    return this.service.image;
+  }
+
+  set image(value: string) {
+    this.service.image = value;
+  }
+
   ngOnInit(): void {
+
   }
   get progress(): number {
     return this.service.progress;
@@ -30,7 +41,14 @@ export class SectionSimulateComponent implements OnInit {
   set progress(value: number) {
     this.service.progress = value;
   }
-  PreviewsSection() {
+  NextSection() {
+    this.service.image = '';
+    for (let j = 0; j < 66 ; j++)
+    {
+      this.service.image += this.selectedsection.urlImage[j];
+    }
+    this.service.image += 'preview';
+    console.log(this.service.image );
     this.service.affichelistSection().subscribe(
         data => {
           this.itemssection2 = data;
@@ -42,10 +60,21 @@ export class SectionSimulateComponent implements OnInit {
     this.service.afficheOneSection2().subscribe( data => { this.selectedsection = data; });
     }else{
       this.selectedsection.numeroOrder = 6;
-      this.PreviewsSection();
+      this.NextSection();
     }
   }
-  NextSection() {
+  photoURL() {
+   return this.sanitizer.bypassSecurityTrustResourceUrl(this.service.image);
+  }
+
+  PreviousSection() {
+    this.service.image = '';
+    for (let j = 0; j < 66 ; j++)
+    {
+      this.service.image += this.selectedsection.urlImage[j];
+    }
+    this.service.image += 'preview';
+    console.log(this.service.image );
     this.service.affichelistSection().subscribe(
         data => {
           this.itemssection2 = data;
@@ -57,7 +86,7 @@ export class SectionSimulateComponent implements OnInit {
     this.service.afficheOneSection2().subscribe( data => { this.selectedsection = data; });
     }else{
       this.selectedsection.numeroOrder = 0;
-      this.NextSection();
+      this.PreviousSection();
     }
   }
   set selectedcours(value: Cours) {

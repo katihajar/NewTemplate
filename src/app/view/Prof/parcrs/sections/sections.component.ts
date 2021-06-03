@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
 import {Section} from '../../../../controller/Model/section.model';
+import {DomSanitizer} from '@angular/platform-browser';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class SectionsComponent implements OnInit {
 
   cols: any[];
   // tslint:disable-next-line:max-line-length
-  constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private service: ParcoursService ) { }
+  constructor(private messageService: MessageService, public sanitizer: DomSanitizer, private confirmationService: ConfirmationService, private service: ParcoursService ) { }
   ngOnInit(): void {
     this.initCol();
   }
@@ -54,5 +55,9 @@ export class SectionsComponent implements OnInit {
   // tslint:disable-next-line:adjacent-overload-signatures
   get selectedsection(): Section {
     return this.service.selectedsection;
+  }
+  photoURL() {
+
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.service.image2);
   }
 }

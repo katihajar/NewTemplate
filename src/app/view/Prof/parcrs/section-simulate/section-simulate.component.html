@@ -10,7 +10,8 @@
                         <div class="product-grid-item card">
                             <div class="product-grid-item-content" style="cursor: pointer">
                                 <div class="product-name" style="margin-bottom: 15px"><h1>{{this.selectedsection.libelle}}</h1></div>
-                                <img [src]="this.selectedsection.urlImage" [alt]="this.selectedsection.libelle"/>
+                                <iframe [src]='photoURL()' width="500" height="360" frameborder="0"
+                                        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                                 <div class="product-description"><h6>{{this.selectedsection.urlVideo}}</h6></div>
                                 <div ><h3 style="box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);">{{this.selectedsection.contenu}}</h3></div>
                                 <div class="product-description" style="margin-top: 4px">
@@ -52,7 +53,7 @@
 
 
 <div class="card-footer " style="margin-left: 500px" >
-    <button pButton pRipple type="button" label="Previews" class="p-button-rounded" (click)="NextSection()" ></button>
-    <button pButton pRipple type="button" label="Next" class="p-button-rounded" style="margin-left: 30px" (click)="PreviewsSection()" ></button>
+    <button pButton pRipple type="button" label="Previous" class="p-button-rounded" (click)="PreviousSection()" ></button>
+    <button pButton pRipple type="button" label="Next" class="p-button-rounded" style="margin-left: 30px" (click)="NextSection()" ></button>
    </div>
 </div>

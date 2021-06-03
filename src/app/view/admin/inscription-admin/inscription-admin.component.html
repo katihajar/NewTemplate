@@ -1,31 +1,31 @@
-<div class="card" style="background-color: lightcyan">
+<div class="card" >
     <h5>Inscription Admin</h5>
     <div class="p-fluid p-formgrid p-grid">
         <div class="p-field p-col-12 p-md-6">
             <label for="firstname6">Firstname</label>
-            <input id="firstname6" type="text" pInputText [(ngModel)]="selected.nom">
+            <input id="firstname6" type="text" pInputText >
         </div>
         <div class="p-field p-col-12 p-md-6">
             <label for="lastname6">Lastname</label>
-            <input id="lastname6" type="text" pInputText [(ngModel)]="selected.prenom">
+            <input id="lastname6" type="text" pInputText >
         </div>
         <div class="p-field p-col-12">
             <label for="address">Address</label>
-            <textarea id="address" type="text" rows="4" pInputTextarea [(ngModel)]="selected.addresse"></textarea>
+            <textarea id="address" type="text" rows="4" pInputTextarea ></textarea>
         </div>
 
         <div class="p-field p-col-12 p-md-6">
             <label for="integeronly">Number phone</label>
-            <p-inputNumber inputId="integeronly" id="integeronly" [(ngModel)]="selected.numero">
+            <p-inputNumber inputId="integeronly" id="integeronly" >
             </p-inputNumber>
         </div>
         <div class="p-field p-col-12 p-md-6">
             <label for="login">login</label>
-            <input id="login" type="text" pInputText [(ngModel)]="selected.login">
+            <input id="login" type="text" pInputText>
         </div>
         <div class="p-field p-col-12 p-md-6">
             <label for="Password">Password</label>
-            <input id="Password" type="text" pInputText [(ngModel)]="selected.password">
+            <input id="Password" type="text" pInputText>
         </div>
         <div class="card-footer" style="margin-left: 1200px;width: 200px">
             <p-button label="Submit" icon="pi pi-check" iconPos="right" (click)="save()"></p-button>
