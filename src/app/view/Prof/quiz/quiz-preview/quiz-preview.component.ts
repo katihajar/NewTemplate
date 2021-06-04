@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Question} from "../../../../controller/Model/question.model";
-import {Quiz} from "../../../../controller/Model/quiz.model";
-import {TypeDeQuestion} from "../../../../controller/Model/type-de-question.model";
-import {Reponse} from "../../../../controller/Model/reponse.model";
-import {QuizService} from "../../../../controller/service/quiz.service";
-import {Router} from "@angular/router";
+import {Question} from '../../../../controller/model/question.model';
+import {Quiz} from '../../../../controller/model/quiz.model';
+import {TypeDeQuestion} from '../../../../controller/model/type-de-question.model';
+import {Reponse} from '../../../../controller/model/reponse.model';
+import {QuizService} from '../../../../controller/service/quiz.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-quiz-preview',
@@ -13,8 +13,8 @@ import {Router} from "@angular/router";
 })
 export class QuizPreviewComponent implements OnInit {
 
-  i: number = 0;
-  value: number = 0;
+  i = 0;
+  value = 0;
   constructor(private  service: QuizService, private router: Router) { }
   get question(): Question {
     if (this.service.question == null){
@@ -132,6 +132,7 @@ export class QuizPreviewComponent implements OnInit {
     this.service.qnprogress++;
     this.value++;
     this.i++;
+    // tslint:disable-next-line:triple-equals
     if (this.service.qnprogress == this.service.questions.length) {
       document.getElementById('container').style.visibility = 'hidden';
       document.getElementById('mainCard').style.visibility = 'visible';
@@ -168,9 +169,10 @@ export class QuizPreviewComponent implements OnInit {
     // this.service.CorrectAnswer();
   }
   public getReponsesByQuestion(){
-    return this.service.getReponsesByQuestion()
+    return this.service.getReponsesByQuestion();
   }
   checked(e) {
+    // tslint:disable-next-line:triple-equals
     if (e.target.checked == true){
       this.service.correctAnswerCount++;
     }else {
@@ -181,10 +183,10 @@ export class QuizPreviewComponent implements OnInit {
     this.router.navigate(['/pages/quiz-create']);
   }
 
-  selectQuiz($event: Event ,i : number) {
+  selectQuiz($event: Event , i: number) {
     return this.service.selectQuiz(event , i);
   }
-  public finByQuizRef(quiz : Quiz) {
+  public finByQuizRef(quiz: Quiz) {
     return this.service.finByQuizRef(quiz);
   }
 

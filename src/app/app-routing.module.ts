@@ -46,7 +46,6 @@ import {SalaryComponent} from './view/Prof/parcrs/salary/salary.component';
 import {HomeComponent} from './view/Prof/home/home.component';
 import {InscriptionsComponent} from './view/Prof/inscriptions/inscriptions.component';
 import {EtudiantsComponent} from './view/Prof/etudiants/etudiants.component';
-import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.component';
 import {ScheduleComponent} from './view/Prof/schedule/schedule.component';
 import {QuizPreviewComponent} from './view/Prof/quiz/quiz-preview/quiz-preview.component';
 import {ClassRoomListComponent} from './view/Prof/Classes/profclasses/class-room-list/class-room-list.component';
@@ -66,6 +65,7 @@ import {InscriptionProfComponent} from './view/Prof/inscription-prof/inscription
 import {HomeTeacherComponent} from './view/Prof/home-teacher/home-teacher.component';
 import {RecommendationComponent} from './view/Prof/recommend/recommendation/recommendation.component';
 import {RecommendComponent} from './view/Prof/recommend/recommend.component';
+import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.component';
 
 
 

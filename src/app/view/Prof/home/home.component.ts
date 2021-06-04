@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {Cours} from '../../../controller/Model/cours.model';
-import {RecommendTeacher} from '../../../controller/Model/recommend-teacher.model';
-import {Prof} from '../../../controller/Model/prof.model';
+import {Cours} from '../../../controller/model/cours.model';
+import {RecommendTeacher} from '../../../controller/model/recommend-teacher.model';
+import {Prof} from '../../../controller/model/prof.model';
 import {RecommendTeacherService} from '../../../controller/service/recommend-teacher.service';
 import {ParcoursService} from '../../../controller/service/parcours.service';
 import {ConfirmationService, MessageService} from 'primeng/api';
-import {Etudiant} from '../../../controller/Model/etudiant.model';
+import {Etudiant} from '../../../controller/model/etudiant.model';
 import {ClassRoomService} from '../../../controller/service/class-room.service';
-import {SalaryVo} from '../../../controller/Model/salary-vo.model';
+import {SalaryVo} from '../../../controller/model/salary-vo.model';
 import {EtudiantService} from '../../../controller/service/etudiant.service';
 
 @Component({

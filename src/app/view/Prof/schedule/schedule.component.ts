@@ -1,12 +1,12 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import dayGridPlugin from "@fullcalendar/daygrid";
-import timeGridPlugin from "@fullcalendar/timegrid";
-import interactionPlugin from "@fullcalendar/interaction";
-import {FullCalendar} from "primeng/fullcalendar";
-import {ScheduleProf} from "../../../controller/Model/calendrier-prof.model";
-import {ScheduleService} from "../../../controller/service/schedule.service";
-import {ConfirmationService, MessageService} from "primeng/api";
-import {ScheduleVo} from "../../../controller/Model/schedule-vo.model";
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import {FullCalendar} from 'primeng/fullcalendar';
+import {ScheduleProf} from '../../../controller/model/calendrier-prof.model';
+import {ScheduleService} from '../../../controller/service/schedule.service';
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {ScheduleVo} from '../../../controller/model/schedule-vo.model';
 
 @Component({
   selector: 'app-schedule',
@@ -16,7 +16,7 @@ import {ScheduleVo} from "../../../controller/Model/schedule-vo.model";
 
 })
 export class ScheduleComponent implements OnInit {
-  constructor(private service: ScheduleService,private messageService: MessageService) {
+  constructor(private service: ScheduleService, private messageService: MessageService) {
   }
 
   get selected(): ScheduleProf {
@@ -116,6 +116,15 @@ export class ScheduleComponent implements OnInit {
   set itemsVo(value: Array<ScheduleVo>) {
     this.service.itemsVo = value;
   }
+  get selectedVo(): ScheduleVo {
+    return this.service.selectedVo;
+  }
+
+  set selectedVo(value: ScheduleVo) {
+    this.service.selectedVo = value;
+  }
+
+  @ViewChild('fc') fc: FullCalendar;
 
   ngOnInit() {
     this.service.findAll();
@@ -149,8 +158,6 @@ export class ScheduleComponent implements OnInit {
     };
   }
 
-  @ViewChild('fc') fc: FullCalendar;
-
 
 
 
@@ -160,13 +167,6 @@ export class ScheduleComponent implements OnInit {
 
   reset() {
     return this.service.reset();
-  }
-  get selectedVo(): ScheduleVo {
-    return this.service.selectedVo;
-  }
-
-  set selectedVo(value: ScheduleVo) {
-    this.service.selectedVo = value;
   }
   showBasicDialog() {
     this.displayBasic = true;
@@ -191,7 +191,7 @@ export class ScheduleComponent implements OnInit {
           summary: 'Successful',
           detail: 'Student Created',
           life: 3000
-        })
+        });
       });
       this.createDialog = false;
       this.selected = new ScheduleProf();

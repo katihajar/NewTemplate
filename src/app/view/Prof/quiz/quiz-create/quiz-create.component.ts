@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Quiz} from "../../../../controller/Model/quiz.model";
-import {Reponse} from "../../../../controller/Model/reponse.model";
-import {Question} from "../../../../controller/Model/question.model";
-import {TypeDeQuestion} from "../../../../controller/Model/type-de-question.model";
-import {QuizService} from "../../../../controller/service/quiz.service";
-import {ConfirmationService, MessageService} from "primeng/api";
-import {Router} from "@angular/router";
-import {FormGroup} from "@angular/forms";
+import {Quiz} from '../../../../controller/model/quiz.model';
+import {Reponse} from '../../../../controller/model/reponse.model';
+import {Question} from '../../../../controller/model/question.model';
+import {TypeDeQuestion} from '../../../../controller/model/type-de-question.model';
+import {QuizService} from '../../../../controller/service/quiz.service';
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-quiz-create',
@@ -16,7 +15,8 @@ import {FormGroup} from "@angular/forms";
 })
 export class QuizCreateComponent implements OnInit {
 
-    constructor(private service: QuizService,private messageService: MessageService,private confirmationService: ConfirmationService,private router: Router) { }
+    // tslint:disable-next-line:max-line-length
+    constructor(private service: QuizService, private messageService: MessageService, private confirmationService: ConfirmationService, private router: Router) { }
     cols: any[];
     get question(): Question {
         if (this.service.question == null){
@@ -152,7 +152,7 @@ export class QuizCreateComponent implements OnInit {
 
     public addFormule() {
      const question = {...this.question};
-        this.questions.push(question);
+     this.questions.push(question);
     }
 
     public save() {

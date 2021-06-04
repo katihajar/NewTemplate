@@ -1,6 +1,6 @@
 import {Etudiant} from './etudiant.model';
 import {Prof} from './prof.model';
-import {EtatInscription} from "./etat-inscription.model";
+import {EtatInscription} from './etat-inscription.model';
 
 export class ScheduleProf {
     public id: number;

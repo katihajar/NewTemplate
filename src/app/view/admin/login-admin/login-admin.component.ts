@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {LoginService} from '../../../controller/service/login.service';
-import {Prof} from '../../../controller/Model/prof.model';
-import {Admin} from '../../../controller/Model/admin.model';
-import {Etudiant} from '../../../controller/Model/etudiant.model';
+import {Prof} from '../../../controller/model/prof.model';
+import {Admin} from '../../../controller/model/admin.model';
+import {Etudiant} from '../../../controller/model/etudiant.model';
 
 @Component({
   selector: 'app-login-admin',
@@ -98,7 +98,7 @@ export class LoginAdminComponent implements OnInit {
             this.model = [
                   {label: 'Inscriptions List', icon: 'pi pi-fw pi-check-square', routerLink: ['/view/inscription']},
                   {label: 'Student List', icon: 'pi pi-fw pi-list', routerLink: ['/pages/etudiant']},
-                  {label: 'Quiz-Create', icon: 'pi pi-fw pi-book', routerLink: ['/view/quiz-create']},
+                  {label: 'Quiz-Create', icon: 'pi pi-fw pi-book', routerLink: ['/pages/quiz-create']},
                   {label: 'Manage Parcours', icon: 'pi pi-fw pi-table', routerLink: ['/pages/parcours']},
                   {label: 'FAQ ANSWER', icon: 'pi pi-fw pi-reply', routerLink: ['/pages/faq-admin']},
                   {label: 'CREATE NEWS', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/pages/news-admin']},

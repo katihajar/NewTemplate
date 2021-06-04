@@ -176,7 +176,6 @@ import {SalaryComponent} from './view/Prof/parcrs/salary/salary.component';
 import {SectionsComponent} from './view/Prof/parcrs/sections/sections.component';
 import {ParcrsComponent} from './view/Prof/parcrs/parcrs.component';
 import {EtudiantsComponent} from './view/Prof/etudiants/etudiants.component';
-import { QuizCreateComponent } from './view/Prof/quiz/quiz-create/quiz-create.component';
 import { QuizPreviewComponent } from './view/Prof/quiz/quiz-preview/quiz-preview.component';
 import { QuizConfigComponent } from './view/Prof/quiz/quiz-config/quiz-config.component';
 import { ScheduleComponent } from './view/Prof/schedule/schedule.component';
@@ -210,15 +209,10 @@ import {RecommendationComponent} from './view/Prof/recommend/recommendation/reco
 import {RecommendEditComponent} from './view/Prof/recommend/recommend-edit/recommend-edit.component';
 import {RecommendListComponent} from './view/Prof/recommend/recommend-list/recommend-list.component';
 import {RecommendViewComponent} from './view/Prof/recommend/recommend-view/recommend-view.component';
+import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.component';
 
 
 
-
-
-
-// @ts-ignore
-// @ts-ignore
-// @ts-ignore
 @NgModule({
     imports: [
         BrowserModule,
@@ -391,7 +385,6 @@ import {RecommendViewComponent} from './view/Prof/recommend/recommend-view/recom
         EtudiantEditComponent,
         InscriptionsComponent,
         ProfclassesComponent,
-        QuizCreateComponent,
         QuizPreviewComponent,
         QuizConfigComponent,
         EtudiantCoursesComponent,
@@ -424,6 +417,7 @@ import {RecommendViewComponent} from './view/Prof/recommend/recommend-view/recom
         RecommendEditComponent,
         RecommendListComponent,
         RecommendViewComponent,
+        QuizCreateComponent,
         InscriptionProfComponent
     ],
     providers: [
