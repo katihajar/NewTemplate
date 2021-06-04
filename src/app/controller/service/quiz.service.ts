@@ -15,12 +15,16 @@ import {ScheduleProf} from "../model/calendrier-prof.model";
     providedIn: 'root'
 })
 export class QuizService {
+
     private _qnprogress: number;
     private _correctAnswerCount: number;
     private _resultat: string;
     private _reponse: Reponse;
     private _selected: Quiz;
     private _viewDialog: boolean;
+    private _buildQuestion: any;
+
+
 
 
     private _timer;
@@ -28,13 +32,9 @@ export class QuizService {
     private _button: string;
     private _typeDeQuestion: TypeDeQuestion;
     private _reponses: Array<Reponse>;
-    private _typeQst: string;
-    private _questionsAll: Array<Question>;
     private _types: Array<TypeDeQuestion>;
     private _items: Array<Quiz>;
     private _question: Question;
-    private _selectedQuestion: Question;
-    private _selectedItemsRadio: Array<Reponse>;
     private _reponsesCorrect: Array<Reponse>;
     private _a: number;
     private _m: number;
@@ -54,6 +54,10 @@ export class QuizService {
     private _createDialog: boolean;
     private _configuration: QuizConfig;
     private _configurations: Array<QuizConfig>;
+    private _seconds: number;
+
+
+
 
 
     get configuration(): QuizConfig {
@@ -71,20 +75,19 @@ export class QuizService {
     set configurations(value: Array<QuizConfig>) {
         this._configurations = value;
     }
+    get buildQuestion(): any {
+        return this._buildQuestion;
+    }
 
+    set buildQuestion(value: any) {
+        this._buildQuestion = value;
+    }
     get resultat(): string {
         return this._resultat;
     }
 
     set resultat(value: string) {
         this._resultat = value;
-    }
-    get selectedQuestion(): Question {
-        return this._selectedQuestion;
-    }
-
-    set selectedQuestion(value: Question) {
-        this._selectedQuestion = value;
     }
     get createDialog(): boolean {
         return this._createDialog;
@@ -101,9 +104,7 @@ export class QuizService {
         this._viewDialog = value;
     }
     get type(): TypeDeQuestion {
-        if (this._typeDeQuestion == null) {
-            this._typeDeQuestion = new TypeDeQuestion();
-        }
+
         return this._typeDeQuestion;
     }
 
@@ -112,6 +113,7 @@ export class QuizService {
     }
 
     get reponse(): Reponse {
+
         return this._reponse;
     }
 
@@ -120,9 +122,7 @@ export class QuizService {
     }
 
     get reponses(): Array<Reponse> {
-        if (this._reponses == null) {
-            this._reponses = new Array<Reponse>();
-        }
+
         return this._reponses;
     }
 
@@ -131,6 +131,7 @@ export class QuizService {
     }
 
     get question(): Question {
+
         return this._question;
     }
 
@@ -139,9 +140,7 @@ export class QuizService {
     }
 
     get questions(): Array<Question> {
-        if (this._questions == null) {
-            this._questions = new Array<Question>();
-        }
+
         return this._questions;
     }
 
@@ -153,9 +152,7 @@ export class QuizService {
     }
 
     get types(): Array<TypeDeQuestion> {
-        if (this._types == null) {
-            this._types = new Array<TypeDeQuestion>();
-        }
+
         return this._types;
     }
 
@@ -164,6 +161,7 @@ export class QuizService {
     }
 
     get selected(): Quiz {
+
         return this._selected;
     }
 
@@ -171,18 +169,8 @@ export class QuizService {
         this._selected = value;
     }
 
-    get typeQst(): string {
-        return this._typeQst;
-    }
-
-    set typeQst(value: string) {
-        this._typeQst = value;
-    }
 
     get items(): Array<Quiz> {
-        if (this._items == null) {
-            this._items = new Array<Quiz>();
-        }
         return this._items;
     }
 
@@ -206,16 +194,7 @@ export class QuizService {
         this._k = value;
     }
 
-    get questionsAll(): Array<Question> {
-        if (this._questionsAll == null) {
-            this._questionsAll = new Array<Question>();
-        }
-        return this._questionsAll;
-    }
 
-    set questionsAll(value: Array<Question>) {
-        this._questionsAll = value;
-    }
 
     get reponsesCorrect(): Array<Reponse> {
         return this._reponsesCorrect;
@@ -225,13 +204,7 @@ export class QuizService {
         this._reponsesCorrect = value;
     }
 
-    get selectedItemsRadio(): Array<Reponse> {
-        return this._selectedItemsRadio;
-    }
 
-    set selectedItemsRadio(value: Array<Reponse>) {
-        this._selectedItemsRadio = value;
-    }
 
     get m(): number {
         return this._m;
@@ -308,6 +281,7 @@ export class QuizService {
         this._qnprogress = value;
     }
 
+
     get timer() {
         return this._timer;
     }
@@ -324,7 +298,6 @@ export class QuizService {
         this._seconds = value;
     }
 
-    private _seconds: number;
 
     set nbrRep(value: string) {
         this._nbrRep = value;
@@ -345,40 +318,8 @@ export class QuizService {
             }
         );
     }
-
-    saveConfig() {
-    }
     public getAnswers(id, choice) {
         this.reponses = choice;
-    }
-
-    public answer() {
-        this.CorrectAnswer();
-        this.button = 'Next';
-        document.getElementById('start').remove();
-        document.getElementById('question').style.visibility = 'visible';
-        document.getElementById('countdown').style.visibility = 'visible';
-        document.getElementById('progression').style.visibility = 'visible';
-        document.getElementById('file').style.visibility = 'visible';
-        document.getElementById('quiz').style.backgroundColor = 'white';
-        if (this.question.typeDeQuestion.ref == 't1') {
-            this.typeQst = 'radio';
-            document.getElementById('nbrRep').style.visibility = 'hidden';
-            document.getElementById('reponse-radio').style.visibility = 'visible';
-            document.getElementById('reponse-text').style.visibility = 'hidden';
-        } else if (this.question.typeDeQuestion.ref == 't2') {
-            this.typeQst = 'checkbox';
-            document.getElementById('reponse-radio').style.visibility = 'visible';
-            document.getElementById('reponse-text').style.visibility = 'hidden';
-            document.getElementById('nbrRep').style.visibility = 'visible';
-            this.nbrRep = 'multiple choice';
-        } else if (this.question.typeDeQuestion.ref == 't3') {
-            document.getElementById('nbrRep').style.visibility = 'hidden';
-            document.getElementById('reponse-radio').style.visibility = 'hidden';
-            document.getElementById('reponse-radio').style.height = '10px';
-            document.getElementById('reponse-text').style.visibility = 'visible';
-            document.getElementById('reponse-text').style.marginTop = '-200px';
-        }
     }
 
 
@@ -398,39 +339,26 @@ export class QuizService {
         return this.http.get<any>(this._url + this._urlReponse + '/');
     }
 
-
     public itemChecked(event: any) {
         if (event.target.checked) {
-            this.shuffle(this.reponses);
+            this.shuffle(this.question.reponses);
         }
     }
 
     public newType() {
         const x = document.getElementById('id-radio');
         const v = document.getElementById('id-checkbox');
-        if (this.question.typeDeQuestion.ref = 't1') {
+        if (this.question.typeDeQuestion.ref == 't1') {
             if (v.style.display === 'none') {
                 v.style.display = 'block';
             }
-            // tslint:disable-next-line:no-conditional-assignment
-        } else if (this.question.typeDeQuestion.ref = 't2') {
+        } else if (this.question.typeDeQuestion.ref == 't2') {
             if (x.style.display === 'none') {
                 x.style.display = 'block';
             }
         }
     }
 
-    public Next() {
-        this.a = 0;
-        for (this.n = 0; this.n < this.selectedItemsRadio.length; this.n = this.n + 1) {
-            for (this.m = 0; this.m < this.reponsesCorrect.length; this.m = this.m + 1) {
-                // tslint:disable-next-line:triple-equals
-                if (this.reponsesCorrect[this.m].ref == this.selectedItemsRadio[this.n].ref) {
-                    this.a = this.a + 1;
-                }
-            }
-        }
-    }
 
     public save(): Observable<number> {
         return this.http.post<number>(this._url + this._urlQuestion + '/', this.question);
@@ -450,13 +378,12 @@ export class QuizService {
         }
         return index;
     }
-
-
     public saveQuiz() {
         this.http.post<any>(this._url + this._urlQuiz + '/', this.selected).subscribe(
             data => {
                 if (data > 0) {
-                    this.items.push(this.cloneQuiz(this.selected));
+                    const cloneQuiz = JSON.parse(JSON.stringify(this.selected));
+                    this.items.push(cloneQuiz);
                 } else {
                     console.log('error quiz');
                 }
@@ -467,6 +394,7 @@ export class QuizService {
     validateForm() {
         // @ts-ignore
         const x = document.forms.myForm.fname.value;
+
         if (x == '' || x == null) {
             alert('Name must be filled out');
             return false;
@@ -474,64 +402,32 @@ export class QuizService {
     }
 
     public addReponse() {
-        this.question?.reponses.push(this.cloneRep(this.reponse))   &&  this.question.reponses.push(this.cloneRep(this.reponse));
+        const cloneReponse = JSON.parse(JSON.stringify(this.reponse));
+        this.question.reponses.push(cloneReponse);
         this.reponse = null;
     }
 
-    public questionType() {
-        if (this.question.typeDeQuestion.ref == 't1') {
-            this.typeQst = 'checkbox';
-            document.getElementById('id-checkbox').style.visibility = 'visible';
-            document.getElementById('id-radio').style.visibility = 'hidden';
-            document.getElementById('id-text').style.visibility = 'hidden';
-        } else if (this.question.typeDeQuestion.ref == 't2') {
-            this.typeQst = 'radio';
-            document.getElementById('id-checkbox').style.visibility = 'hidden';
-            document.getElementById('id-radio').style.visibility = 'visible';
-            document.getElementById('id-text').style.visibility = 'hidden';
-        } else if (this.question.typeDeQuestion.ref == 'C3') {
-            this.typeQst = 'text';
-            document.getElementById('id-checkbox').style.visibility = 'hidden';
-            document.getElementById('id-radio').style.visibility = 'hidden';
-            document.getElementById('id-text').style.visibility = 'visible';
-        }
-    }
-    public clone(question: Question) {
-        const myQuestion = new Question();
-        myQuestion.quiz = question.quiz;
-        myQuestion.id = question.id;
-        myQuestion.numero = question.numero;
-        myQuestion.ref = question.ref;
-        myQuestion.libelle = question.libelle;
-        myQuestion.typeDeQuestion = question.typeDeQuestion;
-        myQuestion.pointReponsefausse = question.pointReponsefausse;
-        myQuestion.pointReponseJuste = question.pointReponseJuste;
-        myQuestion.reponses = question.reponses;
-        return myQuestion;
-    }
 
-    public cloneQuiz(quiz: Quiz) {
-        const myQuiz = new Quiz();
-        myQuiz.id = quiz.id;
-        myQuiz.lib = quiz.lib;
-        myQuiz.numero = quiz.numero;
-        myQuiz.ref = quiz.ref;
-        myQuiz.dateDebut = quiz.dateDebut;
-        myQuiz.dateFin = quiz.dateFin;
-        myQuiz.seuilReussite = quiz.seuilReussite;
-        myQuiz.questions = quiz.questions;
-        return myQuiz;
-    }
 
-    public findRepByQuestion(question: Question) {
-        this.http.get<Array<Reponse>>(this._url + this._urlReponse + '/question/numero/' + question.numero).subscribe(
+
+    public findReponses() {
+        this.http.get<Array<Reponse>>(this._url + this._urlReponse + '/' ).subscribe(
             data => {
                 this.question.reponses = data;
             }, error1 => {
                 console.log('error loading reponses from questionRef');
             }
         );
+    } public findReponses1() {
+        this.http.get<Array<Reponse>>(this._url + this._urlReponse + '/' ).subscribe(
+            data => {
+                this.reponses = data;
+            }, error1 => {
+                console.log('error loading reponses from questionRef');
+            }
+        );
     }
+
 
     public getReponseByQuestion(question: Question): Observable<Array<Reponse>> {
         return this.http.get<Array<Reponse>>(this._url + this._urlReponse + '/question/numero/' + question.numero);
@@ -545,56 +441,21 @@ export class QuizService {
             }
         );
     }
-
-    public findByQuestionRef() {
+    public findByQuestionRef() : Observable<Array<Reponse>>{
         this.j = 1;
-        this.http.get<Array<Reponse>>('http://localhost:8036/learn/reponse/question/numero/' + this.j).subscribe(
-            data => {
-                this.reponses = data;
-                this.j = this.j + 1;
-                console.log(this.reponses);
-            }
-        );
+        return  this.http.get<Array<Reponse>>('http://localhost:8036/learn/reponse/question/numero/' + this.j);
     }
-    public getReponsesByQuestion(question: Question){
-        this.a = 1;
-    question && question.numero == this.a;
-        this.http.get<Array<Reponse>>(this._url + this._urlReponse + '/question/numero/' + question?.numero).subscribe(
+    public getReponsesByQuestion(){
+        this.question.numero = 1;
+        this.http.get<Array<Reponse>>(this._url + this._urlReponse + '/question/numero/' + this.question.numero).subscribe(
             data =>{
                 this.question.reponses = data;
             }
         );
     }
-
     public displayTime() {
         return Math.floor(this.seconds / 3600) + ' Hs  ' + Math.floor(this.seconds / 60) + '  :Min  ' + Math.floor(this.seconds % 60) + '  s';
     }
-
-    public answerNext() {
-        document.getElementById('question').style.visibility = 'visible';
-        // tslint:disable-next-line:triple-equals
-        if (this.question.typeDeQuestion.ref == 't1') {
-            this.typeQst = 'radio';
-            document.getElementById('nbrRep').style.visibility = 'hidden';
-            document.getElementById('reponse-radio').style.visibility = 'visible';
-            document.getElementById('reponse-text').style.visibility = 'hidden';
-            // tslint:disable-next-line:triple-equals
-        } else if (this.question.typeDeQuestion.ref == 't2') {
-            document.getElementById('nbrRep').style.visibility = 'visible';
-            this.typeQst = 'checkbox';
-            this.nbrRep = 'multiple choice';
-            document.getElementById('reponse-radio').style.visibility = 'visible';
-            document.getElementById('reponse-text').style.visibility = 'hidden';
-            // tslint:disable-next-line:triple-equals
-        } else if (this.typeQst == 't3') {
-            document.getElementById('nbrRep').style.visibility = 'hidden';
-            document.getElementById('reponse-radio').style.visibility = 'hidden';
-            document.getElementById('reponse-radio').style.height = '50px';
-            document.getElementById('reponse-text').style.visibility = 'visible';
-            this.typeQst = 'text';
-        }
-    }
-
     public findByNumeroNext() {
         this.i = this.i + 1;
         this.http.get<Question>('http://localhost:8036/learn/question/numero/' + this.i).subscribe(
@@ -604,13 +465,6 @@ export class QuizService {
         );
     }
 
-    public findQuizRef() {
-        this.http.get<Quiz>('http://localhost:8036/learn/quiz/ref/Q4').subscribe(
-            data => {
-                this.selected = data;
-            }
-        );
-    }
 
     public QuizChoose(quiz: Quiz) {
         this.http.get<Array<Question>>(this._url + this._urlQuestion + '/quiz/ref/' + quiz.ref).subscribe(
@@ -630,7 +484,6 @@ export class QuizService {
         this.http.get<Array<Quiz>>(this._url + this._urlQuiz + '/').subscribe(
             data => {
                 console.log(data);
-                // @ts-ignore
                 this.items = data;
             }, error1 => {
                 console.log('can\'t bring data from database');
@@ -640,16 +493,15 @@ export class QuizService {
     public getQuiz(): Observable<Array<Quiz>>{
         return this.http.get<Array<Quiz>>(this._url + this._urlQuiz + '/');
     }
-    public cloneRep(reponse: Reponse) {
-        let mycloneRep: Reponse;
-        mycloneRep = new Reponse();
-        mycloneRep.id = reponse.id;
-        mycloneRep.lib = reponse.lib;
-        mycloneRep.etatReponse = reponse.etatReponse;
-        mycloneRep.ref = reponse.ref;
-        // mycloneRep.question = reponse.question;
-        return mycloneRep;
+    public getQuizIndex(i:number){
+        return this.http.get<Array<Quiz>>(this._url + this._urlQuiz + '/').subscribe(
+            data =>{
+                this.items[i] = data[i];
+            }
+        );
     }
+
+
 
     findAll(): void {
         this.http.get<any>(this._url + this._urlQuestion + '/').subscribe(
@@ -661,14 +513,18 @@ export class QuizService {
         );
     }
 
+    findReponseIndex(){
+        this.http.get<Array<Reponse>>('http://localhost:8036/learn/reponse/question/numero/' + this.j).subscribe(
+            data => {
+                this.question.reponses = data;
+            }
+        );
+    }
     public addTable() {
         const x = document.getElementById('tableRep');
-        // @ts-ignore
         if (x.style.display === 'none') {
-            // @ts-ignore
             x.style.display = 'block';
         } else {
-            // @ts-ignore
             x.style.display = 'block';
         }
     }
@@ -676,7 +532,6 @@ export class QuizService {
     public choixSelected(): void {
         console.log(this.types);
         for (let i = 0; i < this.types.length; i++) {
-            // tslint:disable-next-line:triple-equals
             if (this.types[i].lib == this.question.typeDeQuestion.lib) {
                 // @ts-ignore
                 this.question.typeDeQuestion = this.clone(this.types[i]);
@@ -704,20 +559,6 @@ export class QuizService {
         this.reponse.etatReponse = 'Vrai';
     }
 
-    // tslint:disable-next-line:typedef
-    public TypeQuestion() {
-
-        if (this.question.typeDeQuestion.ref == 'C1') {
-            this.typeQst = 'checkbox';
-
-        } else if (this.question.typeDeQuestion.ref == 'C2') {
-            this.typeQst = 'radio';
-
-        } else if (this.question.typeDeQuestion.ref == 'C3') {
-            this.typeQst = 'text';
-        }
-    }
-
     checked(event: any) {
         if (event.target.checked) {
             this.reponse.etatReponse = 'true';
@@ -739,11 +580,7 @@ export class QuizService {
         var myDivClone = myDiv.cloneNode(true);
         document.body.appendChild(myDivClone);
     }
-    /* public addCard() {
-         const elem = document.getElementById('addCard');
-         const elemclone = elem.cloneNode(true);
-         elem.appendChild(elemclone);
-     }*/
+
     public deleteCard(index: number) {
         this.questions.splice(index, 1);
     }
@@ -752,6 +589,39 @@ export class QuizService {
         const reponse = this.reponse[index];
         this.question.reponses.splice(index, 1);
     }
+
+
+    ProgressBar(event: any) {
+        let p = document.getElementById('progressBar');
+        if (event.target.checked){
+            p.style.visibility = 'visible';
+        }else {
+            p && p.style.visibility == 'hidden';
+        }
+    }
+
+    selectQuiz(event: any , i : number) {
+        this.findQuiz();
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].lib == this.question.quiz.lib) {
+                this.question.quiz = {...this.items[i]};
+                console.log(this.question.quiz.lib);
+            }
+            if (event.target.checked){
+                this.findReponseIndex();
+                this.getQuizIndex(i);
+            }
+        }
+    }
+    public finByQuizRef(quiz : Quiz){
+        this.http.get<any>(this._url + this._urlQuestion + '/quiz/ref/' + quiz.ref).subscribe(
+            data => {
+                this.questions = data;
+                console.log(this.questions);
+            });
+
+    }
+
 
 }
 

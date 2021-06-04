@@ -1,9 +1,11 @@
 import {Etudiant} from './etudiant.model';
 import {Prof} from './prof.model';
+import {EtatInscription} from "./etat-inscription.model";
 
 export class ScheduleProf {
     public id: number;
     public ref: string;
+    public etat = new EtatInscription();
     public dateDebut: Date = new Date();
     public dateFin: Date = new Date();
     public etudiant = new Etudiant();

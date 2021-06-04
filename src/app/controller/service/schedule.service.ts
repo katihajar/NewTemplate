@@ -7,6 +7,8 @@ import {ScheduleVo} from "../Model/schedule-vo.model";
     providedIn: 'root'
 })
 export class ScheduleService {
+
+
     private _selected: ScheduleProf;
     private _items: Array<ScheduleProf>;
     private _selectedVo: ScheduleVo;
@@ -129,18 +131,13 @@ export class ScheduleService {
 
     public findAll() {
 
-        return this.http.get<any>('http://localhost:8036/learn/scheduleProf/').subscribe(data => {
-            this.items = data;
+        return this.http.get<any>('http://localhost:8036/learn/scheduleProf/vo/').subscribe(data => {
+            this.itemsVo = data;
+            console.log(this.itemsVo);
         });
     }
 
-    public findSchedule() {
-        return this.http.get<any>('http://localhost:8036/learn/scheduleProf/vo/').subscribe(
-            data => {
-                this.itemsVo = data;
-            }
-        );
-    }
+
 
     save() {
         this.eventDialog = false;
@@ -162,20 +159,9 @@ export class ScheduleService {
     public  addEvent(){
         return this.http.post<ScheduleProf>('http://localhost:8036/learn/scheduleProf/', this.selected);
     }
-    public clone(schedule: ScheduleProf){
-        const myClone= new ScheduleProf();
-        myClone.id = schedule.id;
-        myClone.ref = schedule.ref;
-        myClone.etudiant.nom = schedule.etudiant.nom;
-        myClone.dateDebut = schedule.dateDebut;
-        myClone.dateFin = schedule.dateFin;
-        myClone.etudiant.etat = schedule.etudiant.etat;
-        myClone.prof = schedule.prof;
-        return myClone;
-    }
 
-public getSelected(){
-    this.selected = new ScheduleProf();
-}
+
+
+
 
 }

@@ -179,7 +179,6 @@ import {ParcrsComponent} from './view/Prof/parcrs/parcrs.component';
 import {RecommendComponent} from './view/Prof/recommend/recommend.component';
 import {InscriptionComponent} from './view/admin/inscript/inscription/inscription.component';
 import {EtudiantsComponent} from './view/Prof/etudiants/etudiants.component';
-import { QuizCreateComponent } from './view/Prof/quiz/quiz-create/quiz-create.component';
 import { QuizPreviewComponent } from './view/Prof/quiz/quiz-preview/quiz-preview.component';
 import { QuizConfigComponent } from './view/Prof/quiz/quiz-config/quiz-config.component';
 import { ScheduleComponent } from './view/Prof/schedule/schedule.component';
@@ -193,7 +192,7 @@ import { NewsTeacherListComponent } from './view/teacher/news/news-teacher-list/
 import { NewsTeacherViewComponent } from './view/teacher/news/news-teacher-view/news-teacher-view.component';
 import { FaqListComponent } from './view/teacher/faq/faq-list/faq-list.component';
 import { FaqContactComponent } from './view/teacher/faq/faq-contact/faq-contact.component';
-import { CreateQuizComponent } from './view/Prof/quiz/create-quiz/create-quiz.component';
+import { QuizCreateComponent } from './view/Prof/quiz/quiz-create/quiz-create.component';
 
 
 
@@ -373,7 +372,6 @@ import { CreateQuizComponent } from './view/Prof/quiz/create-quiz/create-quiz.co
         InscriptionsComponent,
         InscriptionComponent,
         ProfclassesComponent,
-        QuizCreateComponent,
         QuizPreviewComponent,
         QuizConfigComponent,
         EtudiantCoursesComponent,
@@ -387,7 +385,7 @@ import { CreateQuizComponent } from './view/Prof/quiz/create-quiz/create-quiz.co
         NewsTeacherViewComponent,
         FaqListComponent,
         FaqContactComponent,
-        CreateQuizComponent,
+        QuizCreateComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

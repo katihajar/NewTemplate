@@ -11,7 +11,6 @@ import {QuizService} from "../../../../controller/service/quiz.service";
 })
 export class QuizConfigComponent implements OnInit {
 
-
   constructor(private service: QuizService, private messageService: MessageService) { }
 
   ngOnInit(): void {
@@ -41,14 +40,25 @@ export class QuizConfigComponent implements OnInit {
   set configurations(value: Array<QuizConfig>) {
     this.service.configurations = value;
   }
-
+  public itemChecked(event: any) {
+    if (event.target.checked) {
+      this.service.shuffle(this.service.question.reponses);
+    }
+  }
   saveConfig() {
-    this.configurations.push(this.configuration);
+    this.service.ProgressBar(event);
+    this.service.itemChecked(event);
+    this.configurations?.push(this.configuration);
     this.messageService.add({
       severity: 'success',
       summary: 'Successful',
       detail: 'Configuration Applieded',
       life: 3000
     });
+    this.createDialog = false;
+  }
+
+  ProgressBar($event: any) {
+    return this.service.ProgressBar(event);
   }
 }

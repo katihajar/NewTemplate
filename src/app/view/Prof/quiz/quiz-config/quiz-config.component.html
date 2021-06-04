@@ -2,11 +2,11 @@
     <ng-template pTemplate="content">
         <div class="p-field">
             <div class="p-field-checkbox">
-                <p-checkbox name="group1" ></p-checkbox>
+                <p-checkbox name="group1" (change)="ProgressBar($event)" ></p-checkbox>
                 <label>Afficher la barre de progression</label>
                 <br/>
-                <p-checkbox name="group1" ></p-checkbox>
-                <label>Trier les questions en mode aléatoire</label>
+                <p-checkbox name="group1" (change)="itemChecked($event)" ></p-checkbox>
+                <label>Trier les reponses en mode aléatoire</label>
             </div>
         </div>
         <p style="justify-content: space-between"></p>
@@ -43,6 +43,5 @@
         <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveConfig()"></button>
     </ng-template>
 </p-dialog>
-
 
 

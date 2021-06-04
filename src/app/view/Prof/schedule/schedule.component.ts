@@ -6,20 +6,23 @@ import {FullCalendar} from "primeng/fullcalendar";
 import {ScheduleProf} from "../../../controller/Model/calendrier-prof.model";
 import {ScheduleService} from "../../../controller/service/schedule.service";
 import {ConfirmationService, MessageService} from "primeng/api";
+import {ScheduleVo} from "../../../controller/Model/schedule-vo.model";
 
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.scss'],
   providers: [MessageService, ConfirmationService]
+
 })
 export class ScheduleComponent implements OnInit {
-
-
   constructor(private service: ScheduleService,private messageService: MessageService) {
   }
 
   get selected(): ScheduleProf {
+    if (this.service.selected == null){
+      this.service.selected = new ScheduleProf();
+    }
     return this.service.selected;
   }
 
@@ -28,6 +31,9 @@ export class ScheduleComponent implements OnInit {
   }
 
   get items(): Array<ScheduleProf> {
+    if (this.service.items == null){
+      this.service.items = new Array<ScheduleProf>();
+    }
     return this.service.items;
   }
 
@@ -103,10 +109,16 @@ export class ScheduleComponent implements OnInit {
   set clickedEvent(value: any) {
     this.service.clickedEvent = value;
   }
+  get itemsVo(): Array<ScheduleVo> {
+    return this.service.itemsVo;
+  }
+
+  set itemsVo(value: Array<ScheduleVo>) {
+    this.service.itemsVo = value;
+  }
 
   ngOnInit() {
-    //this.service.findAll();
-    this.service.findSchedule();
+    this.service.findAll();
     this.changedEvent = {title: '', etat: '', start: null, end: '', allDay: null};
     this.options = {
       plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
@@ -139,9 +151,8 @@ export class ScheduleComponent implements OnInit {
 
   @ViewChild('fc') fc: FullCalendar;
 
-  public getEvents1() {
-    return this.service.findAll();
-  }
+
+
 
   save() {
     return this.service.save();
@@ -150,12 +161,18 @@ export class ScheduleComponent implements OnInit {
   reset() {
     return this.service.reset();
   }
+  get selectedVo(): ScheduleVo {
+    return this.service.selectedVo;
+  }
 
+  set selectedVo(value: ScheduleVo) {
+    this.service.selectedVo = value;
+  }
   showBasicDialog() {
     this.displayBasic = true;
   }
   public openCreate() {
-
+    this.selected = new ScheduleProf();
     this.submitted = false;
     this.createDialog = true;
   }
@@ -167,7 +184,8 @@ export class ScheduleComponent implements OnInit {
     this.submitted = true;
     if (this.selected.ref.trim()) {
       this.service.addEvent().subscribe(data => {
-        this.items.push(this.service.clone(this.selected));
+        const cloneSchedules = JSON.parse(JSON.stringify(this.selected));
+        this.items.push(cloneSchedules);
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
