@@ -1,8 +1,8 @@
 /* tslint:disable:variable-name */
 import { Injectable } from '@angular/core';
 import {environment} from '../../../environments/environment';
-import {Prof} from '../Model/prof.model';
-import {CategorieProf} from '../Model/categorie-prof.model';
+import {Prof} from '../model/prof.model';
+import {CategorieProf} from '../model/categorie-prof.model';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 

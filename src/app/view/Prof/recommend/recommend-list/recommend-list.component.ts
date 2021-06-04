@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {RecommendTeacher} from '../../../../controller/Model/recommend-teacher.model';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {RecommendTeacherService} from '../../../../controller/service/recommend-teacher.service';
+import {RecommendTeacher} from '../../../../controller/Model/recommend-teacher.model';
 import {RecommendTeacherVo} from '../../../../controller/Model/recommend-teacher-vo.model';
+import {LoginService} from '../../../../controller/service/login.service';
+
 
 
 @Component({
@@ -13,10 +15,10 @@ import {RecommendTeacherVo} from '../../../../controller/Model/recommend-teacher
 export class RecommendListComponent implements OnInit {
   cols: any[];
   constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
-              private service: RecommendTeacherService) { }
+              private service: RecommendTeacherService, private serviceUser: LoginService) { }
 
   ngOnInit(): void {
-
+    this.selected.prof.id = this.serviceUser.prof.id;
     this.service.findAll().subscribe(data => this.items = data);
   }
   public edit(recommendTeacher: RecommendTeacher) {

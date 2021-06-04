@@ -1,7 +1,7 @@
 /* tslint:disable:variable-name */
 import { Injectable } from '@angular/core';
 
-import {Admin} from '../Model/admin.model';
+import {Admin} from '../model/admin.model';
 import {Observable} from 'rxjs';
 
 import {HttpClient} from '@angular/common/http';

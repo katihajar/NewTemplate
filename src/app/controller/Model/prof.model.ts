@@ -11,7 +11,6 @@ export class Prof {
   public password: string;
   public email: string;
   public ref: string;
-  public salary: number;
   public  classRoomList = new Array<ClassRoom>();
   public categorieProf = new CategorieProf();
   public recommendList = new Array<RecommendTeacher>();

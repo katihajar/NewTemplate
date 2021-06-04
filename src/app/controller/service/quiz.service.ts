@@ -2,12 +2,11 @@ import {Injectable} from '@angular/core';
 import {Reponse} from '../model/reponse.model';
 import {Question} from '../model/question.model';
 import {HttpClient} from '@angular/common/http';
-import {error} from '@angular/compiler/src/util';
 import {TypeDeQuestion} from '../model/type-de-question.model';
 import {Quiz} from '../model/quiz.model';
 import {Observable} from 'rxjs';
-import {QuizConfig} from "../model/quiz-config.model";
-import {ScheduleProf} from "../model/calendrier-prof.model";
+import {QuizConfig} from '../model/quiz-config.model';
+
 
 
 
@@ -571,7 +570,7 @@ public getReponsesByQuestion(question: Question){
         this.a = 1;
         question.numero = this.a;
         this.http.get<Array<Reponse>>(this._url + this._urlReponse + '/question/numero/' + question.numero).subscribe(
-            data =>{
+            data => {
                 this.question.reponses = data;
             }
         );
@@ -745,8 +744,8 @@ public getQuiz(): Observable<Array<Quiz>>{
         }
     }
     public addCard(){
-        var myDiv = document.getElementById('formCard');
-        var myDivClone = myDiv.cloneNode(true);
+        let myDiv = document.getElementById('formCard');
+        let myDivClone = myDiv.cloneNode(true);
         document.body.appendChild(myDivClone);
     }
    /* public addCard() {

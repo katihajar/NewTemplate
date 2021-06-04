@@ -1,13 +1,13 @@
 /* tslint:disable:variable-name */
 import { Injectable } from '@angular/core';
-import {ClassRoom} from '../Model/class-room.model';
-import {Prof} from '../Model/prof.model';
+import {ClassRoom} from '../model/class-room.model';
+import {Prof} from '../model/prof.model';
 import {HttpClient} from '@angular/common/http';
-import {EtudiantClassRoom} from '../Model/etudiant-class-room.model';
-import {QuizClassRoom} from '../Model/quiz-class-room.model';
+import {EtudiantClassRoom} from '../model/etudiant-class-room.model';
+import {QuizClassRoom} from '../model/quiz-class-room.model';
 import {Observable} from 'rxjs';
-import {CategorieProf} from '../Model/categorie-prof.model';
-import {SalaryVo} from '../Model/salary-vo.model';
+import {CategorieProf} from '../model/categorie-prof.model';
+import {SalaryVo} from '../model/salary-vo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -275,7 +275,7 @@ export class ClassRoomService {
 
   }
   public afficheClass(): Observable<Array<ClassRoom>> {
-   return  this.http.get<Array<ClassRoom>>('http://localhost:8036/learn/classRoom/Prof/id/15' );
+   return  this.http.get<Array<ClassRoom>>('http://localhost:8036/learn/classRoom/Prof/id/' + this.selectedprof.id );
   }
   public afficheEtudiant(): Observable<Array<EtudiantClassRoom>> {
   return   this.http.get<Array<EtudiantClassRoom>>('http://localhost:8036/learn/etudiant-classRoom/id/' + this.selectedclassRoom.id );
@@ -292,6 +292,6 @@ export class ClassRoomService {
   }
   public findSalaryByDate( mois, annee): Observable<Array<SalaryVo>> {
     // tslint:disable-next-line:max-line-length
-    return this.http.get<Array<SalaryVo> >('http://localhost:8036/learn/salary/mois/' + this + '/annee/' + annee );
+    return this.http.get<Array<SalaryVo> >('http://localhost:8036/learn/salary/mois/' + mois + '/annee/' + annee );
   }
 }

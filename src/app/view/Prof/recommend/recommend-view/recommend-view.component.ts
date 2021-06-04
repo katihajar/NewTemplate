@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {RecommendTeacherService} from '../../../../controller/service/recommend-teacher.service';
 import {RecommendTeacher} from '../../../../controller/Model/recommend-teacher.model';
@@ -11,8 +10,8 @@ import {RecommendTeacher} from '../../../../controller/Model/recommend-teacher.m
 })
 export class RecommendViewComponent implements OnInit {
 
-  constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
-              private service: RecommendTeacherService) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private service: RecommendTeacherService) { }
 
   ngOnInit(): void {
   }

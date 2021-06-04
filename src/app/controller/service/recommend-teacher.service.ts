@@ -2,11 +2,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { RecommendTeacher } from '../Model/recommend-teacher.model';
+import { RecommendTeacher } from '../model/recommend-teacher.model';
 import { Observable } from 'rxjs';
-import {Prof} from '../Model/prof.model';
-import {Etudiant} from '../Model/etudiant.model';
-import {RecommendTeacherVo} from '../Model/recommend-teacher-vo.model';
+import {Prof} from '../model/prof.model';
+import {Etudiant} from '../model/etudiant.model';
+import {RecommendTeacherVo} from '../model/recommend-teacher-vo.model';
 
 
 @Injectable({
@@ -14,7 +14,7 @@ import {RecommendTeacherVo} from '../Model/recommend-teacher-vo.model';
 })
 export class RecommendTeacherService {
   private url = environment.baseUrl + 'teacher/';
-  private _recommendTeacher: RecommendTeacher;
+  // private _recommendTeacher: RecommendTeacher;
   private _selected: RecommendTeacher;
   private _items: Array<RecommendTeacher>;
   private _itemsprof: Array<Prof>;
@@ -83,18 +83,6 @@ export class RecommendTeacherService {
   set itemsprof(value: Array<Prof>) {
     this._itemsprof = value;
   }
-
-  get recommendTeacher(): RecommendTeacher {
-    if (this._recommendTeacher == null){
-      this._recommendTeacher = new RecommendTeacher();
-    }
-    return this._recommendTeacher;
-  }
-
-  set recommendTeacher(value: RecommendTeacher) {
-    this._recommendTeacher = value;
-  }
-
   get selected(): RecommendTeacher {
     if (this._selected == null){
       this._selected = new RecommendTeacher();
@@ -189,7 +177,7 @@ export class RecommendTeacherService {
 
 
   public findAll(): Observable<Array<RecommendTeacher>> {
-    return this.http.get<Array<RecommendTeacher>>('http://localhost:8036/learn/teacher/');
+    return this.http.get<Array<RecommendTeacher>>('http://localhost:8036/learn/teacher/Prof/id/' + this.selected.prof.id);
   }
 
 

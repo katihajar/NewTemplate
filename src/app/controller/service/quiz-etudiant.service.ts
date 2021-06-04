@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
-import {QuizEtudiant} from '../Model/quiz-etudiant.model';
-import {Reponse} from '../Model/reponse.model';
+import {QuizEtudiant} from '../model/quiz-etudiant.model';
+import {Reponse} from '../model/reponse.model';
 import {HttpClient} from '@angular/common/http';
-import {ReponseEtudiant} from '../Model/reponse-etudiant.model';
-import {Question} from '../Model/question.model';
-import {Quiz} from '../Model/quiz.model';
-import {Etudiant} from '../Model/etudiant.model';
-import {TypeDeQuestion} from '../Model/type-de-question.model';
+import {ReponseEtudiant} from '../model/reponse-etudiant.model';
+import {Question} from '../model/question.model';
+import {Quiz} from '../model/quiz.model';
+import {Etudiant} from '../model/etudiant.model';
 
 @Injectable({
   providedIn: 'root'

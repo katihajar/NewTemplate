@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Prof} from '../Model/prof.model';
-import {Admin} from '../Model/admin.model';
-import {Etudiant} from '../Model/etudiant.model';
+import {Prof} from '../model/prof.model';
+import {Admin} from '../model/admin.model';
+import {Etudiant} from '../model/etudiant.model';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 

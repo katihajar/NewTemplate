@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Commande} from '../../../../controller/Model/commande.model';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {RecommendTeacherService} from '../../../../controller/service/recommend-teacher.service';
-import { RecommendTeacher } from 'src/app/controller/Model/recommend-teacher.model';
+import {RecommendTeacher} from '../../../../controller/Model/recommend-teacher.model';
 
 @Component({
   selector: 'app-recommend-edit',

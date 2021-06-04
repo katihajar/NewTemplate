@@ -14,6 +14,8 @@ export class AppComponent implements OnInit{
     topbarColor = 'layout-topbar-blue';
 
     inlineUser = false;
+    inlineUser2 = false;
+    inlineUser3 = false;
 
     isRTL = false;
 

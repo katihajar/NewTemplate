@@ -216,6 +216,9 @@ import {RecommendViewComponent} from './view/Prof/recommend/recommend-view/recom
 
 
 
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
 @NgModule({
     imports: [
         BrowserModule,

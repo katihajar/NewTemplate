@@ -230,5 +230,6 @@ export class AppMenuComponent implements OnInit {
 
     onMenuClick(event) {
         this.appMain.onMenuClick(event);
+        this.appMain.rightPanelMenuActive = false;
     }
 }

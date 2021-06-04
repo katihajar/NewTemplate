@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import {Parcours} from '../model/parcours.model';
 import { HttpClient } from '@angular/common/http';
 import {Cours} from '../model/cours.model';
-import {Section} from '../Model/section.model';
-import {CategorieSection} from '../Model/categorie-section.model';
-import {SuperCategorieSection} from '../Model/super-categorie-section.model';
-import {Centre} from '../Model/centre.model';
+import {Section} from '../model/section.model';
+import {CategorieSection} from '../model/categorie-section.model';
+import {SuperCategorieSection} from '../model/super-categorie-section.model';
+import {Centre} from '../model/centre.model';
 import {Observable} from 'rxjs';
 
 

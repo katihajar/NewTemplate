@@ -64,8 +64,8 @@ import {SectionSimulateComponent} from './view/Prof/parcrs/section-simulate/sect
 import {InscriptionAdminComponent} from './view/admin/inscription-admin/inscription-admin.component';
 import {InscriptionProfComponent} from './view/Prof/inscription-prof/inscription-prof.component';
 import {HomeTeacherComponent} from './view/Prof/home-teacher/home-teacher.component';
-import {RecommendComponent} from './view/Prof/recommend/recommend.component';
 import {RecommendationComponent} from './view/Prof/recommend/recommendation/recommendation.component';
+import {RecommendComponent} from './view/Prof/recommend/recommend.component';
 
 
 

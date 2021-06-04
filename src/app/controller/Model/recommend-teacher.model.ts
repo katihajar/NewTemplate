@@ -6,7 +6,7 @@ export class RecommendTeacher {
     public nombrevote: number;
     public nom: string;
     public prenom: string;
-    public Commentaire: string;
+    public commentaire: string;
     public login: string;
     public telephone: string;
     public prof = new Prof();

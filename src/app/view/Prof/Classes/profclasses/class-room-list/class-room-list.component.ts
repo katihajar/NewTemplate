@@ -5,6 +5,7 @@ import {ClassRoom} from '../../../../../controller/Model/class-room.model';
 import {EtudiantClassRoom} from '../../../../../controller/Model/etudiant-class-room.model';
 import {QuizClassRoom} from '../../../../../controller/Model/quiz-class-room.model';
 import {Prof} from '../../../../../controller/Model/prof.model';
+import {LoginService} from '../../../../../controller/service/login.service';
 
 
 
@@ -18,9 +19,10 @@ export class ClassRoomListComponent implements OnInit {
 
     cols: any[];
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
-                private service: ClassRoomService) {
+                private serviceUser: LoginService, private service: ClassRoomService) {
     }
     ngOnInit(): void {
+        this.selectedprof.id = this.serviceUser.prof.id;
         this.service.afficheClass().subscribe(data => this.itemsclassRoom = data);
     }
     private initCol() {
