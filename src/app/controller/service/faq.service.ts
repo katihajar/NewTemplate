@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Faq} from '../Model/faq.model';
-import {FaqType} from '../Model/faq-type.model';
-import {FaqProf} from '../Model/faq-prof.model';
+import {Faq} from '../model/faq.model';
+import {FaqType} from '../model/faq-type.model';
+import {FaqProf} from '../model/faq-prof.model';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 

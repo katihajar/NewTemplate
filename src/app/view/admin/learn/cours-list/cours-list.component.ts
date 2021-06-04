@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
-import {Cours} from '../../../../controller/Model/cours.model';
-import {Parcours} from '../../../../controller/Model/parcours.model';
 import {Section} from '../../../../controller/Model/section.model';
+import {Cours} from '../../../../controller/Model/cours.model';
 
 @Component({
   selector: 'app-cours-list',
@@ -19,9 +18,9 @@ export class CoursListComponent implements OnInit {
     this.initCol();
   }
   public openCreateCours() {
-    this.selectedcours = new Cours();
     this.submittedCours = false;
     this.createDialogCours = true;
+    this.selectedcours = new Cours();
   }
   // tslint:disable-next-line:adjacent-overload-signatures
   set submittedCours(value: boolean) {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Prof} from '../Model/prof.model';
-import {Admin} from '../Model/admin.model';
-import {Etudiant} from '../Model/etudiant.model';
+import {Prof} from '../model/prof.model';
+import {Admin} from '../model/admin.model';
+import {Etudiant} from '../model/etudiant.model';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
@@ -10,11 +10,21 @@ import {Observable} from 'rxjs';
 })
 export class LoginService {
 
+
   private url = 'http://localhost:8036/learn/';
   private _prof: Prof;
   private _admin: Admin;
   private _etudiant: Etudiant;
+  private _model: any[];
 
+
+  get model(): any[] {
+    return this._model;
+  }
+
+  set model(value: any[]) {
+    this._model = value;
+  }
 
   get prof(): Prof {
     return this._prof;

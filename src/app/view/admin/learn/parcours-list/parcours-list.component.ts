@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
-import {Parcours} from '../../../../controller/Model/parcours.model';
+
 import {Section} from '../../../../controller/Model/section.model';
 import {Cours} from '../../../../controller/Model/cours.model';
 import {Centre} from '../../../../controller/Model/centre.model';
 import {ConfirmationService, MessageService} from 'primeng/api';
+import {Parcours} from '../../../../controller/Model/parcours.model';
 
 
 
@@ -40,9 +41,10 @@ export class ParcoursListComponent implements OnInit {
     return this.service.submitted;
   }
   public openCreateParcours() {
-    this.selectedparcours = new Parcours();
+
     this.submitted = false;
     this.createDialog = true;
+    this.selecteddparcours = new Parcours();
   }
 
   public editParcours(parcour: Parcours) {
@@ -100,6 +102,12 @@ export class ParcoursListComponent implements OnInit {
   }
   set selectedparcours(value: Parcours) {
     this.service.selectedparcours = value;
+  }
+  get selecteddparcours(): Parcours {
+    return this.service.selecteddparcours;
+  }
+  set selecteddparcours(value: Parcours) {
+    this.service.selecteddparcours = value;
   }
   get itemscours(): Array<Cours> {
     return this.service.itemscours;
@@ -159,7 +167,8 @@ export class ParcoursListComponent implements OnInit {
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        this.service.deleteMultipleParcoursByid().subscribe(data => {
+        this.service.deleteMultipleParcoursByid().subscribe(
+            data => {
           this.service.deleteMultipleParcoursIndexById();
           this.selectesparcours = null;
           this.itemscours = null;

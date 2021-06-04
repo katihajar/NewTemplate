@@ -2,7 +2,7 @@
     <ng-template pTemplate="p-field">
         <div class="p-field">
             <label for="centre" > Parcours </label>
-            <select  class="btn btn-block btn-outline-light form-control" id="centre" style="background-color: lightblue" name="Parcours" (click)="findAllParcours()" [(ngModel)]="selectedcours.parcours.id" >
+            <select pInputText class="btn btn-block btn-outline-light form-control" id="centre" style="background-color: lightblue" name="Parcours" (click)="findAllParcours()" [(ngModel)]="selectedcours.parcours.id" >
                 <option  selected="selected" *ngFor="let c of itemsparcours"  [ngValue]="c.id"> {{c.libelle}}</option>
             </select>
             <small class="p-invalid" *ngIf="submittedCours && !selectedcours.parcours.libelle">parcours is required.</small>
@@ -15,14 +15,13 @@
         <div class="p-field">
             <label for="description">Description</label>
             <input type="text" pInputText id="description" [(ngModel)]="selectedcours.description" required autofocus />
-            <small class="p-invalid" *ngIf="submittedCours && !selectedcours.description">Description is required.</small>
         </div>
         <div class="p-field">
             <label for="image">Image </label>
             <input type="text" pInputText id="image" [(ngModel)]="selectedcours.image" required autofocus />
-            <small class="p-invalid" *ngIf="submittedCours && !selectedcours.image">Image is required.</small>
         </div>
     </ng-template>
+
 
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>

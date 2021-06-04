@@ -17,7 +17,7 @@ export class EtudiantCreateComponent implements OnInit {
   ngOnInit(): void {
   }
   public hideCreateDialog() {
-    this.createDialog = false;
+    this.createDialogEtud = false;
     this.submitted = false;
   }
   public save() {
@@ -32,7 +32,7 @@ export class EtudiantCreateComponent implements OnInit {
           life: 3000
         });
       });
-      this.createDialog = false;
+      this.createDialogEtud = false;
       this.selected = new Etudiant();
     }
   }
@@ -44,11 +44,11 @@ export class EtudiantCreateComponent implements OnInit {
     this.service.selected = value;
   }
 
-  get createDialog(): boolean {
+  get createDialogEtud(): boolean {
     return this.service.createDialog;
   }
 
-  set createDialog(value: boolean) {
+  set createDialogEtud(value: boolean) {
     this.service.createDialog = value;
   }
 

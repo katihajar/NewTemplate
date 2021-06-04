@@ -144,7 +144,7 @@ import {CommandesComponent} from './view/admin/commandes/commandes.component';
 import {CommandeListComponent} from './view/admin/commandes/commande-list/commande-list.component';
 import {CommandeViewComponent} from './view/admin/commandes/commande-view/commande-view.component';
 import {CommandeEditComponent} from './view/admin/commandes/commande-edit/commande-edit.component';
-import {ParcoursCreateComponent} from './view/admin/learn/parcours-create/parcours-create.component';
+
 import {ParcoursEditComponent} from './view/admin/learn/parcours-edit/parcours-edit.component';
 import {CoursListComponent} from './view/admin/learn/cours-list/cours-list.component';
 import {CoursEditComponent} from './view/admin/learn/cours-edit/cours-edit.component';
@@ -152,7 +152,6 @@ import {SectionListComponent} from './view/admin/learn/section-list/section-list
 import {SectionViewComponent} from './view/admin/learn/section-view/section-view.component';
 import {SectionEditComponent} from './view/admin/learn/section-edit/section-edit.component';
 import {LearnComponent} from './view/admin/learn/learn.component';
-import {CoursCreateComponent} from './view/admin/learn/cours-create/cours-create.component';
 import {ParcoursListComponent} from './view/admin/learn/parcours-list/parcours-list.component';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ProfListComponent} from './view/Prof/Classes/profclasses/prof-list/prof-list.component';
@@ -176,9 +175,8 @@ import {EdCoursesComponent} from './view/Prof/parcrs/ed-courses/ed-courses.compo
 import {SalaryComponent} from './view/Prof/parcrs/salary/salary.component';
 import {SectionsComponent} from './view/Prof/parcrs/sections/sections.component';
 import {ParcrsComponent} from './view/Prof/parcrs/parcrs.component';
-import {RecommendComponent} from './view/Prof/recommend/recommend.component';
-import {InscriptionComponent} from './view/admin/inscript/inscription/inscription.component';
 import {EtudiantsComponent} from './view/Prof/etudiants/etudiants.component';
+import { QuizCreateComponent } from './view/Prof/quiz/quiz-create/quiz-create.component';
 import { QuizPreviewComponent } from './view/Prof/quiz/quiz-preview/quiz-preview.component';
 import { QuizConfigComponent } from './view/Prof/quiz/quiz-config/quiz-config.component';
 import { ScheduleComponent } from './view/Prof/schedule/schedule.component';
@@ -192,10 +190,35 @@ import { NewsTeacherListComponent } from './view/teacher/news/news-teacher-list/
 import { NewsTeacherViewComponent } from './view/teacher/news/news-teacher-view/news-teacher-view.component';
 import { FaqListComponent } from './view/teacher/faq/faq-list/faq-list.component';
 import { FaqContactComponent } from './view/teacher/faq/faq-contact/faq-contact.component';
-import { QuizCreateComponent } from './view/Prof/quiz/quiz-create/quiz-create.component';
+import {LoginEtudiantComponent} from './view/etudiant/login-etudiant/login-etudiant.component';
+import {LoginProfComponent} from './view/teacher/login-prof/login-prof.component';
+import {LoginAdminComponent} from './view/admin/login-admin/login-admin.component';
+import { QuizEtudiantComponent } from './view/etudiant/quiz-etudiant/quiz-etudiant.component';
+import {SectionSimulateComponent} from './view/Prof/parcrs/section-simulate/section-simulate.component';
+import {ChooseViewComponent} from './view/Prof/parcrs/choose-view/choose-view.component';
+import {InscriptionAdminComponent} from './view/admin/inscription-admin/inscription-admin.component';
+import {ParcoursCreateComponent} from './view/admin/learn/parcours-create/parcours-create.component';
+import {CoursCreateComponent} from './view/admin/learn/cours-create/cours-create.component';
+import { InscriptionProfComponent } from './view/Prof/inscription-prof/inscription-prof.component';
+import {HomeTeacherComponent} from './view/Prof/home-teacher/home-teacher.component';
+import {TeacherRubComponent} from './view/Prof/home-teacher/teacher-rub/teacher-rub.component';
+import {ProfNewsComponent} from './view/Prof/home-teacher/prof-news/prof-news.component';
+import {NearestComponent} from './view/Prof/home-teacher/nearest/nearest.component';
+import {AjoutEtudiantComponent} from './view/Prof/home-teacher/ajout-etudiant/ajout-etudiant.component';
+import {RecommendComponent} from './view/Prof/recommend/recommend.component';
+import {RecommendationComponent} from './view/Prof/recommend/recommendation/recommendation.component';
+import {RecommendEditComponent} from './view/Prof/recommend/recommend-edit/recommend-edit.component';
+import {RecommendListComponent} from './view/Prof/recommend/recommend-list/recommend-list.component';
+import {RecommendViewComponent} from './view/Prof/recommend/recommend-view/recommend-view.component';
 
 
 
+
+
+
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
 @NgModule({
     imports: [
         BrowserModule,
@@ -336,10 +359,8 @@ import { QuizCreateComponent } from './view/Prof/quiz/quiz-create/quiz-create.co
         CommandeViewComponent,
         LearnComponent,
         ParcoursListComponent,
-        ParcoursCreateComponent,
         ParcoursEditComponent,
         CoursListComponent,
-        CoursCreateComponent,
         CoursEditComponent,
         SectionListComponent,
         SectionViewComponent,
@@ -358,7 +379,6 @@ import { QuizCreateComponent } from './view/Prof/quiz/quiz-create/quiz-create.co
         CategorieProfViewComponent,
         SectionsComponent,
         ParcrsComponent,
-        RecommendComponent,
         CoursesComponent,
         EdCoursesComponent,
         SalaryComponent,
@@ -370,8 +390,8 @@ import { QuizCreateComponent } from './view/Prof/quiz/quiz-create/quiz-create.co
         EtudiantListComponent,
         EtudiantEditComponent,
         InscriptionsComponent,
-        InscriptionComponent,
         ProfclassesComponent,
+        QuizCreateComponent,
         QuizPreviewComponent,
         QuizConfigComponent,
         EtudiantCoursesComponent,
@@ -385,7 +405,26 @@ import { QuizCreateComponent } from './view/Prof/quiz/quiz-create/quiz-create.co
         NewsTeacherViewComponent,
         FaqListComponent,
         FaqContactComponent,
-        QuizCreateComponent,
+        LoginEtudiantComponent,
+        LoginProfComponent,
+        LoginAdminComponent,
+        QuizEtudiantComponent,
+        ChooseViewComponent,
+        SectionSimulateComponent,
+        ParcoursCreateComponent,
+        CoursCreateComponent,
+        InscriptionAdminComponent,
+        HomeTeacherComponent,
+        TeacherRubComponent,
+        ProfNewsComponent,
+        NearestComponent,
+        AjoutEtudiantComponent,
+        RecommendComponent,
+        RecommendationComponent,
+        RecommendEditComponent,
+        RecommendListComponent,
+        RecommendViewComponent,
+        InscriptionProfComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

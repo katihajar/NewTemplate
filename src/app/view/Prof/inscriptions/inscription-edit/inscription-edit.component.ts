@@ -4,6 +4,11 @@ import {MessageService} from 'primeng/api';
 
 import {InscriptionService} from '../../../../controller/service/inscription.service';
 import {Inscription} from '../../../../controller/model/inscription.model';
+import {Parcours} from '../../../../controller/Model/parcours.model';
+import {Centre} from '../../../../controller/Model/centre.model';
+import {EtatInscription} from '../../../../controller/Model/etat-inscription.model';
+import {LoginProfComponent} from '../../../teacher/login-prof/login-prof.component';
+import {Prof} from '../../../../controller/Model/prof.model';
 
 @Component({
   selector: 'app-inscription-edit',
@@ -21,6 +26,28 @@ export class InscriptionEditComponent implements OnInit {
   }
   findAllEtat(): void {
     this.service.findAllEtat();
+  }
+  get parcoursList(): Array<Parcours> {
+    return this.service.parcoursList;
+  }
+
+  set parcoursList(value: Array<Parcours>) {
+    this.service.parcoursList = value;
+  }
+
+  get profList(): Array<Prof> {
+    return this.service.prof;
+  }
+
+  set profList(value: Array<Prof>) {
+    this.service.prof = value;
+  }
+  get etatinscriptionslist(): Array<EtatInscription> {
+    return this.service.etatinscriptionslist;
+  }
+
+  set etatinscriptionslist(value: Array<EtatInscription>) {
+    this.service.etatinscriptionslist = value;
   }
   public edit() {
     this.submitted = true;
@@ -46,11 +73,11 @@ export class InscriptionEditComponent implements OnInit {
     this.editDialog = false;
   }
   get selected(): Inscription {
-    return this.service.selected;
+    return this.service.inscription;
   }
 
   set selected(value: Inscription) {
-    this.service.selected = value;
+    this.service.inscription = value;
   }
 
   get editDialog(): boolean {
@@ -68,7 +95,6 @@ export class InscriptionEditComponent implements OnInit {
   set submitted(value: boolean) {
     this.service.submitted = value;
   }
-
   get items(): Array<Inscription> {
     return this.service.items;
   }
@@ -76,6 +102,7 @@ export class InscriptionEditComponent implements OnInit {
   set items(value: Array<Inscription>) {
     this.service.items = value;
   }
+
 
 
 }

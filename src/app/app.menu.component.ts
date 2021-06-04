@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { AppComponent } from './app.component';
 import { AppMainComponent } from './app.main.component';
+import {LoginService} from './controller/service/login.service';
+import {Prof} from './controller/Model/prof.model';
+import {Admin} from './controller/Model/admin.model';
+import {Etudiant} from './controller/Model/etudiant.model';
 
 @Component({
     selector: 'app-menu',
@@ -29,12 +33,48 @@ import { AppMainComponent } from './app.main.component';
 })
 export class AppMenuComponent implements OnInit {
 
-    model: any[];
+   // model: any[];
 
-    constructor(public app: AppComponent, public appMain: AppMainComponent) { }
+    constructor(public app: AppComponent, public appMain: AppMainComponent, private service: LoginService) { }
+
+    get model(): any[] {
+        return this.service.model;
+    }
+
+    set model(value: any[]) {
+        this.service.model = value;
+    }
+
+    get prof(): Prof {
+        return this.service.prof;
+    }
+
+    set prof(value: Prof) {
+        this.service.prof = value;
+    }
+
+    get admin(): Admin {
+        return this.service.admin;
+    }
+
+    set admin(value: Admin) {
+        this.service.admin = value;
+    }
+
+    get etudiant(): Etudiant {
+        return this.service.etudiant;
+    }
+
+    set etudiant(value: Etudiant) {
+        this.service.etudiant = value;
+    }
 
     ngOnInit() {
-        this.model = [
+
+        console.log(this.prof);
+        console.log(this.admin);
+        console.log(this.etudiant);
+        /*this.model = [
             {
                 label: 'Favorites', icon: 'pi pi-fw pi-home',
                 items: [
@@ -79,6 +119,7 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Pages', icon: 'pi pi-fw pi-copy', routerLink: ['/pages'],
                 items: [
+                    {label: 'Login', icon: 'pi pi-fw pi-sign-in', routerLink: ['/login'], target: '_blank'},
                     {label: 'Inscription', icon: 'pi pi-fw pi-pencil', routerLink: ['/view/inscription']},
                     {label: 'Etudiants', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/etudiant']},
                     {label: 'Recommend A teacher', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/recommend']},
@@ -97,23 +138,11 @@ export class AppMenuComponent implements OnInit {
                     {label: 'Calendar', icon: 'pi pi-fw pi-calendar-plus', routerLink: ['/pages/calendar']},
                     {label: 'Timeline', icon: 'pi pi-fw pi-calendar', routerLink: ['/pages/timeline']},
                     {label: 'Landing', icon: 'pi pi-fw pi-globe', url: 'assets/pages/landing.html', target: '_blank'},
-                    {label: 'Login', icon: 'pi pi-fw pi-sign-in', routerLink: ['/login'], target: '_blank'},
+
                     {label: 'Error', icon: 'pi pi-fw pi-exclamation-triangle', routerLink: ['/error'], target: '_blank'},
                     {label: '404', icon: 'pi pi-fw pi-times', routerLink: ['/404'], target: '_blank'},
                     {label: 'Access Denied', icon: 'pi pi-fw pi-ban', routerLink: ['/accessdenied'], target: '_blank'},
                     {label: 'Empty', icon: 'pi pi-fw pi-clone', routerLink: ['/pages/empty']},
-                ]
-            },
-            { label: 'Teachers', icon: 'pi pi-fw pi-chevron-circle-right', routerLink: ['/teacher'],
-                items: [
-                    {label: 'Recommend A teacher', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/recommend']},
-                    {label: 'Home', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/home']},
-                    {label: 'Salary', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/salary']},
-                    {label: 'Parcours', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/courses']},
-                    {label: 'Classes', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/classes']},
-                    {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/view/schedule']},
-                    {label: 'NEWS', icon: 'pi pi-fw pi-calendar-times', routerLink: ['pages/news-teacher']},
-                    {label: 'FAQ', icon: 'pi pi-fw pi-calendar-times', routerLink: ['pages/faq-teacher']},
                 ]
             },
             { label: 'Admin', icon: 'pi pi-fw pi-folder', routerLink: ['/admin'],
@@ -129,6 +158,16 @@ export class AppMenuComponent implements OnInit {
             { label: 'Student', icon: 'pi pi-fw pi-folder', routerLink: ['/student'],
                 items: [
                     {label: 'Courses ', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/etudiantcours']},
+                ]
+            },
+            { label: 'Teacher', icon: 'pi pi-fw pi-folder', routerLink: ['/teacher'],
+                items: [
+                    {label: 'Home', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/home']},
+                    {label: 'Recommend A teacher', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/recommend']},
+                    {label: 'Salary', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/salary']},
+                    {label: 'Parcours', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/parcours']},
+                    {label: 'Classes', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/classes']},
+                    {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/view/schedule']},
                 ]
             },
             {
@@ -184,10 +223,12 @@ export class AppMenuComponent implements OnInit {
                     }
                 ]
             }
-        ];
+        ];*/
+
     }
 
     onMenuClick(event) {
         this.appMain.onMenuClick(event);
+        this.appMain.rightPanelMenuActive = false;
     }
 }

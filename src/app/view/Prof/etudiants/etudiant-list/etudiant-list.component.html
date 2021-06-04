@@ -6,7 +6,8 @@
         <div class="card">
             <p-toolbar styleClass="p-mb-4">
                 <ng-template pTemplate="left">
-                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openCreate()"></button>
+                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openCreateEtud()"></button>
+
                     <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length"></button>
                 </ng-template>
 
@@ -24,9 +25,9 @@
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         <h5 class="p-m-0">Manage Etudiants</h5>
                         <span >
-                        <input pInputText type="text"  placeholder="Search..." [(ngModel)]="etudiantVo.nom  " style="margin-right: 10px;width: 400px"/>
-                        <input pInputText type="text"  placeholder="Search..." [(ngModel)]="etudiantVo.prenom  " style="margin-right: 10px;width: 400px"/>
-                        <input pInputText type="text"  placeholder="Search..." [(ngModel)]="etudiantVo.login  " style="margin-right: 10px;width: 300px"/>
+                        <input pInputText type="text"  placeholder="Search by nom" [(ngModel)]="etudiantVo.nom  " style="margin-right: 10px;width: 400px"/>
+                        <input pInputText type="text"  placeholder="Search by prenom" [(ngModel)]="etudiantVo.prenom  " style="margin-right: 10px;width: 400px"/>
+                        <input pInputText type="text"  placeholder="Search by login" [(ngModel)]="etudiantVo.login  " style="margin-right: 10px;width: 300px"/>
 
              <i class="pi pi-search"  (click)="findByCriteria()"></i>
 

@@ -59,10 +59,10 @@ export class EtudiantListComponent implements OnInit {
       }
     });
   }
-  public openCreate() {
+  public openCreateEtud() {
     this.selected = new Etudiant();
     this.submitted = false;
-    this.createDialog = true;
+    this.createDialogEtud = true;
   }
 
   public edit(etudiant: Etudiant) {
@@ -108,11 +108,11 @@ export class EtudiantListComponent implements OnInit {
     this.service.submitted = value;
   }
 
-  get createDialog(): boolean {
+  get createDialogEtud(): boolean {
     return this.service.createDialog;
   }
 
-  set createDialog(value: boolean) {
+  set createDialogEtud(value: boolean) {
     this.service.createDialog = value;
   }
 

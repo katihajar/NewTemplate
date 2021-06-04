@@ -43,11 +43,10 @@ import {SectionsComponent} from './view/Prof/parcrs/sections/sections.component'
 import {CoursesComponent} from './view/Prof/parcrs/courses/courses.component';
 import {EdCoursesComponent} from './view/Prof/parcrs/ed-courses/ed-courses.component';
 import {SalaryComponent} from './view/Prof/parcrs/salary/salary.component';
-import {InscriptionComponent} from './view/admin/inscript/inscription/inscription.component';
 import {HomeComponent} from './view/Prof/home/home.component';
-import {RecommendComponent} from './view/Prof/recommend/recommend.component';
 import {InscriptionsComponent} from './view/Prof/inscriptions/inscriptions.component';
 import {EtudiantsComponent} from './view/Prof/etudiants/etudiants.component';
+import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.component';
 import {ScheduleComponent} from './view/Prof/schedule/schedule.component';
 import {QuizPreviewComponent} from './view/Prof/quiz/quiz-preview/quiz-preview.component';
 import {ClassRoomListComponent} from './view/Prof/Classes/profclasses/class-room-list/class-room-list.component';
@@ -57,7 +56,18 @@ import {FaqAnswerComponent} from './view/admin/faq-admin/faq-answer/faq-answer.c
 import {NewsAdminListComponent} from './view/admin/news-admin/news-admin-list/news-admin-list.component';
 import {NewsTeacherListComponent} from './view/teacher/news/news-teacher-list/news-teacher-list.component';
 import {FaqListComponent} from './view/teacher/faq/faq-list/faq-list.component';
-import {QuizCreateComponent} from "./view/Prof/quiz/quiz-create/quiz-create.component";
+import {LoginAdminComponent} from './view/admin/login-admin/login-admin.component';
+import {LoginProfComponent} from './view/teacher/login-prof/login-prof.component';
+import {LoginEtudiantComponent} from './view/etudiant/login-etudiant/login-etudiant.component';
+import {QuizEtudiantComponent} from './view/etudiant/quiz-etudiant/quiz-etudiant.component';
+import {SectionSimulateComponent} from './view/Prof/parcrs/section-simulate/section-simulate.component';
+import {InscriptionAdminComponent} from './view/admin/inscription-admin/inscription-admin.component';
+import {InscriptionProfComponent} from './view/Prof/inscription-prof/inscription-prof.component';
+import {HomeTeacherComponent} from './view/Prof/home-teacher/home-teacher.component';
+import {RecommendationComponent} from './view/Prof/recommend/recommendation/recommendation.component';
+import {RecommendComponent} from './view/Prof/recommend/recommend.component';
+
+
 
 
 
@@ -72,10 +82,13 @@ import {QuizCreateComponent} from "./view/Prof/quiz/quiz-create/quiz-create.comp
                 children: [
                     {path: '', component: DashboardDemoComponent},
                     {path: 'pages/etudiant', component: EtudiantsComponent},
+                    {path: 'inscriptionAdmin', component: InscriptionAdminComponent},
+                    {path: 'inscriptionTeacher', component: InscriptionProfComponent},
                     {path: 'view/inscription', component: InscriptionsComponent},
-                    {path: 'pages/recommend', component: RecommendComponent},
+                    {path: 'view/recommendation', component: RecommendationComponent},
+                    {path: 'view/recommendat', component: RecommendComponent},
+                    {path: 'view/home-teacher', component: HomeTeacherComponent},
                     {path: 'pages/home', component: HomeComponent},
-                    {path: 'pages/Inscrit', component: InscriptionComponent},
                     {path: 'pages/commande', component: CommandesComponent},
                     {path: 'pages/parcours', component: LearnComponent},
                     {path: 'pages/classes', component: ClassRoomListComponent},
@@ -85,14 +98,19 @@ import {QuizCreateComponent} from "./view/Prof/quiz/quiz-create/quiz-create.comp
                     {path: 'pages/etudiantsections', component: EtudiantSectionsComponent},
                     {path: 'pages/cours', component: CoursesComponent},
                     {path: 'pages/sections', component: SectionsComponent},
+                    {path: 'pages/sectionsSimulate', component: SectionSimulateComponent},
                     {path: 'pages/faq-admin', component: FaqAnswerComponent},
                     {path: 'pages/news-admin', component: NewsAdminListComponent},
                     {path: 'pages/news-teacher', component: NewsTeacherListComponent},
                     {path: 'pages/faq-teacher', component: FaqListComponent},
+                    {path: 'pages/login-admin', component: LoginAdminComponent},
+                    {path: 'pages/login-prof', component: LoginProfComponent},
+                    {path: 'pages/login-etudiant', component: LoginEtudiantComponent},
+                    {path: 'pages/quiz-etudiant', component: QuizEtudiantComponent},
                     {path: 'pages/quiz-create', component: QuizCreateComponent},
                     {path: 'view/quiz-preview', component: QuizPreviewComponent},
                     {path: 'view/schedule', component: ScheduleComponent},
-                    {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
+                    {path: 'inscriptionEtudiant', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
                     {path: 'uikit/input', component: InputDemoComponent},

@@ -4,6 +4,7 @@ export class Section {
   public  id: number ;
   public  url: number ;
   public  content: number ;
+  public  numeroOrder: number ;
   public code: string;
   public libelle: string;
   public contenu: string;

@@ -2,7 +2,7 @@
     <ng-template pTemplate="p-field">
         <div class="p-field">
             <label for="centre" > Center </label>
-            <select type="text" class="btn btn-block btn-outline-light form-control" id="centre" style="background-color: lightblue" name="Parcours" (click)="findAllCentre()" [(ngModel)]="selectedparcours.centre.ref" >
+            <select type="text" pInputText class="btn btn-block btn-outline-light form-control" id="centre" style="background-color: lightblue" name="Parcours" (click)="findAllCentre()" [(ngModel)]="selectedparcours.centre.ref" >
                 <option  selected="selected" *ngFor="let c of itemscentre"  [ngValue]="c.ref"> {{c.libelle}}</option>
             </select>
             <small class="p-invalid" *ngIf="submitted && !selectedparcours.centre.libelle">centre is required.</small>
@@ -15,12 +15,10 @@
         <div class="p-field">
             <label for="libelle">Description</label>
             <input type="text" pInputText id="libelle" [(ngModel)]="selectedparcours.description" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !selectedparcours.description">ref is required.</small>
         </div>
         <div class="p-field">
             <label for="nombreCours">Number of Courses</label>
             <input type="text" pInputText id="nombreCours" [(ngModel)]="selectedparcours.nombreCours" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !selectedparcours.nombreCours">total is required.</small>
         </div>
 
     </ng-template>

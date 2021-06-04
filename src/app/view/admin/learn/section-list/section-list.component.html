@@ -14,10 +14,8 @@
             </p-toolbar>
 
             <p-table #dt [value]="itemssection" [columns]="cols" [rows]="4" [paginator]="true" [globalFilterFields]="['libelle','categorieSection','url','content']"
-                     [(selection)]="selectessection" [rowHover]="true" dataKey="id"
-                     styleClass="p-datatable-customers"
-                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
-                <ng-template pTemplate="caption">
+                     [(selection)]="selectessection" [rowHover]="true" dataKey="id">
+                     <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         <h5 class="p-m-0">Manage Section</h5>
                     </div>

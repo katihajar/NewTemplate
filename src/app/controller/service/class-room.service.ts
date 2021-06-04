@@ -1,11 +1,13 @@
+/* tslint:disable:variable-name */
 import { Injectable } from '@angular/core';
-import {ClassRoom} from '../Model/class-room.model';
-import {Prof} from '../Model/prof.model';
+import {ClassRoom} from '../model/class-room.model';
+import {Prof} from '../model/prof.model';
 import {HttpClient} from '@angular/common/http';
-import {EtudiantClassRoom} from '../Model/etudiant-class-room.model';
-import {QuizClassRoom} from '../Model/quiz-class-room.model';
+import {EtudiantClassRoom} from '../model/etudiant-class-room.model';
+import {QuizClassRoom} from '../model/quiz-class-room.model';
 import {Observable} from 'rxjs';
-import {CategorieProf} from '../Model/categorie-prof.model';
+import {CategorieProf} from '../model/categorie-prof.model';
+import {SalaryVo} from '../model/salary-vo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +16,16 @@ export class ClassRoomService {
 
   constructor(private http: HttpClient) { }
   private _selectedclassRoom: ClassRoom;
+  private _selectedsalaryVo: SalaryVo;
   private _selectedcategorieProf: CategorieProf;
   private _selectedetudiantClassRoom: EtudiantClassRoom;
   private _selectedquizClassRoom: QuizClassRoom;
   private _selectedprof: Prof;
   private _itemsclassRoom: Array<ClassRoom>;
+  private _itemssalaryVo: Array<SalaryVo>;
   private _itemscategorieProf: Array<CategorieProf>;
   private _selectesclassRoom: Array<ClassRoom>;
+  private _selectessalaryVo: Array<SalaryVo>;
   private _selectescategorieProf: Array<CategorieProf>;
   private _itemsprof: Array<Prof>;
   private _selectesprof: Array<Prof>;
@@ -34,7 +39,43 @@ export class ClassRoomService {
   private _viewDialogCategorie: boolean;
 
 
+  get selectedsalaryVo(): SalaryVo {
+    if (this._selectedsalaryVo == null){
+      this._selectedsalaryVo = new SalaryVo();
+    }
+    return this._selectedsalaryVo;
+  }
+
+  set selectedsalaryVo(value: SalaryVo) {
+    this._selectedsalaryVo = value;
+  }
+
+  get itemssalaryVo(): Array<SalaryVo> {
+    if (this._itemssalaryVo == null){
+      this._itemssalaryVo = new Array<SalaryVo>();
+    }
+    return this._itemssalaryVo;
+  }
+
+  set itemssalaryVo(value: Array<SalaryVo>) {
+    this._itemssalaryVo = value;
+  }
+
+  get selectessalaryVo(): Array<SalaryVo> {
+    if (this._selectessalaryVo == null){
+      this._selectessalaryVo = new Array<SalaryVo>();
+    }
+    return this._selectessalaryVo;
+  }
+
+  set selectessalaryVo(value: Array<SalaryVo>) {
+    this._selectessalaryVo = value;
+  }
+
   get selectedclassRoom(): ClassRoom {
+    if (this._selectedclassRoom == null){
+      this._selectedclassRoom = new ClassRoom();
+    }
     return this._selectedclassRoom;
   }
 
@@ -43,6 +84,9 @@ export class ClassRoomService {
   }
 
   get selectedcategorieProf(): CategorieProf {
+    if (this._selectedcategorieProf == null){
+      this._selectedcategorieProf = new CategorieProf();
+    }
     return this._selectedcategorieProf;
   }
 
@@ -51,6 +95,9 @@ export class ClassRoomService {
   }
 
   get selectedetudiantClassRoom(): EtudiantClassRoom {
+    if (this._selectedetudiantClassRoom == null){
+      this._selectedetudiantClassRoom = new EtudiantClassRoom();
+    }
     return this._selectedetudiantClassRoom;
   }
 
@@ -59,6 +106,9 @@ export class ClassRoomService {
   }
 
   get selectedquizClassRoom(): QuizClassRoom {
+    if (this._selectedquizClassRoom == null){
+      this._selectedquizClassRoom = new QuizClassRoom();
+    }
     return this._selectedquizClassRoom;
   }
 
@@ -67,6 +117,9 @@ export class ClassRoomService {
   }
 
   get selectedprof(): Prof {
+    if (this._selectedprof == null){
+      this._selectedprof = new Prof();
+    }
     return this._selectedprof;
   }
 
@@ -75,6 +128,9 @@ export class ClassRoomService {
   }
 
   get itemsclassRoom(): Array<ClassRoom> {
+    if (this._itemsclassRoom == null){
+      this._itemsclassRoom = new Array<ClassRoom>();
+    }
     return this._itemsclassRoom;
   }
 
@@ -83,6 +139,9 @@ export class ClassRoomService {
   }
 
   get itemscategorieProf(): Array<CategorieProf> {
+    if (this._itemscategorieProf == null){
+      this._itemscategorieProf = new Array<CategorieProf>();
+    }
     return this._itemscategorieProf;
   }
 
@@ -91,6 +150,9 @@ export class ClassRoomService {
   }
 
   get selectesclassRoom(): Array<ClassRoom> {
+    if (this._selectesclassRoom == null){
+      this._selectesclassRoom = new Array<ClassRoom>();
+    }
     return this._selectesclassRoom;
   }
 
@@ -99,6 +161,9 @@ export class ClassRoomService {
   }
 
   get selectescategorieProf(): Array<CategorieProf> {
+    if (this._selectescategorieProf == null){
+      this._selectescategorieProf = new Array<CategorieProf>();
+    }
     return this._selectescategorieProf;
   }
 
@@ -107,6 +172,9 @@ export class ClassRoomService {
   }
 
   get itemsprof(): Array<Prof> {
+    if (this._itemsprof == null){
+      this._itemsprof = new Array<Prof>();
+    }
     return this._itemsprof;
   }
 
@@ -115,6 +183,9 @@ export class ClassRoomService {
   }
 
   get selectesprof(): Array<Prof> {
+    if (this._selectesprof == null){
+      this._selectesprof = new Array<Prof>();
+    }
     return this._selectesprof;
   }
 
@@ -123,6 +194,9 @@ export class ClassRoomService {
   }
 
   get itemsetudiantClassRoom(): Array<EtudiantClassRoom> {
+    if (this._itemsetudiantClassRoom == null){
+      this._itemsetudiantClassRoom = new Array<EtudiantClassRoom>();
+    }
     return this._itemsetudiantClassRoom;
   }
 
@@ -131,6 +205,9 @@ export class ClassRoomService {
   }
 
   get selectesetudiantClassRoom(): Array<EtudiantClassRoom> {
+    if (this._selectesetudiantClassRoom == null){
+      this._selectesetudiantClassRoom = new Array<EtudiantClassRoom>();
+    }
     return this._selectesetudiantClassRoom;
   }
 
@@ -139,6 +216,9 @@ export class ClassRoomService {
   }
 
   get itemsquizClassRoom(): Array<QuizClassRoom> {
+    if (this._itemsquizClassRoom == null){
+      this._itemsquizClassRoom = new Array<QuizClassRoom>();
+    }
     return this._itemsquizClassRoom;
   }
 
@@ -147,6 +227,9 @@ export class ClassRoomService {
   }
 
   get selectesquizClassRoom(): Array<QuizClassRoom> {
+    if (this._selectesquizClassRoom == null){
+      this._selectesquizClassRoom = new Array<QuizClassRoom>();
+    }
     return this._selectesquizClassRoom;
   }
 
@@ -185,23 +268,30 @@ export class ClassRoomService {
     this._viewDialogQuiz = value;
   }
   public findAllProf(): Observable<Array<Prof>> {
-   return  this.http.get< Array<Prof> >('http://localhost:8036/centre/prof/');
+   return  this.http.get< Array<Prof> >('http://localhost:8036/learn/prof/');
   }
   public findAllClass(): Observable<Array<ClassRoom>> {
-    return this.http.get< Array<ClassRoom> >('http://localhost:8036/E-learning/classRoom/');
+    return this.http.get< Array<ClassRoom> >('http://localhost:8036/learn/classRoom/');
 
   }
   public afficheClass(): Observable<Array<ClassRoom>> {
-   return  this.http.get<Array<ClassRoom>>('http://localhost:8036/E-learning/classRoom/Prof/id/15' );
+   return  this.http.get<Array<ClassRoom>>('http://localhost:8036/learn/classRoom/Prof/id/' + this.selectedprof.id );
   }
   public afficheEtudiant(): Observable<Array<EtudiantClassRoom>> {
-  return   this.http.get<Array<EtudiantClassRoom>>('http://localhost:8036/E-learning/etudiant-classRoom/id/' + this.selectedclassRoom.id );
+  return   this.http.get<Array<EtudiantClassRoom>>('http://localhost:8036/learn/etudiant-classRoom/id/' + this.selectedclassRoom.id );
   }
   public afficheQuiz(): Observable<Array<QuizClassRoom>> {
-   return  this.http.get<Array<QuizClassRoom>>('http://localhost:8036/E-learning/quiz-classRoom/id/' + this.selectedclassRoom.id );
+   return  this.http.get<Array<QuizClassRoom>>('http://localhost:8036/learn/quiz-classRoom/id/' + this.selectedclassRoom.id );
   }
   public findAllCategorieProf(): Observable<Array<CategorieProf>> {
-    return this.http.get< Array<CategorieProf> >('http://localhost:8036/E-learning/categorieprof/');
+    return this.http.get< Array<CategorieProf> >('http://localhost:8036/learn/categorieprof/');
 
+  }
+  public findSalary(): Observable<Array<SalaryVo>> {
+    return this.http.get<Array<SalaryVo> >('http://localhost:8036/learn/salary/prof/id/15');
+  }
+  public findSalaryByDate( mois, annee): Observable<Array<SalaryVo>> {
+    // tslint:disable-next-line:max-line-length
+    return this.http.get<Array<SalaryVo> >('http://localhost:8036/learn/salary/mois/' + mois + '/annee/' + annee );
   }
 }

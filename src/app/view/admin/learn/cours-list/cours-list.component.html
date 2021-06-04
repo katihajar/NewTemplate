@@ -5,7 +5,7 @@
             <p-toolbar styleClass="p-mb-4">
                 <ng-template pTemplate="left">
                     <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openCreateCours()" ></button>
-                    <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteMultiple()" [disabled]="!itemscoursList || !itemscoursList.length"></button>
+                    <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteMultiple()" [disabled]="!itemscours || !itemscours.length"></button>
                 </ng-template>
 
                 <ng-template pTemplate="right">
@@ -15,10 +15,8 @@
             </p-toolbar>
 
             <p-table #dt [value]="itemscours" [columns]="cols" [rows]="4" [paginator]="true" [globalFilterFields]="['libelle','nombreLinkFinalise','nombreSectionFinalise']"
-                     [(selection)]="selectescours" [rowHover]="true" dataKey="id"
-                     styleClass="p-datatable-customers"
-                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
-                <ng-template pTemplate="caption">
+                     [(selection)]="selectescours" [rowHover]="true" dataKey="id">
+                   <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         <h5 class="p-m-0">Manage Cours</h5>
                     </div>
@@ -50,7 +48,7 @@
                 </ng-template>
                 <ng-template pTemplate="summary">
                     <div class="p-d-flex p-ai-center p-jc-between">
-                        In total there are {{itemscoursList ? itemscoursList.length : 0 }} items.
+                        In total there are {{itemscours ? itemscours.length : 0 }} items.
                     </div>
                 </ng-template>
             </p-table>
@@ -58,7 +56,6 @@
 
         <app-cours-create></app-cours-create>
         <app-cours-edit></app-cours-edit>
-
         <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
     </div>
 </div>

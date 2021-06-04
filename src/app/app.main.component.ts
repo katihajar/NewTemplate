@@ -10,10 +10,12 @@ import {AppComponent} from './app.component';
 export class AppMainComponent {
 
     overlayMenuActive: boolean;
+    overlayMenuActive2: boolean;
 
     staticMenuDesktopInactive: boolean;
 
     staticMenuMobileActive: boolean;
+    staticMenuMobileActive2: boolean;
 
     layoutMenuScroller: HTMLDivElement;
 
@@ -22,6 +24,7 @@ export class AppMainComponent {
     userMenuClick: boolean;
 
     notificationMenuClick: boolean;
+    notificationMenuClick2: boolean;
 
     rightMenuClick: boolean;
 
@@ -32,6 +35,8 @@ export class AppMainComponent {
     topbarUserMenuActive: boolean;
 
     topbarNotificationMenuActive: boolean;
+    topbarNotificationMenuActive2: boolean;
+    topbarNotificationMenuActive3: boolean;
 
     rightPanelMenuActive: boolean;
 
@@ -53,7 +58,9 @@ export class AppMainComponent {
         if (!this.notificationMenuClick) {
             this.topbarNotificationMenuActive = false;
         }
-
+        if (!this.notificationMenuClick2) {
+            this.topbarNotificationMenuActive2 = false;
+        }
         if (!this.rightMenuClick) {
             this.rightPanelMenuActive = false;
         }
@@ -83,6 +90,7 @@ export class AppMainComponent {
         this.userMenuClick = false;
         this.rightMenuClick = false;
         this.notificationMenuClick = false;
+        this.notificationMenuClick2 = false;
         this.menuClick = false;
         this.profileClick = false;
     }
@@ -124,7 +132,14 @@ export class AppMainComponent {
 
         event.preventDefault();
     }
+    onTopbarNotificationMenuButtonClick2(event) {
+        this.notificationMenuClick2 = true;
+        this.topbarNotificationMenuActive2 = !this.topbarNotificationMenuActive2;
 
+        this.hideOverlayMenu2();
+
+        event.preventDefault();
+    }
     onTopbarNotificationMenuButtonClick(event) {
         this.notificationMenuClick = true;
         this.topbarNotificationMenuActive = !this.topbarNotificationMenuActive;
@@ -194,7 +209,10 @@ export class AppMainComponent {
         this.overlayMenuActive = false;
         this.staticMenuMobileActive = false;
     }
-
+    hideOverlayMenu2() {
+        this.overlayMenuActive2 = false;
+        this.staticMenuMobileActive2 = false;
+    }
     blockBodyScroll(): void {
         if (document.body.classList) {
             document.body.classList.add('blocked-scroll');

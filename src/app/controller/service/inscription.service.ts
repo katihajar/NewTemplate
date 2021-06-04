@@ -5,10 +5,11 @@ import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Prof} from '../model/prof.model';
 import {EtatInscription} from '../model/etat-inscription.model';
-import {Etudiant} from '../model/etudiant.model';
+
 import {EtudiantVo} from '../model/etudiant-vo.model';
 import { Centre } from '../model/centre.model';
 import { Parcours } from '../model/parcours.model';
+import {Etudiant} from '../model/etudiant.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class InscriptionService {
   private _selectes: Array<Inscription>;
   private  _etatInscription: EtatInscription;
   private _etudiant: Etudiant;
+  private _selectedetudiant: Etudiant;
 
   private _createDialog: boolean;
   private _editDialog: boolean;
@@ -41,7 +43,21 @@ export class InscriptionService {
   constructor(private http: HttpClient) {
   }
 
+  get selectedetudiant(): Etudiant {
+    if (this._selectedetudiant == null){
+      this._selectedetudiant = new Etudiant();
+    }
+    return this._selectedetudiant;
+  }
+
+  set selectedetudiant(value: Etudiant) {
+    this._selectedetudiant = value;
+  }
+
   get parcoursList(): Array<Parcours> {
+    if (this._parcoursList == null){
+      this._parcoursList = new Array<Parcours>();
+    }
     return this._parcoursList;
   }
 
@@ -50,25 +66,19 @@ export class InscriptionService {
   }
 
   get centreList(): Array<Centre> {
+    if (this._centreList == null){
+      this._centreList = new Array<Centre>();
+    }
     return this._centreList;
   }
 
   set centreList(value: Array<Centre>) {
     this._centreList = value;
   }
-
-  public findAllCentre(){
-    this.http.get<Array<Centre>>( 'http://localhost:8036/learn/centre/').subscribe(
-        data => {
-          console.log(data);
-          this.centreList = data;
-        }, error => {
-          console.log(error);
-        }
-    );
-  }
-
   get etatinscriptionslist(): Array<EtatInscription> {
+    if (this._etatinscriptionslist == null){
+      this._etatinscriptionslist = new Array<EtatInscription>();
+    }
     return this._etatinscriptionslist;
   }
 
@@ -77,7 +87,7 @@ export class InscriptionService {
   }
 
   public findAllProf(){
-    this.http.get<Array<Prof>>( 'http://localhost:8036/centre/prof/').subscribe(
+    this.http.get<Array<Prof>>( 'http://localhost:8036/learn/prof/').subscribe(
         data => {
           this.prof = data;
         }, error => {
@@ -85,8 +95,13 @@ export class InscriptionService {
         }
     );
   }
+  public findAllCentre(): Observable<Array<Centre>> {
+    return this.http.get< Array<Centre> >('http://localhost:8036/learn/centre/');
+  }
+
   public findAllParcours(): Observable<Array<Parcours>> {
-    return this.http.get< Array<Parcours> >('http://localhost:8036/E-learning/parcours/');
+    return this.http.get< Array<Parcours> >('http://localhost:8036/learn/parcours/');
+
   }
   public findAllEtat(){
     this.http.get<Array<EtatInscription>>( 'http://localhost:8036/learn/etatInscription/').subscribe(
@@ -141,6 +156,9 @@ export class InscriptionService {
   }
 
   get etudiantVo(): EtudiantVo {
+    if (this._etudiantVo == null){
+      this._etudiantVo = new EtudiantVo();
+    }
     return this._etudiantVo;
   }
 
@@ -157,7 +175,7 @@ export class InscriptionService {
   }
 
   public edit(): Observable<Inscription> {
-    return this.http.put<Inscription>(this.url, this.selected);
+    return this.http.put<Inscription>(this.url, this.inscription);
   }
 
   public deleteByNumeroInscription(): Observable<number> {
@@ -190,6 +208,9 @@ export class InscriptionService {
   }
 
   get items(): Array<Inscription> {
+    if (this._items == null){
+      this._items = new Array<Inscription>();
+    }
     return this._items;
   }
 
@@ -198,6 +219,9 @@ export class InscriptionService {
   }
 
   get selected(): Inscription {
+    if (this._selected == null){
+      this._selected = new Inscription();
+    }
     return this._selected;
   }
 
@@ -206,6 +230,9 @@ export class InscriptionService {
   }
 
   get selectes(): Array<Inscription> {
+    if (this._selectes == null){
+      this._selectes = new Array<Inscription>();
+    }
     return this._selectes;
   }
 
@@ -248,16 +275,20 @@ export class InscriptionService {
 
 
   get prof(): Array<Prof> {
-    // @ts-ignore
+    if (this._prof == null){
+      this._prof = new Array<Prof>();
+    }
     return this._prof;
   }
 
   set prof(value: Array<Prof>) {
-    // @ts-ignore
     this._prof = value;
   }
 
   get etatInscription(): EtatInscription {
+    if (this._etatInscription == null){
+      this._etatInscription = new EtatInscription();
+    }
     return this._etatInscription;
   }
 
@@ -266,6 +297,9 @@ export class InscriptionService {
   }
 
   get etudiant(): Etudiant {
+    if (this._etudiant == null){
+      this._etudiant = new Etudiant();
+    }
     return this._etudiant;
   }
 
