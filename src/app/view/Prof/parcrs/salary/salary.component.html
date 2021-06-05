@@ -1,10 +1,10 @@
 
     <p-dataView [value]="itemssalaryVo" >
-    <ng-template let-s pTemplate="listItem" style="background-color: transparent">
+    <ng-template let-s pTemplate="listItem" style="background-color: lavender;">
 <input type="month" id="start" name="start" value="{{s.annee}}-{{s.mois}}" style="margin-left: 1100px; margin-top: 10px"  (click)="findSalaryByDate(s.annee,s.mois)"   >
         <div class="p-grid-transparent p-col-10" style="margin-left: 15%; background-color: transparent" >
     <div class="p-col-10 ">
-        <div class="expenses card card-w-title" style="background-color: #add3e0">
+        <div class="expenses card card-w-title" style="background-color: lavender">
             <div class="p-grid" >
                 <div class="p-col "  > <h5 (click)="view()" style="color: #0c799f"> MyLevel: <u style="cursor: pointer"> {{s.prof.categorieProf.level}} </u></h5></div>
                 <div class="p-col" ><p style="margin-left: 45%">EnglishDom Experience: <b>{{s.mois}} months</b></p></div>
@@ -12,7 +12,7 @@
 
 
     <div class="p-col-10 ">
-        <div class="expenses card card-w-title"style="background-color: #add3e0">
+        <div class="expenses card card-w-title" style="background-color: lavender;">
             <h5>Salary</h5>
             <div class="p-grid" style="margin-left: 15%"  >
                 <div class="p-col" >

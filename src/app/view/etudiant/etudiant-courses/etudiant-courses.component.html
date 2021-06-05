@@ -4,7 +4,7 @@
             <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between  " style=" margin-top: 2%; margin-bottom: 2%; " >
                 <h1 class="p-m-0" >Courses</h1>
             </div>
-            <div class="card" >
+            <div class="card" style="background-color: lavender">
                 <p-table [value]="selectesscours" [columns]="cols" [rows]="10" [paginator]="true" [globalFilterFields]="['libelle','sectionList']"
                           [(selection)]="itemscours" [rowHover]="true" dataKey="id"
                           styleClass="p-datatable-customers"

@@ -2,12 +2,12 @@
     <ng-template pTemplate="p-field">
         <div class="p-field">
             <label for="cours" > Courses </label>
-            <select pInputText type="text" class="btn btn-block btn-outline-light form-control" id="cours" style="background-color: lightblue" name="Parcours" (click)="findAllCours()" [(ngModel)]="selectedsection.cours.id" >
+            <select pInputText type="text" class="btn btn-block btn-outline-light form-control" id="cours" style="background-color: lavender" name="Parcours" (click)="findAllCours()" [(ngModel)]="selectedsection.cours.id" >
                 <option  selected="selected" *ngFor="let c of itemscours"  [ngValue]="c.id"> {{c.libelle}}</option>
             </select>
             <small class="p-invalid" *ngIf="submittedSection && !selectedsection.cours.libelle">parcours is required.</small>
             <label for="categorie" > CategorieSections </label>
-            <select pInputText type="text" class="btn btn-block btn-outline-light form-control" id="categorie" style="background-color: lightblue" name="Parcours" (click)="findAllCategorie()" [(ngModel)]="selectedsection.categorieSection.id" >
+            <select pInputText type="text" class="btn btn-block btn-outline-light form-control" id="categorie" style="background-color: lavender" name="Parcours" (click)="findAllCategorie()" [(ngModel)]="selectedsection.categorieSection.id" >
                 <option  selected="selected" *ngFor="let s of itemscategoriesection"  [ngValue]="s.id"> {{s.libelle}}</option>
             </select>
             <small class="p-invalid" *ngIf="submittedSection && !selectedsection.categorieSection.libelle">parcours is required.</small>
@@ -39,7 +39,7 @@
         </div>
     </ng-template>
 
-    <ng-template pTemplate="footer">
+    <ng-template pTemplate="footer" style="background-color: lavender;">
         <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideEditDialog()"></button>
         <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="editSection()"></button>
     </ng-template>

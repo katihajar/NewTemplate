@@ -9,6 +9,7 @@ import {Etudiant} from '../../../controller/model/etudiant.model';
 import {ClassRoomService} from '../../../controller/service/class-room.service';
 import {SalaryVo} from '../../../controller/model/salary-vo.model';
 import {EtudiantService} from '../../../controller/service/etudiant.service';
+import {LoginService} from '../../../controller/service/login.service';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit {
               // tslint:disable-next-line:max-line-length
               private service: ParcoursService,
               private servicerecommend: RecommendTeacherService, private seviceClass: ClassRoomService ,
-              private serviceetudiant: EtudiantService
+              private serviceetudiant: EtudiantService, private serviceUser: LoginService
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +31,13 @@ export class HomeComponent implements OnInit {
     this.servicerecommend.findAllEtudiantByProf().subscribe(data => this.itemsetudiant = data);
   }
 
+  get prof(): Prof {
+    return this.serviceUser.prof;
+  }
+
+  set prof(value: Prof) {
+    this.serviceUser.prof = value;
+  }
   get itemssalaryVo(): Array<SalaryVo> {
     return this.seviceClass.itemssalaryVo;
   }
