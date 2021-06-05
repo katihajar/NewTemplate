@@ -45,12 +45,13 @@ export class ChooseViewComponent implements OnInit {
           }
           // tslint:disable-next-line:no-shadowed-variable
         });
+    this.service.image = '';
     this.service.afficheOneSection().subscribe(
         data => {
           this.selectedsection = data;
           for (let j = 0; j < 66 ; j++)
           {
-            this.service.image += this.selectedsection.urlImage[j];
+            this.service.image += this.service.selectedsection.urlImage[j];
           }
           this.service.image += 'preview';
           console.log(this.service.image);
