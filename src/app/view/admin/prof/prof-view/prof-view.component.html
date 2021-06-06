@@ -1,0 +1,30 @@
+<p-dialog [(visible)]="viewDialog" [style]="{width: '450px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="reference">Reference</label>
+            <input type="text" pInputText id="reference" [(ngModel)]="selected.reference" disabled />
+        </div>
+        <div class="p-field">
+            <label for="firstName">First Name</label>
+            <input type="text" pInputText id="firstName" [(ngModel)]="selected.prenom" disabled />
+        </div>
+        <div class="p-field">
+            <label for="lastName">Last Name</label>
+            <input type="text" pInputText id="lastName" [(ngModel)]="selected.nom" disabled />
+        </div>
+        <div class="p-field">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" pInputText id="phoneNumber" [(ngModel)]="selected.phoneNumber" disabled />
+        </div>
+
+        <div class="p-field">
+            <label for="email">Email</label>
+            <input type="text" pInputText id="email" [(ngModel)]="selected.email" disabled />
+        </div>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+    </ng-template>
+</p-dialog>

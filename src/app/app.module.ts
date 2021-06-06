@@ -210,6 +210,9 @@ import {RecommendEditComponent} from './view/Prof/recommend/recommend-edit/recom
 import {RecommendListComponent} from './view/Prof/recommend/recommend-list/recommend-list.component';
 import {RecommendViewComponent} from './view/Prof/recommend/recommend-view/recommend-view.component';
 import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.component';
+import {ClassroomEtudiantComponent} from './view/std/classroom-etudiant/classroom-etudiant.component';
+import {QuizEtudiantListComponent} from './view/std/quiz-etudiant-list/quiz-etudiant-list.component';
+import {QuizEtudiantViewComponent} from './view/std/quiz-etudiant-view/quiz-etudiant-view.component';
 
 
 
@@ -418,7 +421,10 @@ import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.comp
         RecommendListComponent,
         RecommendViewComponent,
         QuizCreateComponent,
-        InscriptionProfComponent
+        InscriptionProfComponent,
+        ClassroomEtudiantComponent,
+        QuizEtudiantListComponent,
+        QuizEtudiantViewComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

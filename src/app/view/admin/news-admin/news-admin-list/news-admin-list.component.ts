@@ -9,6 +9,17 @@ import {News} from '../../../../controller/Model/news.model';
 })
 export class NewsAdminListComponent implements OnInit {
 
+  private _image: '';
+
+
+  get image(): "" {
+    return this._image;
+  }
+
+  set image(value: "") {
+    this._image = value;
+  }
+
   get items(): Array<News> {
     return this.service.items;
   }
@@ -86,7 +97,17 @@ export class NewsAdminListComponent implements OnInit {
   constructor(private service: NewsService) { }
 
   ngOnInit(): void {
-    this.service.findAll().subscribe(data => this.items = data);
+    this.service.findAll().subscribe(
+        data => {
+          this.items = data;
+          /*console.log(this.items[0].image);
+          for(let i = 0 ; i < 60; i++)
+          {
+            this.image += this.items[0].image[i];
+          }
+          this.image += 'preview';
+          console.log(this.image);*/
+        });
   }
 
 }

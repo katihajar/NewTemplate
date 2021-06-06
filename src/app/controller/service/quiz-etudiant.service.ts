@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
-import {QuizEtudiant} from '../model/quiz-etudiant.model';
-import {Reponse} from '../model/reponse.model';
+import {QuizEtudiant} from '../Model/quiz-etudiant.model';
+import {Reponse} from '../Model/reponse.model';
 import {HttpClient} from '@angular/common/http';
-import {ReponseEtudiant} from '../model/reponse-etudiant.model';
-import {Question} from '../model/question.model';
-import {Quiz} from '../model/quiz.model';
-import {Etudiant} from '../model/etudiant.model';
+import {ReponseEtudiant} from '../Model/reponse-etudiant.model';
+import {Question} from '../Model/question.model';
+import {Quiz} from '../Model/quiz.model';
+import {Etudiant} from '../Model/etudiant.model';
+import {TypeDeQuestion} from '../Model/type-de-question.model';
+import {EtudiantClassRoom} from '../Model/etudiant-class-room.model';
+import {QuizClassRoom} from '../Model/quiz-class-room.model';
+import {ClassRoom} from '../Model/class-room.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,11 +28,83 @@ export class QuizEtudiantService {
   private _correctAnswers: Array<Reponse>;
   private _reponseEtudiant: ReponseEtudiant;
   private _reponsesEtudiant: Array<ReponseEtudiant>;
+  private _quizEtudiantList: QuizEtudiant;
+  private _etudiantsClassroom: Array<EtudiantClassRoom>;
+  private _quizsClassroom: Array<QuizClassRoom>;
+  private _selectedQuizClassroom: QuizClassRoom;
+  private _selectedClassroom: EtudiantClassRoom;
+  private _reponsesEtudiantList: Array<ReponseEtudiant>;
+  private _viewDialogQuiz: boolean;
+  private _selectedQuiz: Quiz;
   private _myAnswer: Reponse;
   private _numReponses= 0;
   private _numCorrectAnswers= 0;
   private _numQuestion= 1;
 
+
+  get reponsesEtudiantList(): Array<ReponseEtudiant> {
+    return this._reponsesEtudiantList;
+  }
+
+  set reponsesEtudiantList(value: Array<ReponseEtudiant>) {
+    this._reponsesEtudiantList = value;
+  }
+
+  get selectedQuizClassroom(): QuizClassRoom {
+    return this._selectedQuizClassroom;
+  }
+
+  set selectedQuizClassroom(value: QuizClassRoom) {
+    this._selectedQuizClassroom = value;
+  }
+
+  get selectedClassroom(): EtudiantClassRoom {
+    return this._selectedClassroom;
+  }
+
+  set selectedClassroom(value: EtudiantClassRoom) {
+    this._selectedClassroom = value;
+  }
+
+  get viewDialogQuiz(): boolean {
+    return this._viewDialogQuiz;
+  }
+
+  set viewDialogQuiz(value: boolean) {
+    this._viewDialogQuiz = value;
+  }
+
+  get quizsClassroom(): Array<QuizClassRoom> {
+    return this._quizsClassroom;
+  }
+
+  set quizsClassroom(value: Array<QuizClassRoom>) {
+    this._quizsClassroom = value;
+  }
+
+  get etudiantsClassroom(): Array<EtudiantClassRoom> {
+    return this._etudiantsClassroom;
+  }
+
+  set etudiantsClassroom(value: Array<EtudiantClassRoom>) {
+    this._etudiantsClassroom = value;
+  }
+
+  get quizEtudiantList(): QuizEtudiant {
+    return this._quizEtudiantList;
+  }
+
+  set quizEtudiantList(value: QuizEtudiant) {
+    this._quizEtudiantList = value;
+  }
+
+  get selectedQuiz(): Quiz {
+    return this._selectedQuiz;
+  }
+
+  set selectedQuiz(value: Quiz) {
+    this._selectedQuiz = value;
+  }
 
   get reponsesEtudiant(): Array<ReponseEtudiant> {
     return this._reponsesEtudiant;
@@ -219,6 +295,26 @@ export class QuizEtudiantService {
   public updateQuizEtudiant(): Observable<QuizEtudiant>
   {
     return this.http.put<QuizEtudiant>(this.url + 'quizEtudiant/' , this.quizEtudiant);
+  }
+
+  public findEtudiantClassRoom(etudiant: Etudiant): Observable<Array<EtudiantClassRoom>>
+  {
+    return this.http.get<Array<EtudiantClassRoom>>(this.url + 'etudiant-classRoom/etudiant/ref/' + etudiant.ref);
+  }
+
+  public findQuizClassRoom(classroom: ClassRoom): Observable<Array<QuizClassRoom>>
+  {
+    return this.http.get<Array<QuizClassRoom>>(this.url + 'quiz-classRoom/id/' + classroom.id);
+  }
+
+  public findQuizEtudiant(etudiant: Etudiant, quiz: Quiz): Observable<QuizEtudiant>
+  {
+    return this.http.get<QuizEtudiant>(this.url + 'quizEtudiant/etudiant/' + etudiant.ref + '/quiz/' + quiz.ref);
+  }
+
+  public findReponseEtudiant(quizEtudiant: QuizEtudiant): Observable<Array<ReponseEtudiant>>
+  {
+    return this.http.get<Array<ReponseEtudiant>>(this.url + 'reponseEtudiant/quizEtudiant/ref/{ref}?ref=' + quizEtudiant.ref);
   }
 
   constructor(private http: HttpClient) { }
