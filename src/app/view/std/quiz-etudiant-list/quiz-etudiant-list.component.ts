@@ -94,6 +94,7 @@ export class QuizEtudiantListComponent implements OnInit {
         data => {
           this.quizEtudiantList = data;
           this.service.findReponseEtudiant(this.quizEtudiantList).subscribe(
+              // tslint:disable-next-line:no-shadowed-variable
               data => {
                 this.reponsesEtudiantList = data;
                 console.log('lqiiiiiiithaaaaaa');
@@ -101,7 +102,8 @@ export class QuizEtudiantListComponent implements OnInit {
 
               }, error => console.log('malqiiiiithaaaaaach reponse etudiant')
           );
-        },error => {
+        },
+            error => {
           this.quizEtudiantList.resultat = 'pas encore repondu';
           this.quizEtudiantList.note = 0;
           this.reponsesEtudiantList = null;

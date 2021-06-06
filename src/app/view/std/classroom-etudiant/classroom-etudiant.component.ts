@@ -85,7 +85,8 @@ export class ClassroomEtudiantComponent implements OnInit {
     this.service.findQuizEtudiant(this.login.etudiant, this.service.selectedQuizClassroom.quiz).subscribe(
         data => {
           this.quizEtudiantList = data;
-        },error => {
+        },
+            error => {
           this.quizEtudiantList.resultat = 'pas encore repondu';
           this.quizEtudiantList.note = 0;
         });
