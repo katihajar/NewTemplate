@@ -44,8 +44,10 @@ import {CoursesComponent} from './view/Prof/parcrs/courses/courses.component';
 import {EdCoursesComponent} from './view/Prof/parcrs/ed-courses/ed-courses.component';
 import {SalaryComponent} from './view/Prof/parcrs/salary/salary.component';
 import {HomeComponent} from './view/Prof/home/home.component';
+import {RecommendComponent} from './view/Prof/recommend/recommend.component';
 import {InscriptionsComponent} from './view/Prof/inscriptions/inscriptions.component';
 import {EtudiantsComponent} from './view/Prof/etudiants/etudiants.component';
+import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.component';
 import {ScheduleComponent} from './view/Prof/schedule/schedule.component';
 import {QuizPreviewComponent} from './view/Prof/quiz/quiz-preview/quiz-preview.component';
 import {ClassRoomListComponent} from './view/Prof/Classes/profclasses/class-room-list/class-room-list.component';
@@ -62,10 +64,10 @@ import {QuizEtudiantComponent} from './view/etudiant/quiz-etudiant/quiz-etudiant
 import {SectionSimulateComponent} from './view/Prof/parcrs/section-simulate/section-simulate.component';
 import {InscriptionAdminComponent} from './view/admin/inscription-admin/inscription-admin.component';
 import {InscriptionProfComponent} from './view/Prof/inscription-prof/inscription-prof.component';
-import {HomeTeacherComponent} from './view/Prof/home-teacher/home-teacher.component';
-import {RecommendationComponent} from './view/Prof/recommend/recommendation/recommendation.component';
-import {RecommendComponent} from './view/Prof/recommend/recommend.component';
-import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.component';
+import {ClassroomStudentListComponent} from './view/student/classroom-student-list/classroom-student-list.component';
+import {ClassroomEtudiantComponent} from './view/std/classroom-etudiant/classroom-etudiant.component';
+import {QuizEtudiantListComponent} from './view/std/quiz-etudiant-list/quiz-etudiant-list.component';
+import {QuizEtudiantViewComponent} from './view/std/quiz-etudiant-view/quiz-etudiant-view.component';
 
 
 
@@ -85,9 +87,7 @@ import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.comp
                     {path: 'inscriptionAdmin', component: InscriptionAdminComponent},
                     {path: 'inscriptionTeacher', component: InscriptionProfComponent},
                     {path: 'view/inscription', component: InscriptionsComponent},
-                    {path: 'view/recommendation', component: RecommendationComponent},
-                    {path: 'view/recommendat', component: RecommendComponent},
-                    {path: 'view/home-teacher', component: HomeTeacherComponent},
+                    {path: 'pages/recommend', component: RecommendComponent},
                     {path: 'pages/home', component: HomeComponent},
                     {path: 'pages/commande', component: CommandesComponent},
                     {path: 'pages/parcours', component: LearnComponent},
@@ -107,7 +107,10 @@ import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.comp
                     {path: 'pages/login-prof', component: LoginProfComponent},
                     {path: 'pages/login-etudiant', component: LoginEtudiantComponent},
                     {path: 'pages/quiz-etudiant', component: QuizEtudiantComponent},
-                    {path: 'pages/quiz-create', component: QuizCreateComponent},
+                    {path: 'pages/classroom-liste', component: ClassroomEtudiantComponent},
+                    {path: 'pages/quiz-liste', component: QuizEtudiantListComponent},
+                    {path: 'pages/quiz-view', component: QuizEtudiantViewComponent},
+                    {path: 'view/quiz-create', component: QuizCreateComponent},
                     {path: 'view/quiz-preview', component: QuizPreviewComponent},
                     {path: 'view/schedule', component: ScheduleComponent},
                     {path: 'inscriptionEtudiant', component: FormLayoutDemoComponent},

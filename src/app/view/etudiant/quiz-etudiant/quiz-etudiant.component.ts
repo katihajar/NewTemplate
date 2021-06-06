@@ -169,6 +169,14 @@ export class QuizEtudiantComponent implements OnInit {
     this.service.quizEtudiant = value;
   }
 
+    get selectedQuiz(): Quiz {
+        return this.service.selectedQuiz;
+    }
+
+    set selectedQuiz(value: Quiz) {
+        this.service.selectedQuiz = value;
+    }
+
   ///////////////////////////// Next() //////////////////////
   public next()
   {
@@ -242,14 +250,17 @@ export class QuizEtudiantComponent implements OnInit {
                     // tslint:disable-next-line:no-shadowed-variable
                     data => {
                       this.reponseEtudiant = data;
+                      console.log(this.reponseEtudiant);
                       this.reponseEtudiant.quizEtudiant = this.quizEtudiant;
                       this.reponseEtudiant.note = this.noteQst;
                       this.reponseEtudiant.reponse = this.myAnswer;
                       this.reponseEtudiant.ref = 're' + (this.reponsesEtudiant.length + 1);
                       this.reponseEtudiant.id = this.reponseEtudiant.id + (this.reponsesEtudiant.length + 1);
+                      console.log(this.reponseEtudiant);
                       this.service.insertReponseEtudiant().subscribe(
                           // tslint:disable-next-line:no-shadowed-variable
                            data => {
+                               console.log('hana d5alt');
                           }
                       );
                     }
@@ -279,7 +290,7 @@ export class QuizEtudiantComponent implements OnInit {
 
                 this.quizEtudiant = data;
 
-                this.quizEtudiant.quiz = this.quiz;
+                this.quizEtudiant.quiz = this.selectedQuiz;
                 this.quizEtudiant.etudiant = this.login.etudiant;
                 this.quizEtudiant.resultat = null;
                 this.quizEtudiant.note = 0;
