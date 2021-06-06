@@ -172,7 +172,6 @@ export class ScheduleComponent implements OnInit {
     this.displayBasic = true;
   }
   public openCreate() {
-    this.selected = new ScheduleProf();
     this.submitted = false;
     this.createDialog = true;
   }

@@ -19,7 +19,7 @@ export class QuizCreateComponent implements OnInit {
     constructor(private service: QuizService,private messageService: MessageService,private confirmationService: ConfirmationService,private router: Router) { }
     cols: any[];
     get question(): Question {
-        if (this.service.question == null){
+      if (this.service.question == null){
             this.service.question = new Question();
         }
         return this.service.question;
@@ -52,14 +52,11 @@ export class QuizCreateComponent implements OnInit {
         this.service.selected = value;
     }
     get reponse(): Reponse {
-        if (this.service.reponse == null){
-            this.service.reponse = new Reponse();
-        }
+
         return this.service.reponse;
     }
 
     get reponses(): Array<Reponse> {
-        this.question = new Question();
         if (this.service.question.reponses == null){
             this.service.question.reponses = new Array<Reponse>();
         }
@@ -124,9 +121,6 @@ export class QuizCreateComponent implements OnInit {
         return this.service.defaultchecked();
     }
 
-    addCard1() {
-        return this.service.addCard1();
-    }
 
 
     checked(event) {
@@ -145,9 +139,7 @@ export class QuizCreateComponent implements OnInit {
         this.service.quizSelected();
     }
 
-    public addCard() {
- return this.service.addCard();
-    }
+
 
 
     public addFormule() {

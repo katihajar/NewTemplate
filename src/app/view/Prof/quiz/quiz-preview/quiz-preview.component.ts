@@ -5,6 +5,11 @@ import {TypeDeQuestion} from "../../../../controller/Model/type-de-question.mode
 import {Reponse} from "../../../../controller/Model/reponse.model";
 import {QuizService} from "../../../../controller/service/quiz.service";
 import {Router} from "@angular/router";
+import {Etudiant} from "../../../../controller/Model/etudiant.model";
+import {EtudiantService} from "../../../../controller/service/etudiant.service";
+import {QuizEtudiant} from "../../../../controller/Model/quiz-etudiant.model";
+import {QuizEtudiantService} from "../../../../controller/service/quiz-etudiant.service";
+import {ReponseEtudiant} from "../../../../controller/Model/reponse-etudiant.model";
 
 @Component({
   selector: 'app-quiz-preview',
@@ -13,13 +18,20 @@ import {Router} from "@angular/router";
 })
 export class QuizPreviewComponent implements OnInit {
 
-  i: number = 0;
-  value: number = 0;
-  constructor(private  service: QuizService, private router: Router) { }
+  private _i: number = 0;
+  private _value: number = 1;
+  private _selectedValue: string;
+  private _button: string;
+  private _numQuestion= 1;
+  private _noteQuiz: number;
+
+
+
+
+
+
+  constructor(private  service: QuizService, private router: Router , private etudiantService: QuizEtudiantService) { }
   get question(): Question {
-    if (this.service.question == null){
-      this.service.question = new Question();
-    }
     return this.service.question;
   }
 
@@ -34,9 +46,6 @@ export class QuizPreviewComponent implements OnInit {
     return this.service.questions;
   }
   get selected(): Quiz {
-    if (this.service.selected == null){
-      this.service.selected = new Quiz();
-    }
     return this.service.selected;
   }
 
@@ -49,12 +58,64 @@ export class QuizPreviewComponent implements OnInit {
     }
     return this.service.reponse;
   }
+  get numQuestion(): number {
+    return this._numQuestion;
+  }
+
+  set numQuestion(value: number) {
+    this._numQuestion = value;
+  }
+
+  get i(): number {
+    return this._i;
+  }
+
+  set i(value: number) {
+    this._i = value;
+  }
+
+
+  get correctAnswers(): Array<Reponse> {
+    return this.service.correctAnswers;
+  }
+
+  set correctAnswers(value: Array<Reponse>) {
+    this.service.correctAnswers = value;
+  }
+  get selectedValue(): string {
+    return this._selectedValue;
+  }
+
+  set selectedValue(value: string) {
+    this._selectedValue = value;
+  }
+
+  get button(): string {
+    return this._button;
+  }
+
+  set button(value: string) {
+    this._button = value;
+  }
+
+
+
+  get noteQuiz(): number {
+    return this._noteQuiz;
+  }
+
+  set noteQuiz(value: number) {
+    this._noteQuiz = value;
+  }
 
   get reponses(): Array<Reponse> {
     if (this.service.reponses == null){
       this.service.reponses = new Array<Reponse>();
     }
-    return this.service.question.reponses;
+    return this.service.reponses;
+  }
+  set reponses(value: Array<Reponse>) {
+    this.service.reponses = value;
   }
 
   get type(): TypeDeQuestion {
@@ -95,14 +156,12 @@ export class QuizPreviewComponent implements OnInit {
   set items(value: Array<Quiz>) {
     this.service.items = value;
   }
-
-
   startTimer() {
     this.service.timer = setInterval(() => {
       this.service.seconds++;
     }, 1000);
   }
-  shuffle(reponses: Array<Reponse>) {
+ /* shuffle(reponses: Array<Reponse>) {
     let currentIndex = reponses.length, temporaryValue, randomIndex;
     while (0 !== currentIndex) {
       randomIndex = Math.floor(Math.random() * currentIndex);
@@ -112,7 +171,7 @@ export class QuizPreviewComponent implements OnInit {
       reponses[randomIndex] = temporaryValue;
     }
     return reponses;
-  }
+  }*/
   Answer(n: number, rep: Question) {
     this.service.questions[this.service.qnprogress].reponses = rep.reponses;
   }
@@ -125,17 +184,19 @@ export class QuizPreviewComponent implements OnInit {
     this.service.j = value;
   }
 
+
   NextQuestion() {
-    this.j ++;
-    this.i++;
-    this.service.a++;
+    console.log(this.selectedValue);
+    this._value++;
+    this.service.findReponse(this._value);
     this.service.qnprogress++;
-    this.value++;
-    this.i++;
-    if (this.service.qnprogress == this.service.questions.length) {
+    this.numQuestion++;
+    if (this.numQuestion == this.service.questions.length) {
+      this.button = 'Finish the Quiz';
+    }else if (this.numQuestion > this.service.questions.length){
       document.getElementById('container').style.visibility = 'hidden';
       document.getElementById('mainCard').style.visibility = 'visible';
-      if (this.correctAnswerCount >= 10){
+      if (this.noteQuiz >= this.selected.seuilReussite){
         document.getElementById('congratulations3').style.visibility = 'visible';
         document.getElementById('hard-luck3').style.visibility = 'hidden';
       }else {
@@ -144,49 +205,40 @@ export class QuizPreviewComponent implements OnInit {
       }
       clearInterval(this.service.timer);
     }
+    this.service.findCorrectAnswers().subscribe(
+        data => {
+          this.correctAnswers = data;
+        }
+    );
+    for (let i = 0 ; i < this.correctAnswers.length ; i++)
+    {
+      if (this.correctAnswers[i].ref == this.selectedValue)
+      {
+        this.noteQuiz ++;
+      }
+      else {
+        this.noteQuiz = this.noteQuiz + this.question.pointReponsefausse;
+      }
+    }
   }
 
-  get correctAnswerCount(): number {
-    return this.service.correctAnswerCount;
-  }
   ngOnInit(): void {
+    this.service.findFirstReponse();
     this.service.seconds = 0;
     this.service.qnprogress = 0;
     this.service.findAll();
-
+    this.button = 'Next';
     this.startTimer();
     this.service.findQuiz();
-    // this.service.findReponses();
-    this.service.findByQuestionRef().subscribe(
-        data => {
-          this.question.reponses = data;
-          this.NextQuestion();
-        }
-    );
-    // this.service.findReponses1();
+  }
 
-    // this.service.CorrectAnswer();
-  }
-  public getReponsesByQuestion(){
-    return this.service.getReponsesByQuestion()
-  }
-  checked(e) {
-    if (e.target.checked == true){
-      this.service.correctAnswerCount++;
-    }else {
-      this.service.correctAnswerCount = 0;
-    }
-  }
+
   public viewQuiz(){
     this.router.navigate(['/pages/quiz-create']);
   }
 
-  selectQuiz($event: Event ,i : number) {
-    return this.service.selectQuiz(event , i);
-  }
-  public finByQuizRef(quiz : Quiz) {
-    return this.service.finByQuizRef(quiz);
-  }
+
+
 
 }
 
