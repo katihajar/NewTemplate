@@ -96,10 +96,9 @@ export class QuizEtudiantListComponent implements OnInit {
           this.service.findReponseEtudiant(this.quizEtudiantList).subscribe(
               data => {
                 this.reponsesEtudiantList = data;
-                console.log('lqiiiiiiithaaaaaa');
                 document.getElementById('quiz').style.visibility = 'hidden';
 
-              }, error => console.log('malqiiiiithaaaaaach reponse etudiant')
+              }
           );
         },error => {
           this.quizEtudiantList.resultat = 'pas encore repondu';

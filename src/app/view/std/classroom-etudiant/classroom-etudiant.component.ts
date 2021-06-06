@@ -75,13 +75,11 @@ export class ClassroomEtudiantComponent implements OnInit {
     this.service.findEtudiantClassRoom(this.login.etudiant).subscribe(
         data => {
           this.etudiantsClassroom = data;
-          console.log(this.etudiantsClassroom);
         });
   }
 
   public view(classes: EtudiantClassRoom) {
     this.selectedClassroom = {...classes};
-    console.log(this.selectedClassroom);
     this.service.findQuizEtudiant(this.login.etudiant, this.service.selectedQuizClassroom.quiz).subscribe(
         data => {
           this.quizEtudiantList = data;

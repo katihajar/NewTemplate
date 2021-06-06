@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
-import {QuizEtudiant} from '../Model/quiz-etudiant.model';
-import {Reponse} from '../Model/reponse.model';
+import {QuizEtudiant} from '../model/quiz-etudiant.model';
+import {Reponse} from '../model/reponse.model';
 import {HttpClient} from '@angular/common/http';
-import {ReponseEtudiant} from '../Model/reponse-etudiant.model';
-import {Question} from '../Model/question.model';
-import {Quiz} from '../Model/quiz.model';
-import {Etudiant} from '../Model/etudiant.model';
-import {TypeDeQuestion} from '../Model/type-de-question.model';
-import {EtudiantClassRoom} from '../Model/etudiant-class-room.model';
-import {QuizClassRoom} from '../Model/quiz-class-room.model';
-import {ClassRoom} from '../Model/class-room.model';
+import {ReponseEtudiant} from '../model/reponse-etudiant.model';
+import {Question} from '../model/question.model';
+import {Quiz} from '../model/quiz.model';
+import {Etudiant} from '../model/etudiant.model';
+import {TypeDeQuestion} from '../model/type-de-question.model';
+import {EtudiantClassRoom} from '../model/etudiant-class-room.model';
+import {QuizClassRoom} from '../model/quiz-class-room.model';
+import {ClassRoom} from '../model/class-room.model';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +43,10 @@ export class QuizEtudiantService {
 
 
   get reponsesEtudiantList(): Array<ReponseEtudiant> {
+    if(this._reponsesEtudiantList == null)
+    {
+      this._reponsesEtudiantList = new Array<ReponseEtudiant>();
+    }
     return this._reponsesEtudiantList;
   }
 
@@ -51,6 +55,10 @@ export class QuizEtudiantService {
   }
 
   get selectedQuizClassroom(): QuizClassRoom {
+    if(this._selectedQuizClassroom == null)
+    {
+      this._selectedQuizClassroom = new QuizClassRoom();
+    }
     return this._selectedQuizClassroom;
   }
 
@@ -59,6 +67,10 @@ export class QuizEtudiantService {
   }
 
   get selectedClassroom(): EtudiantClassRoom {
+    if(this._selectedClassroom == null)
+    {
+      this._selectedClassroom = new EtudiantClassRoom();
+    }
     return this._selectedClassroom;
   }
 
@@ -75,6 +87,10 @@ export class QuizEtudiantService {
   }
 
   get quizsClassroom(): Array<QuizClassRoom> {
+    if(this._quizsClassroom == null)
+    {
+      this._quizsClassroom = new Array<QuizClassRoom>();
+    }
     return this._quizsClassroom;
   }
 
@@ -83,6 +99,10 @@ export class QuizEtudiantService {
   }
 
   get etudiantsClassroom(): Array<EtudiantClassRoom> {
+    if(this._etudiantsClassroom == null)
+    {
+      this._etudiantsClassroom = new Array<EtudiantClassRoom>();
+    }
     return this._etudiantsClassroom;
   }
 
@@ -91,6 +111,10 @@ export class QuizEtudiantService {
   }
 
   get quizEtudiantList(): QuizEtudiant {
+    if(this._quizEtudiantList == null)
+    {
+      this._quizEtudiantList = new QuizEtudiant();
+    }
     return this._quizEtudiantList;
   }
 
@@ -99,6 +123,10 @@ export class QuizEtudiantService {
   }
 
   get selectedQuiz(): Quiz {
+    if(this._selectedQuiz == null)
+    {
+      this._selectedQuiz = new Quiz();
+    }
     return this._selectedQuiz;
   }
 
@@ -107,6 +135,10 @@ export class QuizEtudiantService {
   }
 
   get reponsesEtudiant(): Array<ReponseEtudiant> {
+    if(this._reponsesEtudiant == null)
+    {
+      this._reponsesEtudiant = new Array<ReponseEtudiant>();
+    }
     return this._reponsesEtudiant;
   }
 
@@ -115,6 +147,10 @@ export class QuizEtudiantService {
   }
 
   get myAnswer(): Reponse {
+    if(this._myAnswer == null)
+    {
+      this._myAnswer = new Reponse();
+    }
     return this._myAnswer;
   }
 
@@ -123,6 +159,10 @@ export class QuizEtudiantService {
   }
 
   get reponseEtudiant(): ReponseEtudiant {
+    if(this._reponseEtudiant == null)
+    {
+      this._reponseEtudiant = new ReponseEtudiant();
+    }
     return this._reponseEtudiant;
   }
 
@@ -139,6 +179,10 @@ export class QuizEtudiantService {
   }
 
   get correctAnswers(): Array<Reponse> {
+    if(this._correctAnswers == null)
+    {
+      this._correctAnswers = new Array<Reponse>();
+    }
     return this._correctAnswers;
   }
 
@@ -147,6 +191,10 @@ export class QuizEtudiantService {
   }
 
   get quizsEtudiant(): Array<QuizEtudiant> {
+    if(this._quizsEtudiant == null)
+    {
+      this._quizsEtudiant = new Array<QuizEtudiant>();
+    }
     return this._quizsEtudiant;
   }
 
@@ -155,6 +203,10 @@ export class QuizEtudiantService {
   }
 
   get quizEtudiant(): QuizEtudiant {
+    if(this._quizEtudiant == null)
+    {
+      this._quizEtudiant = new QuizEtudiant();
+    }
     return this._quizEtudiant;
   }
 
@@ -179,6 +231,10 @@ export class QuizEtudiantService {
   }
 
   get reponses(): Array<Reponse> {
+    if(this._reponses == null)
+    {
+      this._reponses = new Array<Reponse>();
+    }
     return this._reponses;
   }
 
@@ -187,6 +243,10 @@ export class QuizEtudiantService {
   }
 
   get items(): Array<Question> {
+    if(this._items == null)
+    {
+      this._items = new Array<Question>();
+    }
     return this._items;
   }
 
@@ -195,6 +255,10 @@ export class QuizEtudiantService {
   }
 
   get selected(): Question {
+    if(this._selected == null)
+    {
+      this._selected = new Question();
+    }
     return this._selected;
   }
 
@@ -203,6 +267,10 @@ export class QuizEtudiantService {
   }
 
   get etudiant(): Etudiant {
+    if(this._etudiant == null)
+    {
+      this._etudiant = new Etudiant();
+    }
     return this._etudiant;
   }
 
@@ -212,6 +280,10 @@ export class QuizEtudiantService {
 
 
   get quiz(): Quiz {
+    if(this._quiz == null)
+    {
+      this._quiz = new Quiz();
+    }
     return this._quiz;
   }
 

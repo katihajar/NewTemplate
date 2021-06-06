@@ -180,6 +180,20 @@ export class QuizEtudiantComponent implements OnInit {
   ///////////////////////////// Next() //////////////////////
   public next()
   {
+    for (let i = 0 ; i < this.correctAnswers.length ; i++)
+    {
+      // tslint:disable-next-line:triple-equals
+      if (this.correctAnswers[i].ref == this.selectedValue)
+      {
+        this.noteQst = this.selected.pointReponseJuste;
+        this.noteQuiz = this.noteQuiz + this.selected.pointReponseJuste;
+      }
+      else {
+        this.noteQst = this.selected.pointReponsefausse;
+        this.noteQuiz = this.noteQuiz + this.selected.pointReponsefausse;
+      }
+    }
+
     this.service.findNextQuestion().subscribe(
         data => {
           this.selected = data;
@@ -223,48 +237,30 @@ export class QuizEtudiantComponent implements OnInit {
         }
     );
       // tslint:disable-next-line:prefer-for-of
-    for (let i = 0 ; i < this.correctAnswers.length ; i++)
-    {
-        // tslint:disable-next-line:triple-equals
-      if (this.correctAnswers[i].ref == this.selectedValue)
-      {
-        this.noteQst = this.selected.pointReponseJuste;
-        this.noteQuiz = this.noteQuiz + this.selected.pointReponseJuste;
-      }
-      else {
-        this.noteQst = this.selected.pointReponsefausse;
-        this.noteQuiz = this.noteQuiz + this.selected.pointReponsefausse;
-      }
-    }
+    this.service.findAllReponseEtudiant().subscribe(
+        data => {
+          this.reponsesEtudiant = data;
+        }
+    );
+
+    this.service.findMyAnswer(this.selectedValue).subscribe(
+        // tslint:disable-next-line:no-shadowed-variable
+        data => {
+          this.myAnswer = data;
+        }
+    );
     this.service.findAllReponseEtudiant().subscribe(
         data => {
           this.reponsesEtudiant = data;
 
-          this.service.findMyAnswer(this.selectedValue).subscribe(
+          this.reponseEtudiant.quizEtudiant = this.quizEtudiant;
+          this.reponseEtudiant.note = this.noteQst;
+          this.reponseEtudiant.reponse = this.myAnswer;
+          this.reponseEtudiant.ref = 're' + (this.reponsesEtudiant.length + 1);
+          this.reponseEtudiant.id = this.reponseEtudiant.id + (this.reponsesEtudiant.length + 1);
+          this.service.insertReponseEtudiant().subscribe(
               // tslint:disable-next-line:no-shadowed-variable
               data => {
-
-                this.myAnswer = data;
-
-                this.service.findFirstReponseEtudiant().subscribe(
-                    // tslint:disable-next-line:no-shadowed-variable
-                    data => {
-                      this.reponseEtudiant = data;
-                      console.log(this.reponseEtudiant);
-                      this.reponseEtudiant.quizEtudiant = this.quizEtudiant;
-                      this.reponseEtudiant.note = this.noteQst;
-                      this.reponseEtudiant.reponse = this.myAnswer;
-                      this.reponseEtudiant.ref = 're' + (this.reponsesEtudiant.length + 1);
-                      this.reponseEtudiant.id = this.reponseEtudiant.id + (this.reponsesEtudiant.length + 1);
-                      console.log(this.reponseEtudiant);
-                      this.service.insertReponseEtudiant().subscribe(
-                          // tslint:disable-next-line:no-shadowed-variable
-                           data => {
-                               console.log('hana d5alt');
-                          }
-                      );
-                    }
-                );
               }
           );
         }
@@ -283,32 +279,24 @@ export class QuizEtudiantComponent implements OnInit {
     this.service.findAllQuizEtudiant().subscribe(
         data => {
           this.quizsEtudiant = data;
+          this.quizEtudiant.quiz = this.selectedQuiz;
+          this.quizEtudiant.etudiant = this.login.etudiant;
+          this.quizEtudiant.resultat = null;
+          this.quizEtudiant.note = 0;
+          this.quizEtudiant.id = (this.quizsEtudiant.length + 1);
+          this.quizEtudiant.dateFin = null;
+          this.quizEtudiant.dateDebut = null;
+          this.quizEtudiant.ref = 'qe' + (this.quizsEtudiant.length + 1);
 
-          this.service.findFirstQuizEtudiant().subscribe(
+          this.service.insertQuizEtudiant().subscribe(
               // tslint:disable-next-line:no-shadowed-variable
               data => {
 
-                this.quizEtudiant = data;
-
-                this.quizEtudiant.quiz = this.selectedQuiz;
-                this.quizEtudiant.etudiant = this.login.etudiant;
-                this.quizEtudiant.resultat = null;
-                this.quizEtudiant.note = 0;
-                this.quizEtudiant.id = (this.quizsEtudiant.length + 1);
-                this.quizEtudiant.dateFin = null;
-                this.quizEtudiant.dateDebut = null;
-                this.quizEtudiant.ref = 'qe' + (this.quizsEtudiant.length + 1);
-
-                this.service.insertQuizEtudiant().subscribe(
-                    // tslint:disable-next-line:no-shadowed-variable
-                    data => {
-
-                    }
-                );
               }
           );
         }
     );
+
     this.service.findFirstQuestion().subscribe(
         data => {
           this.selected = data;
