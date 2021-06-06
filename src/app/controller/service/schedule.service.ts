@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {ScheduleProf} from "../model/calendrier-prof.model";
-import {HttpClient} from "@angular/common/http";
-import {ScheduleVo} from "../Model/schedule-vo.model";
+import {ScheduleProf} from '../model/calendrier-prof.model';
+import {HttpClient} from '@angular/common/http';
+import {ScheduleVo} from '../model/schedule-vo.model';
 
 @Injectable({
     providedIn: 'root'

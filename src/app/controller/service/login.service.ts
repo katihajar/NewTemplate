@@ -27,6 +27,9 @@ export class LoginService {
   }
 
   get prof(): Prof {
+    if (this._prof == null){
+      this._prof = new Prof();
+    }
     return this._prof;
   }
 

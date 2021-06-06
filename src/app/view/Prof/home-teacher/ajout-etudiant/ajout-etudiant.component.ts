@@ -1,6 +1,6 @@
 /* tslint:disable:quotemark */
 import { Component, OnInit } from '@angular/core';
-import {Etudiant} from "../../../../controller/Model/etudiant.model";
+import {Etudiant} from "../../../../controller/model/etudiant.model";
 import {MessageService} from "primeng/api";
 import {EtudiantService} from "../../../../controller/service/etudiant.service";
 

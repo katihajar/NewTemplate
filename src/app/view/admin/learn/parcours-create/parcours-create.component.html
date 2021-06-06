@@ -1,8 +1,8 @@
-<p-dialog [(visible)]="createDialog" [style]="{width: '450px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
+<p-dialog [(visible)]="createDialog" [style]="{width: '450px'}" header="Commande Details" [modal]="true" styleClass="p-fluid" >
     <ng-template pTemplate="content">
         <div class="p-field">
             <label for="centre" > Center </label>
-            <select type="text" pInputText class="btn btn-block btn-outline-light form-control" id="centre" style="background-color: lightblue" name="Parcours" (click)="findAllCentre()" [(ngModel)]="selecteddparcours.centre.ref" >
+            <select type="text" pInputText class="btn btn-block btn-outline-light form-control" id="centre" style="background-color: lavender" name="Parcours" (click)="findAllCentre()" [(ngModel)]="selecteddparcours.centre.ref" >
                 <option  selected="selected" *ngFor="let c of itemsscentre"  [ngValue]="c.ref"> {{c.libelle}}</option>
             </select>
             <small class="p-invalid" *ngIf="submitted && !selecteddparcours.centre.libelle">centre is required.</small>
@@ -26,7 +26,7 @@
 
     </ng-template>
 
-    <ng-template pTemplate="footer">
+    <ng-template pTemplate="footer" style="background-color: lavender;">
         <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
         <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
     </ng-template>

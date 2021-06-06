@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {LoginService} from '../../../controller/service/login.service';
-import {Prof} from '../../../controller/Model/prof.model';
-import {Admin} from '../../../controller/Model/admin.model';
-import {Etudiant} from '../../../controller/Model/etudiant.model';
+import {Prof} from '../../../controller/model/prof.model';
+import {Admin} from '../../../controller/model/admin.model';
+import {Etudiant} from '../../../controller/model/etudiant.model';
 
 @Component({
   selector: 'app-login-admin',

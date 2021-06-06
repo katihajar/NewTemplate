@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {QuizConfig} from "../../../../controller/Model/quiz-config.model";
-import {MessageService} from "primeng/api";
-import {QuizService} from "../../../../controller/service/quiz.service";
+import {QuizConfig} from '../../../../controller/model/quiz-config.model';
+import {MessageService} from 'primeng/api';
+import {QuizService} from '../../../../controller/service/quiz.service';
 
 
 @Component({
