@@ -44,6 +44,14 @@ export class EtudiantCoursesComponent implements OnInit {
     this.service.affichelistSection().subscribe(
         data => {
           this.selectesssection = data;
+          // tslint:disable-next-line:prefer-for-of
+          for (let n = 0 ; n < this.selectesssection.length ; n++){
+            for (let j = 0; j < 66 ; j++)
+            {
+              this.service.image3 += this.selectesssection[n].urlImage[j];
+            }
+            console.log( this.service.image3);
+          }
         });
   }
   set selectesssection(value: Array<Section>) {

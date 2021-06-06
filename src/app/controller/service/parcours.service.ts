@@ -54,8 +54,17 @@ export class ParcoursService {
   private _timer;
   private _image = '';
   private _image2 = '';
+  private _image3 = '';
   constructor(private http: HttpClient ) {  }
 
+
+  get image3(): string {
+    return this._image3;
+  }
+
+  set image3(value: string) {
+    this._image3 = value;
+  }
 
   get image2(): string {
     return this._image2;
