@@ -97,10 +97,9 @@ export class QuizEtudiantListComponent implements OnInit {
               // tslint:disable-next-line:no-shadowed-variable
               data => {
                 this.reponsesEtudiantList = data;
-                console.log('lqiiiiiiithaaaaaa');
                 document.getElementById('quiz').style.visibility = 'hidden';
 
-              }, error => console.log('malqiiiiithaaaaaach reponse etudiant')
+              }
           );
         },
             error => {
