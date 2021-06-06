@@ -66,6 +66,9 @@ import {HomeTeacherComponent} from './view/Prof/home-teacher/home-teacher.compon
 import {RecommendationComponent} from './view/Prof/recommend/recommendation/recommendation.component';
 import {RecommendComponent} from './view/Prof/recommend/recommend.component';
 import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.component';
+import {ClassroomEtudiantComponent} from './view/std/classroom-etudiant/classroom-etudiant.component';
+import {QuizEtudiantListComponent} from './view/std/quiz-etudiant-list/quiz-etudiant-list.component';
+import {QuizEtudiantViewComponent} from './view/std/quiz-etudiant-view/quiz-etudiant-view.component';
 
 
 
@@ -108,6 +111,9 @@ import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.comp
                     {path: 'pages/login-etudiant', component: LoginEtudiantComponent},
                     {path: 'pages/quiz-etudiant', component: QuizEtudiantComponent},
                     {path: 'pages/quiz-create', component: QuizCreateComponent},
+                    {path: 'pages/classroom-liste', component: ClassroomEtudiantComponent},
+                    {path: 'pages/quiz-liste', component: QuizEtudiantListComponent},
+                    {path: 'pages/quiz-view', component: QuizEtudiantViewComponent},
                     {path: 'view/quiz-preview', component: QuizPreviewComponent},
                     {path: 'view/schedule', component: ScheduleComponent},
                     {path: 'inscriptionEtudiant', component: FormLayoutDemoComponent},
