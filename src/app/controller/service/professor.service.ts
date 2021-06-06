@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
-import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {Prof} from "../Model/prof.model";
+import {environment} from '../../../environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Prof} from '../model/prof.model';
+import {SyntheseSessionCours} from '../Model/synthese-session-cours.model';
 
 @Injectable({
     providedIn: 'root'
@@ -67,6 +68,9 @@ export class ProfessorService {
     }
 
     get items(): Array<Prof> {
+        if (this._items == null){
+            this._items = new Array<Prof>();
+        }
         return this._items;
     }
 
@@ -75,6 +79,9 @@ export class ProfessorService {
     }
 
     get selected(): Prof {
+        if (this._selected == null){
+            this._selected = new Prof();
+        }
         return this._selected;
     }
 
@@ -83,6 +90,9 @@ export class ProfessorService {
     }
 
     get selectes(): Array<Prof> {
+        if (this._selectes == null){
+            this._selectes = new Array<Prof>();
+        }
         return this._selectes;
     }
 

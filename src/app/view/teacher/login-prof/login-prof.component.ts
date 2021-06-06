@@ -103,6 +103,7 @@ export class LoginProfComponent implements OnInit {
             {label: 'Salary', icon: 'pi pi-fw pi-money-bill', routerLink: ['/pages/salary']},
             {label: 'Parcours', icon: 'pi pi-fw pi-list', routerLink: ['/pages/courses']},
             {label: 'Classes', icon: 'pi pi-fw pi-table', routerLink: ['/pages/classes']},
+            {label: 'Session', icon: 'pi pi-fw pi-list', routerLink: ['/pages/session']},
             {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/view/schedule']},
             {label: 'FAQ', icon: 'pi pi-fw pi-question-circle', routerLink: ['/pages/faq-teacher']},
             {label: 'LogOut ', icon: 'pi pi-fw pi-sign-out', routerLink: ['']},

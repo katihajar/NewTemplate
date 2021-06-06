@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ConfirmationService, MessageService} from "primeng/api";
-import {ProfessorService} from "../../../../controller/service/professor.service";
-import {Prof} from "../../../../controller/Model/prof.model";
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {ProfessorService} from '../../../../controller/service/professor.service';
+import {Prof} from '../../../../controller/model/prof.model';
 
 @Component({
   selector: 'app-prof-list',
@@ -10,7 +10,6 @@ import {Prof} from "../../../../controller/Model/prof.model";
    providers: [MessageService, ConfirmationService]
 })
 export class ProfListComponent implements OnInit {
-
  cols: any[];
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService,

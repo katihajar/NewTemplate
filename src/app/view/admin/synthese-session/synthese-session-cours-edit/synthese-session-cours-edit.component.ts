@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {MessageService} from "primeng/api";
-import {SyntheseSessionCoursService} from "../../../../controller/service/synthese-session-cours.service";
-import {SyntheseSessionCours} from "../../../../controller/Model/synthese-session-cours.model";
+import {MessageService} from 'primeng/api';
+import {SyntheseSessionCoursService} from '../../../../controller/service/synthese-session-cours.service';
+import {SyntheseSessionCours} from '../../../../controller/Model/synthese-session-cours.model';
 
 @Component({
     selector: 'app-synthese-session-cours-edit',

@@ -69,6 +69,10 @@ import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.comp
 import {ClassroomEtudiantComponent} from './view/std/classroom-etudiant/classroom-etudiant.component';
 import {QuizEtudiantListComponent} from './view/std/quiz-etudiant-list/quiz-etudiant-list.component';
 import {QuizEtudiantViewComponent} from './view/std/quiz-etudiant-view/quiz-etudiant-view.component';
+import {SessionCoursComponent} from './view/admin/session-cours/session-cours.component';
+import {SyntheseSessionComponent} from './view/admin/synthese-session/synthese-session.component';
+import {ProfssComponent} from './view/admin/profss/profss.component';
+
 
 
 
@@ -85,6 +89,9 @@ import {QuizEtudiantViewComponent} from './view/std/quiz-etudiant-view/quiz-etud
                 children: [
                     {path: '', component: DashboardDemoComponent},
                     {path: 'pages/etudiant', component: EtudiantsComponent},
+                    {path: 'pages/session', component: SessionCoursComponent},
+                    {path: 'pages/synthese', component: SyntheseSessionComponent},
+                    {path: 'pages/teacherList', component: ProfssComponent},
                     {path: 'inscriptionAdmin', component: InscriptionAdminComponent},
                     {path: 'inscriptionTeacher', component: InscriptionProfComponent},
                     {path: 'view/inscription', component: InscriptionsComponent},

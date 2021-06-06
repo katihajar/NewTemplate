@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {SessionCours} from "../../../../controller/Model/session-cours.model";
-import {MessageService} from "primeng/api";
-import {SessionCoursService} from "../../../../controller/service/session-cours.service";
+import {SessionCours} from '../../../../controller/model/session-cours.model';
+import {MessageService} from 'primeng/api';
+import {SessionCoursService} from '../../../../controller/service/session-cours.service';
 
 @Component({
   selector: 'app-session-cours-create',

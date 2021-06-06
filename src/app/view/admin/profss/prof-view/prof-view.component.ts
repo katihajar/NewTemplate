@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ProfessorService} from "../../../../controller/service/professor.service";
-import {MessageService} from "primeng/api";
-import {Prof} from "../../../../controller/Model/prof.model";
+import {ProfessorService} from '../../../../controller/service/professor.service';
+import {MessageService} from 'primeng/api';
+import {Prof} from '../../../../controller/model/prof.model';
 
 @Component({
   selector: 'app-prof-view',

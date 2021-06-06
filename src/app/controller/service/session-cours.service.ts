@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
-import {SessionCours} from "../Model/session-cours.model";
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../../environments/environment";
+import {Observable} from 'rxjs';
+import {SessionCours} from '../model/session-cours.model';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +68,9 @@ private url = environment.baseUrl + 'session/';
   }
 
   get items(): Array<SessionCours> {
+    if (this._items == null){
+      this._items = new Array<SessionCours>();
+    }
     return this._items;
   }
 
@@ -76,6 +79,9 @@ private url = environment.baseUrl + 'session/';
   }
 
   get selected(): SessionCours {
+    if (this._selected == null){
+      this._selected = new SessionCours();
+    }
     return this._selected;
   }
 
@@ -84,6 +90,9 @@ private url = environment.baseUrl + 'session/';
   }
 
   get selectes(): Array<SessionCours> {
+    if (this._selectes == null){
+      this._selectes = new Array<SessionCours>();
+    }
     return this._selectes;
   }
 

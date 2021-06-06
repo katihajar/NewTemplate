@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ConfirmationService, MessageService} from "primeng/api";
-import {SessionCoursService} from "../../../../controller/service/session-cours.service";
-import {SessionCours} from "../../../../controller/Model/session-cours.model";
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {SessionCoursService} from '../../../../controller/service/session-cours.service';
+import {SessionCours} from '../../../../controller/model/session-cours.model';
 
 @Component({
   selector: 'app-session-cours-list',

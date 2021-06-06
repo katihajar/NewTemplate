@@ -1,5 +1,5 @@
-import {Etudiant} from "./etudiant.model";
-import {Prof} from "./prof.model";
+import {Etudiant} from './etudiant.model';
+import {Prof} from './prof.model';
 
 export class SessionCours {
 public id: number;

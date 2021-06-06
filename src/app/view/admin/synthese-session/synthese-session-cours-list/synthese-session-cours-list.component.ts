@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ConfirmationService, MessageService} from "primeng/api";
-import {SyntheseSessionCoursService} from "../../../../controller/service/synthese-session-cours.service";
-import {SyntheseSessionCours} from "../../../../controller/Model/synthese-session-cours.model";
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {SyntheseSessionCoursService} from '../../../../controller/service/synthese-session-cours.service';
+import {SyntheseSessionCours} from '../../../../controller/model/synthese-session-cours.model';
 
 @Component({
   selector: 'app-synthese-session-cours-list',
@@ -12,9 +12,9 @@ import {SyntheseSessionCours} from "../../../../controller/Model/synthese-sessio
 export class SyntheseSessionCoursListComponent implements OnInit {
 
   cols: any[];
-   public etat:number=1;
+   public etat = 1;
 
-   public p:number=2;
+   public p = 2;
 
 
 
@@ -29,8 +29,8 @@ export class SyntheseSessionCoursListComponent implements OnInit {
      this.service.findAll().subscribe(data => this.items = data);
    }
 
-   public setetat(nbr:number):number{
-   this.etat=nbr;
+   public setetat(nbr: number): number{
+   this.etat = nbr;
    return this.etat;
    }
 

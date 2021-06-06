@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../../environments/environment";
-import {SyntheseSessionCours} from "../Model/synthese-session-cours.model";
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {environment} from '../../../environments/environment';
+import {SyntheseSessionCours} from '../model/synthese-session-cours.model';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {SessionCours} from '../Model/session-cours.model';
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +69,9 @@ export class SyntheseSessionCoursService {
   }
 
   get items(): Array<SyntheseSessionCours> {
+    if (this._items == null){
+      this._items = new Array<SyntheseSessionCours>();
+    }
     return this._items;
   }
 
@@ -76,6 +80,9 @@ export class SyntheseSessionCoursService {
   }
 
   get selected(): SyntheseSessionCours {
+    if (this._selected == null){
+      this._selected = new SyntheseSessionCours();
+    }
     return this._selected;
   }
 
@@ -84,6 +91,9 @@ export class SyntheseSessionCoursService {
   }
 
   get selectes(): Array<SyntheseSessionCours> {
+    if (this._selectes == null){
+      this._selectes = new Array<SyntheseSessionCours>();
+    }
     return this._selectes;
   }
 
