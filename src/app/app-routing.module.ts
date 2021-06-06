@@ -66,6 +66,9 @@ import {HomeTeacherComponent} from './view/Prof/home-teacher/home-teacher.compon
 import {RecommendationComponent} from './view/Prof/recommend/recommendation/recommendation.component';
 import {RecommendComponent} from './view/Prof/recommend/recommend.component';
 import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.component';
+import {SessionCoursComponent} from "./view/admin/session-cours/session-cours.component";
+import {ProfComponent} from "./view/admin/prof/prof.component";
+import {SyntheseSessionComponent} from "./view/admin/synthese-session/synthese-session.component";
 
 
 
@@ -82,6 +85,9 @@ import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.comp
                 children: [
                     {path: '', component: DashboardDemoComponent},
                     {path: 'pages/etudiant', component: EtudiantsComponent},
+                    {path: 'pages/synthese', component: SyntheseSessionComponent},
+                    {path: 'pages/session', component: SessionCoursComponent},
+                    {path: 'pages/professor', component: ProfComponent},
                     {path: 'inscriptionAdmin', component: InscriptionAdminComponent},
                     {path: 'inscriptionTeacher', component: InscriptionProfComponent},
                     {path: 'view/inscription', component: InscriptionsComponent},

@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {AppRoutingModule} from './app-routing.module';
 
 import {AccordionModule} from 'primeng/accordion';
@@ -176,29 +176,29 @@ import {SalaryComponent} from './view/Prof/parcrs/salary/salary.component';
 import {SectionsComponent} from './view/Prof/parcrs/sections/sections.component';
 import {ParcrsComponent} from './view/Prof/parcrs/parcrs.component';
 import {EtudiantsComponent} from './view/Prof/etudiants/etudiants.component';
-import { QuizPreviewComponent } from './view/Prof/quiz/quiz-preview/quiz-preview.component';
-import { QuizConfigComponent } from './view/Prof/quiz/quiz-config/quiz-config.component';
-import { ScheduleComponent } from './view/Prof/schedule/schedule.component';
+import {QuizPreviewComponent} from './view/Prof/quiz/quiz-preview/quiz-preview.component';
+import {QuizConfigComponent} from './view/Prof/quiz/quiz-config/quiz-config.component';
+import {ScheduleComponent} from './view/Prof/schedule/schedule.component';
 import {EtudiantCoursesComponent} from './view/etudiant/etudiant-courses/etudiant-courses.component';
 import {EtudiantSectionsComponent} from './view/etudiant/etudiant-sections/etudiant-sections.component';
-import { FaqAnswerComponent } from './view/admin/faq-admin/faq-answer/faq-answer.component';
-import { NewsAdminListComponent } from './view/admin/news-admin/news-admin-list/news-admin-list.component';
-import { NewsAdminViewComponent } from './view/admin/news-admin/news-admin-view/news-admin-view.component';
-import { NewsAdminCreateComponent } from './view/admin/news-admin/news-admin-create/news-admin-create.component';
-import { NewsTeacherListComponent } from './view/teacher/news/news-teacher-list/news-teacher-list.component';
-import { NewsTeacherViewComponent } from './view/teacher/news/news-teacher-view/news-teacher-view.component';
-import { FaqListComponent } from './view/teacher/faq/faq-list/faq-list.component';
-import { FaqContactComponent } from './view/teacher/faq/faq-contact/faq-contact.component';
+import {FaqAnswerComponent} from './view/admin/faq-admin/faq-answer/faq-answer.component';
+import {NewsAdminListComponent} from './view/admin/news-admin/news-admin-list/news-admin-list.component';
+import {NewsAdminViewComponent} from './view/admin/news-admin/news-admin-view/news-admin-view.component';
+import {NewsAdminCreateComponent} from './view/admin/news-admin/news-admin-create/news-admin-create.component';
+import {NewsTeacherListComponent} from './view/teacher/news/news-teacher-list/news-teacher-list.component';
+import {NewsTeacherViewComponent} from './view/teacher/news/news-teacher-view/news-teacher-view.component';
+import {FaqListComponent} from './view/teacher/faq/faq-list/faq-list.component';
+import {FaqContactComponent} from './view/teacher/faq/faq-contact/faq-contact.component';
 import {LoginEtudiantComponent} from './view/etudiant/login-etudiant/login-etudiant.component';
 import {LoginProfComponent} from './view/teacher/login-prof/login-prof.component';
 import {LoginAdminComponent} from './view/admin/login-admin/login-admin.component';
-import { QuizEtudiantComponent } from './view/etudiant/quiz-etudiant/quiz-etudiant.component';
+import {QuizEtudiantComponent} from './view/etudiant/quiz-etudiant/quiz-etudiant.component';
 import {SectionSimulateComponent} from './view/Prof/parcrs/section-simulate/section-simulate.component';
 import {ChooseViewComponent} from './view/Prof/parcrs/choose-view/choose-view.component';
 import {InscriptionAdminComponent} from './view/admin/inscription-admin/inscription-admin.component';
 import {ParcoursCreateComponent} from './view/admin/learn/parcours-create/parcours-create.component';
 import {CoursCreateComponent} from './view/admin/learn/cours-create/cours-create.component';
-import { InscriptionProfComponent } from './view/Prof/inscription-prof/inscription-prof.component';
+import {InscriptionProfComponent} from './view/Prof/inscription-prof/inscription-prof.component';
 import {HomeTeacherComponent} from './view/Prof/home-teacher/home-teacher.component';
 import {TeacherRubComponent} from './view/Prof/home-teacher/teacher-rub/teacher-rub.component';
 import {ProfNewsComponent} from './view/Prof/home-teacher/prof-news/prof-news.component';
@@ -210,7 +210,20 @@ import {RecommendEditComponent} from './view/Prof/recommend/recommend-edit/recom
 import {RecommendListComponent} from './view/Prof/recommend/recommend-list/recommend-list.component';
 import {RecommendViewComponent} from './view/Prof/recommend/recommend-view/recommend-view.component';
 import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.component';
-
+import {SessionCoursComponent} from './view/admin/session-cours/session-cours.component';
+import {SessionCoursCreateComponent} from './view/admin/session-cours/session-cours-create/session-cours-create.component';
+import {SessionCoursEditComponent} from './view/admin/session-cours/session-cours-edit/session-cours-edit.component';
+import {SessionCoursViewComponent} from './view/admin/session-cours/session-cours-view/session-cours-view.component';
+import {SessionCoursListComponent} from './view/admin/session-cours/session-cours-list/session-cours-list.component';
+import {ProfComponent} from './view/admin/prof/prof.component';
+import {ProfCreateComponent} from './view/admin/prof/prof-create/prof-create.component';
+import {ProfEditComponent} from './view/admin/prof/prof-edit/prof-edit.component';
+import {ProfViewComponent} from './view/admin/prof/prof-view/prof-view.component';
+import {SyntheseSessionCoursListComponent} from './view/admin/synthese-session/synthese-session-cours-list/synthese-session-cours-list.component';
+import {SyntheseSessionCoursCreateComponent} from './view/admin/synthese-session/synthese-session-cours-create/synthese-session-cours-create.component';
+import {SyntheseSessionCoursEditComponent} from './view/admin/synthese-session/synthese-session-cours-edit/synthese-session-cours-edit.component';
+import {SyntheseSessionCoursViewComponent} from './view/admin/synthese-session/synthese-session-cours-view/synthese-session-cours-view.component';
+import {SyntheseSessionComponent} from './view/admin/synthese-session/synthese-session.component';
 
 
 @NgModule({
@@ -418,12 +431,26 @@ import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.comp
         RecommendListComponent,
         RecommendViewComponent,
         QuizCreateComponent,
-        InscriptionProfComponent
+        InscriptionProfComponent,
+        SessionCoursComponent,
+        SessionCoursCreateComponent,
+        SessionCoursEditComponent,
+        SessionCoursViewComponent,
+        SessionCoursListComponent,
+        ProfComponent,
+        ProfCreateComponent,
+        ProfEditComponent,
+        ProfViewComponent,
+        SyntheseSessionCoursListComponent,
+        SyntheseSessionCoursCreateComponent,
+        SyntheseSessionCoursEditComponent,
+        SyntheseSessionCoursViewComponent,
+        SyntheseSessionComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService , MessageService , ConfirmationService
+        PhotoService, ProductService, MenuService, MessageService, ConfirmationService
     ],
     bootstrap: [AppComponent]
 })

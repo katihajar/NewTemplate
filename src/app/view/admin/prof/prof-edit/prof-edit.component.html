@@ -1,0 +1,41 @@
+<p-dialog [(visible)]="editDialog" [style]="{width: '450px'}" header="Professor Edit" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="reference">Reference</label>
+            <input type="text" pInputText id="reference" [(ngModel)]="selected.reference" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.reference">ref is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="firstName">First Name</label>
+            <input type="text" pInputText id="firstName" [(ngModel)]="selected.prenom" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.prenom">First Name is required.</small>
+        </div>
+
+        <div class="p-field">
+            <label for="lastName">Last Name</label>
+            <input type="text" pInputText id="lastName" [(ngModel)]="selected.nom" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.nom">Last Name is required.</small>
+        </div>
+
+        <div class="p-field">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" pInputText id="phoneNumber" [(ngModel)]="selected.phoneNumber" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.phoneNumber">Phone Number is required.</small>
+        </div>
+
+        <div class="p-field">
+            <label for="email">Email</label>
+            <input type="text" pInputText id="email" [(ngModel)]="selected.email" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.email">Email is required.</small>
+        </div>
+
+
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="edit()"></button>
+    </ng-template>
+</p-dialog>
+
