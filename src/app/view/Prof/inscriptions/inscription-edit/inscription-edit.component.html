@@ -1,19 +1,19 @@
 <p-dialog [(visible)]="editDialog" [style]="{width: '450px'}" header="Commande Edit" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="p-field">
-            <label for="numeroInscription">numeroInscription</label>
+            <label for="numeroInscription">Registration Number</label>
             <input type="text" pInputText id="numeroInscription" [(ngModel)]="selected.numeroInscription" required autofocus />
             <small class="p-invalid" *ngIf="submitted && !selected.numeroInscription">ref is required.</small>
         </div>
         <div>
-            <label class="primaryLab">etat</label><br>
+            <label class="primaryLab">Registration status</label><br>
             <select pInputText  type="text" class="btn btn-block btn-outline-light form-control" name="fieldName" style="background-color: lightblue" name="etat" (click)="findAllEtat()" [(ngModel)]="selected.etudiant.etatInscription.libelle" >
                 <option  selected="selected" *ngFor="let e of etatinscriptionslist"  [ngValue]="e.libelle"  > {{e.libelle}}</option>
             </select>
         </div>
 
         <div class="p-field">
-            <label class="primaryLab">Prof</label>
+            <label class="primaryLab">Teacher</label>
             <select pInputText type="text"  class="btn btn-block btn-outline-light form-control " name="fieldName" style="background-color: lightblue" name="prof" (click)="findAllProf()" [(ngModel)]="selected.etudiant.prof.id" >
                 <option  selected="selected" *ngFor="let c of profList " [ngValue]="c.id" > {{c.prenom}}</option>
             </select>

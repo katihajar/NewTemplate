@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import {Etudiant} from "../../../../controller/model/etudiant.model";
 import {MessageService} from "primeng/api";
 import {EtudiantService} from "../../../../controller/service/etudiant.service";
+import {Centre} from '../../../../controller/Model/centre.model';
+import {Parcours} from '../../../../controller/Model/parcours.model';
+import {LoginService} from '../../../../controller/service/login.service';
 
 @Component({
   selector: 'app-ajout-etudiant',
@@ -11,7 +14,7 @@ import {EtudiantService} from "../../../../controller/service/etudiant.service";
 })
 export class AjoutEtudiantComponent implements OnInit {
 
-  constructor(private messageService: MessageService, private service: EtudiantService) { }
+  constructor(private messageService: MessageService, private service: EtudiantService, private serviceUser: LoginService) { }
 
   ngOnInit(): void {
   }
@@ -20,6 +23,7 @@ export class AjoutEtudiantComponent implements OnInit {
     this.submitted = false;
   }
   public save() {
+    this.selected.prof.id = this.serviceUser.prof.id;
     this.submitted = true;
     if (this.selected.nom.trim()) {
       this.service.save().subscribe(data => {
@@ -38,7 +42,26 @@ export class AjoutEtudiantComponent implements OnInit {
   get selected(): Etudiant {
     return this.service.selected;
   }
+  public findAllCentre(){
+    this.service.findAllCentre().subscribe(data => this.centreList = data);
+  }
+  public findAllParcours(){
+    this.service.findAllParcours().subscribe(data => this.parcoursList = data);
+  }
+  get centreList(): Array<Centre> {
 
+    return this.service.centreList;
+  }
+  set centreList(value: Array<Centre>) {
+    this.service.centreList = value;
+  }
+  set parcoursList(value: Array<Parcours>) {
+    this.service.parcoursList = value;
+  }
+  get parcoursList(): Array<Parcours> {
+    return this.service.parcoursList;
+  }
+  // tslint:disable-next-line:adjacent-overload-signatures
   set selected(value: Etudiant) {
     this.service.selected = value;
   }

@@ -222,11 +222,12 @@ import {SyntheseSessionCoursViewComponent} from './view/admin/synthese-session/s
 import {SyntheseSessionCoursListComponent} from './view/admin/synthese-session/synthese-session-cours-list/synthese-session-cours-list.component';
 import {SyntheseSessionCoursEditComponent} from './view/admin/synthese-session/synthese-session-cours-edit/synthese-session-cours-edit.component';
 import {SyntheseSessionCoursCreateComponent} from './view/admin/synthese-session/synthese-session-cours-create/synthese-session-cours-create.component';
-import {ProfViewComponent} from './view/admin/profss/prof-view/prof-view.component';
-import {ProfEditComponent} from './view/admin/profss/prof-edit/prof-edit.component';
-import {ProfCreateComponent} from './view/admin/profss/prof-create/prof-create.component';
-import {ProfListComponent} from './view/admin/profss/prof-list/prof-list.component';
-import { ProfssComponent } from './View/Admin/profss/profss.component';
+import { ProfesseurComponent } from './view/Admin/professeur/professeur.component';
+import { ProfesseurListComponent } from './view/admin/professeur/professeur-list/professeur-list.component';
+import { ProfesseurCreateComponent } from './view/admin/professeur/professeur-create/professeur-create.component';
+import { ProfesseurEditComponent } from './view/admin/professeur/professeur-edit/professeur-edit.component';
+import { ProfesseurViewComponent } from './view/admin/professeur/professeur-view/professeur-view.component';
+
 
 
 
@@ -438,7 +439,21 @@ import { ProfssComponent } from './View/Admin/profss/profss.component';
         ClassroomEtudiantComponent,
         QuizEtudiantListComponent,
         QuizEtudiantViewComponent,
-
+        SessionCoursEditComponent,
+        SessionCoursComponent,
+        SessionCoursCreateComponent,
+        SessionCoursViewComponent,
+        SessionCoursListComponent,
+        SyntheseSessionComponent,
+        SyntheseSessionCoursCreateComponent,
+        SyntheseSessionCoursEditComponent,
+        SyntheseSessionCoursViewComponent,
+        SyntheseSessionCoursListComponent,
+        ProfesseurComponent,
+        ProfesseurListComponent,
+        ProfesseurCreateComponent,
+        ProfesseurEditComponent,
+        ProfesseurViewComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

@@ -31,10 +31,10 @@
                 <div class="card"*ngFor="let question of questions ; let i = index" styleClass="p-card-shadow">
                     <div class="p-fluid p-formgrid p-grid">
                         <div class="p-field p-col-12 p-md-6">
-                            <p-inputNumber id="firstname6"  placeholder="Numero Question" name="numero{{i}}" [(ngModel)]="question.numero"></p-inputNumber>
+                            <p-inputNumber id="firstname6"  placeholder="Question Number" name="numero{{i}}" [(ngModel)]="question.numero"></p-inputNumber>
                         </div>
                         <div class="p-field p-col-12 p-md-6">
-                            <p-dropdown inputId="type"  [options]="types" [(ngModel)]="question.typeDeQuestion" name="types{{i}}" placeholder="TypeQuestion" optionLabel="lib"></p-dropdown>
+                            <p-dropdown inputId="type"  [options]="types" [(ngModel)]="question.typeDeQuestion" name="types{{i}}" placeholder="Type of Question" optionLabel="lib"></p-dropdown>
                         </div>
                         <div class="p-field p-col-12 ">
                             <label >Question</label>
@@ -42,21 +42,21 @@
 
                         </div>
                         <div class="p-col-12 " style="text-align: center; margin: 5px">
-                            <h5 class="reponseLib">Reponse</h5>
+                            <h5 class="reponseLib">Answers</h5>
                         </div>
                         <div class="p-formgroup-inline">
                             <div class="p-field p-col-12 p-md-3">
-                                <p-inputNumber [(ngModel)]="reponse.numero" name="numeroReponse{{i}}" placeholder="Numero"></p-inputNumber>
+                                <p-inputNumber [(ngModel)]="reponse.numero" name="numeroReponse{{i}}" placeholder="Number"></p-inputNumber>
                             </div>
                             <div class="p-field p-col-12 p-md-4">
-                                <p-inputNumber [(ngModel)]="question.pointReponseJuste" placeholder="pointJust"  [minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
+                                <p-inputNumber [(ngModel)]="question.pointReponseJuste" placeholder="True point"  [minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
                             </div>
                             <div class="p-field p-col-12 p-md-4">
-                                <p-inputNumber [(ngModel)]="question.pointReponsefausse" placeholder="pointfausse"  [minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
+                                <p-inputNumber [(ngModel)]="question.pointReponsefausse" placeholder="false point"  [minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
                             </div>
                         </div>
                         <div class="p-field  p-col-10 ">
-                            <label >Reponse</label>
+                            <label >Answer</label>
                             <textarea type="text" rows="2"  pInputTextarea [(ngModel)]="reponse.lib"></textarea>
                         </div>
                         <div class="p-field  p-col-2" >
@@ -65,12 +65,12 @@
                         <div class="p-formgroup-inline p-col-12">
                             <h6>Correct : </h6>
                             <div class="p-field-radiobutton p-md-1">
-                                <p-radioButton name="etat" value="vrai" [(ngModel)]="reponse.etatReponse" inputId="city1"></p-radioButton>
-                                <label>Vrai</label>
+                                <p-radioButton name="state" value="true" [(ngModel)]="reponse.etatReponse" inputId="city1"></p-radioButton>
+                                <label>true</label>
                             </div>
                             <div class="p-field-radiobutton p-md-1">
-                                <p-radioButton name="etat" value="faux" [(ngModel)]="reponse.etatReponse" inputId="city2"></p-radioButton>
-                                <label>Faux</label>
+                                <p-radioButton name="state" value="false" [(ngModel)]="reponse.etatReponse" inputId="city2"></p-radioButton>
+                                <label>False</label>
                             </div>
                         </div>
                     </div>
@@ -78,8 +78,8 @@
                         <p-table [value]="reponses">
                             <ng-template pTemplate="header">
                                 <tr>
-                                    <th>Libelle Reponse</th>
-                                    <th>Etat Reponse</th>
+                                    <th>Libelle Answer</th>
+                                    <th>State of Answer</th>
                                     <th>Action</th>
                                 </tr>
                             </ng-template>

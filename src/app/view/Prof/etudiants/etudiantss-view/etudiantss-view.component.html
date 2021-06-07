@@ -1,23 +1,23 @@
 <p-dialog [(visible)]="viewDialog" [style]="{width: '450px'}" header="Etudiant Details" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="p-field">
-            <label for="nom">nom</label>
+            <label for="nom">LastName</label>
             <input type="text" pInputText id="nom" [(ngModel)]="selected.nom" disabled />
         </div>
         <div class="p-field">
-            <label for="prenom">prenom</label>
+            <label for="prenom">FirstName</label>
             <input type="text" pInputText id="prenom" [(ngModel)]="selected.prenom" disabled />
         </div>
         <div class="p-field">
-            <label for="login">login</label>
+            <label for="login">Username</label>
             <input type="text" pInputText id="login" [(ngModel)]="selected.login" disabled />
         </div>
         <div class="p-field">
-            <label for="parcours">parcours</label>
+            <label for="parcours">Parcours</label>
             <input type="text" pInputText id="parcours" [(ngModel)]="selected.parcours.libelle" disabled />
         </div>
         <div class="p-field">
-            <label for="centre">centre</label>
+            <label for="centre">Centre</label>
             <input type="text" pInputText id="centre" [(ngModel)]="selected.parcours.centre.libelle" disabled />
         </div>
 

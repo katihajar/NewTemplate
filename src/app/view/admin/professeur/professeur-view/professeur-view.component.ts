@@ -3,12 +3,13 @@ import {ProfessorService} from '../../../../controller/service/professor.service
 import {MessageService} from 'primeng/api';
 import {Prof} from '../../../../controller/model/prof.model';
 
+
 @Component({
-  selector: 'app-prof-view',
-  templateUrl: './prof-view.component.html',
-  styleUrls: ['./prof-view.component.scss']
+  selector: 'app-professeur-view',
+  templateUrl: './professeur-view.component.html',
+  styleUrls: ['./professeur-view.component.scss']
 })
-export class ProfViewComponent implements OnInit {
+export class ProfesseurViewComponent implements OnInit {
 
 
   constructor(private messageService: MessageService, private service: ProfessorService) {

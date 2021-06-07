@@ -104,7 +104,7 @@ export class LoginProfComponent implements OnInit {
             {label: 'Parcours', icon: 'pi pi-fw pi-list', routerLink: ['/pages/courses']},
             {label: 'Classes', icon: 'pi pi-fw pi-table', routerLink: ['/pages/classes']},
             // tslint:disable-next-line:max-line-length
-            {label: 'Synthese-Session-Cours', icon: 'pi pi-fw pi-list', routerLink: ['/pages/synthese']},            {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/view/schedule']},
+            {label: 'Synthese-Session-Cours', icon: 'pi pi-fw pi-briefcase', routerLink: ['/pages/synthese']},            {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/view/schedule']},
             {label: 'FAQ', icon: 'pi pi-fw pi-question-circle', routerLink: ['/pages/faq-teacher']},
             {label: 'LogOut ', icon: 'pi pi-fw pi-sign-out', routerLink: ['']},
           ];
