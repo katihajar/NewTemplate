@@ -1,12 +1,23 @@
 
 
 <div class="layout-topbar" >
+
     <a href="#" class="layout-topbar-logo">
         <span id="topbar-logo" style="color: #DCF7F8" ><h1>Center American</h1></span>
     </a>
 
 
+
     <ul  class="topbar-menu"  >
+        <li class="user-profile" [ngClass]="{'active-topmenuitem fadeInDown': appMain.topbarUserMenuActive}">
+            <a href="#" (click)="appMain.onTopbarUserMenuButtonClick($event)" *ngIf="!app.inlineUser">
+                <img src="{{this.serviceUser.prof.image}}"  />
+                <div class="layout-profile-userinfo">
+                    <span class="layout-profile-name">{{this.serviceUser.prof.nom}}</span>
+                    <span class="layout-profile-role">{{this.serviceUser.prof.prenom}}</span>
+                </div>
+            </a>
+        </li>
         <li class="user-profile" [ngClass]="{'active-topmenuitem fadeInDown': appMain.topbarUserMenuActive}" style="margin-top: 4px">
             <a href="#" (click)="appMain.onTopbarUserMenuButtonClick($event)" *ngIf="!app.inlineUser">
                 <div class="layout-profile-userinfo">

@@ -5,12 +5,14 @@ import {ClassRoom} from './class-room.model';
 export class Prof {
   public id: number;
   public reference: string;
-  public phoneNumber:string;
+  public phoneNumber: string;
   public numero: number;
   public nom: string;
+  public image: string;
   public prenom: string;
   public login: string;
   public password: string;
+  public addresse: string;
   public email: string;
   public ref: string;
   public  classRoomList = new Array<ClassRoom>();
