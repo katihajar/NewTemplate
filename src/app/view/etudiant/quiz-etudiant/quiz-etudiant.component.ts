@@ -19,11 +19,22 @@ export class QuizEtudiantComponent implements OnInit {
   constructor(private service: QuizEtudiantService, private login: LoginService) { }
 
   private selectedValue: string;
+  private selectedValueCheckbox: string[];
+  private _type: string;
   private _button: string;
   private _radio: string;
   private _checkbox: string;
   private _noteQst: number;
   private _noteQuiz: number;
+
+
+  get type(): string {
+    return this._type;
+  }
+
+  set type(value: string) {
+    this._type = value;
+  }
 
   get reponsesEtudiant(): Array<ReponseEtudiant> {
     return this.service.reponsesEtudiant;
@@ -197,6 +208,14 @@ export class QuizEtudiantComponent implements OnInit {
     this.service.findNextQuestion().subscribe(
         data => {
           this.selected = data;
+          if(data.typeDeQuestion.ref == 't1')
+          {
+            this.type = 'radio';
+          }
+          else if(data.typeDeQuestion.ref == 't2')
+          {
+            this.type = 'checkbox';
+          }
         }
     );
       // tslint:disable-next-line:triple-equals
@@ -243,11 +262,14 @@ export class QuizEtudiantComponent implements OnInit {
         }
     );
 
+    console.log(this.selectedValue);
+
     this.service.findMyAnswer(this.selectedValue).subscribe(
         // tslint:disable-next-line:no-shadowed-variable
         data => {
           this.myAnswer = data;
-        }
+          console.log('d5alt');
+        }, error => console.log('erreur')
     );
     this.service.findAllReponseEtudiant().subscribe(
         data => {
@@ -300,15 +322,28 @@ export class QuizEtudiantComponent implements OnInit {
     this.service.findFirstQuestion().subscribe(
         data => {
           this.selected = data;
-          /*if(this.selected.typeDeQuestion.ref = 't1')
+          if(this.selected.typeDeQuestion.ref == 't1')
           {
-            this.radio = 'visible';
-            this.checkbox = 'hidden';
+            this.type = 'radio';
           }
-          else if(this.selected.typeDeQuestion.ref = 't2')
+          else if(this.selected.typeDeQuestion.ref == 't2')
           {
-            this.radio = 'hidden';
-            this.checkbox = 'visible';
+            this.type = 'checkbox';
+          }
+          /*console.log('bara' + this.selected.typeDeQuestion.ref);
+          if(data.typeDeQuestion.ref == 't1')
+          {
+            console.log('hada da5l t1');
+            document.getElementById('checkbox').style.visibility = 'hidden';
+            document.getElementById('radio').style.visibility = 'visible';
+          }
+          else if(data.typeDeQuestion.ref == 't2')
+          {
+            console.log('hada da5l t2');
+
+            console.log('1');
+            document.getElementById('radio').style.visibility = 'hidden';
+            console.log('1');
           }*/
         }
     );
@@ -326,21 +361,36 @@ export class QuizEtudiantComponent implements OnInit {
 
   }
 
-  public selectionChanged(): void
+  public selectionChanged(reponse: Reponse): void
   {
-    /*for(let i=0 ; i < this.reponses.length ; i++)
-    {
-      if(ref.ref == this.reponses[i].ref)
+      this.selectedValue = reponse.ref;
+      for(let i=0 ; i < this.reponses.length ; i++)
       {
-        document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#268a9e';
-        document.getElementById('div-' + this.reponses[i].ref).style.width = '320px';
-        document.getElementById('div-' + this.reponses[i].ref).style.height = '43px';
+          if(reponse.ref == this.reponses[i].ref)
+          {
+              document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#a318ad';
+              document.getElementById('div-' + this.reponses[i].ref).style.width = '320px';
+              document.getElementById('div-' + this.reponses[i].ref).style.height = '43px';
+          }
+          else {
+              document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#9D8FEE';
+              document.getElementById('div-' + this.reponses[i].ref).style.width = '300px';
+              document.getElementById('div-' + this.reponses[i].ref).style.height = '40px';
+          }
       }
-      else {
-        document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#90eef0';
-        document.getElementById('div-' + this.reponses[i].ref).style.width = '300px';
-        document.getElementById('div-' + this.reponses[i].ref).style.height = '40px';
-      }
+    /*else if(this.selected.typeDeQuestion.ref == 't2')
+    {
+        console.log(this.selectedValueCheckbox);
+        if(this.selectedValueCheckbox.includes(reponse.ref))
+        {
+            console.log('kaaain');
+        }
+        else
+        {
+            console.log('makaainch');
+            this.selectedValueCheckbox.push(reponse.ref);
+        }
+        this.selectedValueCheckbox.push(reponse.ref);
     }*/
   }
 
