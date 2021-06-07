@@ -3,37 +3,37 @@
         <div class="p-field">
             <div class="p-field-checkbox">
                 <p-checkbox name="group1" (change)="ProgressBar($event)" ></p-checkbox>
-                <label>Afficher la barre de progression</label>
+                <label>Show progress bar</label>
                 <br/>
                 <p-checkbox name="group1" (change)="itemChecked($event)" ></p-checkbox>
-                <label>Trier les reponses en mode aléatoire</label>
+                <label>Sort responses in random mode</label>
             </div>
         </div>
         <p style="justify-content: space-between"></p>
         <div class="p-field">
-            <h6>Le répondant peut voir les éléments suivants :</h6>
+            <h6>The respondent can see the following:</h6>
             <div class="p-field-checkbox">
                 <p-checkbox name="group2"  ></p-checkbox>
-                <label>Questions aux réponses incorrectes</label>
+                <label>Questions with incorrect answers</label>
             </div>
             <div class="p-field-checkbox">
                 <p-checkbox name="group2"  ></p-checkbox>
-                <label>Bonnes réponses</label>
+                <label>Correct answers</label>
             </div>
             <div class="p-field-checkbox">
                 <p-checkbox name="group2"  ></p-checkbox>
-                <label>Nombre de points</label>
+                <label>Number of points</label>
             </div>
         </div>
         <div class="p-field">
-            <h6>Publier la note :</h6>
+            <h6>Publish the note:</h6>
             <div class="p-field-radiobutton">
                 <p-radioButton name="note" value="option1" inputId="note1"></p-radioButton>
-                <label>Immédiatement après chaque envoi</label>
+                <label>Immediately after each shipment</label>
             </div>
             <div class="p-field-radiobutton">
                 <p-radioButton name="note" value="option2" inputId="note2"></p-radioButton>
-                <label>Plus tard, après examen manuel</label>
+                <label>Later, after manual examination</label>
             </div>
         </div>
     </ng-template>

@@ -225,7 +225,7 @@ import {SyntheseSessionCoursCreateComponent} from './view/admin/synthese-session
 import {ProfViewComponent} from './view/admin/profss/prof-view/prof-view.component';
 import {ProfEditComponent} from './view/admin/profss/prof-edit/prof-edit.component';
 import {ProfCreateComponent} from './view/admin/profss/prof-create/prof-create.component';
-import {ProfListComponent} from './view/admin/profss/prof-list/prof-list.component';
+import {ProfssListComponent} from './view/admin/profss/profss-list/profss-list.component';
 import { ProfssComponent } from './View/Admin/profss/profss.component';
 
 
@@ -449,7 +449,7 @@ import { ProfssComponent } from './View/Admin/profss/profss.component';
         SyntheseSessionCoursCreateComponent,
         ProfViewComponent,
         ProfEditComponent,
-        ProfListComponent,
+        ProfssListComponent,
         ProfCreateComponent,
         SessionCoursEditComponent,
         ProfssComponent

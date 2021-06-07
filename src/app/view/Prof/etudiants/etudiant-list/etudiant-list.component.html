@@ -23,15 +23,15 @@
                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
-                        <h5 class="p-m-0">Manage Etudiants</h5>
+                        <div class="p-col"> <h5 class="p-m-0">Manage Students</h5><br>
                         <span >
-                        <input pInputText type="text"  placeholder="Search by nom" [(ngModel)]="etudiantVo.nom  " style="margin-right: 10px;width: 400px"/>
-                        <input pInputText type="text"  placeholder="Search by prenom" [(ngModel)]="etudiantVo.prenom  " style="margin-right: 10px;width: 400px"/>
-                        <input pInputText type="text"  placeholder="Search by login" [(ngModel)]="etudiantVo.login  " style="margin-right: 10px;width: 300px"/>
+                        <input pInputText type="text"  placeholder="Search by LastName" [(ngModel)]="etudiantVo.nom  " style="margin-right: 10px;width: 250px"/>
+                        <input pInputText type="text"  placeholder="Search by FirstName" [(ngModel)]="etudiantVo.prenom  " style="margin-right: 10px;width: 250px"/>
+                        <input pInputText type="text"  placeholder="Search by UserName" [(ngModel)]="etudiantVo.login  " style="margin-right: 10px;width: 250px"/>
 
              <i class="pi pi-search"  (click)="findByCriteria()"></i>
 
-                    </span>
+                    </span></div>
                     </div>
                 </ng-template>
                 <ng-template pTemplate="header">
@@ -39,11 +39,11 @@
                         <th style="width: 3rem">
                             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                         </th>
-                        <th pSortableColumn="nom">nom <p-sortIcon field="nom"></p-sortIcon></th>
-                        <th pSortableColumn="prenom">prenom <p-sortIcon field="prenom"></p-sortIcon></th>
-                        <th pSortableColumn="login">login<p-sortIcon field="login"></p-sortIcon></th>
+                        <th pSortableColumn="nom">LastName <p-sortIcon field="nom"></p-sortIcon></th>
+                        <th pSortableColumn="prenom">FirsName <p-sortIcon field="prenom"></p-sortIcon></th>
+                        <th pSortableColumn="login">Username<p-sortIcon field="login"></p-sortIcon></th>
                         <th pSortableColumn="Parcours">Parcours<p-sortIcon field="Parcours"></p-sortIcon></th>
-                        <th pSortableColumn="centre">centre<p-sortIcon field="centre"></p-sortIcon></th>
+                        <th pSortableColumn="centre">Center<p-sortIcon field="centre"></p-sortIcon></th>
                         <th></th>
                     </tr>
                 </ng-template>

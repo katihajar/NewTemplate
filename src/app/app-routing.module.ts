@@ -91,7 +91,7 @@ import {ProfssComponent} from './view/admin/profss/profss.component';
                     {path: 'pages/etudiant', component: EtudiantsComponent},
                     {path: 'pages/session', component: SessionCoursComponent},
                     {path: 'pages/synthese', component: SyntheseSessionComponent},
-                    {path: 'pages/teacherList', component: ProfssComponent},
+                    {path: 'pages/teacherLists', component: ProfssComponent},
                     {path: 'inscriptionAdmin', component: InscriptionAdminComponent},
                     {path: 'inscriptionTeacher', component: InscriptionProfComponent},
                     {path: 'view/inscription', component: InscriptionsComponent},

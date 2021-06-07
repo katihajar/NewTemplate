@@ -4,12 +4,12 @@ import {ProfessorService} from '../../../../controller/service/professor.service
 import {Prof} from '../../../../controller/model/prof.model';
 
 @Component({
-  selector: 'app-prof-list',
-  templateUrl: './prof-list.component.html',
-  styleUrls: ['./prof-list.component.scss'],
+  selector: 'app-profss-list',
+  templateUrl: './profss-list.component.html',
+  styleUrls: ['./profss-list.component.scss'],
    providers: [MessageService, ConfirmationService]
 })
-export class ProfListComponent implements OnInit {
+export class ProfssListComponent implements OnInit {
  cols: any[];
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
