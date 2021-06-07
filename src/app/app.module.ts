@@ -438,21 +438,7 @@ import { ProfssComponent } from './View/Admin/profss/profss.component';
         ClassroomEtudiantComponent,
         QuizEtudiantListComponent,
         QuizEtudiantViewComponent,
-        SessionCoursCreateComponent,
-        SyntheseSessionComponent,
-        SessionCoursViewComponent,
-        SessionCoursListComponent,
-        SessionCoursComponent,
-        SyntheseSessionCoursViewComponent,
-        SyntheseSessionCoursListComponent,
-        SyntheseSessionCoursEditComponent,
-        SyntheseSessionCoursCreateComponent,
-        ProfViewComponent,
-        ProfEditComponent,
-        ProfListComponent,
-        ProfCreateComponent,
-        SessionCoursEditComponent,
-        ProfssComponent
+
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
