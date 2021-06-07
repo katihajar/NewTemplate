@@ -449,7 +449,7 @@ import { ProfesseurViewComponent } from './view/admin/professeur/professeur-view
         SyntheseSessionCoursEditComponent,
         SyntheseSessionCoursViewComponent,
         SyntheseSessionCoursListComponent,
-        ProfesseurComponent,
+        //ProfesseurComponent,
         ProfesseurListComponent,
         ProfesseurCreateComponent,
         ProfesseurEditComponent,
