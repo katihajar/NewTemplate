@@ -98,8 +98,8 @@ export class LoginAdminComponent implements OnInit {
             this.model = [
                   {label: 'Inscriptions List', icon: 'pi pi-fw pi-check-square', routerLink: ['/view/inscription']},
                   {label: 'Student List', icon: 'pi pi-fw pi-list', routerLink: ['/pages/etudiant']},
-                  {label: 'Session Cours', icon: 'pi pi-fw pi-list', routerLink: ['/pages/session']},
-                  {label: 'Professor', icon: 'pi pi-fw pi-list', routerLink: ['/pages/teacherLists']},
+                  {label: 'Session Cours', icon: 'pi pi-fw pi-briefcase', routerLink: ['/pages/session']},
+                  {label: 'Professor', icon: 'pi pi-fw pi-user', routerLink: ['/view/teacherLists']},
                   {label: 'Quiz-Create', icon: 'pi pi-fw pi-book', routerLink: ['/pages/quiz-create']},
                   {label: 'Manage Parcours', icon: 'pi pi-fw pi-table', routerLink: ['/pages/parcours']},
                   {label: 'FAQ ANSWER', icon: 'pi pi-fw pi-reply', routerLink: ['/pages/faq-admin']},

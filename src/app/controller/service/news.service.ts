@@ -20,6 +20,9 @@ export class NewsService {
 
 
   get selectes(): Array<News> {
+    if (this._selectes == null){
+      this._selectes = new Array<News>();
+    }
     return this._selectes;
   }
 
@@ -52,6 +55,9 @@ export class NewsService {
   }
 
   get items(): Array<News> {
+    if (this._items == null){
+      this._items = new Array<News>();
+    }
     return this._items;
   }
 
@@ -60,6 +66,9 @@ export class NewsService {
   }
 
   get selected(): News {
+    if (this._selected == null){
+      this._selected = new News();
+    }
     return this._selected;
   }
 

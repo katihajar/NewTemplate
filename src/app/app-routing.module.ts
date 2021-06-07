@@ -71,7 +71,8 @@ import {QuizEtudiantListComponent} from './view/std/quiz-etudiant-list/quiz-etud
 import {QuizEtudiantViewComponent} from './view/std/quiz-etudiant-view/quiz-etudiant-view.component';
 import {SessionCoursComponent} from './view/admin/session-cours/session-cours.component';
 import {SyntheseSessionComponent} from './view/admin/synthese-session/synthese-session.component';
-import {ProfssComponent} from './view/admin/profss/profss.component';
+import {ProfesseurComponent} from './view/admin/professeur/professeur.component';
+
 
 
 
@@ -91,7 +92,7 @@ import {ProfssComponent} from './view/admin/profss/profss.component';
                     {path: 'pages/etudiant', component: EtudiantsComponent},
                     {path: 'pages/session', component: SessionCoursComponent},
                     {path: 'pages/synthese', component: SyntheseSessionComponent},
-                    {path: 'pages/teacherLists', component: ProfssComponent},
+                    {path: 'view/teacherLists', component: ProfesseurComponent},
                     {path: 'inscriptionAdmin', component: InscriptionAdminComponent},
                     {path: 'inscriptionTeacher', component: InscriptionProfComponent},
                     {path: 'view/inscription', component: InscriptionsComponent},

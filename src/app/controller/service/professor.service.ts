@@ -3,7 +3,7 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Prof} from '../model/prof.model';
-import {SyntheseSessionCours} from '../Model/synthese-session-cours.model';
+
 
 @Injectable({
     providedIn: 'root'
