@@ -72,6 +72,7 @@ import {QuizEtudiantViewComponent} from './view/std/quiz-etudiant-view/quiz-etud
 import {SessionCoursComponent} from './view/admin/session-cours/session-cours.component';
 import {SyntheseSessionComponent} from './view/admin/synthese-session/synthese-session.component';
 import {ProfesseurComponent} from './view/admin/professeur/professeur.component';
+import {ProfesseurListComponent} from './view/admin/professeur/professeur-list/professeur-list.component';
 
 
 
@@ -92,7 +93,7 @@ import {ProfesseurComponent} from './view/admin/professeur/professeur.component'
                     {path: 'pages/etudiant', component: EtudiantsComponent},
                     {path: 'pages/session', component: SessionCoursComponent},
                     {path: 'pages/synthese', component: SyntheseSessionComponent},
-                    {path: 'view/teacherLists', component: ProfesseurComponent},
+                    {path: 'view/teacherLists', component: ProfesseurListComponent},
                     {path: 'inscriptionAdmin', component: InscriptionAdminComponent},
                     {path: 'inscriptionTeacher', component: InscriptionProfComponent},
                     {path: 'view/inscription', component: InscriptionsComponent},
