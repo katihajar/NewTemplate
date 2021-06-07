@@ -19,7 +19,7 @@
                     <ng-template pTemplate="body" let-cours>
                         <tr>
 
-                            <td style="color: #0c799f" routerLink="/pages/etudiantsections"    (click)="FindSection(cours)"><u style="cursor: pointer">{{cours.libelle}}</u></td>
+                            <td style="color: #0c799f"     (click)="viewType2(cours)"><u style="cursor: pointer">{{cours.libelle}}</u></td>
                             <td >{{cours.nombreSectionFinalise+cours.nombreSectionEnCours}}</td>
 
                         </tr>
@@ -33,6 +33,7 @@
             </div>
 
         </div>
+        <app-student-choose-view></app-student-choose-view>
     </div>
 
 </div>

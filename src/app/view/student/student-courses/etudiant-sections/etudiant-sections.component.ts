@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Section} from '../../../controller/Model/section.model';
+import {Section} from '../../../../controller/Model/section.model';
 import {ConfirmationService, MessageService} from 'primeng/api';
-import {ParcoursService} from '../../../controller/service/parcours.service';
+import {ParcoursService} from '../../../../controller/service/parcours.service';
 import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({

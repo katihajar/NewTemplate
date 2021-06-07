@@ -49,8 +49,6 @@ import {EtudiantsComponent} from './view/Prof/etudiants/etudiants.component';
 import {ScheduleComponent} from './view/Prof/schedule/schedule.component';
 import {QuizPreviewComponent} from './view/Prof/quiz/quiz-preview/quiz-preview.component';
 import {ClassRoomListComponent} from './view/Prof/Classes/profclasses/class-room-list/class-room-list.component';
-import {EtudiantCoursesComponent} from './view/etudiant/etudiant-courses/etudiant-courses.component';
-import {EtudiantSectionsComponent} from './view/etudiant/etudiant-sections/etudiant-sections.component';
 import {FaqAnswerComponent} from './view/admin/faq-admin/faq-answer/faq-answer.component';
 import {NewsAdminListComponent} from './view/admin/news-admin/news-admin-list/news-admin-list.component';
 import {NewsTeacherListComponent} from './view/teacher/news/news-teacher-list/news-teacher-list.component';
@@ -73,6 +71,10 @@ import {SessionCoursComponent} from './view/admin/session-cours/session-cours.co
 import {SyntheseSessionComponent} from './view/admin/synthese-session/synthese-session.component';
 import {ProfesseurComponent} from './view/admin/professeur/professeur.component';
 import {ProfesseurListComponent} from './view/admin/professeur/professeur-list/professeur-list.component';
+import {EtudiantSectionsComponent} from './view/student/student-courses/etudiant-sections/etudiant-sections.component';
+import {EtudiantParcoursComponent} from './view/student/student-courses/etudiant-parcours/etudiant-parcours.component';
+import {EtudiantCoursesComponent} from './view/student/student-courses/etudiant-courses/etudiant-courses.component';
+import {StudentSimulateSectionComponent} from './view/student/student-courses/student-simulate-section/student-simulate-section.component';
 
 
 
@@ -107,7 +109,9 @@ import {ProfesseurListComponent} from './view/admin/professeur/professeur-list/p
                     {path: 'pages/salary', component: SalaryComponent},
                     {path: 'pages/courses', component: EdCoursesComponent},
                     {path: 'pages/etudiantcours', component: EtudiantCoursesComponent},
+                    {path: 'pages/etudiantparcours', component: EtudiantParcoursComponent},
                     {path: 'pages/etudiantsections', component: EtudiantSectionsComponent},
+                    {path: 'pages/etudiantsimulatesections', component: StudentSimulateSectionComponent},
                     {path: 'pages/cours', component: CoursesComponent},
                     {path: 'pages/sections', component: SectionsComponent},
                     {path: 'pages/sectionsSimulate', component: SectionSimulateComponent},
