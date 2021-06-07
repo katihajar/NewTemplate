@@ -1,11 +1,11 @@
 <p-dialog [(visible)]="viewDialog" [style]="{width: '450px'}" header="Inscription Details" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="p-field">
-            <label for="numeroInscription">numeroInscription</label>
+            <label for="numeroInscription">Registration Number</label>
             <input type="text" pInputText id="numeroInscription" [(ngModel)]="selected.numeroInscription" disabled />
         </div>
         <div class="p-field">
-            <label for="datedebutinscription">datedebutinscription</label>
+            <label for="datedebutinscription">Registration Start date</label>
             <input type="text" pInputText id="datedebutinscription" [(ngModel)]="selected.datedebutinscription" disabled />
         </div>
 
@@ -13,7 +13,7 @@
 
         <div class="p-formgrid p-grid">
             <div class="p-field p-col">
-                <label for="datefininscription">datefininscription</label>
+                <label for="datefininscription">Registration End date</label>
                 <p-inputNumber id="datefininscription" [(ngModel)]="selected.datefininscription" disabled></p-inputNumber>
             </div>
         </div>

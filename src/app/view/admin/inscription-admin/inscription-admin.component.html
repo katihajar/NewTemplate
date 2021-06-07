@@ -1,31 +1,30 @@
 <div class="card" style="background-color: lavender;">
-    <h5>Inscription Admin</h5>
+    <h1  style="margin-left: 660px; margin-bottom: 3px">Inscription Admin</h1>
     <div class="p-fluid p-formgrid p-grid">
         <div class="p-field p-col-12 p-md-6">
             <label for="firstname6">Firstname</label>
-            <input id="firstname6" type="text" pInputText >
+            <input id="firstname6" type="text" pInputText [(ngModel)]="selected.prenom" >
         </div>
         <div class="p-field p-col-12 p-md-6">
             <label for="lastname6">Lastname</label>
-            <input id="lastname6" type="text" pInputText >
+            <input id="lastname6" type="text" pInputText [(ngModel)]="selected.nom">
         </div>
         <div class="p-field p-col-12">
             <label for="address">Address</label>
-            <textarea id="address" type="text" rows="4" pInputTextarea ></textarea>
+            <textarea id="address" type="text" rows="4" pInputTextarea [(ngModel)]="selected.addresse" ></textarea>
         </div>
 
         <div class="p-field p-col-12 p-md-6">
             <label for="integeronly">Number phone</label>
-            <p-inputNumber inputId="integeronly" id="integeronly" >
-            </p-inputNumber>
+            <input   id="integeronly" [(ngModel)]="selected.numero" pInputText>
         </div>
         <div class="p-field p-col-12 p-md-6">
-            <label for="login">login</label>
-            <input id="login" type="text" pInputText>
+            <label for="login">Username</label>
+            <input id="login" type="text" pInputText [(ngModel)]="selected.login">
         </div>
         <div class="p-field p-col-12 p-md-6">
             <label for="Password">Password</label>
-            <input id="Password" type="text" pInputText>
+            <input id="Password" type="text" pInputText [(ngModel)]="selected.password">
         </div>
         <div class="card-footer" style="margin-left: 1200px;width: 200px">
             <p-button label="Submit" icon="pi pi-check" iconPos="right" (click)="save()"></p-button>

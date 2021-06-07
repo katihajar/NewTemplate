@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Section} from '../../../controller/Model/section.model';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ParcoursService} from '../../../controller/service/parcours.service';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-etudiant-sections',
@@ -13,9 +14,9 @@ export class EtudiantSectionsComponent implements OnInit {
 
   cols: any[];
   // tslint:disable-next-line:max-line-length
-  constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private service: ParcoursService ) { }
+  constructor(private messageService: MessageService , public sanitizer: DomSanitizer, private confirmationService: ConfirmationService, private service: ParcoursService ) { }
   ngOnInit(): void {
-    this.initCol();
+      this.initCol();
   }
   private initCol() {
     this.cols = [

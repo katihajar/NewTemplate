@@ -66,6 +66,15 @@ import {HomeTeacherComponent} from './view/Prof/home-teacher/home-teacher.compon
 import {RecommendationComponent} from './view/Prof/recommend/recommendation/recommendation.component';
 import {RecommendComponent} from './view/Prof/recommend/recommend.component';
 import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.component';
+import {ClassroomEtudiantComponent} from './view/std/classroom-etudiant/classroom-etudiant.component';
+import {QuizEtudiantListComponent} from './view/std/quiz-etudiant-list/quiz-etudiant-list.component';
+import {QuizEtudiantViewComponent} from './view/std/quiz-etudiant-view/quiz-etudiant-view.component';
+import {SessionCoursComponent} from './view/admin/session-cours/session-cours.component';
+import {SyntheseSessionComponent} from './view/admin/synthese-session/synthese-session.component';
+import {ProfesseurComponent} from './view/admin/professeur/professeur.component';
+import {ProfesseurListComponent} from './view/admin/professeur/professeur-list/professeur-list.component';
+
+
 
 
 
@@ -82,6 +91,9 @@ import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.comp
                 children: [
                     {path: '', component: DashboardDemoComponent},
                     {path: 'pages/etudiant', component: EtudiantsComponent},
+                    {path: 'pages/session', component: SessionCoursComponent},
+                    {path: 'pages/synthese', component: SyntheseSessionComponent},
+                    {path: 'view/teacherLists', component: ProfesseurListComponent},
                     {path: 'inscriptionAdmin', component: InscriptionAdminComponent},
                     {path: 'inscriptionTeacher', component: InscriptionProfComponent},
                     {path: 'view/inscription', component: InscriptionsComponent},
@@ -108,6 +120,9 @@ import {QuizCreateComponent} from './view/Prof/quiz/quiz-create/quiz-create.comp
                     {path: 'pages/login-etudiant', component: LoginEtudiantComponent},
                     {path: 'pages/quiz-etudiant', component: QuizEtudiantComponent},
                     {path: 'pages/quiz-create', component: QuizCreateComponent},
+                    {path: 'pages/classroom-liste', component: ClassroomEtudiantComponent},
+                    {path: 'pages/quiz-liste', component: QuizEtudiantListComponent},
+                    {path: 'pages/quiz-view', component: QuizEtudiantViewComponent},
                     {path: 'view/quiz-preview', component: QuizPreviewComponent},
                     {path: 'view/schedule', component: ScheduleComponent},
                     {path: 'inscriptionEtudiant', component: FormLayoutDemoComponent},

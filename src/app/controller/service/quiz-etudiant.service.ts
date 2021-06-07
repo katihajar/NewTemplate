@@ -7,6 +7,10 @@ import {ReponseEtudiant} from '../model/reponse-etudiant.model';
 import {Question} from '../model/question.model';
 import {Quiz} from '../model/quiz.model';
 import {Etudiant} from '../model/etudiant.model';
+import {TypeDeQuestion} from '../model/type-de-question.model';
+import {EtudiantClassRoom} from '../model/etudiant-class-room.model';
+import {QuizClassRoom} from '../model/quiz-class-room.model';
+import {ClassRoom} from '../model/class-room.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,13 +28,117 @@ export class QuizEtudiantService {
   private _correctAnswers: Array<Reponse>;
   private _reponseEtudiant: ReponseEtudiant;
   private _reponsesEtudiant: Array<ReponseEtudiant>;
+  private _quizEtudiantList: QuizEtudiant;
+  private _etudiantsClassroom: Array<EtudiantClassRoom>;
+  private _quizsClassroom: Array<QuizClassRoom>;
+  private _selectedQuizClassroom: QuizClassRoom;
+  private _selectedClassroom: EtudiantClassRoom;
+  private _reponsesEtudiantList: Array<ReponseEtudiant>;
+  private _viewDialogQuiz: boolean;
+  private _selectedQuiz: Quiz;
   private _myAnswer: Reponse;
   private _numReponses= 0;
   private _numCorrectAnswers= 0;
   private _numQuestion= 1;
 
 
+  get reponsesEtudiantList(): Array<ReponseEtudiant> {
+    if(this._reponsesEtudiantList == null)
+    {
+      this._reponsesEtudiantList = new Array<ReponseEtudiant>();
+    }
+    return this._reponsesEtudiantList;
+  }
+
+  set reponsesEtudiantList(value: Array<ReponseEtudiant>) {
+    this._reponsesEtudiantList = value;
+  }
+
+  get selectedQuizClassroom(): QuizClassRoom {
+    if(this._selectedQuizClassroom == null)
+    {
+      this._selectedQuizClassroom = new QuizClassRoom();
+    }
+    return this._selectedQuizClassroom;
+  }
+
+  set selectedQuizClassroom(value: QuizClassRoom) {
+    this._selectedQuizClassroom = value;
+  }
+
+  get selectedClassroom(): EtudiantClassRoom {
+    if(this._selectedClassroom == null)
+    {
+      this._selectedClassroom = new EtudiantClassRoom();
+    }
+    return this._selectedClassroom;
+  }
+
+  set selectedClassroom(value: EtudiantClassRoom) {
+    this._selectedClassroom = value;
+  }
+
+  get viewDialogQuiz(): boolean {
+    return this._viewDialogQuiz;
+  }
+
+  set viewDialogQuiz(value: boolean) {
+    this._viewDialogQuiz = value;
+  }
+
+  get quizsClassroom(): Array<QuizClassRoom> {
+    if(this._quizsClassroom == null)
+    {
+      this._quizsClassroom = new Array<QuizClassRoom>();
+    }
+    return this._quizsClassroom;
+  }
+
+  set quizsClassroom(value: Array<QuizClassRoom>) {
+    this._quizsClassroom = value;
+  }
+
+  get etudiantsClassroom(): Array<EtudiantClassRoom> {
+    if(this._etudiantsClassroom == null)
+    {
+      this._etudiantsClassroom = new Array<EtudiantClassRoom>();
+    }
+    return this._etudiantsClassroom;
+  }
+
+  set etudiantsClassroom(value: Array<EtudiantClassRoom>) {
+    this._etudiantsClassroom = value;
+  }
+
+  get quizEtudiantList(): QuizEtudiant {
+    if(this._quizEtudiantList == null)
+    {
+      this._quizEtudiantList = new QuizEtudiant();
+    }
+    return this._quizEtudiantList;
+  }
+
+  set quizEtudiantList(value: QuizEtudiant) {
+    this._quizEtudiantList = value;
+  }
+
+  get selectedQuiz(): Quiz {
+    if(this._selectedQuiz == null)
+    {
+      this._selectedQuiz = new Quiz();
+    }
+    return this._selectedQuiz;
+  }
+
+  set selectedQuiz(value: Quiz) {
+    this._selectedQuiz = value;
+  }
+
   get reponsesEtudiant(): Array<ReponseEtudiant> {
+    if(this._reponsesEtudiant == null)
+    {
+      this._reponsesEtudiant = new Array<ReponseEtudiant>();
+    }
     return this._reponsesEtudiant;
   }
 
@@ -39,6 +147,10 @@ export class QuizEtudiantService {
   }
 
   get myAnswer(): Reponse {
+    if(this._myAnswer == null)
+    {
+      this._myAnswer = new Reponse();
+    }
     return this._myAnswer;
   }
 
@@ -47,6 +159,10 @@ export class QuizEtudiantService {
   }
 
   get reponseEtudiant(): ReponseEtudiant {
+    if(this._reponseEtudiant == null)
+    {
+      this._reponseEtudiant = new ReponseEtudiant();
+    }
     return this._reponseEtudiant;
   }
 
@@ -63,6 +179,10 @@ export class QuizEtudiantService {
   }
 
   get correctAnswers(): Array<Reponse> {
+    if(this._correctAnswers == null)
+    {
+      this._correctAnswers = new Array<Reponse>();
+    }
     return this._correctAnswers;
   }
 
@@ -71,6 +191,10 @@ export class QuizEtudiantService {
   }
 
   get quizsEtudiant(): Array<QuizEtudiant> {
+    if(this._quizsEtudiant == null)
+    {
+      this._quizsEtudiant = new Array<QuizEtudiant>();
+    }
     return this._quizsEtudiant;
   }
 
@@ -79,6 +203,10 @@ export class QuizEtudiantService {
   }
 
   get quizEtudiant(): QuizEtudiant {
+    if(this._quizEtudiant == null)
+    {
+      this._quizEtudiant = new QuizEtudiant();
+    }
     return this._quizEtudiant;
   }
 
@@ -103,6 +231,10 @@ export class QuizEtudiantService {
   }
 
   get reponses(): Array<Reponse> {
+    if(this._reponses == null)
+    {
+      this._reponses = new Array<Reponse>();
+    }
     return this._reponses;
   }
 
@@ -111,6 +243,10 @@ export class QuizEtudiantService {
   }
 
   get items(): Array<Question> {
+    if(this._items == null)
+    {
+      this._items = new Array<Question>();
+    }
     return this._items;
   }
 
@@ -119,6 +255,10 @@ export class QuizEtudiantService {
   }
 
   get selected(): Question {
+    if(this._selected == null)
+    {
+      this._selected = new Question();
+    }
     return this._selected;
   }
 
@@ -127,6 +267,10 @@ export class QuizEtudiantService {
   }
 
   get etudiant(): Etudiant {
+    if(this._etudiant == null)
+    {
+      this._etudiant = new Etudiant();
+    }
     return this._etudiant;
   }
 
@@ -136,6 +280,10 @@ export class QuizEtudiantService {
 
 
   get quiz(): Quiz {
+    if(this._quiz == null)
+    {
+      this._quiz = new Quiz();
+    }
     return this._quiz;
   }
 
@@ -219,6 +367,26 @@ export class QuizEtudiantService {
   public updateQuizEtudiant(): Observable<QuizEtudiant>
   {
     return this.http.put<QuizEtudiant>(this.url + 'quizEtudiant/' , this.quizEtudiant);
+  }
+
+  public findEtudiantClassRoom(etudiant: Etudiant): Observable<Array<EtudiantClassRoom>>
+  {
+    return this.http.get<Array<EtudiantClassRoom>>(this.url + 'etudiant-classRoom/etudiant/ref/' + etudiant.ref);
+  }
+
+  public findQuizClassRoom(classroom: ClassRoom): Observable<Array<QuizClassRoom>>
+  {
+    return this.http.get<Array<QuizClassRoom>>(this.url + 'quiz-classRoom/id/' + classroom.id);
+  }
+
+  public findQuizEtudiant(etudiant: Etudiant, quiz: Quiz): Observable<QuizEtudiant>
+  {
+    return this.http.get<QuizEtudiant>(this.url + 'quizEtudiant/etudiant/' + etudiant.ref + '/quiz/' + quiz.ref);
+  }
+
+  public findReponseEtudiant(quizEtudiant: QuizEtudiant): Observable<Array<ReponseEtudiant>>
+  {
+    return this.http.get<Array<ReponseEtudiant>>(this.url + 'reponseEtudiant/quizEtudiant/ref/{ref}?ref=' + quizEtudiant.ref);
   }
 
   constructor(private http: HttpClient) { }

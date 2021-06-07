@@ -30,8 +30,7 @@ export class ProfService {
   }
 
   public findAllCategorieProf(): Observable<Array<CategorieProf>> {
-    return this.http.get< Array<CategorieProf> >('http://localhost:8036/learn/categorieprof/');
-  }
+    return this.http.get< Array<CategorieProf> >('http://localhost:8036/learn/categorieprof/');}
 
   get itemsCategorieProf(): Array<CategorieProf> {
     if ( this._itemsCategorieProf == null){
@@ -43,4 +42,8 @@ export class ProfService {
   set itemsCategorieProf(value: Array<CategorieProf>) {
     this._itemsCategorieProf = value;
   }
-}
+
+
+  }
+
+

@@ -1,19 +1,19 @@
 <p-dialog [(visible)]="viewDialog" [style]="{width: '450px'}" header="CTeacher Details" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="p-field">
-            <label for="nom">Nom</label>
+            <label for="nom">LastName</label>
             <input type="text" pInputText id="nom" [(ngModel)]="selected.nom" disabled />
         </div>
         <div class="p-field">
-            <label for="prenom">Prenom</label>
+            <label for="prenom">FirstName</label>
             <input type="text" pInputText id="prenom" [(ngModel)]="selected.prenom" disabled />
         </div>
         <div class="p-field">
-            <label for="login">Login</label>
+            <label for="login">UserName</label>
             <input type="text" pInputText id="login" [(ngModel)]="selected.login" disabled />
         </div>
         <div class="p-field">
-            <label for="commentaire">Commentaire</label>
+            <label for="commentaire">Comment</label>
             <input type="text" pInputText id="commentaire" [(ngModel)]="selected.commentaire" disabled />
         </div>
 
@@ -21,7 +21,7 @@
 
         <div class="p-formgrid p-grid">
             <div class="p-field p-col">
-                <label for="totalPaye">Total Paye</label>
+                <label for="totalPaye">Phone Number</label>
                 <p-inputNumber id="totalPaye" [(ngModel)]="selected.telephone" disabled></p-inputNumber>
             </div>
         </div>

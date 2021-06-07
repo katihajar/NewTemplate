@@ -124,7 +124,7 @@ export class AppConfigComponent implements OnInit {
 
     themes: any[];
 
-    themeColor = 'blue';
+    themeColor = 'magenta';
 
     topbarColors: any[];
 
@@ -190,6 +190,7 @@ export class AppConfigComponent implements OnInit {
         const newURL = urlTokens.join('/');
 
         this.replaceLink(element, newURL);
+        console.log();
     }
 
     replaceLink(linkElement, href) {

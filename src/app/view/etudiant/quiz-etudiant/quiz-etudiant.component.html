@@ -6,7 +6,7 @@
         <div class="card-body" id="quiz">
             <div class="start" id="start">
                 <div id="welcome">Welcome {{this.etudiant.nom}} {{this.etudiant.prenom}}</div><br>
-                <div>In the {{this.quiz.lib}}'s quiz</div><br>
+                <div>In the {{this.selectedQuiz.lib}}'s quiz</div><br>
                 <div>Quiz will start at {{this.quiz.dateDebut}}</div><br>
                 <div>And will end at {{this.quiz.dateFin}}</div><br>
                 <div>You have 1 hour</div><br>
@@ -21,11 +21,15 @@
                 <br><br><br><output><B>{{selected.numero}} - {{selected.libelle}} </B></output>
 
                 <div *ngFor="let r of reponses" class="question_answer" id="div-{{r.ref}}">
-                    <p-radioButton id="radio" (onClick)="selectionChanged()" name="groupname" value="{{r.ref}}" [(ngModel)]="selectedValue"></p-radioButton>
+
+                    <!--<p-radioButton id="radio" (onClick)="selectionChanged()" name="groupname" value="{{r.ref}}" [(ngModel)]="selectedValue"></p-radioButton>-->
+                    <input type="{{this.type}}" (click)="selectionChanged(r)" value="{{r.ref}}" [(ngModel)]="selectedValue" name="groupname" ngModel>
                     <label>{{r.lib}}</label><br>
-                    <!--<p-checkbox style="visibility: {{this.checkbox}}" id="checkbox" name="groupname" value="{{r.lib}}" label="{{r.lib}}" [(ngModel)]="selectedValue"></p-checkbox>-->
+                    <!--<p-checkbox  id="checkbox" name="groupname2" value="{{r.lib}}" label="{{r.lib}}" [(ngModel)]="selectedValue"></p-checkbox>-->
                 </div>
 
+                <!--<input type="radio" value="male" name="gender" ngModel> Male
+                <input type="radio" value="female" name="gender" ngModel> Female-->
             </div>
 
             <div class="card-body2" id="finish">

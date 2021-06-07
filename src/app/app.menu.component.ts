@@ -71,9 +71,6 @@ export class AppMenuComponent implements OnInit {
 
     ngOnInit() {
 
-        console.log(this.prof);
-        console.log(this.admin);
-        console.log(this.etudiant);
         /*this.model = [
             {
                 label: 'Favorites', icon: 'pi pi-fw pi-home',

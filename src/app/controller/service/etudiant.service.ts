@@ -7,6 +7,8 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import { EtudiantVo } from '../model/etudiant-vo.model';
 import { Prof } from '../model/prof.model';
+import {Centre} from '../Model/centre.model';
+import {Parcours} from '../Model/parcours.model';
 
 
 
@@ -30,10 +32,37 @@ export class EtudiantService {
   private _prof: Array<Prof>;
   private _selecteetudiant: Array<Etudiant>;
   private _submittedetudiant: Etudiant;
+  private _centreList: Array<Centre>;
+  private _parcoursList: Array<Parcours>;
+
 
 
   constructor(private http: HttpClient) { }
 
+  get centreList(): Array<Centre> {
+    return this._centreList;
+  }
+
+  set centreList(value: Array<Centre>) {
+    this._centreList = value;
+  }
+
+  get parcoursList(): Array<Parcours> {
+    return this._parcoursList;
+  }
+
+  set parcoursList(value: Array<Parcours>) {
+    this._parcoursList = value;
+  }
+
+  public findAllCentre(): Observable<Array<Centre>> {
+    return this.http.get< Array<Centre> >('http://localhost:8036/learn/centre/');
+  }
+
+  public findAllParcours(): Observable<Array<Parcours>> {
+    return this.http.get< Array<Parcours> >('http://localhost:8036/learn/parcours/');
+
+  }
 
   get submittedetudiant(): Etudiant {
     return this._submittedetudiant;
