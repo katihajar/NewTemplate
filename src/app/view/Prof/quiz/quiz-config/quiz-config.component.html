@@ -2,26 +2,25 @@
     <ng-template pTemplate="content">
         <div class="p-field">
             <div class="p-field-checkbox">
-                <p-checkbox name="group1" (change)="ProgressBar($event)" ></p-checkbox>
+                <p-radioButton name="group1" (change)="ProgressBar($event)" ></p-radioButton>
                 <label>Afficher la barre de progression</label>
                 <br/>
-                <p-checkbox name="group1" (change)="itemChecked($event)" ></p-checkbox>
+                <p-radioButton name="group1" value="{{rep}}" [(ngModel)]="configuration.shuffleOptions" ></p-radioButton>
                 <label>Trier les reponses en mode aléatoire</label>
             </div>
         </div>
         <p style="justify-content: space-between"></p>
         <div class="p-field">
-            <h6>Le répondant peut voir les éléments suivants :</h6>
             <div class="p-field-checkbox">
-                <p-checkbox name="group2"  ></p-checkbox>
-                <label>Questions aux réponses incorrectes</label>
+                <p-radioButton name="group2" value="{{qst}}" [(ngModel)]="configuration.shuffleOptions" ></p-radioButton>
+                <label>Trier les questions en mode aléatoire</label>
             </div>
             <div class="p-field-checkbox">
-                <p-checkbox name="group2"  ></p-checkbox>
-                <label>Bonnes réponses</label>
+                <p-radioButton name="group2" value="{{back}}" [(ngModel)]="configuration.allowBack"  ></p-radioButton>
+                <label>Retourner en question précédente </label>
             </div>
             <div class="p-field-checkbox">
-                <p-checkbox name="group2"  ></p-checkbox>
+                <p-radioButton name="group2"  ></p-radioButton>
                 <label>Nombre de points</label>
             </div>
         </div>

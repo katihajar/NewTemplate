@@ -21,18 +21,14 @@ export class QuizService {
     private _selected: Quiz;
     private _items: Array<Quiz>;
     private _qnprogress: number;
-    private _correctAnswerCount: number;
     private _reponse: Reponse;
     private _viewDialog: boolean;
-    private _buildQuestion: any;
     private _timer;
     private _button: string;
     private _typeDeQuestion: TypeDeQuestion;
     private _reponses: Array<Reponse>;
     private _types: Array<TypeDeQuestion>;
     private _question: Question;
-    private _reponsesCorrect: Array<Reponse>;
-    private _note: number;
     private _questions: Array<Question>;
     public _url = 'http://localhost:8036/';
     public _urlQuestion = 'learn/question';
@@ -46,11 +42,20 @@ export class QuizService {
     private _seconds: number;
     private _numCorrectAnswers= 0;
     private _correctAnswers: Array<Reponse>;
+    private _typeQuestion: string;
 
 
+    get typeQuestion(): string {
+        return this._typeQuestion;
+    }
 
-
+    set typeQuestion(value: string) {
+        this._typeQuestion = value;
+    }
     get configuration(): QuizConfig {
+        if (this._configuration == null){
+            this._configuration = new QuizConfig();
+        }
         return this._configuration;
     }
 
@@ -59,19 +64,14 @@ export class QuizService {
     }
 
     get configurations(): Array<QuizConfig> {
+        if (this._configurations == null){
+            this._configurations = new Array<QuizConfig>();
+        }
         return this._configurations;
     }
 
     set configurations(value: Array<QuizConfig>) {
         this._configurations = value;
-    }
-
-    get buildQuestion(): any {
-        return this._buildQuestion;
-    }
-
-    set buildQuestion(value: any) {
-        this._buildQuestion = value;
     }
 
     get createDialog(): boolean {
@@ -185,9 +185,6 @@ if (this._selected == null){
     set items(value: Array<Quiz>) {
         this._items = value;
     }
-
-
-
     get j(): number {
         return this._j;
     }
@@ -195,16 +192,6 @@ if (this._selected == null){
     set j(value: number) {
         this._j = value;
     }
-
-    get reponsesCorrect(): Array<Reponse> {
-        return this._reponsesCorrect;
-    }
-
-    set reponsesCorrect(value: Array<Reponse>) {
-        this._reponsesCorrect = value;
-    }
-
-
 
     get button(): string {
         return this._button;
@@ -214,25 +201,6 @@ if (this._selected == null){
         this._button = value;
     }
 
-    get note(): number {
-        return this._note;
-    }
-
-    set note(value: number) {
-        this._note = value;
-    }
-
-
-
-
-
-    get correctAnswerCount(): number {
-        return this._correctAnswerCount;
-    }
-
-    set correctAnswerCount(value: number) {
-        this._correctAnswerCount = value;
-    }
     get qnprogress(): number {
         return this._qnprogress;
     }
@@ -259,16 +227,6 @@ if (this._selected == null){
     }
 
 
-    public CorrectAnswer() {
-       let k = 1;
-       k++;
-        this.http.get<Array<Reponse>>('http://localhost:8036/learn/reponse/criteria/numero/' + k).subscribe(
-            data => {
-                this.reponsesCorrect = data;
-            }
-        );
-    }
-
     shuffle(reponses: Array<Reponse>) {
         let currentIndex = reponses.length, temporaryValue, randomIndex;
         while (0 !== currentIndex) {
@@ -280,11 +238,26 @@ if (this._selected == null){
         }
         return reponses;
     }
-
+    shuffleQuestion(questions: Array<Question>) {
+        let currentIndex = questions.length, temporaryValue, randomIndex;
+        while (0 !== currentIndex) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            temporaryValue = questions[currentIndex];
+            questions[currentIndex] = questions[randomIndex];
+            questions[randomIndex] = temporaryValue;
+        }
+        return questions;
+    }
     public getReponses(): Observable<Array<Reponse>> {
         return this.http.get<any>(this._url + this._urlReponse + '/');
     }
-
+public saveConfig() : Observable<QuizConfig>{
+        return this.http.post<QuizConfig>(this._url + 'learn/quizConfig/' , this.configuration);
+}
+public findConfig() : Observable<Array<QuizConfig>>{
+        return this.http.get<Array<QuizConfig>>(this._url + 'learn/quizConfig/');
+}
     public itemChecked(event: any) {
         if (event.target.checked) {
             this.shuffle(this.question.reponses);
@@ -306,8 +279,8 @@ if (this._selected == null){
     }
 
 
-    public save(): Observable<number> {
-        return this.http.post<number>(this._url + this._urlQuestion + '/', this.question);
+    public save(): Observable<Question> {
+        return this.http.post<Question>(this._url + this._urlQuestion + '/', this.question);
     }
 
     public edit(): Observable<Question> {
@@ -324,19 +297,9 @@ if (this._selected == null){
         }
         return index;
     }
-    public saveQuiz() {
-        this.http.post<any>(this._url + this._urlQuiz + '/', this.selected).subscribe(
-            data => {
-                if (data > 0) {
-                    const cloneQuiz = JSON.parse(JSON.stringify(this.selected));
-                    this.items.push(cloneQuiz);
-                } else {
-                    console.log('error quiz');
-                }
-            }
-        );
-    }
-
+    public saveQuiz(): Observable<Quiz>{
+ return this.http.post<Quiz>(this._url + this._urlQuiz + '/' ,  this.selected);
+}
     validateForm() {
         // @ts-ignore
         const x = document.forms.myForm.fname.value;

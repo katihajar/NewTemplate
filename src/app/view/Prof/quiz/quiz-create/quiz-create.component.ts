@@ -15,7 +15,6 @@ import {Router} from '@angular/router';
 })
 export class QuizCreateComponent implements OnInit {
 
-    // tslint:disable-next-line:max-line-length
     constructor(private service: QuizService, private messageService: MessageService, private confirmationService: ConfirmationService, private router: Router) { }
     cols: any[];
     get question(): Question {
@@ -27,13 +26,6 @@ export class QuizCreateComponent implements OnInit {
 
     set question(value: Question) {
         this.service.question = value;
-    }
-    get buildQuestion(): any {
-        return this.service.buildQuestion;
-    }
-
-    set buildQuestion(value: any) {
-        this.service.buildQuestion = value;
     }
     get questions(): Array<Question> {
         if (this.service.questions == null){
@@ -100,7 +92,6 @@ export class QuizCreateComponent implements OnInit {
 
     public saveQuiz() {
         this.service.saveQuiz();
-        this.question.quiz.ref = this.selected?.ref;
     }
 
     ngOnInit(): void {
@@ -148,11 +139,13 @@ export class QuizCreateComponent implements OnInit {
     }
 
     public save() {
-        return this.service.save().subscribe(
+        this.service.saveQuiz().subscribe(
+            data =>{
+                this.items.push({...data});
+        this.question.quiz.ref = this.selected.ref;
+        this.service.save().subscribe(
             data => {
-                this.saveQuiz();
-                const cloneQuestion = {...this.question};
-                this.questions.push(cloneQuestion);
+                this.questions.push({...data});
                 console.log(this.questions);
                 console.log(this.items);
                 this.question = null;
@@ -163,8 +156,8 @@ export class QuizCreateComponent implements OnInit {
                     detail: 'Quiz Created',
                     life: 3000
                 });
-            }
-        );
+            });
+            });
     }
 
     public edit() {

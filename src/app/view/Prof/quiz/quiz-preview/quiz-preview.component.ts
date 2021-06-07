@@ -5,11 +5,6 @@ import {TypeDeQuestion} from "../../../../controller/Model/type-de-question.mode
 import {Reponse} from "../../../../controller/Model/reponse.model";
 import {QuizService} from "../../../../controller/service/quiz.service";
 import {Router} from "@angular/router";
-import {Etudiant} from "../../../../controller/Model/etudiant.model";
-import {EtudiantService} from "../../../../controller/service/etudiant.service";
-import {QuizEtudiant} from "../../../../controller/Model/quiz-etudiant.model";
-import {QuizEtudiantService} from "../../../../controller/service/quiz-etudiant.service";
-import {ReponseEtudiant} from "../../../../controller/Model/reponse-etudiant.model";
 
 @Component({
   selector: 'app-quiz-preview',
@@ -29,8 +24,7 @@ export class QuizPreviewComponent implements OnInit {
 
 
 
-
-  constructor(private  service: QuizService, private router: Router , private etudiantService: QuizEtudiantService) { }
+  constructor(private  service: QuizService, private router: Router) { }
   get question(): Question {
     return this.service.question;
   }
@@ -183,6 +177,13 @@ export class QuizPreviewComponent implements OnInit {
   set j(value: number) {
     this.service.j = value;
   }
+  get typeQuestion(): string {
+    return this.service.typeQuestion;
+  }
+
+  set typeQuestion(value: string) {
+    this.service.typeQuestion = value;
+  }
 
 
   NextQuestion() {
@@ -223,6 +224,7 @@ export class QuizPreviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.service.findConfig().subscribe( data => this.service.configurations = data);
     this.service.findFirstReponse();
     this.service.seconds = 0;
     this.service.qnprogress = 0;
@@ -230,15 +232,30 @@ export class QuizPreviewComponent implements OnInit {
     this.button = 'Next';
     this.startTimer();
     this.service.findQuiz();
+    this.Config();
+    this.TypeQuestion();
   }
-
-
+public Config(){
+  if (this.service.configuration.shuffleOptions == true){
+    this.service.shuffle(this.question.reponses);
+  } if (this.service.configuration.shuffleQuestions == true){
+    this.service.shuffleQuestion(this.questions);
+  }if (this.service.configuration.allowBack == true){
+    document.getElementById('backPage').style.visibility = 'visible';
+  }
+}
   public viewQuiz(){
     this.router.navigate(['/pages/quiz-create']);
   }
-
-
-
-
+public backPage(){
+    this.service.qnprogress --;
+}
+public TypeQuestion(){
+  if (this.question.typeDeQuestion.ref == 't1'){
+    this.typeQuestion = 'radio';
+  }else if (this.question.typeDeQuestion.ref == 't2'){
+    this.typeQuestion = 'checkbox';
+  }
+}
 }
 

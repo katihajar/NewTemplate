@@ -25,14 +25,14 @@
   text-align: center;
   font-size: 40px;
   font-family: Algerian, serif;
-  color: white;
+  color:#7f32da;
 }
  .question_answer{
    position: relative;
    margin-bottom: 10px;
    display: block;
    padding: 8px 15px;
-   background-color: #1bb7ee;
+   background-color:#7f32da;
    color: white;
    border-radius: 15px;
    transition: all 0.3s ease-out;
@@ -52,4 +52,7 @@
    z-index: 1;
    cursor: pointer;
    opacity: 1;
+ }
+ #backPage{
+   visibility: hidden;
  }

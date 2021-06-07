@@ -10,7 +10,9 @@ import {QuizService} from '../../../../controller/service/quiz.service';
   styleUrls: ['./quiz-config.component.scss']
 })
 export class QuizConfigComponent implements OnInit {
-
+  qst: boolean;
+  rep : boolean;
+  back: boolean;
   constructor(private service: QuizService, private messageService: MessageService) { }
 
   ngOnInit(): void {
@@ -41,14 +43,23 @@ export class QuizConfigComponent implements OnInit {
     this.service.configurations = value;
   }
   public itemChecked(event: any) {
-    if (event.target.checked) {
-      this.service.shuffle(this.service.question.reponses);
+    if (event.target.checked == true) {
+      this.configuration.shuffleOptions = true;
     }
   }
   saveConfig() {
-    this.service.ProgressBar(event);
-    this.service.itemChecked(event);
-    this.configurations?.push(this.configuration);
+this.service.saveConfig().subscribe(
+    data =>{
+      if (this.qst == true){
+        this.configuration.shuffleQuestions = true;
+      }if (this.rep == true){
+        this.configuration.shuffleOptions = true;
+      }if (this.back == true){
+        this.configuration.allowBack = true;
+      }
+      this.configurations.push({...data});
+    }
+);
     this.messageService.add({
       severity: 'success',
       summary: 'Successful',

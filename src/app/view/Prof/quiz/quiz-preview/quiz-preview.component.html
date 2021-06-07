@@ -4,11 +4,11 @@
 <p-card  [style]="{width: '900px'}" styleClass="p-card-shadow" id="container" >
 
     <ng-template pTemplate="header">
-        <div class="card" style="background-color: #0772b3">
+        <div class="card" style="background-color: lavender">
             <h1  style="text-align: center" class="quizTitre">{{items[i].lib}}</h1>
-            <span class="m-auto float-left" style="color: white">Time : {{displayTime()}}</span>
+            <span class="m-auto float-left" style="color: #7f32da">Time : {{displayTime()}}</span>
             <div class="p-col-2" style="float: right">
-                <span style="margin: auto; color: white" >{{qnprogress+1}}/{{this.questions.length}}</span>
+                <span style="margin: auto; color: #7f32da" >{{qnprogress+1}}/{{this.questions.length}}</span>
                 <p-progressBar  [value]="this.numQuestion*100/this.questions.length" id="progressBar" ></p-progressBar>
 
             </div>
@@ -28,6 +28,7 @@
         </ng-container>
     </div>
     <ng-template pTemplate="footer" style="float: left">
+        <p-button id="backPage" label="back" class="p-button-raised p-button-rounded p-button-success" (click)="backPage()"></p-button>
         <p-button label="{{this.button}}" icon="pi pi-plus" class="p-button-rounded p-mr-2 container"  (click)="NextQuestion()" ngDefaultControl></p-button>
     </ng-template>
 </p-card>
