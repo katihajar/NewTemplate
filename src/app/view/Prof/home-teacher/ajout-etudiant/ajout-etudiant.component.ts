@@ -25,9 +25,7 @@ export class AjoutEtudiantComponent implements OnInit {
   public save() {
     this.selected.prof.id = this.serviceUser.prof.id;
     this.submitted = true;
-    if (this.selected.nom.trim()) {
-      this.service.save().subscribe(data => {
-        this.items.push({...data});
+    this.service.save().subscribe(data => {
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
@@ -35,9 +33,8 @@ export class AjoutEtudiantComponent implements OnInit {
           life: 3000
         });
       });
-      this.createDialogEtud = false;
-      this.selected = new Etudiant();
-    }
+    this.createDialogEtud = false;
+    this.selected = new Etudiant();
   }
   get selected(): Etudiant {
     return this.service.selected;

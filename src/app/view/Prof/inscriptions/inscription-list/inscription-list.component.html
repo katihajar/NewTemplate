@@ -18,7 +18,7 @@
                 </ng-template>
             </p-toolbar>
 
-            <p-table #dt [value]="items" [columns]="cols" [rows]="6" [paginator]="true" [globalFilterFields]="['numeroInscription','datedebutinscription','datefininscription , etudiant , prof , etatInscription']"
+            <p-table #dt [value]="items" [columns]="cols" [rows]="6" [paginator]="true" [globalFilterFields]="['numeroInscription','datedebutinscription','datefininscription' , 'nom', 'prenom' , 'prof' , 'etatInscription']"
                      [(selection)]="selectes" [rowHover]="true" dataKey="id"
                      styleClass="p-datatable-customers"
                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
@@ -41,12 +41,9 @@
                         <th pSortableColumn="numeroInscription">Registration Number<p-sortIcon field="numeroInscription"></p-sortIcon></th>
                         <th pSortableColumn="datedebutinscription">Registration Start date <p-sortIcon field="datedebutinscription"></p-sortIcon></th>
                         <th pSortableColumn="datefininscription">Registration End date <p-sortIcon field="datefininscription"></p-sortIcon></th>
-                        <th pSortableColumn="Etudiant">Student<p-sortIcon field="Etudiant"></p-sortIcon></th>
-
-                        <th pSortableColumn="Etudiant">Username<p-sortIcon field="Etudiant"></p-sortIcon></th>
-
+                        <th pSortableColumn="nom">LastName<p-sortIcon field="nom"></p-sortIcon></th>
+                        <th pSortableColumn="prenom">FirstName<p-sortIcon field="prenom"></p-sortIcon></th>
                         <th pSortableColumn="etatInscription">Registration status<p-sortIcon field="etatInscription" ></p-sortIcon></th>
-                        <th pSortableColumn="Prof">Teacher<p-sortIcon field="Prof"></p-sortIcon></th>
                         <th></th>
                     </tr>
                 </ng-template>
@@ -58,12 +55,10 @@
                         <td>{{inscription.numeroInscription }}</td>
                         <td>{{inscription.datedebutinscription}}</td>
                         <td>{{inscription.datefininscription}}</td>
-                        <td>{{inscription.etudiant.nom}}</td>
-
-                        <td>{{inscription.etudiant.login}}</td>
-
+                        <td>{{inscription.nom}}</td>
+                        <td>{{inscription.prenom}}</td>
                         <td>{{inscription.etatInscription.libelle}}</td>
-                        <td>{{inscription.prof.nom}}</td>
+
 
                         <td>
                             <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="edit(inscription)"></button>

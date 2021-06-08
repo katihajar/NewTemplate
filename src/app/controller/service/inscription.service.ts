@@ -138,16 +138,8 @@ export class InscriptionService {
     }
     return this._inscription;
   }
-  public valider(): void {
-    this.http.put('http://localhost:8036/learn/inscription/', this.inscription).subscribe(
-        data =>  {if (data >= 0){
-          this.findAll();
-          console.log('succes update inscription');
-        }}, eror => {
-          console.log('error update inscription');
-        }
-    );
-    this._inscription = null;
+  public valider(): Observable<Inscription> {
+   return this.http.put<Inscription>('http://localhost:8036/learn/inscription/', this.selected);
   }
 
   // tslint:disable-next-line:adjacent-overload-signatures
@@ -175,7 +167,7 @@ export class InscriptionService {
   }
 
   public edit(): Observable<Inscription> {
-    return this.http.put<Inscription>(this.url, this.inscription);
+    return this.http.put<Inscription>(this.url, this.selected);
   }
 
   public deleteByNumeroInscription(): Observable<number> {

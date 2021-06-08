@@ -9,4 +9,5 @@ export class SalaryVo {
     public  responsable = new Prof();
     public mois: Date = new Date();
     public annee: Date = new Date();
+    public  prof = new Prof();
 }
