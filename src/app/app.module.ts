@@ -230,7 +230,6 @@ import { ProfesseurViewComponent } from './view/admin/professeur/professeur-view
 
 
 
-
 @NgModule({
     imports: [
         BrowserModule,
@@ -448,12 +447,12 @@ import { ProfesseurViewComponent } from './view/admin/professeur/professeur-view
         SyntheseSessionCoursCreateComponent,
         SyntheseSessionCoursEditComponent,
         SyntheseSessionCoursViewComponent,
-        SyntheseSessionCoursListComponent,
-        ProfesseurComponent,
+        SyntheseSessionCoursListComponent
+       /* ProfesseurComponent,
         ProfesseurListComponent,
         ProfesseurCreateComponent,
         ProfesseurEditComponent,
-        ProfesseurViewComponent
+        ProfesseurViewComponent*/
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

@@ -8,14 +8,14 @@
         </div>
         <div class="p-field">
             <label for="prof">Professor</label>
-            <input type="text" pInputText id="prof" [(ngModel)]="selected.prof.nom" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !selected.prof.nom">total is required.</small>
+            <input type="text" pInputText id="prof" [(ngModel)]="selected.prof.id" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.prof.id">total is required.</small>
         </div>
 
         <div class="p-field">
             <label for="student">Student</label>
-            <input type="text" pInputText id="student" [(ngModel)]="selected.etudiant.prenom" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !selected.etudiant.prenom">Student's name is required.</small>
+            <input type="text" pInputText id="student" [(ngModel)]="selected.etudiant.id" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.etudiant.id">Student's name is required.</small>
         </div>
 
         <div class="p-field">

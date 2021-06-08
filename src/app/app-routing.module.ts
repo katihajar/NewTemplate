@@ -93,7 +93,7 @@ import {ProfesseurListComponent} from './view/admin/professeur/professeur-list/p
                     {path: 'pages/etudiant', component: EtudiantsComponent},
                     {path: 'pages/session', component: SessionCoursComponent},
                     {path: 'pages/synthese', component: SyntheseSessionComponent},
-                    {path: 'view/teacherLists', component: ProfesseurListComponent},
+                   /* {path: 'view/teacherLists', component: ProfesseurListComponent},*/
                     {path: 'inscriptionAdmin', component: InscriptionAdminComponent},
                     {path: 'inscriptionTeacher', component: InscriptionProfComponent},
                     {path: 'view/inscription', component: InscriptionsComponent},
