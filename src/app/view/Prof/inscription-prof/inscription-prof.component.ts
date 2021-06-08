@@ -18,7 +18,7 @@ export class InscriptionProfComponent implements OnInit {
   ngOnInit(): void {
   }
   public save() {
-    this.selectedProf.categorieProf.id = 89;
+    this.selectedProf.categorieProf.id = 1;
     this.service.save().subscribe(
         data => {
       console.log(this.selectedProf);

@@ -30,7 +30,12 @@ export class RecommendListComponent implements OnInit {
     this.viewDialog = true;
   }
   public findByCriteria(){
-    return this.service.findByCriteria();
+    return this.service.findByCriteria().subscribe(
+        data => {
+          console.log(data);
+          this.service.items = data;
+        },
+    );
   }
   get recommendVo(): RecommendTeacherVo {
     return this.service.recommendVo;
