@@ -6,4 +6,5 @@ export class Admin {
     public login: string;
     public password: string;
     public addresse: string;
+    public image: string;
 }

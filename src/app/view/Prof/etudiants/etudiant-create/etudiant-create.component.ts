@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MessageService} from 'primeng/api';
 import {EtudiantService} from '../../../../controller/service/etudiant.service';
 import {Etudiant} from '../../../../controller/model/etudiant.model';
+import {Centre} from '../../../../controller/Model/centre.model';
+import {Parcours} from '../../../../controller/Model/parcours.model';
 
 
 
@@ -32,9 +34,29 @@ export class EtudiantCreateComponent implements OnInit {
           life: 3000
         });
       });
+      this.service.findAll().subscribe(data => this.items = data);
       this.createDialogEtud = false;
       this.selected = new Etudiant();
     }
+  }
+  public findAllCentre(){
+    this.service.findAllCentre().subscribe(data => this.centreList = data);
+  }
+  public findAllParcours(){
+    this.service.findAllParcours().subscribe(data => this.parcoursList = data);
+  }
+  get centreList(): Array<Centre> {
+
+    return this.service.centreList;
+  }
+  set centreList(value: Array<Centre>) {
+    this.service.centreList = value;
+  }
+  set parcoursList(value: Array<Parcours>) {
+    this.service.parcoursList = value;
+  }
+  get parcoursList(): Array<Parcours> {
+    return this.service.parcoursList;
   }
   get selected(): Etudiant {
     return this.service.selected;

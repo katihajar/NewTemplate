@@ -1,5 +1,5 @@
 <div class="card" style="background-color: lavender;">
-    <h5>Inscription Professeur</h5>
+    <h1 style="margin-left: 620px; margin-bottom: 3px">Inscription Professeur</h1>
     <div class="p-fluid p-formgrid p-grid">
         <div class="p-field p-col-12 p-md-6">
             <label for="firstname6">Firstname</label>
@@ -11,14 +11,17 @@
         </div>
         <div class="p-field p-col-12 p-md-6">
             <label for="integeronly">Phone Number </label>
-            <p-inputNumber inputId="integeronly" id="integeronly" [(ngModel)]="selectedProf.numero">
-            </p-inputNumber>
+            <input  id="integeronly" pInputText [(ngModel)]="selectedProf.numero">
         </div>
 
         <div class="p-field p-col-12 p-md-6">
             <label for="email">email</label>
             <input id="email" type="text" pInputText [(ngModel)]="selectedProf.email">
         </div>
+        <div class="p-field p-col-12">
+        <label for="address">Address</label>
+        <textarea id="address" type="text" rows="4" pInputTextarea [(ngModel)]="selectedProf.addresse" ></textarea>
+    </div>
         <div class="p-field p-col-12 p-md-6">
             <label for="username">UserName</label>
             <input id="username" type="text" pInputText [(ngModel)]="selectedProf.login" >

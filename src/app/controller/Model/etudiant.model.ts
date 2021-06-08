@@ -18,5 +18,5 @@ export class Etudiant {
     public quizEtudiant = new Array<QuizEtudiant>();
     public etatInscription = new EtatInscription();
     public prof = new Prof();
-
+    public image: string;
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Cours} from '../../../controller/Model/cours.model';
-import {Section} from '../../../controller/Model/section.model';
+import {Cours} from '../../../../controller/Model/cours.model';
+import {Section} from '../../../../controller/Model/section.model';
 import {ConfirmationService, MessageService} from 'primeng/api';
-import {ParcoursService} from '../../../controller/service/parcours.service';
+import {ParcoursService} from '../../../../controller/service/parcours.service';
 
 @Component({
   selector: 'app-etudiant-courses',
@@ -19,11 +19,21 @@ export class EtudiantCoursesComponent implements OnInit {
   constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private service: ParcoursService ) { }
   ngOnInit(): void {
     this.initCol();
-    this.service.FindCoursByParcours().subscribe(data => this.selectesscours = data);
   }
   public Console() {
     this.service.FindCoursByParcours().subscribe(data => this.selectesscours = data);
     console.log(this.selectesscours);
+  }
+  get viewChooseType2(): boolean {
+    return this.service.viewChooseType2;
+  }
+  public viewType2(cours: Cours) {
+    this.selectedcours = {...cours};
+    this.viewChooseType2 = true;
+  }
+  // tslint:disable-next-line:adjacent-overload-signatures
+  set viewChooseType2(value: boolean) {
+    this.service.viewChooseType2 = value;
   }
   public openCreateCours() {
     this.selectedcours = new Cours();

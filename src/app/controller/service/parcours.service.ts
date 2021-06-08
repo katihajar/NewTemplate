@@ -40,6 +40,7 @@ export class ParcoursService {
   private _editDialog: boolean;
   private _viewDialog: boolean;
   private _viewChooseType: boolean;
+  private _viewChooseType2: boolean;
   private _submitted: boolean;
   private _createDialogCours: boolean;
   private _editDialogCours: boolean;
@@ -60,6 +61,14 @@ export class ParcoursService {
 
   get image3(): string {
     return this._image3;
+  }
+
+  get viewChooseType2(): boolean {
+    return this._viewChooseType2;
+  }
+
+  set viewChooseType2(value: boolean) {
+    this._viewChooseType2 = value;
   }
 
   set image3(value: string) {
@@ -449,6 +458,10 @@ export class ParcoursService {
   }
 
   public init(): Observable<Array<Parcours>> {
+    return this.http.get< Array<Parcours> >('http://localhost:8036/learn/parcours/');
+
+  }
+  public FindAllParcours(): Observable<Array<Parcours>> {
     return this.http.get< Array<Parcours> >('http://localhost:8036/learn/parcours/');
 
   }

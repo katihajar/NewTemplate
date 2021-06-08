@@ -33,6 +33,7 @@ export class AppMainComponent {
     menuHoverActive: boolean;
 
     topbarUserMenuActive: boolean;
+    topbarUserMenuActive2: boolean;
 
     topbarNotificationMenuActive: boolean;
     topbarNotificationMenuActive2: boolean;
@@ -127,6 +128,7 @@ export class AppMainComponent {
     onTopbarUserMenuButtonClick(event) {
         this.userMenuClick = true;
         this.topbarUserMenuActive = !this.topbarUserMenuActive;
+        this.topbarUserMenuActive2 = !this.topbarUserMenuActive2;
 
         this.hideOverlayMenu();
 

@@ -35,6 +35,11 @@ export class RecommendationComponent implements OnInit {
       console.log(this.selected);
       console.log('meryem');
     });
+    // tslint:disable-next-line:no-unused-expression
+     this.selected == null;
+     this.selected.prof.id = this.serviceUser.prof.id;
+     this.service.findAll().subscribe(data => this.items = data);
+     this.selected = new RecommendTeacher();
   }
   // tslint:disable-next-line:adjacent-overload-signatures
   set selected(value: RecommendTeacher) {
