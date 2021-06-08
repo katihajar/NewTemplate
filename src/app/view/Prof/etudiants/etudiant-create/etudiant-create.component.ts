@@ -26,6 +26,8 @@ export class EtudiantCreateComponent implements OnInit {
     this.submitted = true;
     if (this.selected.nom.trim()) {
       this.service.save().subscribe(data => {
+        // tslint:disable-next-line:no-shadowed-variable
+        this.service.findAll().subscribe(data => this.items = data);
         this.items.push({...data});
         this.messageService.add({
           severity: 'success',
@@ -34,7 +36,6 @@ export class EtudiantCreateComponent implements OnInit {
           life: 3000
         });
       });
-      this.service.findAll().subscribe(data => this.items = data);
       this.createDialogEtud = false;
       this.selected = new Etudiant();
     }
