@@ -171,11 +171,11 @@ export class InscriptionService {
   }
 
   public deleteByNumeroInscription(): Observable<number> {
-    return this.http.delete<number>(this.url + 'numeroInscription/' + this.selected.numeroInscription);
+    return this.http.delete<number>(this.url + 'id/' + this.selected.id);
   }
 
   public deleteMultipleByNumeroInscription(): Observable<number> {
-    return this.http.post<number>(this.url + 'delete-multiple-by-numeroInscription' , this.selectes);
+    return this.http.post<number>(this.url + 'delete-multiple-by-id' , this.selectes);
   }
 
   public findIndexById(id: number): number {

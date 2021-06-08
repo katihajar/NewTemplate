@@ -126,10 +126,10 @@ export class EtudiantService {
     return this.http.get<Array<Etudiant>>(this.url);
   }
   public deleteMultipleByNom(): Observable<number> {
-    return this.http.post<number>(this.url + 'delete-multiple-by-nom' , this.selectes);
+    return this.http.post<number>(this.url + 'delete-multiple-by-id' , this.selectes);
   }
   public deleteByNom(): Observable<number> {
-    return this.http.delete<number>(this.url + 'reference/' + this.selected.nom);
+    return this.http.delete<number>(this.url + 'id/' + this.selected.id);
   }
 
   public deleteMultipleIndexById() {
