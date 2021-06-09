@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MenuItem, MessageService} from 'primeng/api';
 import {ClassRoomService} from '../../../../controller/service/class-room.service';
 import {SalaryVo} from '../../../../controller/model/salary-vo.model';
+import {LoginService} from '../../../../controller/service/login.service';
 
 
 
@@ -14,7 +15,7 @@ export class SalaryComponent implements OnInit {
   data: any;
 
   constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
-              private service: ClassRoomService) {this.data = {
+              private service: ClassRoomService, private serviceUser: LoginService) {this.data = {
     labels: ['Lesson profit', 'bonus', 'Plan shortage'],
     datasets: [
       {
@@ -58,19 +59,17 @@ export class SalaryComponent implements OnInit {
     this.service.selectessalaryVo = value;
   }
   public findSalaryByDate(mois: Date, annee: Date ){
-    this.service.findSalaryByDate(mois , annee).subscribe(data =>
+    this.selectedsalaryVo.prof.id = this.serviceUser.prof.id;
+    this.service.findSalaryByDateAndProf(mois , annee).subscribe(data =>
     {
-      this.itemssalaryVo  = data;
-      this.itemssalaryVo = this.selectessalaryVo;
-      console.log(this.itemssalaryVo);
+      this.selectedsalaryVo = data;
     });
   }
   public findSalary(){
+    this.selectedsalaryVo.prof.id = this.serviceUser.prof.id;
     this.service.findSalary().subscribe(data =>
     {
-      this.selectessalaryVo = data;
-      this.itemssalaryVo = this.selectessalaryVo;
-      console.log(this.selectessalaryVo);
+      this.selectedsalaryVo = data;
     });
   }
   ngOnInit() {

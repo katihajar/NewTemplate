@@ -10,7 +10,7 @@
 
     <ul  class="topbar-menu"  >
         <li class="user-profile" [ngClass]="{'active-topmenuitem fadeInDown': appMain.topbarUserMenuActive}">
-            <a href="#" (click)="appMain.onTopbarUserMenuButtonClick($event)" *ngIf="!app.inlineUser">
+            <a href="#" >
                 <img src="{{this.serviceUser.prof.image}}"  />
                 <div class="layout-profile-userinfo">
                     <span class="layout-profile-name">{{this.serviceUser.prof.nom}}</span>
@@ -18,10 +18,11 @@
                 </div>
             </a>
         </li>
+
         <li class="user-profile" [ngClass]="{'active-topmenuitem fadeInDown': appMain.topbarUserMenuActive}" style="margin-top: 4px">
             <a href="#" (click)="appMain.onTopbarUserMenuButtonClick($event)" *ngIf="!app.inlineUser">
                 <div class="layout-profile-userinfo">
-                    <span class="layout-profile-name"><b><h4>Space Admin &#9207;</h4></b></span>
+                    <span class="layout-profile-name" style="color: #DCF7F8"><b><h4>Space Admin &#9207;</h4></b></span>
                 </div>
             </a>
             <ul class="fadeInDown">
@@ -42,7 +43,7 @@
         <li class="user-profile" [ngClass]="{'active-topmenuitem fadeInDown': appMain.topbarNotificationMenuActive}" style="margin-top: 4px">
             <a href="#" (click)="appMain.onTopbarNotificationMenuButtonClick($event)" *ngIf="!app.inlineUser">
                 <div class="layout-profile-userinfo">
-                    <span class="layout-profile-name"><b><h4>Space Teacher &#9207;</h4></b></span>
+                    <span class="layout-profile-name" style="color: #DCF7F8"><b><h4>Space Teacher &#9207;</h4></b></span>
                 </div>
             </a>
             <ul class="fadeInDown">
@@ -63,7 +64,7 @@
         <li class="user-profile" [ngClass]="{'active-topmenuitem fadeInDown': appMain.topbarNotificationMenuActive2}" style="margin-top: 4px">
             <a href="#" (click)="appMain.onTopbarNotificationMenuButtonClick2($event)" *ngIf="!app.inlineUser">
                 <div class="layout-profile-userinfo">
-                    <span class="layout-profile-name"><b><h4>Space Student &#9207;</h4></b></span>
+                    <span class="layout-profile-name" style="color: #DCF7F8"><b><h4>Space Student &#9207;</h4></b></span>
                 </div>
             </a>
             <ul class="fadeInDown">

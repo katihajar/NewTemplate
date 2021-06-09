@@ -287,11 +287,15 @@ export class ClassRoomService {
     return this.http.get< Array<CategorieProf> >('http://localhost:8036/learn/categorieprof/');
 
   }
-  public findSalary(): Observable<Array<SalaryVo>> {
-    return this.http.get<Array<SalaryVo> >('http://localhost:8036/learn/salary/prof/id/15');
+  public findSalary(): Observable <SalaryVo> {
+    return this.http.get<SalaryVo> ('http://localhost:8036/learn/salary/prof/id/' + this.selectedsalaryVo.prof.id );
   }
   public findSalaryByDate( mois, annee): Observable<Array<SalaryVo>> {
     // tslint:disable-next-line:max-line-length
     return this.http.get<Array<SalaryVo> >('http://localhost:8036/learn/salary/mois/' + mois + '/annee/' + annee );
+  }
+  public findSalaryByDateAndProf( mois, annee): Observable<SalaryVo> {
+    // tslint:disable-next-line:max-line-length
+    return this.http.get<SalaryVo> ('http://localhost:8036/learn/salary/mois/' + mois + '/annee/' + annee + '/prof/id/' + this.selectedsalaryVo.prof.id  );
   }
 }

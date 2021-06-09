@@ -31,16 +31,8 @@ export class RecommendTeacherService {
   private _createDialogEtud: boolean;
 
   constructor(private http: HttpClient) { }
-  findByCriteria(){
-    console.log(this.recommendVo);
-    this.http.post<Array<RecommendTeacher>>('http://localhost:8036/learn/teacher/search', this.recommendVo).subscribe(
-        data => {
-          console.log(data);
-          this.items = data;
-        }, error => {
-          console.log('la fonction ne fonctionne pas');
-        }
-    );
+  findByCriteria(): Observable<Array<RecommendTeacher>>{
+    return this.http.post<Array<RecommendTeacher>>('http://localhost:8036/learn/teacher/search', this.recommendVo);
   }
 
   get createDialogEtud(): boolean {

@@ -83,8 +83,8 @@ export class InscriptionListComponent implements OnInit {
   }
 
 
-  public edit(inscription: Inscription) {
-    this.selected = {...inscription};
+  public edit(inscriptions: Inscription) {
+    this.selected = {...inscriptions};
     this.editDialog = true;
   }
   public view(inscription: Inscription) {
@@ -97,7 +97,11 @@ export class InscriptionListComponent implements OnInit {
       {field: 'id', header: 'Id'},
       {field: 'numeroInscription', header: 'NumeroInscription'},
       {field: 'datedebutinscription', header: 'Datedebutinscription'},
-      {field: 'datefininscription', header: 'Datefininscription'}
+      {field: 'datefininscription', header: 'Datefininscription'},
+      {field: 'nom', header: 'Nom'},
+      {field: 'prenom', header: 'Prenom'},
+      {field: 'prof', header: 'Prof'},
+      {field: 'etatInscription', header: 'EtatInscription'}
     ];
   }
 

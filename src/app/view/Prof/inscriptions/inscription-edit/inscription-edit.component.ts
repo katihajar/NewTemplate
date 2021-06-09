@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {MessageService} from 'primeng/api';
-
-
 import {InscriptionService} from '../../../../controller/service/inscription.service';
 import {Inscription} from '../../../../controller/model/inscription.model';
-import {Parcours} from '../../../../controller/Model/parcours.model';
-import {Centre} from '../../../../controller/Model/centre.model';
-import {EtatInscription} from '../../../../controller/Model/etat-inscription.model';
-import {LoginProfComponent} from '../../../teacher/login-prof/login-prof.component';
-import {Prof} from '../../../../controller/Model/prof.model';
+import {Parcours} from '../../../../controller/model/parcours.model';
+import {EtatInscription} from '../../../../controller/model/etat-inscription.model';
+import {Prof} from '../../../../controller/model/prof.model';
 
 @Component({
   selector: 'app-inscription-edit',
@@ -50,12 +46,14 @@ export class InscriptionEditComponent implements OnInit {
     this.service.etatinscriptionslist = value;
   }
   public edit() {
+    this.service.findAll().subscribe(data => this.items = data);
+    console.log(this.service.selected.id);
     this.submitted = true;
-    if (this.selected.numeroInscription != null) {
-      if (this.selected.id) {
-        this.items[this.service.findIndexById(this.selected.id)] = this.selected;
-        this.service.edit().subscribe(data => {
+    this.items[this.service.findIndexById(this.service.selected.id)] = this.selected;
+    this.service.valider().subscribe(data => {
           this.selected = data;
+      // tslint:disable-next-line:no-shadowed-variable
+          this.service.findAll().subscribe(data => this.items = data);
           this.messageService.add({
             severity: 'success',
             summary: 'Successful',
@@ -63,21 +61,19 @@ export class InscriptionEditComponent implements OnInit {
             life: 3000
           });
         });
-      }
-      this.editDialog = false;
-      this.selected = new Inscription();
-    }
+    this.editDialog = false;
+    this.selected = new Inscription();
   }
 
   public hideEditDialog() {
     this.editDialog = false;
   }
   get selected(): Inscription {
-    return this.service.inscription;
+    return this.service.selected;
   }
 
   set selected(value: Inscription) {
-    this.service.inscription = value;
+    this.service.selected = value;
   }
 
   get editDialog(): boolean {

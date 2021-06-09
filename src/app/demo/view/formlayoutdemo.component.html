@@ -117,45 +117,40 @@
 
 	<div class="p-col-12">
 		<div class="card" style="background-color: lavender;">
-			<h1 style="margin-left: 660px; margin-bottom: 3px"><b>Inscription</b></h1>
+			<h1 style="margin-left: 650px; margin-bottom: 3px"><b>Inscription</b></h1>
 			<div class="p-fluid p-formgrid p-grid">
 				<div class="p-field p-col-12 p-md-6">
-					<label for="firstname6">Firstname</label>
-					<input id="firstname6" type="text" pInputText [(ngModel)]="selected.etudiant.prenom">
+					<label for="prenom">Firstname</label>
+					<input id="prenom" type="text" pInputText [(ngModel)]="selected.nom">
 				</div>
 				<div class="p-field p-col-12 p-md-6">
-					<label for="lastname6">Lastname</label>
-					<input id="lastname6" type="text" pInputText [(ngModel)]="selected.etudiant.nom">
+					<label for="nom">Lastname</label>
+					<input id="nom" type="text" pInputText [(ngModel)]="selected.prenom">
 				</div>
 				<div class="p-field p-col-12 p-md-6">
 					<label for="login">UserName</label>
-					<input id="login" type="text" pInputText [(ngModel)]="selected.etudiant.login">
+					<input id="login" type="text" pInputText [(ngModel)]="selected.login">
 				</div>
 				<div class="p-field p-col-12 p-md-6">
 					<label for="passwrd">Password</label>
-					<input id="passwrd" type="text" pInputText [(ngModel)]="selected.etudiant.password">
+					<input id="passwrd" type="text" pInputText [(ngModel)]="selected.password">
 				</div>
 				<div class="p-field p-col-12">
 					<label for="address">Address</label>
-					<textarea id="address" type="text" rows="4" pInputTextarea [(ngModel)]="selected.etudiant.address"></textarea>
+					<textarea id="address" type="text" rows="4" pInputTextarea [(ngModel)]="selected.address"></textarea>
 				</div>
 				<div class="p-field p-col-12 p-md-6">
 					<label for="city">City</label>
-					<input id="city" type="text" pInputText [(ngModel)]="selected.etudiant.ville">
+					<input id="city" type="text" pInputText [(ngModel)]="selected.ville">
 				</div>
 				<div class="p-field p-col-12 p-md-3" style="margin-top: 20px">
 					<label for="parcours">Parcours</label>
-					<select type="text" class="btn btn-block btn-outline-light form-control" id="parcours"  name="Parcours"  style="width: 300px; height: 30px ; border-color: darkgray;margin-left: 5px" (click)="findAllParcours()"  [(ngModel)]="selected.etudiant.parcours.id" >
+					<select type="text" class="btn btn-block btn-outline-light form-control" id="parcours"  name="Parcours"  style="width: 300px; height: 30px ; border-color: darkgray;margin-left: 5px" (click)="findAllParcours()"  [(ngModel)]="selected.parcours.id" >
 						<option  selected="selected" *ngFor="let p of parcoursList"  [ngValue]="p.id"> {{p.libelle}}</option>
 
 					</select>
 				</div>
-				<div class="p-field p-col-12 p-md-3" style="margin-top: 20px">
-					<label for="centre">Centre</label>
-					<select type="text"  class="btn btn-block btn-outline-light form-control" id="centre"  name="Centre"  style="width: 300px; height: 30px ; border-color: darkgray;margin-left: 5px" (click)="findAllCentre()" [(ngModel)]="selected.etudiant.parcours.centre.id" >
-						<option  selected="selected" *ngFor="let c of centreList"  [ngValue]="c.id"> {{c.libelle}} </option>
-					</select>
-				</div>
+
 			</div>
 			<div class="card-footer">
 				<button pButton pRipple type="button" label="Envoyer" class="p-button-rounded" (click)="save()" ></button>

@@ -20,5 +20,5 @@ export class Etudiant {
     public etatInscription = new EtatInscription();
     public etatEtudiantSchedule = new EtatEtudiantSchedule();
     public prof = new Prof();
-
+    public image: string;
 }
