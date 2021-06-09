@@ -9,6 +9,7 @@ import { EtudiantVo } from '../model/etudiant-vo.model';
 import { Prof } from '../model/prof.model';
 import {Centre} from '../Model/centre.model';
 import {Parcours} from '../Model/parcours.model';
+import {LoginService} from './login.service';
 
 
 
@@ -20,6 +21,7 @@ import {Parcours} from '../Model/parcours.model';
 export class EtudiantService {
   private url = environment.baseUrl + 'etudiant/';
   private _selected: Etudiant;
+  private _selectedProf: Prof;
   private _submitted: boolean;
   private _createDialog: boolean;
   private _items: Array<Etudiant>;
@@ -37,9 +39,12 @@ export class EtudiantService {
 
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public serviceUser: LoginService) { }
 
   get centreList(): Array<Centre> {
+    if (this._centreList == null){
+      this._centreList = new  Array<Centre>();
+    }
     return this._centreList;
   }
 
@@ -48,6 +53,9 @@ export class EtudiantService {
   }
 
   get parcoursList(): Array<Parcours> {
+    if (this._parcoursList == null){
+      this._parcoursList = new  Array<Parcours>();
+    }
     return this._parcoursList;
   }
 
@@ -73,6 +81,9 @@ export class EtudiantService {
   }
 
   get itemsprof(): Array<Prof> {
+    if (this._itemsprof == null){
+       this._itemsprof = new  Array<Prof>();
+    }
     return this._itemsprof;
   }
 
@@ -81,10 +92,13 @@ export class EtudiantService {
   }
 
   public findetudiantProf(): Observable<Array<Etudiant>> {
-    return this.http.get<Array<Etudiant>>('http://localhost:8036/learn/prof/id/160' );
+    return this.http.get<Array<Etudiant>>('http://localhost:8036/learn/etudiant/prof/id/' + this.serviceUser.prof.id );
   }
 
   get selecteetudiant(): Array<Etudiant> {
+    if (this._selecteetudiant == null){
+      this._selecteetudiant = new  Array<Etudiant>();
+    }
     return this._selecteetudiant;
   }
 
@@ -93,6 +107,9 @@ export class EtudiantService {
   }
 
   get prof(): Array<Prof> {
+    if (this._prof == null){
+      this._prof = new  Array<Prof>();
+    }
     return this._prof;
   }
 
@@ -162,6 +179,9 @@ export class EtudiantService {
   }
 
   get selectes(): Array<Etudiant> {
+    if (this._selectes == null){
+      this._selectes = new  Array<Etudiant>();
+    }
     return this._selectes;
   }
 
@@ -183,6 +203,17 @@ export class EtudiantService {
     return this.http.post<Etudiant>(this.url, this.selected);
   }
 
+  get selectedProf(): Prof {
+    if (this._selectedProf == null){
+      this._selectedProf = new Prof();
+    }
+    return this._selectedProf;
+  }
+
+  set selectedProf(value: Prof) {
+    this._selectedProf = value;
+  }
+
   get submitted(): boolean {
     return this._submitted;
   }
@@ -200,6 +231,9 @@ export class EtudiantService {
   }
 
   get items(): Array<Etudiant> {
+    if (this._items == null){
+      this._items = new Array<Etudiant>();
+    }
     return this._items;
   }
 

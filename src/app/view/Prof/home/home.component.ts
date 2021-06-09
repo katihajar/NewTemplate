@@ -23,14 +23,30 @@ export class HomeComponent implements OnInit {
               // tslint:disable-next-line:max-line-length
               private service: ParcoursService,
               private servicerecommend: RecommendTeacherService, private seviceClass: ClassRoomService ,
-              private serviceetudiant: EtudiantService, private serviceUser: LoginService
+              private serviceetudiant: EtudiantService, public serviceUser: LoginService
   ) { }
 
   ngOnInit(): void {
     this.findSalary();
-    this.servicerecommend.findAllEtudiantByProf().subscribe(data => this.itemsetudiant = data);
+    this.findEtudiant();
+  }
+  public  findEtudiant(){
+    this.serviceetudiant.findetudiantProf().subscribe(data => this.items = data);
+  }
+  get selectedProf(): Prof {
+    return this.serviceetudiant.selectedProf;
   }
 
+  set selectedProf(value: Prof) {
+    this.serviceetudiant.selectedProf = value;
+  }
+  get Selectedprof(): Prof {
+    return this.servicerecommend.prof;
+  }
+
+  set Selectedprof(value: Prof) {
+    this.servicerecommend.prof = value;
+  }
   get prof(): Prof {
     return this.serviceUser.prof;
   }
@@ -38,12 +54,12 @@ export class HomeComponent implements OnInit {
   set prof(value: Prof) {
     this.serviceUser.prof = value;
   }
-  get itemssalaryVo(): Array<SalaryVo> {
-    return this.seviceClass.itemssalaryVo;
+  get items(): Array<Etudiant> {
+    return this.serviceetudiant.items;
   }
 
-  set itemssalaryVo(value: Array<SalaryVo>) {
-    this.seviceClass.itemssalaryVo = value;
+  set items(value: Array<Etudiant>) {
+    this.serviceetudiant.items = value;
   }
 
   get selectessalaryVo(): Array<SalaryVo> {

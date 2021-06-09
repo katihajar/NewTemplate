@@ -1,6 +1,7 @@
 import {RecommendTeacher} from './recommend-teacher.model';
 import {CategorieProf} from './categorie-prof.model';
 import {ClassRoom} from './class-room.model';
+import {Etudiant} from './etudiant.model';
 
 export class Prof {
   public id: number;
