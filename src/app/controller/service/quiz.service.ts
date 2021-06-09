@@ -6,8 +6,8 @@ import {TypeDeQuestion} from '../model/type-de-question.model';
 import {Quiz} from '../model/quiz.model';
 import {Observable} from 'rxjs';
 import {QuizConfig} from "../model/quiz-config.model";
-import {ReponseEtudiant} from "../Model/reponse-etudiant.model";
-import {QuizEtudiant} from "../Model/quiz-etudiant.model";
+import {ReponseEtudiant} from "../model/reponse-etudiant.model";
+import {QuizEtudiant} from "../model/quiz-etudiant.model";
 
 
 
@@ -43,7 +43,18 @@ export class QuizService {
     private _numCorrectAnswers= 0;
     private _correctAnswers: Array<Reponse>;
     private _typeQuestion: string;
+    private _typeReponse: string;
 
+
+
+
+    get typeReponse(): string {
+        return this._typeReponse;
+    }
+
+    set typeReponse(value: string) {
+        this._typeReponse = value;
+    }
 
     get typeQuestion(): string {
         return this._typeQuestion;
@@ -340,6 +351,30 @@ public findConfig() : Observable<Array<QuizConfig>>{
         this.http.get<any>(this._url + this._urlQuestion + '/').subscribe(
             data => {
                 this.questions = data;
+                        if(this.question.typeDeQuestion.ref == 't1')
+                        {
+                            this.typeReponse = 'radio';
+                        }
+                        else if(this.question.typeDeQuestion.ref == 't2')
+                        {
+                            this.typeReponse = 'checkbox';
+                        }
+                        /*console.log('bara' + this.selected.typeDeQuestion.ref);
+                        if(data.typeDeQuestion.ref == 't1')
+                        {
+                          console.log('hada da5l t1');
+                          document.getElementById('checkbox').style.visibility = 'hidden';
+                          document.getElementById('radio').style.visibility = 'visible';
+                        }
+                        else if(data.typeDeQuestion.ref == 't2')
+                        {
+                          console.log('hada da5l t2');
+
+                          console.log('1');
+                          document.getElementById('radio').style.visibility = 'hidden';
+                          console.log('1');
+                        }*/
+
             }, error1 => {
                 console.log('error finding data');
             }
@@ -348,7 +383,8 @@ public findConfig() : Observable<Array<QuizConfig>>{
 public findFirstReponse(){
         this.j = 1 ;
     this.http.get<any>('http://localhost:8036/learn/reponse/question/numero/' + this.j).subscribe(
-        data => {this.reponses = data;
+        data => {
+            this.reponses = data;
         }
         );
     }
@@ -427,6 +463,10 @@ public findFirstReponse(){
     {
         this.numCorrectAnswers = this.numCorrectAnswers + 1;
         return this.http.get<Array<Reponse>>(this._url + this._urlReponse + '/criteria/numero/' + this.numCorrectAnswers);
+    }
+    public findFirstQuestion(): Observable<Question>
+    {
+        return this.http.get<Question>(this._url + 'learn/question/numero/1');
     }
 }
 

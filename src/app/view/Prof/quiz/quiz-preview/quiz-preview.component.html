@@ -6,28 +6,29 @@
     <ng-template pTemplate="header">
         <div class="card" style="background-color: lavender">
             <h1  style="text-align: center" class="quizTitre">{{items[i].lib}}</h1>
-            <span class="m-auto float-left" style="color: #7f32da">Time : {{displayTime()}}</span>
-            <div class="p-col-2" style="float: right">
-                <span style="margin: auto; color: #7f32da" >{{qnprogress+1}}/{{this.questions.length}}</span>
+            <span class="m-auto float-left  dispalyTime" style="color: #972bb1">Time : {{displayTime()}}</span>
+            <div class="p-col-2 dispalyTime" style="float: right" >
+                <span style="margin: auto; color: #972bb1" >{{qnprogress+1}}/{{this.questions.length}}</span>
                 <p-progressBar  [value]="this.numQuestion*100/this.questions.length" id="progressBar" ></p-progressBar>
 
             </div>
         </div>
     </ng-template>
 
-    <div class="p-fieldset-content">
+    <div class="p-fieldset-content displayTime">
         <span class="p-card-title p-col-2" style="font-family: Palatino Linotype, serif">{{qnprogress+1}} - </span>
         <p class="p-col-10"  style="font-family: Palatino Linotype,serif; font-size: 20px">{{questions[qnprogress]?.libelle}}</p>
 
         <ng-container  class="reponse-radio" style="margin: auto" >
             <div *ngFor="let r of reponses" class="question_answer" id="div-{{r.ref}}">
-                <p-radioButton id="radio"  name="groupname" value="{{r.ref}}" [(ngModel)]="selectedValue"></p-radioButton>
+                <!--<input type="{{this.typeReponse}}" (click)="selectionChanged(r)" value="{{r.ref}}" [(ngModel)]="selectedValue" name="groupname" ngModel>
+                <label>{{r.lib}}</label><br>-->
+           <p-radioButton id="radio"  (click)="selectionChanged(r)"  name="groupname" value="{{r.ref}}" [(ngModel)]="selectedValue"></p-radioButton>
                 <label>{{r.lib}}</label><br>
-                <!--<p-checkbox style="visibility: {{this.checkbox}}" id="checkbox" name="groupname" value="{{r.lib}}" label="{{r.lib}}" [(ngModel)]="selectedValue"></p-checkbox>-->
             </div>
         </ng-container>
     </div>
-    <ng-template pTemplate="footer" style="float: left">
+    <ng-template pTemplate="footer" style="float: left" class="displayTime">
         <p-button id="backPage" label="back" class="p-button-raised p-button-rounded p-button-success" (click)="backPage()"></p-button>
         <p-button label="{{this.button}}" icon="pi pi-plus" class="p-button-rounded p-mr-2 container"  (click)="NextQuestion()" ngDefaultControl></p-button>
     </ng-template>
@@ -36,7 +37,7 @@
 
 <p-card  [style]="{width: '900px'}" styleClass="p-card-shadow" id="mainCard" class="container">
     <ng-template pTemplate="header">
-        <div class="card" style="background-color: #0772b3">
+        <div class="card" style="background-color: lavender">
         <h2 id="quizGrammar" style=" text-align: center" class="quizTitre" >{{items[i].lib}}</h2>
         </div>
     </ng-template>

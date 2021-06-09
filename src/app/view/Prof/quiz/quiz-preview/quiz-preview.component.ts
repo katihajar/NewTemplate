@@ -42,7 +42,13 @@ export class QuizPreviewComponent implements OnInit {
   get selected(): Quiz {
     return this.service.selected;
   }
+  get typeReponse(): string {
+    return this.service.typeReponse;
+  }
 
+  set typeReponse(value: string) {
+    this.service.typeReponse = value;
+  }
   set selected(value: Quiz) {
     this.service.selected = value;
   }
@@ -257,5 +263,22 @@ public TypeQuestion(){
     this.typeQuestion = 'checkbox';
   }
 }
+  public selectionChanged(reponse: Reponse): void
+  {
+    this.selectedValue = reponse.ref;
+    for(let i=0 ; i < this.reponses.length ; i++)
+    {
+      if(reponse.ref == this.reponses[i].ref)
+      {
+        document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#a318ad';
+        document.getElementById('div-' + this.reponses[i].ref).style.width = '320px';
+        document.getElementById('div-' + this.reponses[i].ref).style.height = '43px';
+      }
+      else {
+        document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#9D8FEE';
+        document.getElementById('div-' + this.reponses[i].ref).style.width = '300px';
+        document.getElementById('div-' + this.reponses[i].ref).style.height = '40px';
+      }
+    }
 }
-
+}
