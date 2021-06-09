@@ -34,6 +34,10 @@ export class QuizEtudiantService {
   private _selectedQuizClassroom: QuizClassRoom;
   private _selectedClassroom: EtudiantClassRoom;
   private _reponsesEtudiantList: Array<ReponseEtudiant>;
+  private _questionView: Question;
+  private _reponsesView: Array<Reponse>;
+  private _reponsesEtudiantView: Array<ReponseEtudiant>;
+  private _correctAnswerView: Array<Reponse>;
   private _viewDialogQuiz: boolean;
   private _selectedQuiz: Quiz;
   private _myAnswer: Reponse;
@@ -41,6 +45,54 @@ export class QuizEtudiantService {
   private _numCorrectAnswers= 0;
   private _numQuestion= 1;
 
+
+  get correctAnswerView(): Array<Reponse> {
+    if(this._correctAnswerView == null)
+    {
+      this._correctAnswerView = new Array<Reponse>();
+    }
+    return this._correctAnswerView;
+  }
+
+  set correctAnswerView(value: Array<Reponse>) {
+    this._correctAnswerView = value;
+  }
+
+  get questionView(): Question {
+    if(this._questionView == null)
+    {
+      this._questionView = new Question();
+    }
+    return this._questionView;
+  }
+
+  set questionView(value: Question) {
+    this._questionView = value;
+  }
+
+  get reponsesView(): Array<Reponse> {
+    if(this._reponsesView == null)
+    {
+      this._reponsesView = new Array<Reponse>();
+    }
+    return this._reponsesView;
+  }
+
+  set reponsesView(value: Array<Reponse>) {
+    this._reponsesView = value;
+  }
+
+  get reponsesEtudiantView(): Array<ReponseEtudiant> {
+    if(this._reponsesEtudiantView == null)
+    {
+      this._reponsesEtudiantView = new Array<ReponseEtudiant>();
+    }
+    return this._reponsesEtudiantView;
+  }
+
+  set reponsesEtudiantView(value: Array<ReponseEtudiant>) {
+    this._reponsesEtudiantView = value;
+  }
 
   get reponsesEtudiantList(): Array<ReponseEtudiant> {
     if(this._reponsesEtudiantList == null)
@@ -386,7 +438,31 @@ export class QuizEtudiantService {
 
   public findReponseEtudiant(quizEtudiant: QuizEtudiant): Observable<Array<ReponseEtudiant>>
   {
-    return this.http.get<Array<ReponseEtudiant>>(this.url + 'reponseEtudiant/quizEtudiant/ref/{ref}?ref=' + quizEtudiant.ref);
+    return this.http.get<Array<ReponseEtudiant>>(this.url + 'reponseEtudiant/quizEtudiant/ref/' + quizEtudiant.ref);
+  }
+
+  public findMyReponseEtudiant(quizEtudiant: QuizEtudiant, reponse: Reponse): Observable<ReponseEtudiant>
+  {
+    return this.http.get<ReponseEtudiant>(this.url + 'reponseEtudiant/creteria/quizEtudiant/' + quizEtudiant.ref +'/reponse/' + reponse.ref);
+  }
+
+  public findQuestionByNumero(numero: number): Observable<Question>
+  {
+    return this.http.get<Question>(this.url + 'question/numero/' + numero);
+  }
+
+  public findReponseByNumero(numero: number):Observable<Array<Reponse>>
+  {
+    return this.http.get<Array<Reponse>>(this.url + 'reponse/question/numero/' + numero);
+  }
+
+  public findReponseEtudiantByNumero(quizEtudiant:QuizEtudiant, numero: number):Observable<Array<ReponseEtudiant>>
+  {
+    return this.http.get<Array<ReponseEtudiant>>(this.url + 'reponseEtudiant/creteria/quizEtudiant/' + quizEtudiant.ref + '/question/' + numero);
+  }
+  public findCorrectAnswersByNumero(numero: number): Observable<Array<Reponse>>
+  {
+    return this.http.get<Array<Reponse>>(this.url + 'reponse/criteria/numero/' + numero);
   }
 
   constructor(private http: HttpClient) { }
