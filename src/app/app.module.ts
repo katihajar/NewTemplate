@@ -229,6 +229,9 @@ import {EtudiantParcoursComponent} from './view/student/student-courses/etudiant
 import {EtudiantCoursesComponent} from './view/student/student-courses/etudiant-courses/etudiant-courses.component';
 import {StudentChooseViewComponent} from './view/student/student-courses/student-choose-view/student-choose-view.component';
 import {StudentSimulateSectionComponent} from './view/student/student-courses/student-simulate-section/student-simulate-section.component';
+import {QuizStudentViewComponent} from './view/student/quiz-student-view/quiz-student-view.component';
+import {QuizStudentListComponent} from './view/student/quiz-student-list/quiz-student-list.component';
+import {ClassroomStudentListComponent} from './view/student/classroom-student-list/classroom-student-list.component';
 
 
 
@@ -458,6 +461,9 @@ import {StudentSimulateSectionComponent} from './view/student/student-courses/st
         EtudiantParcoursComponent,
         EtudiantCoursesComponent,
         ProfesseurViewComponent,
+        QuizStudentViewComponent,
+        QuizStudentListComponent,
+        ClassroomStudentListComponent,
         StudentSimulateSectionComponent,
         StudentChooseViewComponent
     ],
