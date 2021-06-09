@@ -6,6 +6,8 @@ import {ReponseEtudiant} from '../../../controller/Model/reponse-etudiant.model'
 import {Quiz} from '../../../controller/Model/quiz.model';
 import {QuizEtudiantService} from '../../../controller/service/quiz-etudiant.service';
 import {LoginService} from '../../../controller/service/login.service';
+import {Question} from '../../../controller/Model/question.model';
+import {Reponse} from '../../../controller/Model/reponse.model';
 
 @Component({
   selector: 'app-quiz-etudiant-list',
@@ -86,10 +88,35 @@ export class QuizEtudiantListComponent implements OnInit {
         });
   }
 
+  get questionView(): Question {
+    return this.service.questionView;
+  }
+
+  set questionView(value: Question) {
+    this.service.questionView = value;
+  }
+
+  get reponsesView(): Array<Reponse> {
+    return this.service.reponsesView;
+  }
+
+  set reponsesView(value: Array<Reponse>) {
+    this.service.reponsesView = value;
+  }
+
+  get reponsesEtudiantView(): Array<ReponseEtudiant> {
+    return this.service.reponsesEtudiantView;
+  }
+
+  set reponsesEtudiantView(value: Array<ReponseEtudiant>) {
+    this.service.reponsesEtudiantView = value;
+  }
+
+
   public view(quizs: QuizClassRoom) {
     this.selectedQuizClassroom = {...quizs};
     this.selectedQuiz = {...quizs.quiz};
-    this.viewDialogQuiz = true ;
+    //this.viewDialogQuiz = true ;
     this.service.findQuizEtudiant(this.login.etudiant, this.service.selectedQuizClassroom.quiz).subscribe(
         data => {
           this.quizEtudiantList = data;
@@ -97,17 +124,20 @@ export class QuizEtudiantListComponent implements OnInit {
               // tslint:disable-next-line:no-shadowed-variable
               data => {
                 this.reponsesEtudiantList = data;
-                document.getElementById('quiz').style.visibility = 'hidden';
+                //console.log(this.reponsesEtudiantList);
+                //document.getElementById('quiz').style.visibility = 'hidden';
 
               }
           );
         },
             error => {
-          this.quizEtudiantList.resultat = 'pas encore repondu';
+          /*this.quizEtudiantList.resultat = 'pas encore repondu';
           this.quizEtudiantList.note = 0;
           this.reponsesEtudiantList = null;
-          document.getElementById('quiz').style.visibility = 'visible';
+          document.getElementById('quiz').style.visibility = 'visible';*/
         });
+
+
 
   }
 
