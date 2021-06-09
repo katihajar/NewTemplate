@@ -54,12 +54,18 @@ export class HomeComponent implements OnInit {
     this.seviceClass.selectessalaryVo = value;
   }
   public findSalary(){
+    this.selectedsalaryVo.prof.id = this.serviceUser.prof.id;
     this.seviceClass.findSalary().subscribe(data =>
     {
-      this.selectessalaryVo = data;
-      this.itemssalaryVo = this.selectessalaryVo;
-      console.log(this.selectessalaryVo);
+      this.selectedsalaryVo = data;
     });
+  }
+  get selectedsalaryVo(): SalaryVo {
+    return this.seviceClass.selectedsalaryVo;
+  }
+
+  set selectedsalaryVo(value: SalaryVo) {
+    this.seviceClass.selectedsalaryVo = value;
   }
   get itemsprof(): Array<Prof> {
     return this.servicerecommend.itemsprof;

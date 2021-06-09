@@ -1,13 +1,12 @@
 
-    <p-dataView [value]="itemssalaryVo" >
-    <ng-template let-s pTemplate="listItem" style="background-color: lavender;">
-<input type="month" id="start" name="start" value="{{s.annee}}-{{s.mois}}" style="margin-left: 1100px; margin-top: 10px"  (click)="findSalaryByDate(s.annee,s.mois)"   >
+ <div class="p-card">
+<input type="month" id="start" name="start" value="{{this.selectedsalaryVo.annee}}-{{this.selectedsalaryVo.mois}}" style="margin-left: 1100px; margin-top: 10px"  (click)="findSalaryByDate(this.selectedsalaryVo.annee,this.selectedsalaryVo.mois)"   >
         <div class="p-grid-transparent p-col-10" style="margin-left: 15%; background-color: transparent" >
     <div class="p-col-10 ">
         <div class="expenses card card-w-title" style="background-color: lavender">
             <div class="p-grid" >
-                <div class="p-col "  > <h5 (click)="view()" style="color: #0c799f"> MyLevel: <u style="cursor: pointer"> {{s.prof.categorieProf.level}} </u></h5></div>
-                <div class="p-col" ><p style="margin-left: 45%">EnglishDom Experience: <b>{{s.mois}} months</b></p></div>
+                <div class="p-col "  > <h5 (click)="view()" style="color: #0c799f"> MyLevel: <u style="cursor: pointer"> {{this.selectedsalaryVo.prof.categorieProf.level}} </u></h5></div>
+                <div class="p-col" ><p style="margin-left: 45%">EnglishDom Experience: <b>{{this.selectedsalaryVo.mois}} months</b></p></div>
         </div></div></div>
 
 
@@ -19,9 +18,9 @@
 
 
                     <h6>Current Month Pay</h6>
-                    <h1>{{s.montantMensuel}}$</h1>
+                    <h1>{{this.selectedsalaryVo.montantMensuel}}$</h1>
                     <h6>Global Pay</h6>
-                    <h1>{{s.montantGlobale}}$</h1>
+                    <h1>{{this.selectedsalaryVo.montantGlobale}}$</h1>
 
                     </div>
             <div class="p-col"  ><p-chart  type="pie" [data]="data" ></p-chart> </div>
@@ -39,7 +38,7 @@
             <div class="p-grid card" style="margin-top: 10%; border-color: #84bfdd; ">
                 <div class="p-col "  style="margin-left: 5% ; height:50px ;"> <h5> LessonComplete <br/><u><b> 30 Lesson </b></u></h5></div>
                 <div class="p-col " style="margin-left: 4% ; height:50px ;" > <h2> X </h2></div>
-                <div class="p-col" style="margin-right: 7% ; height:50px ;" ><h5 >LessonRate <br/><b><u>{{s.prof.categorieProf.lessonRate}}$ </u></b></h5></div>
+                <div class="p-col" style="margin-right: 7% ; height:50px ;" ><h5 >LessonRate <br/><b><u>{{this.selectedsalaryVo.prof.categorieProf.lessonRate}}$ </u></b></h5></div>
                 <div class="p-col " style="margin-right: 10% ; height:50px ;"> <h1> = </h1></div>
                 <div class="p-col" style="margin-right: 15% ; height:50px ;"><h5  >Total <br/><b><u>900$ </u></b></h5></div>
             </div>
@@ -48,6 +47,5 @@
     </div>
     <app-categorie-prof-view></app-categorie-prof-view>
 </div>
-    </ng-template>
-</p-dataView>
 
+ </div>
