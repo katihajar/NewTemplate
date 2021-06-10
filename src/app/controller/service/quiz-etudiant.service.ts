@@ -11,6 +11,7 @@ import {TypeDeQuestion} from '../model/type-de-question.model';
 import {EtudiantClassRoom} from '../model/etudiant-class-room.model';
 import {QuizClassRoom} from '../model/quiz-class-room.model';
 import {ClassRoom} from '../model/class-room.model';
+import {Section} from '../Model/section.model';
 
 @Injectable({
   providedIn: 'root'
@@ -41,10 +42,28 @@ export class QuizEtudiantService {
   private _viewDialogQuiz: boolean;
   private _selectedQuiz: Quiz;
   private _myAnswer: Reponse;
-  private _numReponses = 0;
-  private _numCorrectAnswers = 0;
-  private _numQuestion = 1;
+  private _numReponses= 0;
+  private _numCorrectAnswers= 0;
+  private _numQuestion= 1;
+  private _passerQuiz: string;
+  private _quizView: boolean;
 
+
+  get quizView(): boolean {
+    return this._quizView;
+  }
+
+  set quizView(value: boolean) {
+    this._quizView = value;
+  }
+
+  get passerQuiz(): string {
+    return this._passerQuiz;
+  }
+
+  set passerQuiz(value: string) {
+    this._passerQuiz = value;
+  }
 
   get correctAnswerView(): Array<Reponse> {
     if (this._correctAnswerView == null)
@@ -467,5 +486,9 @@ export class QuizEtudiantService {
     return this.http.get<Array<Reponse>>(this.url + 'reponse/criteria/numero/' + numero);
   }
 
+  public findQuizBySectionId(section: Section): Observable<Quiz>
+  {
+    return this.http.get<Quiz>(this.url + 'quiz/section/code/{code}?id=' + section.id);
+  }
   constructor(private http: HttpClient) { }
 }
