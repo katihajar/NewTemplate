@@ -11,6 +11,7 @@ import {TypeDeQuestion} from '../model/type-de-question.model';
 import {EtudiantClassRoom} from '../model/etudiant-class-room.model';
 import {QuizClassRoom} from '../model/quiz-class-room.model';
 import {ClassRoom} from '../model/class-room.model';
+import {Section} from '../Model/section.model';
 
 @Injectable({
   providedIn: 'root'
@@ -44,10 +45,28 @@ export class QuizEtudiantService {
   private _numReponses= 0;
   private _numCorrectAnswers= 0;
   private _numQuestion= 1;
+  private _passerQuiz: string;
+  private _quizView: boolean;
 
+
+  get quizView(): boolean {
+    return this._quizView;
+  }
+
+  set quizView(value: boolean) {
+    this._quizView = value;
+  }
+
+  get passerQuiz(): string {
+    return this._passerQuiz;
+  }
+
+  set passerQuiz(value: string) {
+    this._passerQuiz = value;
+  }
 
   get correctAnswerView(): Array<Reponse> {
-    if(this._correctAnswerView == null)
+    if (this._correctAnswerView == null)
     {
       this._correctAnswerView = new Array<Reponse>();
     }
@@ -59,7 +78,7 @@ export class QuizEtudiantService {
   }
 
   get questionView(): Question {
-    if(this._questionView == null)
+    if (this._questionView == null)
     {
       this._questionView = new Question();
     }
@@ -71,7 +90,7 @@ export class QuizEtudiantService {
   }
 
   get reponsesView(): Array<Reponse> {
-    if(this._reponsesView == null)
+    if (this._reponsesView == null)
     {
       this._reponsesView = new Array<Reponse>();
     }
@@ -83,7 +102,7 @@ export class QuizEtudiantService {
   }
 
   get reponsesEtudiantView(): Array<ReponseEtudiant> {
-    if(this._reponsesEtudiantView == null)
+    if (this._reponsesEtudiantView == null)
     {
       this._reponsesEtudiantView = new Array<ReponseEtudiant>();
     }
@@ -95,7 +114,7 @@ export class QuizEtudiantService {
   }
 
   get reponsesEtudiantList(): Array<ReponseEtudiant> {
-    if(this._reponsesEtudiantList == null)
+    if (this._reponsesEtudiantList == null)
     {
       this._reponsesEtudiantList = new Array<ReponseEtudiant>();
     }
@@ -107,7 +126,7 @@ export class QuizEtudiantService {
   }
 
   get selectedQuizClassroom(): QuizClassRoom {
-    if(this._selectedQuizClassroom == null)
+    if (this._selectedQuizClassroom == null)
     {
       this._selectedQuizClassroom = new QuizClassRoom();
     }
@@ -119,7 +138,7 @@ export class QuizEtudiantService {
   }
 
   get selectedClassroom(): EtudiantClassRoom {
-    if(this._selectedClassroom == null)
+    if (this._selectedClassroom == null)
     {
       this._selectedClassroom = new EtudiantClassRoom();
     }
@@ -139,7 +158,7 @@ export class QuizEtudiantService {
   }
 
   get quizsClassroom(): Array<QuizClassRoom> {
-    if(this._quizsClassroom == null)
+    if (this._quizsClassroom == null)
     {
       this._quizsClassroom = new Array<QuizClassRoom>();
     }
@@ -151,7 +170,7 @@ export class QuizEtudiantService {
   }
 
   get etudiantsClassroom(): Array<EtudiantClassRoom> {
-    if(this._etudiantsClassroom == null)
+    if (this._etudiantsClassroom == null)
     {
       this._etudiantsClassroom = new Array<EtudiantClassRoom>();
     }
@@ -163,7 +182,7 @@ export class QuizEtudiantService {
   }
 
   get quizEtudiantList(): QuizEtudiant {
-    if(this._quizEtudiantList == null)
+    if (this._quizEtudiantList == null)
     {
       this._quizEtudiantList = new QuizEtudiant();
     }
@@ -175,7 +194,7 @@ export class QuizEtudiantService {
   }
 
   get selectedQuiz(): Quiz {
-    if(this._selectedQuiz == null)
+    if (this._selectedQuiz == null)
     {
       this._selectedQuiz = new Quiz();
     }
@@ -187,7 +206,7 @@ export class QuizEtudiantService {
   }
 
   get reponsesEtudiant(): Array<ReponseEtudiant> {
-    if(this._reponsesEtudiant == null)
+    if (this._reponsesEtudiant == null)
     {
       this._reponsesEtudiant = new Array<ReponseEtudiant>();
     }
@@ -199,7 +218,7 @@ export class QuizEtudiantService {
   }
 
   get myAnswer(): Reponse {
-    if(this._myAnswer == null)
+    if (this._myAnswer == null)
     {
       this._myAnswer = new Reponse();
     }
@@ -211,7 +230,7 @@ export class QuizEtudiantService {
   }
 
   get reponseEtudiant(): ReponseEtudiant {
-    if(this._reponseEtudiant == null)
+    if (this._reponseEtudiant == null)
     {
       this._reponseEtudiant = new ReponseEtudiant();
     }
@@ -231,7 +250,7 @@ export class QuizEtudiantService {
   }
 
   get correctAnswers(): Array<Reponse> {
-    if(this._correctAnswers == null)
+    if (this._correctAnswers == null)
     {
       this._correctAnswers = new Array<Reponse>();
     }
@@ -243,7 +262,7 @@ export class QuizEtudiantService {
   }
 
   get quizsEtudiant(): Array<QuizEtudiant> {
-    if(this._quizsEtudiant == null)
+    if (this._quizsEtudiant == null)
     {
       this._quizsEtudiant = new Array<QuizEtudiant>();
     }
@@ -255,7 +274,7 @@ export class QuizEtudiantService {
   }
 
   get quizEtudiant(): QuizEtudiant {
-    if(this._quizEtudiant == null)
+    if (this._quizEtudiant == null)
     {
       this._quizEtudiant = new QuizEtudiant();
     }
@@ -283,7 +302,7 @@ export class QuizEtudiantService {
   }
 
   get reponses(): Array<Reponse> {
-    if(this._reponses == null)
+    if (this._reponses == null)
     {
       this._reponses = new Array<Reponse>();
     }
@@ -295,7 +314,7 @@ export class QuizEtudiantService {
   }
 
   get items(): Array<Question> {
-    if(this._items == null)
+    if (this._items == null)
     {
       this._items = new Array<Question>();
     }
@@ -307,7 +326,7 @@ export class QuizEtudiantService {
   }
 
   get selected(): Question {
-    if(this._selected == null)
+    if (this._selected == null)
     {
       this._selected = new Question();
     }
@@ -319,7 +338,7 @@ export class QuizEtudiantService {
   }
 
   get etudiant(): Etudiant {
-    if(this._etudiant == null)
+    if (this._etudiant == null)
     {
       this._etudiant = new Etudiant();
     }
@@ -332,7 +351,7 @@ export class QuizEtudiantService {
 
 
   get quiz(): Quiz {
-    if(this._quiz == null)
+    if (this._quiz == null)
     {
       this._quiz = new Quiz();
     }
@@ -443,7 +462,8 @@ export class QuizEtudiantService {
 
   public findMyReponseEtudiant(quizEtudiant: QuizEtudiant, reponse: Reponse): Observable<ReponseEtudiant>
   {
-    return this.http.get<ReponseEtudiant>(this.url + 'reponseEtudiant/creteria/quizEtudiant/' + quizEtudiant.ref +'/reponse/' + reponse.ref);
+    // tslint:disable-next-line:max-line-length
+    return this.http.get<ReponseEtudiant>(this.url + 'reponseEtudiant/creteria/quizEtudiant/' + quizEtudiant.ref + '/reponse/' + reponse.ref);
   }
 
   public findQuestionByNumero(numero: number): Observable<Question>
@@ -451,13 +471,14 @@ export class QuizEtudiantService {
     return this.http.get<Question>(this.url + 'question/numero/' + numero);
   }
 
-  public findReponseByNumero(numero: number):Observable<Array<Reponse>>
+  public findReponseByNumero(numero: number): Observable<Array<Reponse>>
   {
     return this.http.get<Array<Reponse>>(this.url + 'reponse/question/numero/' + numero);
   }
 
-  public findReponseEtudiantByNumero(quizEtudiant:QuizEtudiant, numero: number):Observable<Array<ReponseEtudiant>>
+  public findReponseEtudiantByNumero(quizEtudiant: QuizEtudiant, numero: number): Observable<Array<ReponseEtudiant>>
   {
+    // tslint:disable-next-line:max-line-length
     return this.http.get<Array<ReponseEtudiant>>(this.url + 'reponseEtudiant/creteria/quizEtudiant/' + quizEtudiant.ref + '/question/' + numero);
   }
   public findCorrectAnswersByNumero(numero: number): Observable<Array<Reponse>>
@@ -465,5 +486,9 @@ export class QuizEtudiantService {
     return this.http.get<Array<Reponse>>(this.url + 'reponse/criteria/numero/' + numero);
   }
 
+  public findQuizBySectionId(section: Section): Observable<Quiz>
+  {
+    return this.http.get<Quiz>(this.url + 'quiz/section/code/{code}?id=' + section.id);
+  }
   constructor(private http: HttpClient) { }
 }
