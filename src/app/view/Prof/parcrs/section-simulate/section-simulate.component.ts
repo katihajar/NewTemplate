@@ -5,6 +5,8 @@ import {ParcoursService} from '../../../../controller/service/parcours.service';
 import {Cours} from '../../../../controller/Model/cours.model';
 import {DomSanitizer} from '@angular/platform-browser';
 import {HttpClient} from '@angular/common/http';
+import {style} from '@angular/animations';
+import {position} from 'html2canvas/dist/types/css/property-descriptors/position';
 
 @Component({
   selector: 'app-section-simulate',
@@ -20,7 +22,15 @@ export class SectionSimulateComponent implements OnInit {
   get image(): string {
     return this.service.image;
   }
+  get contenu(): string {
+    return this.service.contenu;
+  }
 
+  set contenu(value: string) {
+    this.service.contenu = value;
+  }
+
+  // tslint:disable-next-line:adjacent-overload-signatures
   set image(value: string) {
     this.service.image = value;
   }
@@ -67,7 +77,26 @@ export class SectionSimulateComponent implements OnInit {
     console.log(this.service.image );
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.service.image);
   }
-
+  Contenu() {
+    this.service.contenu = '';
+    // tslint:disable-next-line:prefer-for-of
+    for (let j = 0; j < this.selectedsection.contenu.length ; j++)
+    {
+      // tslint:disable-next-line:triple-equals
+      if ( this.selectedsection.contenu[j] != '-'){
+        this.service.contenu += this.selectedsection.contenu[j];
+        // tslint:disable-next-line:triple-equals
+      }else {
+        // tslint:disable-next-line:triple-equals
+        if (this.selectedsection.contenu[j] == '-') {
+          this.service.contenu += '\n';
+          this.service.contenu += this.selectedsection.contenu[j];
+        }
+      }
+    }
+    console.log(this.service.contenu );
+    return this.service.contenu;
+  }
   PreviousSection() {
     this.service.affichelistSection().subscribe(
         data => {

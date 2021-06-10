@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ClassRoom} from '../../../controller/Model/class-room.model';
-import {EtudiantClassRoom} from '../../../controller/Model/etudiant-class-room.model';
-import {QuizClassRoom} from '../../../controller/Model/quiz-class-room.model';
+import {EtudiantClassRoom} from '../../../controller/model/etudiant-class-room.model';
+import {QuizClassRoom} from '../../../controller/model/quiz-class-room.model';
 import {QuizEtudiantService} from '../../../controller/service/quiz-etudiant.service';
 import {LoginService} from '../../../controller/service/login.service';
-import {QuizEtudiant} from '../../../controller/Model/quiz-etudiant.model';
-import {News} from '../../../controller/Model/news.model';
-import {ReponseEtudiant} from '../../../controller/Model/reponse-etudiant.model';
+import {QuizEtudiant} from '../../../controller/model/quiz-etudiant.model';
+import {ReponseEtudiant} from '../../../controller/model/reponse-etudiant.model';
 import {Quiz} from '../../../controller/Model/quiz.model';
 
 @Component({
@@ -99,6 +97,7 @@ export class QuizStudentListComponent implements OnInit {
           data => {
               this.quizEtudiantList = data;
               this.service.findReponseEtudiant(this.quizEtudiantList).subscribe(
+                  // tslint:disable-next-line:no-shadowed-variable
                   data => {
                       this.reponsesEtudiantList = data;
                       console.log('lqiiiiiiithaaaaaa');
@@ -106,7 +105,7 @@ export class QuizStudentListComponent implements OnInit {
 
                   }, error => console.log('malqiiiiithaaaaaach reponse etudiant')
               );
-          },error => {
+          }, error => {
               this.quizEtudiantList.resultat = 'pas encore repondu';
               this.quizEtudiantList.note = 0;
               this.reponsesEtudiantList = null;

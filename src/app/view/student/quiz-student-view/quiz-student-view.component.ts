@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {QuizEtudiant} from '../../../controller/Model/quiz-etudiant.model';
-import {EtudiantClassRoom} from '../../../controller/Model/etudiant-class-room.model';
-import {QuizClassRoom} from '../../../controller/Model/quiz-class-room.model';
+import {QuizEtudiant} from '../../../controller/model/quiz-etudiant.model';
+import {EtudiantClassRoom} from '../../../controller/model/etudiant-class-room.model';
+import {QuizClassRoom} from '../../../controller/model/quiz-class-room.model';
 import {QuizEtudiantService} from '../../../controller/service/quiz-etudiant.service';
 import {LoginService} from '../../../controller/service/login.service';
-import {ReponseEtudiant} from '../../../controller/Model/reponse-etudiant.model';
-import {Quiz} from '../../../controller/Model/quiz.model';
+import {ReponseEtudiant} from '../../../controller/model/reponse-etudiant.model';
+import {Quiz} from '../../../controller/model/quiz.model';
 
 @Component({
   selector: 'app-quiz-student-view',

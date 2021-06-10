@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {QuizEtudiant} from '../../../controller/Model/quiz-etudiant.model';
-import {EtudiantClassRoom} from '../../../controller/Model/etudiant-class-room.model';
-import {QuizClassRoom} from '../../../controller/Model/quiz-class-room.model';
+import {QuizEtudiant} from '../../../controller/model/quiz-etudiant.model';
+import {EtudiantClassRoom} from '../../../controller/model/etudiant-class-room.model';
+import {QuizClassRoom} from '../../../controller/model/quiz-class-room.model';
 import {QuizEtudiantService} from '../../../controller/service/quiz-etudiant.service';
 import {LoginService} from '../../../controller/service/login.service';
-import {Quiz} from '../../../controller/Model/quiz.model';
+import {Quiz} from '../../../controller/model/quiz.model';
 
 @Component({
   selector: 'app-classroom-student-list',
@@ -12,6 +12,7 @@ import {Quiz} from '../../../controller/Model/quiz.model';
   styleUrls: ['./classroom-student-list.component.scss']
 })
 export class ClassroomStudentListComponent implements OnInit {
+  constructor(private service: QuizEtudiantService, private login: LoginService) { }
 
   get quizEtudiantList(): QuizEtudiant {
     return this.service.quizEtudiantList;
@@ -67,11 +68,8 @@ export class ClassroomStudentListComponent implements OnInit {
   set selectedQuiz(value: Quiz) {
     this.service.selectedQuiz = value;
   }
-  constructor(private service: QuizEtudiantService, private login: LoginService) { }
 
-  public findClassRoom()
-  {
-
+  public findClassRoom() {
     this.service.findEtudiantClassRoom(this.login.etudiant).subscribe(
         data => {
           this.etudiantsClassroom = data;
@@ -85,7 +83,7 @@ export class ClassroomStudentListComponent implements OnInit {
     this.service.findQuizEtudiant(this.login.etudiant, this.service.selectedQuizClassroom.quiz).subscribe(
         data => {
           this.quizEtudiantList = data;
-        },error => {
+        }, error => {
           this.quizEtudiantList.resultat = 'pas encore repondu';
           this.quizEtudiantList.note = 0;
         });
@@ -93,6 +91,7 @@ export class ClassroomStudentListComponent implements OnInit {
 
   ngOnInit(): void {
     this.findClassRoom();
+    console.log(this.etudiantsClassroom);
   }
 
 }
