@@ -54,10 +54,19 @@ export class ParcoursService {
   private _a: number;
   private _timer;
   private _image = '';
+  private _contenu = '';
   private _image2 = '';
   private _image3 = '';
   constructor(private http: HttpClient ) {  }
 
+
+  get contenu(): string {
+    return this._contenu;
+  }
+
+  set contenu(value: string) {
+    this._contenu = value;
+  }
 
   get image3(): string {
     return this._image3;

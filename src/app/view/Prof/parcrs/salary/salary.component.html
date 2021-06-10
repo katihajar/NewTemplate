@@ -1,6 +1,6 @@
 
  <div class="p-card">
-<input type="month" id="start" name="start" value="{{this.selectedsalaryVo.annee}}-{{this.selectedsalaryVo.mois}}" style="margin-left: 1100px; margin-top: 10px"  (click)="findSalaryByDate(this.selectedsalaryVo.annee,this.selectedsalaryVo.mois)"   >
+<input type="month" id="start" name="start" dateFormat="mm.yyyy" value="{{this.selectedsalaryVo.annee}}-{{this.selectedsalaryVo.mois}}" style="margin-left: 1100px; margin-top: 10px"  (click)="findSalaryByDate(this.selectedsalaryVo.annee,this.selectedsalaryVo.mois)"   >
         <div class="p-grid-transparent p-col-10" style="margin-left: 15%; background-color: transparent" >
     <div class="p-col-10 ">
         <div class="expenses card card-w-title" style="background-color: lavender">

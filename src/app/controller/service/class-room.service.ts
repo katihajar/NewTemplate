@@ -296,6 +296,6 @@ export class ClassRoomService {
   }
   public findSalaryByDateAndProf( mois, annee): Observable<SalaryVo> {
     // tslint:disable-next-line:max-line-length
-    return this.http.get<SalaryVo> ('http://localhost:8036/learn/salary/mois/' + mois + '/annee/' + annee + '/prof/id/' + this.selectedsalaryVo.prof.id  );
+    return this.http.get<SalaryVo> ('http://localhost:8036/learn/salary/mois/' + (new Date().getMonth() + 1 ).toString() + '/annee/' + new Date().getFullYear().toString() + '/prof/id/' + this.selectedsalaryVo.prof.id  );
   }
 }
