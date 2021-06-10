@@ -44,9 +44,19 @@ export class QuizService {
     private _correctAnswers: Array<Reponse>;
     private _typeQuestion: string;
     private _typeReponse: string;
+    private _numReponses = 0;
+    private _myAnswer: Reponse;
+    private _numQuestion = 1;
 
 
 
+    get numReponses(): number {
+        return this._numReponses;
+    }
+
+    set numReponses(value: number) {
+        this._numReponses = value;
+    }
 
     get typeReponse(): string {
         return this._typeReponse;
@@ -158,7 +168,22 @@ if (this._reponse == null){
     set question(value: Question) {
         this._question = value;
     }
+    get myAnswer(): Reponse {
+        return this._myAnswer;
+    }
 
+    set myAnswer(value: Reponse) {
+        this._myAnswer = value;
+    }
+
+
+    get numQuestion(): number {
+        return this._numQuestion;
+    }
+
+    set numQuestion(value: number) {
+        this._numQuestion = value;
+    }
     get questions(): Array<Question> {
    if (this._questions == null){
        this._questions = new Array<Question>();
@@ -280,29 +305,23 @@ public findConfig() : Observable<Array<QuizConfig>>{
         }
     }
 
-    public newType() {
-        const x = document.getElementById('id-radio');
-        const v = document.getElementById('id-checkbox');
-        if (this.question.typeDeQuestion.ref == 't1') {
-            if (v.style.display === 'none') {
-                v.style.display = 'block';
-            }
-        } else if (this.question.typeDeQuestion.ref == 't2') {
-            if (x.style.display === 'none') {
-                x.style.display = 'block';
-            }
-        }
+
+
+    public saveQuestion(): Observable<Question> {
+        return this.http.post<Question>(this._url + this._urlQuestion + '/', this.question);
     }
 
-
-    public save(): Observable<Question> {
-        return this.http.post<Question>(this._url + this._urlQuestion + '/', this.question);
+    public save(): Observable<Quiz> {
+        return this.http.post<Quiz>(this._url + this._urlQuiz + '/save/', this.selected);
     }
 
     public edit(): Observable<Question> {
         return this.http.put<Question>(this._url + this._urlQuestion + '/', this.question);
     }
 
+    public saveReponse(): Observable<Reponse>{
+        return this.http.post<Reponse>(this._url + this._urlReponse + '/' , this.reponse);
+    }
     public findIndexById(id: number): number {
         let index = -1;
         for (let i = 0; i < this.questions.length; i++) {
@@ -313,9 +332,7 @@ public findConfig() : Observable<Array<QuizConfig>>{
         }
         return index;
     }
-    public saveQuiz(): Observable<Quiz>{
- return this.http.post<Quiz>(this._url + this._urlQuiz + '/' ,  this.selected);
-}
+
     validateForm() {
         // @ts-ignore
         const x = document.forms.myForm.fname.value;
@@ -356,50 +373,17 @@ public findConfig() : Observable<Array<QuizConfig>>{
         this.http.get<any>(this._url + this._urlQuestion + '/').subscribe(
             data => {
                 this.questions = data;
-                        if(this.question.typeDeQuestion.ref == 't1')
-                        {
-                            this.typeReponse = 'radio';
-                        }
-                        else if(this.question.typeDeQuestion.ref == 't2')
-                        {
-                            this.typeReponse = 'checkbox';
-                        }
-                        /*console.log('bara' + this.selected.typeDeQuestion.ref);
-                        if(data.typeDeQuestion.ref == 't1')
-                        {
-                          console.log('hada da5l t1');
-                          document.getElementById('checkbox').style.visibility = 'hidden';
-                          document.getElementById('radio').style.visibility = 'visible';
-                        }
-                        else if(data.typeDeQuestion.ref == 't2')
-                        {
-                          console.log('hada da5l t2');
-
-                          console.log('1');
-                          document.getElementById('radio').style.visibility = 'hidden';
-                          console.log('1');
-                        }*/
 
             }, error1 => {
                 console.log('error finding data');
             }
         );
     }
-public findFirstReponse(){
-        this.j = 1 ;
-    this.http.get<any>('http://localhost:8036/learn/reponse/question/numero/' + this.j).subscribe(
-        data => {
-            this.reponses = data;
-        }
-        );
-    }
 
-  public  findReponse(h: number){
-        this.http.get<any>('http://localhost:8036/learn/reponse/question/numero/' + h).subscribe(
-            data => {
-                this.reponses = data;
-            }
-        );
+    public findReponses(): Observable<Array<Reponse>>
+    {
+        this.numReponses = this.numReponses + 1;
+        return this.http.get<Array<Reponse>>('http://localhost:8036/learn/reponse/question/numero/'  + this.numReponses);
     }
 
     public choixSelected(): void {
@@ -473,5 +457,16 @@ public findFirstReponse(){
     {
         return this.http.get<Question>(this._url + 'learn/question/numero/1');
     }
+    public findMyAnswer(ref: string): Observable<Reponse>
+    {
+        return this.http.get<Reponse>(this._url + this._urlReponse +  '/ref/' + ref);
+    }
+
+    public findNextQuestion(): Observable<Question>
+    {
+        this.numQuestion = this.numQuestion + 1;
+        return this.http.get<Question>(this._url + this._urlQuestion + '/numero/' + this.numQuestion);
+    }
+
 }
 

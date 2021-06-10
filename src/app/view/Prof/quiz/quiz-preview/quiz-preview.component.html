@@ -1,11 +1,29 @@
 <div style="float: right ; margin: auto" >
     <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-raised" (click)="viewQuiz()"></button>
 </div>
-<p-card  [style]="{width: '900px'}" styleClass="p-card-shadow" id="container" >
+<p-card [style]="{width: '900px'}" styleClass="p-card-shadow" class="container" id="start">
+    <ng-template pTemplate="header">
+        <div class="card" style="background-color: lavender">
+            <h1  style="text-align: center" class="quizTitre">{{items[i]?.lib}}</h1>
+            </div>
+        <div class="start">
+            <p class="styleOfp" id="welcome">Welcome</p><br>
+            <p class="styleOfp">In the {{items[i]?.lib}}'s quiz</p><br>
+            <p class="styleOfp">Quiz will start at {{this.items[i]?.dateDebut}}</p><br>
+            <p class="styleOfp">And will end at {{this.items[i]?.dateFin}}</p><br>
+            <p class="styleOfp">You have 1 hour</p><br>
+            <p class="styleOfp">Good luck</p><br>
+
+            <button pButton pRipple class="p-button-rounded p-mr-2 container" id="btn-start" label="Start" (click)="start()"></button>
+ </div>
+    </ng-template>
+
+</p-card>
+<p-card  [style]="{width: '900px'}" styleClass="p-card-shadow" id="question" class="container">
 
     <ng-template pTemplate="header">
         <div class="card" style="background-color: lavender">
-            <h1  style="text-align: center" class="quizTitre">{{items[i].lib}}</h1>
+            <h1  style="text-align: center" class="quizTitre">{{items[i]?.lib}}</h1>
             <span class="m-auto float-left  dispalyTime" style="color: #972bb1">Time : {{displayTime()}}</span>
             <div class="p-col-2 dispalyTime" style="float: right" >
                 <span style="margin: auto; color: #972bb1" >{{qnprogress+1}}/{{this.questions.length}}</span>
@@ -17,35 +35,35 @@
 
     <div class="p-fieldset-content displayTime">
         <span class="p-card-title p-col-2" style="font-family: Palatino Linotype, serif">{{qnprogress+1}} - </span>
-        <p class="p-col-10"  style="font-family: Palatino Linotype,serif; font-size: 20px">{{questions[qnprogress]?.libelle}}</p>
+        <p class="p-col-10"  style="font-family: Palatino Linotype,serif; font-size: 20px">{{question.libelle}}</p>
 
         <ng-container  class="reponse-radio" style="margin: auto" >
             <div *ngFor="let r of reponses" class="question_answer" id="div-{{r.ref}}">
-                <!--<input type="{{this.typeReponse}}" (click)="selectionChanged(r)" value="{{r.ref}}" [(ngModel)]="selectedValue" name="groupname" ngModel>
-                <label>{{r.lib}}</label><br>-->
-           <p-radioButton id="radio"  (click)="selectionChanged(r)"  name="groupname" value="{{r.ref}}" [(ngModel)]="selectedValue"></p-radioButton>
+              <input type="{{this.typeReponse}}" (click)="selectionChanged(r)" value="{{r.ref}}" [(ngModel)]="selectedValue" name="groupname" ngModel>
                 <label>{{r.lib}}</label><br>
-            </div>
-        </ng-container>
-    </div>
-    <ng-template pTemplate="footer" style="float: left" class="displayTime">
-        <p-button id="backPage" label="back" class="p-button-raised p-button-rounded p-button-success" (click)="backPage()"></p-button>
-        <p-button label="{{this.button}}" icon="pi pi-plus" class="p-button-rounded p-mr-2 container"  (click)="NextQuestion()" ngDefaultControl></p-button>
-    </ng-template>
-</p-card>
+                <!-- <p-radioButton id="radio"  (click)="selectionChanged(r)"  name="groupname" value="{{r.ref}}" [(ngModel)]="selectedValue"></p-radioButton>
+                      <label>{{r.lib}}</label><br>-->
+                  </div>
+              </ng-container>
+          </div>
+          <ng-template pTemplate="footer" style="float: left" class="displayTime">
+              <p-button id="backPage" label="back" class="p-button-raised p-button-rounded p-button-success" (click)="backPage()"></p-button>
+              <p-button label="{{this.button}}"  class="p-button-rounded p-mr-2 container"  (click)="next()" ngDefaultControl></p-button>
+          </ng-template>
+      </p-card>
 
 
-<p-card  [style]="{width: '900px'}" styleClass="p-card-shadow" id="mainCard" class="container">
-    <ng-template pTemplate="header">
-        <div class="card" style="background-color: lavender">
-        <h2 id="quizGrammar" style=" text-align: center" class="quizTitre" >{{items[i].lib}}</h2>
-        </div>
-    </ng-template>
-    <p class="styleOfp">You finish this quiz</p><br>
-    <p class="styleOfp" id="congratulations3">Congratulations</p><br>
-    <p class="styleOfp" id="hard-luck3">Hard-luck next time</p><br>
-    <p class="styleOfp" >Your result is = {{noteQuiz}}/20</p>
+      <p-card  [style]="{width: '900px'}" styleClass="p-card-shadow" id="mainCard" class="container">
+          <ng-template pTemplate="header">
+              <div class="card" style="background-color: lavender">
+              <h2 id="quizGrammar" style=" text-align: center" class="quizTitre" >{{items[i]?.lib}}</h2>
+              </div>
+          </ng-template>
+          <p class="styleOfp">You finish this quiz</p><br>
+          <p class="styleOfp" id="congratulations3">Congratulations</p><br>
+          <p class="styleOfp" id="hard-luck3">Hard-luck next time</p><br>
+          <p class="styleOfp" >Your result is = {{this.noteQuiz}}/20</p>
 
 
 
-</p-card>
+      </p-card>

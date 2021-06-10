@@ -84,9 +84,7 @@ export class QuizCreateComponent implements OnInit {
 
 
 
-    public saveQuiz() {
-        this.service.saveQuiz();
-    }
+
 
     ngOnInit(): void {
         this.service.findType().subscribe(
@@ -99,7 +97,7 @@ export class QuizCreateComponent implements OnInit {
         );
         this.service.findQuiz();
         this.initCol();
-        this.questions.push(this.question);
+        this.selected.questions.push(this.question);
     }
 
     defaultchecked() {
@@ -124,23 +122,22 @@ export class QuizCreateComponent implements OnInit {
         this.service.quizSelected();
     }
 
-
-
+    public addCard(){
+var doc = document.getElementById('formCard');
+var z = document.getElementById('mainCard');
+z.append(doc);
+    }
 
     public addFormule() {
      const question = {...this.question};
-     this.questions.push(question);
+     this.selected.questions.push(question);
 
     }
 
     public save() {
-        this.service.saveQuiz().subscribe(
-            data =>{
-                this.items.push({...data});
-        this.question.quiz.ref = this.selected.ref;
         this.service.save().subscribe(
             data => {
-                this.questions.push({...data});
+                this.items.push({...data});
                 console.log(this.questions);
                 console.log(this.items);
                 this.question = null;
@@ -150,8 +147,7 @@ export class QuizCreateComponent implements OnInit {
                     summary: 'Successful',
                     detail: 'Quiz Created',
                     life: 3000
-                });
-            });
+                    });
             });
     }
 

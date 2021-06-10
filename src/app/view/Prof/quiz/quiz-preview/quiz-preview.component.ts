@@ -17,9 +17,8 @@ export class QuizPreviewComponent implements OnInit {
   private _value: number = 1;
   private _selectedValue: string;
   private _button: string;
-  private _numQuestion= 1;
-  private _noteQuiz: number;
-
+  private _noteQuiz: number = 0;
+  private _noteCheckbox: number;
 
 
 
@@ -49,6 +48,13 @@ export class QuizPreviewComponent implements OnInit {
   set typeReponse(value: string) {
     this.service.typeReponse = value;
   }
+  get numQuestion(): number {
+    return this.service.numQuestion;
+  }
+
+  set numQuestion(value: number) {
+    this.service.numQuestion = value;
+  }
   set selected(value: Quiz) {
     this.service.selected = value;
   }
@@ -58,13 +64,7 @@ export class QuizPreviewComponent implements OnInit {
     }
     return this.service.reponse;
   }
-  get numQuestion(): number {
-    return this._numQuestion;
-  }
 
-  set numQuestion(value: number) {
-    this._numQuestion = value;
-  }
 
   get i(): number {
     return this._i;
@@ -72,6 +72,14 @@ export class QuizPreviewComponent implements OnInit {
 
   set i(value: number) {
     this._i = value;
+  }
+
+  get noteCheckbox(): number {
+    return this._noteCheckbox;
+  }
+
+  set noteCheckbox(value: number) {
+    this._noteCheckbox = value;
   }
 
 
@@ -98,7 +106,13 @@ export class QuizPreviewComponent implements OnInit {
     this._button = value;
   }
 
+  get myAnswer(): Reponse {
+    return this.service.myAnswer;
+  }
 
+  set myAnswer(value: Reponse) {
+    this.service.myAnswer = value;
+  }
 
   get noteQuiz(): number {
     return this._noteQuiz;
@@ -170,9 +184,6 @@ export class QuizPreviewComponent implements OnInit {
     }
     return reponses;
   }*/
-  Answer(n: number, rep: Question) {
-    this.service.questions[this.service.qnprogress].reponses = rep.reponses;
-  }
 
   get j(): number {
     return this.service.j;
@@ -190,17 +201,82 @@ export class QuizPreviewComponent implements OnInit {
   }
 
 
-  NextQuestion() {
-    console.log(this.selectedValue);
-    this._value++;
-    this.service.findReponse(this._value);
-    this.service.qnprogress++;
-    this.numQuestion++;
-    if (this.numQuestion == this.service.questions.length) {
-      this.button = 'Finish the Quiz';
-    }else if (this.numQuestion > this.service.questions.length){
-      document.getElementById('container').style.visibility = 'hidden';
-      document.getElementById('mainCard').style.visibility = 'visible';
+  public next()
+  {
+    this.service.qnprogress ++;
+    this.service.findNextQuestion().subscribe(
+        data => {
+          this.question = data;
+          if(data.typeDeQuestion.ref == 't1')
+          {
+            this.typeReponse = 'radio';
+          }
+          else if(data.typeDeQuestion.ref == 't2')
+          {
+            this.typeReponse = 'checkbox';
+          }
+        }
+    );
+    this.service.findCorrectAnswers().subscribe(
+        data => {
+          this.correctAnswers = data;
+        }
+    );
+
+    if(this.question.typeDeQuestion.ref == 't1')
+    {
+      this.service.findMyAnswer(this.selectedValue).subscribe(
+          data => {
+            this.myAnswer = data;
+          }
+      );
+      for (let i = 0 ; i < this.correctAnswers.length ; i++)
+      {
+
+        if (this.correctAnswers[i].ref == this.selectedValue)
+        {
+          this.noteQuiz = this.noteQuiz + this.question.pointReponseJuste;
+        }
+        else {
+          this.noteQuiz = this.noteQuiz + this.question.pointReponsefausse;
+        }
+      }
+
+    }
+    else if (this.question.typeDeQuestion.ref == 't2')
+    {
+      this.noteCheckbox = 0;
+      for (let i = 0 ; i < this.correctAnswers.length ; i++)
+      {
+        for (let j = 0; j < this.reponses.length ; j++)
+        {
+          if (this.correctAnswers[i].ref == this.reponses[j].ref)
+          {
+            this.noteCheckbox = this.noteCheckbox + 1;
+          }
+        }
+      }
+      console.log('noteCheckbox = ' + this.noteCheckbox);
+      if(this.noteCheckbox == this.correctAnswers.length && this.reponses.length == this.correctAnswers.length)
+      {
+        this.noteQuiz = this.noteQuiz + this.question.pointReponseJuste;
+      }
+      else
+      {
+        this.noteQuiz = this.noteQuiz + this.question.pointReponsefausse;
+      }
+      for (let j = 0; j < this.reponses.length ; j++)
+      {
+      }
+    }
+
+
+    if (this.numQuestion == this.questions.length)
+    {
+      this.button = 'Finish the test';
+    }
+    else if (this.numQuestion > this.questions.length)
+    {
       if (this.noteQuiz >= this.selected.seuilReussite){
         document.getElementById('congratulations3').style.visibility = 'visible';
         document.getElementById('hard-luck3').style.visibility = 'hidden';
@@ -208,36 +284,60 @@ export class QuizPreviewComponent implements OnInit {
         document.getElementById('congratulations3').style.visibility = 'hidden';
         document.getElementById('hard-luck3').style.visibility = 'visible';
       }
-      clearInterval(this.service.timer);
+      document.getElementById('mainCard').style.visibility = 'visible';
+      document.getElementById('question').remove();
+
     }
+
+    this.service.findReponses().subscribe(
+        data => {
+          this.reponses = data;
+        }
+    );
+  }
+
+  public start()
+  {
+    this.noteQuiz = 0;
+    document.getElementById('start').remove();
+    document.getElementById('question').style.visibility = 'visible';
+    this.button = 'Next';
+    this.service.findFirstQuestion().subscribe(
+        data => {
+          this.question = data;
+          if(this.question.typeDeQuestion.ref == 't1')
+          {
+            this.typeReponse = 'radio';
+          }
+          else if(this.question.typeDeQuestion.ref == 't2')
+          {
+            this.typeReponse = 'checkbox';
+          }
+        }
+    );
+
+    this.service.findReponses().subscribe(
+        data => {
+          this.reponses = data;
+        }
+    );
     this.service.findCorrectAnswers().subscribe(
         data => {
           this.correctAnswers = data;
         }
     );
-    for (let i = 0 ; i < this.correctAnswers.length ; i++)
-    {
-      if (this.correctAnswers[i].ref == this.selectedValue)
-      {
-        this.noteQuiz = this.question.pointReponseJuste;
-      }
-      else {
-        this.noteQuiz = this.noteQuiz + this.question.pointReponsefausse;
-      }
-    }
+
   }
 
   ngOnInit(): void {
     this.service.findConfig().subscribe( data => this.service.configurations = data);
-    this.service.findFirstReponse();
+  //  this.service.findFirstReponse();
     this.service.seconds = 0;
     this.service.qnprogress = 0;
     this.service.findAll();
-    this.button = 'Next';
     this.startTimer();
     this.service.findQuiz();
     this.Config();
-    this.TypeQuestion();
   }
 public Config(){
   if (this.service.configuration.shuffleOptions == true){
@@ -254,13 +354,7 @@ public Config(){
 public backPage(){
     this.service.qnprogress --;
 }
-public TypeQuestion(){
-  if (this.question.typeDeQuestion.ref == 't1'){
-    this.typeQuestion = 'radio';
-  }else if (this.question.typeDeQuestion.ref == 't2'){
-    this.typeQuestion = 'checkbox';
-  }
-}
+
   public selectionChanged(reponse: Reponse): void
   {
     this.selectedValue = reponse.ref;

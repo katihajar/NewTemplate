@@ -28,7 +28,7 @@
                 </p-card>
             </ng-template>
             <div class="p-col-8 " style="margin: auto"  id="formCard">
-                <div class="card"*ngFor="let question of questions ; let i = index " styleClass="p-card-shadow">
+                <div class="card"*ngFor="let question of selected.questions ; let i = index " styleClass="p-card-shadow">
                     <div class="p-fluid p-formgrid p-grid" >
                         <div class="p-field p-col-12 p-md-6">
                             <p-inputNumber id="firstname6"  placeholder="Question Number" name="numero{{i}}" [(ngModel)]="question.numero"></p-inputNumber>

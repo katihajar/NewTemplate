@@ -57,3 +57,13 @@
  #backPage{
    visibility: hidden;
  }
+ #question{
+   visibility: hidden;
+ }
+#btn-start{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  float: left;
+  margin-left: 415px;
+}
