@@ -18,9 +18,18 @@ export class QuizEtudiantViewComponent implements OnInit {
 
   cols: any[];
   private _numero = 0;
+  private _klma = '';
 
 
-  get numero(): number {
+    get klma(): string {
+        return this._klma;
+    }
+
+    set klma(value: string) {
+        this._klma = value;
+    }
+
+    get numero(): number {
     return this._numero;
   }
 
@@ -163,6 +172,7 @@ export class QuizEtudiantViewComponent implements OnInit {
           this.service.findQuestionByNumero(this.numero).subscribe(
               data => {
                 this.questionView = data;
+
               }
           );
           this.service.findReponseByNumero(this.numero).subscribe(
@@ -170,38 +180,34 @@ export class QuizEtudiantViewComponent implements OnInit {
                 this.reponsesView = data;
               }
           );
-          this.service.findQuizEtudiant(this.login.etudiant, this.service.selectedQuizClassroom.quiz).subscribe(
-              data => {
-                this.quizEtudiantList = data;
-                this.service.findReponseEtudiantByNumero(this.quizEtudiantList, this.numero).subscribe(
-                    // tslint:disable-next-line:no-shadowed-variable
-                    data => {
-                      this.reponsesEtudiantList = data;
-                      console.log(this.reponsesEtudiantList);
-                      console.log(this.reponsesEtudiantList.length);
-                      for(let i = 0 ; i < this.reponsesEtudiantList.length ; i++)
-                      {
+            this.service.findReponseEtudiantByNumero(this.quizEtudiantList, this.numero).subscribe(
+                // tslint:disable-next-line:no-shadowed-variable
+                data => {
+                    this.reponsesEtudiantList = data;
+                    console.log(this.reponsesEtudiantList);
+                    console.log(this.reponsesEtudiantList.length);
+                    for(let i = 0 ; i < this.reponsesEtudiantList.length ; i++)
+                    {
                         console.log(this.reponsesEtudiantList);
                         if(this.reponsesEtudiantList[i].note > 0)
                         {
-                          document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#a5ee8f';
+                            document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#a5ee8f';
                         }
                         else {
-                          document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#ee8f8f';
-                          this.service.findCorrectAnswersByNumero(this.numero).subscribe(
-                              data => {
-                                this.correctAnswerView = data;
-                                for (let j = 0; j < this.correctAnswerView.length; j++)
-                                {
-                                  document.getElementById('rep-' + this.correctAnswerView[i].ref).style.backgroundColor = '#a5ee8f';
+                            document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#ee8f8f';
+                            this.service.findCorrectAnswersByNumero(this.numero).subscribe(
+                                data => {
+                                    this.correctAnswerView = data;
+                                    for (let j = 0; j < this.correctAnswerView.length; j++)
+                                    {
+                                        document.getElementById('rep-' + this.correctAnswerView[i].ref).style.backgroundColor = '#a5ee8f';
+                                    }
                                 }
-                              }
-                          );
+                            );
                         }
-                      }
                     }
-                );
-              });
+                }
+            );
         }
   );
   }
@@ -234,38 +240,34 @@ export class QuizEtudiantViewComponent implements OnInit {
                 this.reponsesView = data;
               }
           );
-          this.service.findQuizEtudiant(this.login.etudiant, this.service.selectedQuizClassroom.quiz).subscribe(
-              data => {
-                this.quizEtudiantList = data;
-                this.service.findReponseEtudiantByNumero(this.quizEtudiantList, this.numero).subscribe(
-                    // tslint:disable-next-line:no-shadowed-variable
-                    data => {
-                      this.reponsesEtudiantList = data;
-                      console.log(this.reponsesEtudiantList);
-                      console.log(this.reponsesEtudiantList.length);
-                      for(let i = 0 ; i < this.reponsesEtudiantList.length ; i++)
-                      {
+            this.service.findReponseEtudiantByNumero(this.quizEtudiantList, this.numero).subscribe(
+                // tslint:disable-next-line:no-shadowed-variable
+                data => {
+                    this.reponsesEtudiantList = data;
+                    console.log(this.reponsesEtudiantList);
+                    console.log(this.reponsesEtudiantList.length);
+                    for(let i = 0 ; i < this.reponsesEtudiantList.length ; i++)
+                    {
                         console.log(this.reponsesEtudiantList);
                         if(this.reponsesEtudiantList[i].note > 0)
                         {
-                          document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#a5ee8f';
+                            document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#a5ee8f';
                         }
                         else {
-                          document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#ee8f8f';
-                          this.service.findCorrectAnswersByNumero(this.numero).subscribe(
-                              data => {
-                                this.correctAnswerView = data;
-                                for (let j = 0; j < this.correctAnswerView.length; j++)
-                                {
-                                  document.getElementById('rep-' + this.correctAnswerView[i].ref).style.backgroundColor = '#a5ee8f';
+                            document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#ee8f8f';
+                            this.service.findCorrectAnswersByNumero(this.numero).subscribe(
+                                data => {
+                                    this.correctAnswerView = data;
+                                    for (let j = 0; j < this.correctAnswerView.length; j++)
+                                    {
+                                        document.getElementById('rep-' + this.correctAnswerView[i].ref).style.backgroundColor = '#a5ee8f';
+                                    }
                                 }
-                              }
-                          );
+                            );
                         }
-                      }
                     }
-                );
-              });
+                }
+            );
         });
   }
   public findAllQuestions()
@@ -275,26 +277,29 @@ export class QuizEtudiantViewComponent implements OnInit {
           this.items = data;
         }
     );
-    this.service.findQuizEtudiant(this.login.etudiant, this.service.selectedQuizClassroom.quiz).subscribe(
-        data => {
-          this.quizEtudiantList = data;
-          this.service.findReponseEtudiant(this.quizEtudiantList).subscribe(
-              // tslint:disable-next-line:no-shadowed-variable
-              data => {
-                this.reponsesEtudiantList = data;
-                for(let i=0 ; i < this.reponsesEtudiantList.length ; i++)
-                {
+
+      console.log(this.quizEtudiantList);
+      this.service.findReponseEtudiant(this.quizEtudiantList).subscribe(
+          // tslint:disable-next-line:no-shadowed-variable
+          data => {
+              this.reponsesEtudiantList = data;
+              for(let i=0 ; i < this.reponsesEtudiantList.length ; i++)
+              {
                   if(this.reponsesEtudiantList[i].note > 0)
                   {
-                    document.getElementById('btn-' + this.reponsesEtudiantList[i].reponse.question.ref).style.backgroundColor = '#a5ee8f';
+                      document.getElementById('btn-' + this.reponsesEtudiantList[i].reponse.question.ref).style.backgroundColor = '#a5ee8f';
                   }
                   else {
-                    document.getElementById('btn-' + this.reponsesEtudiantList[i].reponse.question.ref).style.backgroundColor = '#ee8f8f';
+                      document.getElementById('btn-' + this.reponsesEtudiantList[i].reponse.question.ref).style.backgroundColor = '#ee8f8f';
                   }
-                }
               }
-          );
-        });
+          }
+      );
+
+    /*this.service.findQuizEtudiant(this.login.etudiant, this.service.selectedQuizClassroom.quiz).subscribe(
+        data => {
+          this.quizEtudiantList = data;
+        },error => console.log('erreuuuuuuuuuuuur'));*/
   }
 
   public choose(numero: number)
@@ -328,38 +333,34 @@ export class QuizEtudiantViewComponent implements OnInit {
                 this.reponsesView = data;
               }
           );
-          this.service.findQuizEtudiant(this.login.etudiant, this.service.selectedQuizClassroom.quiz).subscribe(
-              data => {
-                this.quizEtudiantList = data;
-                this.service.findReponseEtudiantByNumero(this.quizEtudiantList, this.numero).subscribe(
-                    // tslint:disable-next-line:no-shadowed-variable
-                    data => {
-                      this.reponsesEtudiantList = data;
-                      console.log(this.reponsesEtudiantList);
-                      console.log(this.reponsesEtudiantList.length);
-                      for(let i = 0 ; i < this.reponsesEtudiantList.length ; i++)
-                      {
+            this.service.findReponseEtudiantByNumero(this.quizEtudiantList, this.numero).subscribe(
+                // tslint:disable-next-line:no-shadowed-variable
+                data => {
+                    this.reponsesEtudiantList = data;
+                    console.log(this.reponsesEtudiantList);
+                    console.log(this.reponsesEtudiantList.length);
+                    for(let i = 0 ; i < this.reponsesEtudiantList.length ; i++)
+                    {
                         console.log(this.reponsesEtudiantList);
                         if(this.reponsesEtudiantList[i].note > 0)
                         {
-                          document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#a5ee8f';
+                            document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#a5ee8f';
                         }
                         else {
-                          document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#ee8f8f';
-                          this.service.findCorrectAnswersByNumero(this.numero).subscribe(
-                              data => {
-                                this.correctAnswerView = data;
-                                for (let j = 0; j < this.correctAnswerView.length; j++)
-                                {
-                                  document.getElementById('rep-' + this.correctAnswerView[i].ref).style.backgroundColor = '#a5ee8f';
+                            document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#ee8f8f';
+                            this.service.findCorrectAnswersByNumero(this.numero).subscribe(
+                                data => {
+                                    this.correctAnswerView = data;
+                                    for (let j = 0; j < this.correctAnswerView.length; j++)
+                                    {
+                                        document.getElementById('rep-' + this.correctAnswerView[i].ref).style.backgroundColor = '#a5ee8f';
+                                    }
                                 }
-                              }
-                          );
+                            );
                         }
-                      }
                     }
-                );
-              });
+                }
+            );
         }
     );
   }
