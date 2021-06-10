@@ -18,9 +18,6 @@ export class QuizCreateComponent implements OnInit {
     constructor(private service: QuizService, private messageService: MessageService, private confirmationService: ConfirmationService, private router: Router) { }
     cols: any[];
     get question(): Question {
-      if (this.service.question == null){
-            this.service.question = new Question();
-        }
         return this.service.question;
     }
 
@@ -28,9 +25,6 @@ export class QuizCreateComponent implements OnInit {
         this.service.question = value;
     }
     get questions(): Array<Question> {
-        if (this.service.questions == null){
-            this.service.questions = new Array<Question>();
-        }
         return this.service.questions;
     }
     get selected(): Quiz {
@@ -136,6 +130,7 @@ export class QuizCreateComponent implements OnInit {
     public addFormule() {
      const question = {...this.question};
      this.questions.push(question);
+
     }
 
     public save() {

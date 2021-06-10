@@ -138,6 +138,9 @@ if (this._reponse == null){
     }
 
     get reponses(): Array<Reponse> {
+        if (this._reponses == null){
+            this._reponses = new Array<Reponse>();
+        }
         return this._reponses;
     }
 
@@ -157,7 +160,9 @@ if (this._reponse == null){
     }
 
     get questions(): Array<Question> {
-
+   if (this._questions == null){
+       this._questions = new Array<Question>();
+   }
         return this._questions;
     }
 

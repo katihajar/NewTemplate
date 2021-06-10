@@ -109,9 +109,7 @@ export class QuizPreviewComponent implements OnInit {
   }
 
   get reponses(): Array<Reponse> {
-    if (this.service.reponses == null){
-      this.service.reponses = new Array<Reponse>();
-    }
+
     return this.service.reponses;
   }
   set reponses(value: Array<Reponse>) {
@@ -221,7 +219,7 @@ export class QuizPreviewComponent implements OnInit {
     {
       if (this.correctAnswers[i].ref == this.selectedValue)
       {
-        this.noteQuiz ++;
+        this.noteQuiz = this.question.pointReponseJuste;
       }
       else {
         this.noteQuiz = this.noteQuiz + this.question.pointReponsefausse;
