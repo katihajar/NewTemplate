@@ -1,10 +1,6 @@
 <p-dialog [(visible)]="editDialog" [style]="{width: '450px'}" header="Professor Edit" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
-        <div class="p-field">
-            <label for="reference">Reference</label>
-            <input type="text" pInputText id="reference" [(ngModel)]="selected.reference" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !selected.reference">ref is required.</small>
-        </div>
+
         <div class="p-field">
             <label for="firstName">First Name</label>
             <input type="text" pInputText id="firstName" [(ngModel)]="selected.prenom" required autofocus />
@@ -12,21 +8,30 @@
         </div>
 
         <div class="p-field">
-            <label for="lastName">Last Name</label>
+            <label for="firstName">Last Name</label>
             <input type="text" pInputText id="lastName" [(ngModel)]="selected.nom" required autofocus />
             <small class="p-invalid" *ngIf="submitted && !selected.nom">Last Name is required.</small>
         </div>
-
+        <div class="p-field">
+            <label for="login">Username</label>
+            <input type="text" pInputText id="login" [(ngModel)]="selected.login" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.login">UserName is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="pass">Password</label>
+            <input type="text" pInputText id="pass" [(ngModel)]="selected.password" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.login">Password is required.</small>
+        </div>
         <div class="p-field">
             <label for="phoneNumber">Phone Number</label>
-            <input type="text" pInputText id="phoneNumber" [(ngModel)]="selected.phoneNumber" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !selected.phoneNumber">Phone Number is required.</small>
+            <input type="text" pInputText id="phoneNumber" [(ngModel)]="selected.numero" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.numero">Phone Number is required.</small>
         </div>
 
         <div class="p-field">
             <label for="email">Email</label>
             <input type="text" pInputText id="email" [(ngModel)]="selected.email" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !selected.email">Email is required.</small>
+            <small class="p-invalid" *ngIf="submitted && !selected.email">email is required.</small>
         </div>
 
 

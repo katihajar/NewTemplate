@@ -13,7 +13,6 @@ import {LoginService} from '../../../../controller/service/login.service';
 })
 export class SalaryComponent implements OnInit {
   data: any;
-
   constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
               private service: ClassRoomService, private serviceUser: LoginService) {this.data = {
     labels: ['Lesson profit', 'bonus', 'Plan shortage'],
@@ -55,30 +54,31 @@ export class SalaryComponent implements OnInit {
     return this.service.selectessalaryVo;
   }
 
+  // tslint:disable-next-line:adjacent-overload-signatures
   set selectessalaryVo(value: Array<SalaryVo>) {
     this.service.selectessalaryVo = value;
   }
-  public findSalaryByDate(mois: Date, annee: Date ){
+  public findSalaryByDate(){
     this.selectedsalaryVo.prof.id = this.serviceUser.prof.id;
-    this.service.findSalaryByDateAndProf(mois , annee).subscribe(data =>
+    this.service.findSalaryByDateAndProf().subscribe(data =>
     {
       this.selectedsalaryVo = data;
     });
   }
   public findSalary(){
     this.selectedsalaryVo.prof.id = this.serviceUser.prof.id;
-    this.service.findSalary().subscribe(data =>
+    this.service.findSalaryByDate().subscribe(data =>
     {
       this.selectedsalaryVo = data;
     });
   }
   ngOnInit() {
-    this.findSalary();
+    this.findSalaryByDate();
     this.items = [
-      {label: '30 lesson Complete'},
-      {label: '0$  workload bonus'},
-      {label: '0$ lifeTime bonus'},
-      {label:  '0$ Class Average bonus'},
+      {label:  '5 lesson Complete'},
+      {label: '300$  workload bonus'},
+      {label: '150$ lifeTime bonus'},
+      {label:  '30$ Class Average bonus'},
     ];
     this.activeItem = this.items[0];
   }

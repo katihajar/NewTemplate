@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MessageService} from 'primeng/api';
 import {SessionCoursService} from '../../../../controller/service/session-cours.service';
 import {SessionCours} from '../../../../controller/model/session-cours.model';
+import {Prof} from '../../../../controller/Model/prof.model';
+import {Etudiant} from '../../../../controller/Model/etudiant.model';
 
 @Component({
   selector: 'app-session-cours-edit',
@@ -16,10 +18,31 @@ export class SessionCoursEditComponent implements OnInit {
    ngOnInit(): void {
    }
 
+    public  findAllProf(){
+        this.service.findAllProf().subscribe( data => this.itemsProf = data);
+    }
+    public  findAllEtudiant(){
+        this.service.findAllEtudiant().subscribe( data => this.itemsEtudiant = data);
+    }
+    get itemsProf(): Array<Prof> {
+        return this.service.itemsProf;
+    }
+
+    set itemsProf(value: Array<Prof>) {
+        this.service.itemsProf = value;
+    }
+
+    get itemsEtudiant(): Array<Etudiant> {
+        return this.service.itemsEtudiant;
+    }
+
+    set itemsEtudiant(value: Array<Etudiant>) {
+        this.service.itemsEtudiant = value;
+    }
    public edit() {
      this.submitted = true;
-     if (this.selected.reference.trim()) {
-       if (this.selected.id) {
+
+     if (this.selected.id) {
          this.items[this.service.findIndexById(this.selected.id)] = this.selected;
          this.service.edit().subscribe(data => {
            this.selected = data;
@@ -31,9 +54,8 @@ export class SessionCoursEditComponent implements OnInit {
            });
          });
        }
-       this.editDialog = false;
-       this.selected = new SessionCours();
-     }
+     this.editDialog = false;
+     this.selected = new SessionCours();
    }
 
    public hideEditDialog() {
