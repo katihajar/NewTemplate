@@ -7,6 +7,9 @@ import {ScheduleProf} from '../../../controller/model/calendrier-prof.model';
 import {ScheduleService} from '../../../controller/service/schedule.service';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ScheduleVo} from '../../../controller/model/schedule-vo.model';
+import {EtatInscription} from "../../../controller/Model/etat-inscription.model";
+import {Etudiant} from "../../../controller/Model/etudiant.model";
+import {EtatEtudiantSchedule} from "../../../controller/Model/etat-etudiant-schedule.model";
 
 @Component({
   selector: 'app-schedule',
@@ -93,7 +96,9 @@ export class ScheduleComponent implements OnInit {
   set eventDialog(value: boolean) {
     this.service.eventDialog = value;
   }
-
+  get etatEtudiantSchedule(): Array<EtatEtudiantSchedule> {
+    return this.service.etatEtudiantSchedule;
+  }
   get changedEvent(): any {
     return this.service.changedEvent;
   }
@@ -112,7 +117,12 @@ export class ScheduleComponent implements OnInit {
   get itemsVo(): Array<ScheduleVo> {
     return this.service.itemsVo;
   }
-
+  get etudiant(): Etudiant {
+    return this.service.etudiant;
+  }
+  set etudiant(value: Etudiant) {
+    this.service.etudiant = value;
+  }
   set itemsVo(value: Array<ScheduleVo>) {
     this.service.itemsVo = value;
   }
@@ -128,6 +138,7 @@ export class ScheduleComponent implements OnInit {
 
   ngOnInit() {
     this.service.findAll();
+    this.service.findEtat().subscribe(data => this.service.etatEtudiantSchedule = data);
     this.changedEvent = {title: '', etat: '', start: null, end: '', allDay: null};
     this.options = {
       plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
@@ -172,7 +183,6 @@ export class ScheduleComponent implements OnInit {
     this.displayBasic = true;
   }
   public openCreate() {
-    this.selected = new ScheduleProf();
     this.submitted = false;
     this.createDialog = true;
   }
@@ -180,12 +190,12 @@ export class ScheduleComponent implements OnInit {
     this.createDialog = false;
     this.submitted = false;
   }
-  public addEvent() {
+  public addStudent() {
     this.submitted = true;
-    if (this.selected.ref.trim()) {
-      this.service.addEvent().subscribe(data => {
-        const cloneSchedules = JSON.parse(JSON.stringify(this.selected));
-        this.items.push(cloneSchedules);
+      this.service.addStudent().subscribe(data => {
+        this.selected.etudiant.id = this.etudiant.id;
+        console.log(this.selected.etudiant.id);
+        this.items.push({...data});
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
@@ -196,6 +206,5 @@ export class ScheduleComponent implements OnInit {
       this.createDialog = false;
       this.selected = new ScheduleProf();
     }
-  }
 }
 
