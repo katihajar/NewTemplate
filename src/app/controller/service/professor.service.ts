@@ -9,7 +9,7 @@ import {Prof} from '../model/prof.model';
     providedIn: 'root'
 })
 export class ProfessorService {
-    private url = environment.baseUrl + 'professor/';
+    private url = environment.baseUrl + 'prof/';
     private _items: Array<Prof>;
     private _selected: Prof;
     private _selectes: Array<Prof>;
@@ -27,11 +27,13 @@ export class ProfessorService {
     }
 
     public findAll(): Observable<Array<Prof>> {
-        return this.http.get<Array<Prof>>(this.url);
+        return this.http.get<Array<Prof>>('http://localhost:8036/learn/prof/');
     }
-
+    public Search(): Observable<Array<Prof>> {
+        return this.http.get<Array<Prof>>('http://localhost:8036/learn/prof/nom/' + this.selected.nom);
+    }
     public save(): Observable<Prof> {
-        return this.http.post<Prof>(this.url, this.selected);
+        return this.http.post<Prof>('http://localhost:8036/learn/prof/', this.selected);
     }
 
     public edit(): Observable<Prof> {
@@ -39,11 +41,11 @@ export class ProfessorService {
     }
 
     public deleteByReference(): Observable<number> {
-        return this.http.delete<number>(this.url + 'reference/' + this.selected.reference);
+        return this.http.delete<number>(this.url + 'id/' + this.selected.id);
     }
 
     public deleteMultipleByReference(): Observable<number> {
-        return this.http.post<number>(this.url + 'delete-multiple-by-reference', this.selectes);
+        return this.http.post<number>(this.url + 'delete-multiple-by-id', this.selectes);
     }
 
     public findIndexById(id: number): number {

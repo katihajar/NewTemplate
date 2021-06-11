@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Prof} from '../../../../controller/Model/prof.model';
+import {Prof} from '../../../../controller/model/prof.model';
 import {MessageService} from 'primeng/api';
 import {ProfessorService} from '../../../../controller/service/professor.service';
 
@@ -23,9 +23,11 @@ export class ProfesseurCreateComponent implements OnInit {
 
   public save() {
     this.submitted = true;
-    if (this.selected.reference.trim()) {
-      this.service.save().subscribe(data => {
+    this.selected.categorieProf.id = 1;
+    this.service.save().subscribe(data => {
         this.items.push({...data});
+        // tslint:disable-next-line:no-shadowed-variable
+        this.service.findAll().subscribe(data => this.items = data);
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
@@ -33,9 +35,8 @@ export class ProfesseurCreateComponent implements OnInit {
           life: 3000
         });
       });
-      this.createDialog = false;
-      this.selected = new Prof();
-    }
+    this.createDialog = false;
+    this.selected = new Prof();
   }
 
   get selected(): Prof {

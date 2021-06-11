@@ -5,8 +5,6 @@ import {Etudiant} from './etudiant.model';
 
 export class Prof {
   public id: number;
-  public reference: string;
-  public phoneNumber: string;
   public numero: number;
   public nom: string;
   public image: string;

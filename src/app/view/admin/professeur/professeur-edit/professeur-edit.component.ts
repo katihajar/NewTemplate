@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Prof} from '../../../../controller/Model/prof.model';
+import {Prof} from '../../../../controller/model/prof.model';
 import {MessageService} from 'primeng/api';
 import {ProfessorService} from '../../../../controller/service/professor.service';
 
@@ -18,8 +18,7 @@ export class ProfesseurEditComponent implements OnInit {
 
   public edit() {
     this.submitted = true;
-    if (this.selected.reference.trim()) {
-      if (this.selected.id) {
+    if (this.selected.id) {
         this.items[this.service.findIndexById(this.selected.id)] = this.selected;
         this.service.edit().subscribe(data => {
           this.selected = data;
@@ -31,9 +30,8 @@ export class ProfesseurEditComponent implements OnInit {
           });
         });
       }
-      this.editDialog = false;
-      this.selected = new Prof();
-    }
+    this.editDialog = false;
+    this.selected = new Prof();
   }
 
   public hideEditDialog() {
