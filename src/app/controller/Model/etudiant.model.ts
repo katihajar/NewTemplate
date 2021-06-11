@@ -17,7 +17,6 @@ export class Etudiant {
     public password: string;
     public parcours = new Parcours();
     public quizEtudiant = new Array<QuizEtudiant>();
-    public etatInscription = new EtatInscription();
     public etatEtudiantSchedule = new EtatEtudiantSchedule();
     public prof = new Prof();
     public image: string;

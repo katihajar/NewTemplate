@@ -58,27 +58,27 @@ export class SalaryComponent implements OnInit {
   set selectessalaryVo(value: Array<SalaryVo>) {
     this.service.selectessalaryVo = value;
   }
-  public findSalaryByDate(mois: Date, annee: Date ){
+  public findSalaryByDate(){
     this.selectedsalaryVo.prof.id = this.serviceUser.prof.id;
-    this.service.findSalaryByDateAndProf(mois , annee).subscribe(data =>
+    this.service.findSalaryByDateAndProf().subscribe(data =>
     {
       this.selectedsalaryVo = data;
     });
   }
   public findSalary(){
     this.selectedsalaryVo.prof.id = this.serviceUser.prof.id;
-    this.service.findSalary().subscribe(data =>
+    this.service.findSalaryByDate().subscribe(data =>
     {
       this.selectedsalaryVo = data;
     });
   }
   ngOnInit() {
-    this.findSalary();
+    this.findSalaryByDate();
     this.items = [
-      {label: '30 lesson Complete'},
-      {label: '0$  workload bonus'},
-      {label: '0$ lifeTime bonus'},
-      {label:  '0$ Class Average bonus'},
+      {label:  '5 lesson Complete'},
+      {label: '300$  workload bonus'},
+      {label: '150$ lifeTime bonus'},
+      {label:  '30$ Class Average bonus'},
     ];
     this.activeItem = this.items[0];
   }
