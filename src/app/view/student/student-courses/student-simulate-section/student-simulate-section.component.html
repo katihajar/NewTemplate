@@ -47,9 +47,9 @@
 
 
 
-    <div class="card-footer " style="margin-left: 500px" >
-        <button pButton pRipple type="button" label="Previous" class="p-button-rounded" (click)="PreviousSection()" ></button>
-        <button pButton pRipple type="button" id="quiz" label="{{this.passerQuiz}}" class="p-button-rounded" [routerLink]="quizView? ['/pages/quiz-view']: ['/pages/quiz-etudiant']"></button>
-        <button pButton pRipple type="button" label="Next" class="p-button-rounded" style="margin-left: 30px" (click)="NextSection()" ></button>
+    <div class="card-footer " >
+        <button pButton pRipple type="button" icon="pi pi-caret-left" style="margin-left: 30px" label="Previous" class="p-button-rounded" (click)="PreviousSection()" ></button>
+        <button pButton pRipple type="button" style="margin-left: 400px" id="quiz" label="{{this.passerQuiz}}" class="p-button-rounded" [routerLink]="quizView? ['/pages/quiz-view']: ['/pages/quiz-etudiant']"></button>
+        <button pButton pRipple type="button" icon="pi pi-caret-right" label="Next" style="margin-left: 370px" class="p-button-rounded" (click)="NextSection()" ></button>
     </div>
 </div>
