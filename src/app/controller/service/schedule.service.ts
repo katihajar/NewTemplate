@@ -2,6 +2,9 @@ import {Injectable} from '@angular/core';
 import {ScheduleProf} from '../model/calendrier-prof.model';
 import {HttpClient} from '@angular/common/http';
 import {ScheduleVo} from '../model/schedule-vo.model';
+import {Observable} from "rxjs";
+import {Etudiant} from "../model/etudiant.model";
+import {EtatEtudiantSchedule} from "../model/etat-etudiant-schedule.model";
 
 @Injectable({
     providedIn: 'root'
@@ -13,6 +16,8 @@ export class ScheduleService {
     private _items: Array<ScheduleProf>;
     private _selectedVo: ScheduleVo;
     private _itemsVo: Array<ScheduleVo>;
+    private _etatEtudiantSchedule: Array<EtatEtudiantSchedule>;
+    private _etudiant: Etudiant;
     private _displayBasic: boolean;
     private _events: any[];
     private _options: any;
@@ -53,11 +58,30 @@ export class ScheduleService {
     get itemsVo(): Array<ScheduleVo> {
         return this._itemsVo;
     }
+    get etatEtudiantSchedule(): Array<EtatEtudiantSchedule> {
+        if (this._etatEtudiantSchedule == null){
+            this._etatEtudiantSchedule =new Array<EtatEtudiantSchedule>();
+        }
+            return this._etatEtudiantSchedule;
+    }
+
+    set etatEtudiantSchedule(value: Array<EtatEtudiantSchedule>) {
+        this._etatEtudiantSchedule = value;
+    }
 
     set itemsVo(value: Array<ScheduleVo>) {
         this._itemsVo = value;
     }
+    get etudiant(): Etudiant {
+        if (this._etudiant == null){
+            this._etudiant = new Etudiant();
+        }
+        return this._etudiant;
+    }
 
+    set etudiant(value: Etudiant) {
+        this._etudiant = value;
+    }
     get displayBasic(): boolean {
         return this._displayBasic;
     }
@@ -131,7 +155,7 @@ export class ScheduleService {
 
     public findAll() {
 
-        return this.http.get<any>('http://localhost:8036/learn/scheduleProf/vo/').subscribe(data => {
+        return this.http.get<Array<ScheduleVo>>('http://localhost:8036/learn/scheduleProf/vo/').subscribe(data => {
             this.itemsVo = data;
             console.log(this.itemsVo);
         });
@@ -156,12 +180,14 @@ export class ScheduleService {
         this.changedEvent.start = this.clickedEvent.start;
         this.changedEvent.end = this.clickedEvent.end;
     }
-    public  addEvent(){
+    public  addStudent(): Observable<ScheduleProf>{
         return this.http.post<ScheduleProf>('http://localhost:8036/learn/scheduleProf/', this.selected);
     }
 
 
-
+public findEtat(): Observable<Array<EtatEtudiantSchedule>>{
+        return this.http.get<Array<EtatEtudiantSchedule>>('http://localhost:8036/learn/etatEtudiantSchedule/');
+}
 
 
 }

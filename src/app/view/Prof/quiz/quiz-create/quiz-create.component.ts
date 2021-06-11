@@ -15,30 +15,16 @@ import {Router} from '@angular/router';
 })
 export class QuizCreateComponent implements OnInit {
 
-    // tslint:disable-next-line:max-line-length
     constructor(private service: QuizService, private messageService: MessageService, private confirmationService: ConfirmationService, private router: Router) { }
     cols: any[];
     get question(): Question {
-        if (this.service.question == null){
-            this.service.question = new Question();
-        }
         return this.service.question;
     }
 
     set question(value: Question) {
         this.service.question = value;
     }
-    get buildQuestion(): any {
-        return this.service.buildQuestion;
-    }
-
-    set buildQuestion(value: any) {
-        this.service.buildQuestion = value;
-    }
     get questions(): Array<Question> {
-        if (this.service.questions == null){
-            this.service.questions = new Array<Question>();
-        }
         return this.service.questions;
     }
     get selected(): Quiz {
@@ -52,14 +38,11 @@ export class QuizCreateComponent implements OnInit {
         this.service.selected = value;
     }
     get reponse(): Reponse {
-        if (this.service.reponse == null){
-            this.service.reponse = new Reponse();
-        }
+
         return this.service.reponse;
     }
 
     get reponses(): Array<Reponse> {
-        this.question = new Question();
         if (this.service.question.reponses == null){
             this.service.question.reponses = new Array<Reponse>();
         }
@@ -101,10 +84,7 @@ export class QuizCreateComponent implements OnInit {
 
 
 
-    public saveQuiz() {
-        this.service.saveQuiz();
-        this.question.quiz.ref = this.selected?.ref;
-    }
+
 
     ngOnInit(): void {
         this.service.findType().subscribe(
@@ -117,16 +97,13 @@ export class QuizCreateComponent implements OnInit {
         );
         this.service.findQuiz();
         this.initCol();
-        this.questions.push(this.question);
+        this.selected.questions.push(this.question);
     }
 
     defaultchecked() {
         return this.service.defaultchecked();
     }
 
-    addCard1() {
-        return this.service.addCard1();
-    }
 
 
     checked(event) {
@@ -145,22 +122,22 @@ export class QuizCreateComponent implements OnInit {
         this.service.quizSelected();
     }
 
-    public addCard() {
- return this.service.addCard();
+    public addCard(){
+var doc = document.getElementById('formCard');
+var z = document.getElementById('mainCard');
+z.append(doc);
     }
-
 
     public addFormule() {
      const question = {...this.question};
-     this.questions.push(question);
+     this.selected.questions.push(question);
+
     }
 
     public save() {
-        return this.service.save().subscribe(
+        this.service.save().subscribe(
             data => {
-                this.saveQuiz();
-                const cloneQuestion = {...this.question};
-                this.questions.push(cloneQuestion);
+                this.items.push({...data});
                 console.log(this.questions);
                 console.log(this.items);
                 this.question = null;
@@ -170,9 +147,8 @@ export class QuizCreateComponent implements OnInit {
                     summary: 'Successful',
                     detail: 'Quiz Created',
                     life: 3000
-                });
-            }
-        );
+                    });
+            });
     }
 
     public edit() {

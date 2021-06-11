@@ -463,7 +463,7 @@ export class QuizEtudiantService {
   public findMyReponseEtudiant(quizEtudiant: QuizEtudiant, reponse: Reponse): Observable<ReponseEtudiant>
   {
     // tslint:disable-next-line:max-line-length
-    return this.http.get<ReponseEtudiant>(this.url + 'reponseEtudiant/creteria/quizEtudiant/' + quizEtudiant.ref + '/reponse/' + reponse.ref);
+    return this.http.get<ReponseEtudiant>(this.url + 'reponseEtudiant/critere/quizEtudiant/{refQuizEtudiant}/reponse/{refReponse}?refQuizEtudiant=' + quizEtudiant.ref + '&refReponse=' + reponse.ref);
   }
 
   public findQuestionByNumero(numero: number): Observable<Question>
