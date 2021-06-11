@@ -27,7 +27,16 @@ export class QuizEtudiantComponent implements OnInit {
   private _noteQst: number;
   private _noteQuiz: number;
   private _noteCheckbox: number;
+  private _numeroCheckBox: number;
 
+
+    get numeroCheckBox(): number {
+        return this._numeroCheckBox;
+    }
+
+    set numeroCheckBox(value: number) {
+        this._numeroCheckBox = value;
+    }
 
     get noteCheckbox(): number {
         return this._noteCheckbox;
@@ -212,6 +221,7 @@ export class QuizEtudiantComponent implements OnInit {
   ///////////////////////////// Next() //////////////////////
   public next()
   {
+      this.numeroCheckBox = 0;
       this.service.findCorrectAnswers().subscribe(
           data => {
               this.correctAnswers = data;
@@ -260,7 +270,6 @@ export class QuizEtudiantComponent implements OnInit {
       }
       else if (this.selected.typeDeQuestion.ref == 't2')
       {
-          console.log('hani da5l fi checkbox');
           this.noteCheckbox = 0;
           for (let i = 0 ; i < this.correctAnswers.length ; i++)
           {
@@ -300,11 +309,22 @@ export class QuizEtudiantComponent implements OnInit {
                       this.service.insertReponseEtudiant().subscribe(
                           // tslint:disable-next-line:no-shadowed-variable
                           data => {
+                              this.numeroCheckBox = this.numeroCheckBox + 1;
                           }
                       );
                   }
               );
           }
+          /*if(this.selectedValueCheckbox.length > 0)
+          {
+              console.log(this.selectedValueCheckbox[0]);
+              this.service.findMyReponseEtudiant(this.quizEtudiant, this.selectedValueCheckbox[0]).subscribe(
+                  data => {
+                      console.log('lqiiitha');
+                      this.selectedValueCheckbox = null;
+                  },error => console.log('makainch')
+              );
+          }*/
       }
 
     this.service.findNextQuestion().subscribe(
@@ -419,14 +439,6 @@ export class QuizEtudiantComponent implements OnInit {
 
   public selectionChanged(event: any,reponse: Reponse): void
   {
-      for (let j = 0; j < this.selectedValueCheckbox.length ; j++)
-      {
-          this.service.findMyReponseEtudiant(this.quizEtudiant, this.selectedValueCheckbox[j]).subscribe(
-              data => {
-                  this.selectedValueCheckbox = null;
-              },error => console.log('makainch')
-          );
-      }
       if(this.selected.typeDeQuestion.ref == 't1')
       {
           this.selectedValue = reponse.ref;
@@ -450,6 +462,16 @@ export class QuizEtudiantComponent implements OnInit {
       {
           if(event.target.checked)
             {
+                if(this.selectedValueCheckbox.length > 0)
+                {
+                    console.log(this.selectedValueCheckbox[0]);
+                    this.service.findMyReponseEtudiant(this.quizEtudiant, this.selectedValueCheckbox[0]).subscribe(
+                        data => {
+                            console.log('lqiiitha');
+                            this.selectedValueCheckbox = null;
+                        },error => console.log('makainch')
+                    );
+                }
                 this.selectedValueCheckbox.push(reponse);
                 console.log(this.selectedValueCheckbox);
                 document.getElementById('div-' + reponse.ref).style.backgroundColor = '#a318ad';
