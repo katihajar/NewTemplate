@@ -13,7 +13,6 @@ import {LoginService} from '../../../../controller/service/login.service';
 })
 export class SalaryComponent implements OnInit {
   data: any;
-
   constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
               private service: ClassRoomService, private serviceUser: LoginService) {this.data = {
     labels: ['Lesson profit', 'bonus', 'Plan shortage'],
@@ -55,6 +54,7 @@ export class SalaryComponent implements OnInit {
     return this.service.selectessalaryVo;
   }
 
+  // tslint:disable-next-line:adjacent-overload-signatures
   set selectessalaryVo(value: Array<SalaryVo>) {
     this.service.selectessalaryVo = value;
   }
