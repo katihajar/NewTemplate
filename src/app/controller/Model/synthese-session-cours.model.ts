@@ -11,4 +11,5 @@ export class SyntheseSessionCours {
     public lastClass: string;
     public etat: string;
     public etatNumber: number;
+    public nbrClass:number=0;
 }
