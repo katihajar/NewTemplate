@@ -178,8 +178,6 @@ import {EtudiantsComponent} from './view/Prof/etudiants/etudiants.component';
 import { QuizPreviewComponent } from './view/Prof/quiz/quiz-preview/quiz-preview.component';
 import { QuizConfigComponent } from './view/Prof/quiz/quiz-config/quiz-config.component';
 import { ScheduleComponent } from './view/Prof/schedule/schedule.component';
-import {EtudiantCoursesComponent} from './view/etudiant/etudiant-courses/etudiant-courses.component';
-import {EtudiantSectionsComponent} from './view/etudiant/etudiant-sections/etudiant-sections.component';
 import { FaqAnswerComponent } from './view/admin/faq-admin/faq-answer/faq-answer.component';
 import { NewsAdminListComponent } from './view/admin/news-admin/news-admin-list/news-admin-list.component';
 import { NewsAdminViewComponent } from './view/admin/news-admin/news-admin-view/news-admin-view.component';
@@ -222,11 +220,9 @@ import {SyntheseSessionCoursViewComponent} from './view/admin/synthese-session/s
 import {SyntheseSessionCoursListComponent} from './view/admin/synthese-session/synthese-session-cours-list/synthese-session-cours-list.component';
 import {SyntheseSessionCoursEditComponent} from './view/admin/synthese-session/synthese-session-cours-edit/synthese-session-cours-edit.component';
 import {SyntheseSessionCoursCreateComponent} from './view/admin/synthese-session/synthese-session-cours-create/synthese-session-cours-create.component';
-import { ProfesseurComponent } from './view/Admin/professeur/professeur.component';
-import { ProfesseurListComponent } from './view/admin/professeur/professeur-list/professeur-list.component';
-import { ProfesseurCreateComponent } from './view/admin/professeur/professeur-create/professeur-create.component';
-import { ProfesseurEditComponent } from './view/admin/professeur/professeur-edit/professeur-edit.component';
-import { ProfesseurViewComponent } from './view/admin/professeur/professeur-view/professeur-view.component';
+import {EtudiantCoursesComponent} from "./view/student/student-courses/etudiant-courses/etudiant-courses.component";
+import {EtudiantSectionsComponent} from "./view/student/student-courses/etudiant-sections/etudiant-sections.component";
+import { SyntheseSessionHistoryComponent } from './view/admin/synthese-session/synthese-session-history/synthese-session-history.component';
 
 
 
@@ -449,11 +445,8 @@ import { ProfesseurViewComponent } from './view/admin/professeur/professeur-view
         SyntheseSessionCoursEditComponent,
         SyntheseSessionCoursViewComponent,
         SyntheseSessionCoursListComponent,
-        ProfesseurComponent,
-        ProfesseurListComponent,
-        ProfesseurCreateComponent,
-        ProfesseurEditComponent,
-        ProfesseurViewComponent
+        SyntheseSessionHistoryComponent
+
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
