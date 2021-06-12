@@ -3,10 +3,10 @@
 
         <p-toast></p-toast>
 
-        <div class="card">
+        <div class="card" style="background-color: gainsboro">
             <p-toolbar styleClass="p-mb-4"><!--style="display: none"-->
                 <ng-template pTemplate="left">
-                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                    <button pButton pRipple label="New" icon="pi pi-plus" style="width: 90px" class="p-button-success p-mr-2 p-mb-2"
                             (click)="openCreate()"></button>
                     <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger p-mb-2"
                             (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length"></button>
@@ -15,7 +15,7 @@
                 <ng-template pTemplate="right">
                     <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import"
                                   chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>
-                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help p-mb-2"
+                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-info p-mb-2"
                             (click)="dt.exportCSV()"></button>
                 </ng-template>
             </p-toolbar>
@@ -48,10 +48,7 @@
 
                             </div>
                         </div>
-                        <span class="p-input-icon-left " style="margin-left: 800px">
-                        <i class="pi pi-search"></i>
-                        <input pInputText type="text" placeholder="Search..."/>
-                    </span>
+
                     </div>
                 </ng-template>
                 <ng-template pTemplate="header">
@@ -96,7 +93,7 @@
                             <!--   <img class="icon" src="img/horloge.png" alt="">-->
                             <a style="margin-top: 10px;" href="http://localhost:4200/#/pages/synthese" (click)="op.toggle($event)" >History </a>
                         </td>
-                        <td><p class="bold "> [(synthese.nbrClass)] </p>
+                        <td><p class="bold "> {{synthese.nbrClass}}</p>
                             <a class="button_class" href="http://localhost:4200/#/pages/synthese"    (click)="incrementer(synthese)">ADD CLASS</a>
                         </td>
                         <td><p>Pre-intermediate for Teens</p>
@@ -109,7 +106,7 @@
                                     (click)="edit(synthese)"></button>
                             <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
                                     (click)="view(synthese)"></button>
-                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
                                     (click)="delete(synthese)"></button>
                         </td>
                     </tr>
@@ -132,7 +129,7 @@
         <ng-template pTemplate>
             <p-card>
                 <ng-template pTemplate="header ">
-                    Hestory        </ng-template><br/>
+                    History        </ng-template><br/>
                 <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
                 <ng-template pTemplate="footer">
                     Footer content here
@@ -140,7 +137,7 @@
             </p-card>
             <p-card >
                 <ng-template pTemplate="header ">
-                    Hestory        </ng-template><br/>
+                    History        </ng-template><br/>
                 <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
                 <ng-template pTemplate="footer">
                     Footer content here

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {SyntheseSessionCoursService} from '../../../../controller/service/synthese-session-cours.service';
 import {SyntheseSessionCours} from '../../../../controller/model/synthese-session-cours.model';
+import {City} from '../../../../controller/Model/city.model';
 
 @Component({
     selector: 'app-synthese-session-cours-list',
@@ -10,30 +11,42 @@ import {SyntheseSessionCours} from '../../../../controller/model/synthese-sessio
     providers: [MessageService, ConfirmationService]
 })
 export class SyntheseSessionCoursListComponent implements OnInit {
+    cities: City[];
 
+    selectedCity: City;
     cols: any[];
     public etat = 1;
     public p = 2;
     public j: number = 0;
     public k = 0;
     public c = 0;
-   public m=0;
+   public m = 0;
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
                 private service: SyntheseSessionCoursService) {
+        this.cities = [
+            {name: 'New York', code: 'NY'},
+            {name: 'Rome', code: 'RM'},
+            {name: 'London', code: 'LDN'},
+            {name: 'Istanbul', code: 'IST'},
+            {name: 'Paris', code: 'PRS'}
+        ];
     }
 
     ngOnInit(): void {
         this.initCol();
-        this.service.findAll().subscribe(data =>{ this.items = data;
+        this.service.findAll().subscribe(data => { this.items = data;
             for (let i = 0; i < this.items.length; i++) {
+                // tslint:disable-next-line:triple-equals
                 if (this.items[i].etatNumber == 1) {
                     console.log(this.j);
                     this.j++;
                     console.log(this.j);
+                    // tslint:disable-next-line:triple-equals
                 } else if (this.items[i].etatNumber == 2) {
                     this.k++;
-                }else if(this.items[i].etatNumber == 4){
+                    // tslint:disable-next-line:triple-equals
+                }else if (this.items[i].etatNumber == 4){
                      this.m++;
                 }
                 else {

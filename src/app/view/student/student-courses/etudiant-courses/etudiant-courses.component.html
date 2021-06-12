@@ -1,10 +1,10 @@
-<div class="p-grid list-demo">
+
     <div class="p-grid " >
         <div class="p-col">
             <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between  " style=" margin-top: 2%; margin-bottom: 2%; " >
                 <h1 class="p-m-0" >Courses</h1>
             </div>
-            <div class="card" style="background-color: lavender">
+            <div class="card" style="background-color: gainsboro">
                 <p-table [value]="selectesscours" [columns]="cols" [rows]="10" [paginator]="true" [globalFilterFields]="['libelle','sectionList']"
                           [(selection)]="itemscours" [rowHover]="true" dataKey="id"
                           styleClass="p-datatable-customers"
@@ -36,4 +36,4 @@
         <app-student-choose-view></app-student-choose-view>
     </div>
 
-</div>
+

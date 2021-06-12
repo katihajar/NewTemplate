@@ -232,6 +232,7 @@ import {StudentSimulateSectionComponent} from './view/student/student-courses/st
 import {QuizStudentViewComponent} from './view/student/quiz-student-view/quiz-student-view.component';
 import {QuizStudentListComponent} from './view/student/quiz-student-list/quiz-student-list.component';
 import {ClassroomStudentListComponent} from './view/student/classroom-student-list/classroom-student-list.component';
+import {SyntheseSessionHistoryComponent} from './view/admin/synthese-session/synthese-session-history/synthese-session-history.component';
 
 
 
@@ -465,6 +466,7 @@ import {ClassroomStudentListComponent} from './view/student/classroom-student-li
         QuizStudentListComponent,
         ClassroomStudentListComponent,
         StudentSimulateSectionComponent,
+        SyntheseSessionHistoryComponent,
         StudentChooseViewComponent
     ],
     providers: [
