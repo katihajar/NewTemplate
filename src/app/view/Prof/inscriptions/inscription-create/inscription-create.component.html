@@ -18,8 +18,8 @@
 
         <div class="p-field">
             <label for="etudiant">Student</label>
-            <input type="text" pInputText id="etudiant" [(ngModel)]="selected.etudiant.nom" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !selected.etudiant.nom">etudiantfin is required.</small>
+            <input type="text" pInputText id="etudiant" [(ngModel)]="selected.nom" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.nom">etudiant LastNme is required.</small>
         </div>
 
         <div class="p-formgrid p-grid">

@@ -121,13 +121,13 @@
 			<div class="p-fluid p-formgrid p-grid">
 				<div class="p-field p-col-12 p-md-6">
 					<label for="prenom" style="color: black;">Firstname</label>
-					<input id="prenom" type="text" pInputText [(ngModel)]="selected.nom">
-					<small class="p-invalid" *ngIf="submitted && !selected.nom">FirstName is required.</small>
+					<input id="prenom" type="text" pInputText [(ngModel)]="selected.prenom">
+					<small class="p-invalid" *ngIf="submitted && !selected.prenom">FirstName is required.</small>
 				</div>
 				<div class="p-field p-col-12 p-md-6">
 					<label for="nom" style="color: black;">Lastname</label>
-					<input id="nom" type="text" pInputText [(ngModel)]="selected.prenom">
-					<small class="p-invalid" *ngIf="submitted && !selected.prenom">Lastname is required.</small>
+					<input id="nom" type="text" pInputText [(ngModel)]="selected.nom">
+					<small class="p-invalid" *ngIf="submitted && !selected.nom">Lastname is required.</small>
 
 				</div>
 				<div class="p-field p-col-12 p-md-6">
