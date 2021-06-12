@@ -40,7 +40,7 @@ export class DashboardDemoComponent implements OnInit {
     }
 
 
-    responsiveOptions:any[] = [
+    responsiveOptions: any[] = [
         {
             breakpoint: '1024px',
             numVisible: 5
@@ -141,7 +141,7 @@ export class DashboardDemoComponent implements OnInit {
         this.eventService.getEvents().then(events => { this.events = events; });
 
         this.fullcalendarOptions = {
-            plugins:[dayGridPlugin, timeGridPlugin, interactionPlugin],
+            plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
             defaultDate: '2017-02-12',
             header: {
                 left: 'prev,next',

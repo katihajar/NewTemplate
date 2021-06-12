@@ -13,6 +13,7 @@ export class ProfService {
   private url = environment.baseUrl + 'prof/';
   private _selectedProf: Prof;
   private _itemsCategorieProf: Array<CategorieProf>;
+  private _submitted: boolean;
   constructor(private http: HttpClient) { }
   public save(): Observable<number> {
     return this.http.post<number>('http://localhost:8036/learn/prof/', this.selectedProf);
@@ -30,7 +31,16 @@ export class ProfService {
   }
 
   public findAllCategorieProf(): Observable<Array<CategorieProf>> {
-    return this.http.get< Array<CategorieProf> >('http://localhost:8036/learn/categorieprof/');}
+    return this.http.get< Array<CategorieProf> >('http://localhost:8036/learn/categorieprof/');
+  }
+
+  get submitted(): boolean {
+    return this._submitted;
+  }
+
+  set submitted(value: boolean) {
+    this._submitted = value;
+  }
 
   get itemsCategorieProf(): Array<CategorieProf> {
     if ( this._itemsCategorieProf == null){
