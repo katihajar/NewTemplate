@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
-import {Section} from '../../../../controller/Model/section.model';
-import {Cours} from '../../../../controller/Model/cours.model';
+import {Section} from '../../../../controller/model/section.model';
+import {Cours} from '../../../../controller/model/cours.model';
 
 @Component({
   selector: 'app-cours-list',
@@ -137,7 +137,7 @@ export class CoursListComponent implements OnInit {
           this.messageService.add({
             severity: 'success',
             summary: 'Successful',
-            detail: 'Section ajouter',
+            detail: 'Section Added',
             life: 3000
           });
         });
@@ -146,7 +146,7 @@ export class CoursListComponent implements OnInit {
   }
   public deleteMultiple() {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete the selected commandes?',
+      message: 'Are you sure you want to delete the selected cours?',
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
@@ -155,7 +155,7 @@ export class CoursListComponent implements OnInit {
           this.messageService.add({
             severity: 'success',
             summary: 'Successful',
-            detail: 'Commandes Deleted',
+            detail: 'Cours Deleted',
             life: 3000
           });
           this.itemscours = null;
