@@ -1,13 +1,13 @@
 
 <div class=" card">
-    <div class="p-grid">
+    <div class="p-grid p-col-12">
 
 
 
-            <div class="p-col">
-                        <div class="product-grid-item card" style="background-color: lavender;">
+            <div class="p-col-10">
+                        <div class="product-grid-item card" style="background-color: gainsboro;">
                             <div class="product-grid-item-content" style="cursor: pointer">
-                                <div class="product-name" style="margin-bottom: 15px; color: #5C0F6F"><h1><u>-{{this.selectedsection.libelle}}-</u></h1></div>
+                                <div class="product-name" style="margin-bottom: 15px; color: black"><h1><u>-{{this.selectedsection.libelle}}-</u></h1></div>
                                 <iframe [src]='photoURL()' width="500" height="360" frameborder="0" alt="Section Image"
                                         webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                                 <div class="product-description"><h6>{{this.selectedsection.urlVideo}}</h6></div>
@@ -21,19 +21,19 @@
 
             </div>
 
-<div class=" p-col" style="width:   300px;height: 90px">
+<div class=" p-col-2" style="width:   300px;height: 90px">
 
                 <p-table  [value]="itemssection2"  [rows]="10" >
-                    <ng-template pTemplate="header">
+                    <ng-template pTemplate="header" >
                         <tr>
 
-                            <th pSortableColumn="libelle">CategorieSection<p-sortIcon field="libelle"></p-sortIcon></th>
+                            <th pSortableColumn="libelle" style="text-align: center">Categorie<p-sortIcon field="libelle"></p-sortIcon></th>
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-section>
                         <tr>
 
-                            <td [style.color]="(section.categorieSection.libelle) == (this.selectedsection.categorieSection.libelle)? 'green' :'orange' "  ><u >{{section.categorieSection.libelle}}</u></td>
+                            <td style="text-align: center" [style.color]="(section.categorieSection.libelle) == (this.selectedsection.categorieSection.libelle)? 'green' :'orange' "  ><u >{{section.categorieSection.libelle}}</u></td>
 
 
                         </tr>

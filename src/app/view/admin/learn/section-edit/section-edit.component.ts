@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
-import {Cours} from '../../../../controller/Model/cours.model';
-import {Section} from '../../../../controller/Model/section.model';
-import {CategorieSection} from '../../../../controller/Model/categorie-section.model';
+import {Cours} from '../../../../controller/model/cours.model';
+import {Section} from '../../../../controller/model/section.model';
+import {CategorieSection} from '../../../../controller/model/categorie-section.model';
 
 @Component({
   selector: 'app-section-edit',
@@ -26,7 +26,7 @@ export class SectionEditComponent implements OnInit {
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
-          detail: 'Commande Updated',
+          detail: 'Sections Updated',
           life: 3000
         });
       });

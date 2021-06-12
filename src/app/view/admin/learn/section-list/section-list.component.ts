@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Section} from '../../../../controller/Model/section.model';
+import {Section} from '../../../../controller/model/section.model';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class SectionListComponent implements OnInit {
 
   cols: any[];
   // tslint:disable-next-line:max-line-length
-  constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private service: ParcoursService ,private router: Router) { }
+  constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private service: ParcoursService , private router: Router) { }
   ngOnInit(): void {
     this.initCol();
   }
@@ -125,7 +125,7 @@ export class SectionListComponent implements OnInit {
 
   public deleteMultiple() {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete the selected commandes?',
+      message: 'Are you sure you want to delete the selected sections?',
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
@@ -135,7 +135,7 @@ export class SectionListComponent implements OnInit {
           this.messageService.add({
             severity: 'success',
             summary: 'Successful',
-            detail: 'Commandes Deleted',
+            detail: 'Sections Deleted',
             life: 3000
           });
         });

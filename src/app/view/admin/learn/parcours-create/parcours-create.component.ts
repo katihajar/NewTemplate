@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
-import {Parcours} from '../../../../controller/Model/parcours.model';
-import {Centre} from '../../../../controller/Model/centre.model';
+import {Parcours} from '../../../../controller/model/parcours.model';
+import {Centre} from '../../../../controller/model/centre.model';
 
 @Component({
   selector: 'app-parcours-create',
@@ -32,7 +32,7 @@ export class ParcoursCreateComponent implements OnInit {
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
-          detail: 'Commande Created',
+          detail: 'Parcours Created',
           life: 3000
         });
       });

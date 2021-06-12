@@ -7,14 +7,14 @@
         </div>
         <div class="p-field">
             <label class="primaryLab">Teacher</label>
-            <select pInputText type="text"  class="btn btn-block btn-outline-light form-control " name="fieldName" style="background-color: lightblue" name="prof" (click)="findAllProf()" [(ngModel)]="selected.prof.id" >
+            <select pInputText type="text"  class="btn btn-block btn-outline-light form-control " name="fieldName" style="background-color: gainsboro" name="prof" (click)="findAllProf()" [(ngModel)]="selected.prof.id" >
                 <option  selected="selected" *ngFor="let c of itemsProf " [ngValue]="c.id" > {{c.nom}}</option>
             </select>
         </div>
 
         <div class="p-field">
             <label class="primaryLab">Student</label>
-            <select pInputText type="text"  class="btn btn-block btn-outline-light form-control " name="fieldName" style="background-color: lightblue" name="prof" (click)="findAllEtudiant()" [(ngModel)]="selected.etudiant.id" >
+            <select pInputText type="text"  class="btn btn-block btn-outline-light form-control " name="fieldName" style="background-color: gainsboro" name="prof" (click)="findAllEtudiant()" [(ngModel)]="selected.etudiant.id" >
                 <option  selected="selected" *ngFor="let c of itemsEtudiant " [ngValue]="c.id" > {{c.nom}}</option>
             </select>
         </div>

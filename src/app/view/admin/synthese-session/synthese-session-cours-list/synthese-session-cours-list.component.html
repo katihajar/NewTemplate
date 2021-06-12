@@ -3,10 +3,10 @@
 
         <p-toast></p-toast>
 
-        <div class="card">
+        <div class="card" style="background-color: gainsboro">
             <p-toolbar styleClass="p-mb-4"><!--style="display: none"-->
                 <ng-template pTemplate="left">
-                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                    <button pButton pRipple label="New" icon="pi pi-plus" style="width: 90px" class="p-button-success p-mr-2 p-mb-2"
                             (click)="openCreate()"></button>
                     <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger p-mb-2"
                             (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length"></button>
@@ -15,7 +15,7 @@
                 <ng-template pTemplate="right">
                     <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import"
                                   chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>
-                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help p-mb-2"
+                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-info p-mb-2"
                             (click)="dt.exportCSV()"></button>
                 </ng-template>
             </p-toolbar>
@@ -37,21 +37,18 @@
                                 <a (click)="setEtat(start)" href=""> Start(8) </a>
                                 <a (click)="setEtat(soon)" href=""> Soon(0) </a>
                                 <a href=""> On break(0) </a>-->
-                                <button pButton type="button" label="Active(20)" class="p-button-text p-button-success "
-                                        (click)="setetat(1)"></button>
-                                <button pButton type="button" label="Start(8)" class="p-button-text"
+                                <button pButton type="button" label="Active({{this.j}})" class="p-button-text  "
+                                        (click)="setetat(1)" ></button>
+                                <button pButton type="button" label="Start({{m}})" class="p-button-text"
                                         (click)="setetat(4)"></button>
-                                <button pButton type="button" label="Soon(0)" class="p-button-text"
+                                <button pButton type="button" label="Soon({{k}})" class="p-button-text"
                                         (click)="setetat(2)"></button>
-                                <button pButton type="button" label="On break(8)" class="p-button-text"
+                                <button pButton type="button" label="On break({{c}})" class="p-button-text"
                                         (click)="setetat(3)"></button>
 
                             </div>
                         </div>
-                        <span class="p-input-icon-left " style="margin-left: 800px">
-                        <i class="pi pi-search"></i>
-                        <input pInputText type="text" placeholder="Search..."/>
-                    </span>
+
                     </div>
                 </ng-template>
                 <ng-template pTemplate="header">
@@ -94,10 +91,10 @@
                         <td><P class="bold">{{synthese.lastClass}}</P>
                             <a href="lesson_card">Lessons card</a> <br>
                             <!--   <img class="icon" src="img/horloge.png" alt="">-->
-                            <a style="margin-top: 10px;" href="history">History </a>
+                            <a style="margin-top: 10px;" href="http://localhost:4200/#/pages/synthese" (click)="op.toggle($event)" >History </a>
                         </td>
-                        <td><p class="bold "> 6 </p>
-                            <a class="button_class" href="add_class" target="_blank">ADD CLASS</a>
+                        <td><p class="bold "> {{synthese.nbrClass}}</p>
+                            <a class="button_class" href="http://localhost:4200/#/pages/synthese"    (click)="incrementer(synthese)">ADD CLASS</a>
                         </td>
                         <td><p>Pre-intermediate for Teens</p>
                             <p class="bold"> Lesson 35</p>
@@ -109,7 +106,7 @@
                                     (click)="edit(synthese)"></button>
                             <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
                                     (click)="view(synthese)"></button>
-                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
                                     (click)="delete(synthese)"></button>
                         </td>
                     </tr>
@@ -128,5 +125,26 @@
         <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
     </div>
 
+    <p-overlayPanel #op style="weight:600px; height:400px;">
+        <ng-template pTemplate>
+            <p-card>
+                <ng-template pTemplate="header ">
+                    History        </ng-template><br/>
+                <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
+                <ng-template pTemplate="footer">
+                    Footer content here
+                </ng-template>
+            </p-card>
+            <p-card >
+                <ng-template pTemplate="header ">
+                    History        </ng-template><br/>
+                <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
+                <ng-template pTemplate="footer">
+                    Footer content here
+                </ng-template>
+            </p-card>
+        </ng-template>
+    </p-overlayPanel>
 
+    <button type="text" pButton label="Basic" (click)="op.toggle($event)"></button>
 </div>
