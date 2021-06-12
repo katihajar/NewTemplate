@@ -34,6 +34,8 @@ export class CoursCreateComponent implements OnInit {
       this.service.SaveCours().subscribe(data => {
         // @ts-ignore
         this.itemscours.push({...data});
+        // tslint:disable-next-line:no-shadowed-variable
+        this.service.afficheCours().subscribe(data => this.itemscours = data);
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
@@ -41,7 +43,6 @@ export class CoursCreateComponent implements OnInit {
           life: 3000
         });
       });
-      this.service.afficheCours().subscribe(data => this.itemscours = data);
       this.createDialogCours = false;
       this.selectedcours = new Cours();
     }

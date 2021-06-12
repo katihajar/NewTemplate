@@ -7,15 +7,17 @@
             <small class="p-invalid" *ngIf="submitted && !selected.reference">ref is required.</small>
         </div>
         <div class="p-field">
-            <label for="prof">Professor</label>
-            <input type="text" pInputText id="prof" [(ngModel)]="selected.prof.id" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !selected.prof.id">total is required.</small>
+            <label class="primaryLab">Teacher</label>
+            <select pInputText type="text"  class="btn btn-block btn-outline-light form-control " name="fieldName" style="background-color: lightblue" name="prof" (click)="findAllProf()" [(ngModel)]="selected.prof.id" >
+                <option  selected="selected" *ngFor="let c of itemsProf " [ngValue]="c.id" > {{c.nom}}</option>
+            </select>
         </div>
 
         <div class="p-field">
-            <label for="student">Student</label>
-            <input type="text" pInputText id="student" [(ngModel)]="selected.etudiant.id" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !selected.etudiant.id">Student's name is required.</small>
+            <label class="primaryLab">Student</label>
+            <select pInputText type="text"  class="btn btn-block btn-outline-light form-control " name="fieldName" style="background-color: lightblue" name="prof" (click)="findAllEtudiant()" [(ngModel)]="selected.etudiant.id" >
+                <option  selected="selected" *ngFor="let c of itemsEtudiant " [ngValue]="c.id" > {{c.nom}}</option>
+            </select>
         </div>
 
         <div class="p-field">

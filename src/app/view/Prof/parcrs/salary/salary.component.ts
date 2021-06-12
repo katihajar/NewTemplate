@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MenuItem, MessageService} from 'primeng/api';
 import {ClassRoomService} from '../../../../controller/service/class-room.service';
 import {SalaryVo} from '../../../../controller/model/salary-vo.model';
+import {LoginService} from '../../../../controller/service/login.service';
 
 
 
@@ -12,9 +13,8 @@ import {SalaryVo} from '../../../../controller/model/salary-vo.model';
 })
 export class SalaryComponent implements OnInit {
   data: any;
-
   constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
-              private service: ClassRoomService) {this.data = {
+              private service: ClassRoomService, private serviceUser: LoginService) {this.data = {
     labels: ['Lesson profit', 'bonus', 'Plan shortage'],
     datasets: [
       {
@@ -54,32 +54,31 @@ export class SalaryComponent implements OnInit {
     return this.service.selectessalaryVo;
   }
 
+  // tslint:disable-next-line:adjacent-overload-signatures
   set selectessalaryVo(value: Array<SalaryVo>) {
     this.service.selectessalaryVo = value;
   }
-  public findSalaryByDate(mois: Date, annee: Date ){
-    this.service.findSalaryByDate(mois , annee).subscribe(data =>
+  public findSalaryByDate(){
+    this.selectedsalaryVo.prof.id = this.serviceUser.prof.id;
+    this.service.findSalaryByDateAndProf().subscribe(data =>
     {
-      this.itemssalaryVo  = data;
-      this.itemssalaryVo = this.selectessalaryVo;
-      console.log(this.itemssalaryVo);
+      this.selectedsalaryVo = data;
     });
   }
   public findSalary(){
-    this.service.findSalary().subscribe(data =>
+    this.selectedsalaryVo.prof.id = this.serviceUser.prof.id;
+    this.service.findSalaryByDate().subscribe(data =>
     {
-      this.selectessalaryVo = data;
-      this.itemssalaryVo = this.selectessalaryVo;
-      console.log(this.selectessalaryVo);
+      this.selectedsalaryVo = data;
     });
   }
   ngOnInit() {
-    this.findSalary();
+    this.findSalaryByDate();
     this.items = [
-      {label: '30 lesson Complete'},
-      {label: '0$  workload bonus'},
-      {label: '0$ lifeTime bonus'},
-      {label:  '0$ Class Average bonus'},
+      {label:  '5 lesson Complete'},
+      {label: '300$  workload bonus'},
+      {label: '150$ lifeTime bonus'},
+      {label:  '30$ Class Average bonus'},
     ];
     this.activeItem = this.items[0];
   }

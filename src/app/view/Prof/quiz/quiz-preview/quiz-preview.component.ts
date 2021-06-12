@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Question} from '../../../../controller/model/question.model';
-import {Quiz} from '../../../../controller/model/quiz.model';
-import {TypeDeQuestion} from '../../../../controller/model/type-de-question.model';
-import {Reponse} from '../../../../controller/model/reponse.model';
-import {QuizService} from '../../../../controller/service/quiz.service';
-import {Router} from '@angular/router';
+import {Question} from "../../../../controller/Model/question.model";
+import {Quiz} from "../../../../controller/Model/quiz.model";
+import {TypeDeQuestion} from "../../../../controller/Model/type-de-question.model";
+import {Reponse} from "../../../../controller/Model/reponse.model";
+import {QuizService} from "../../../../controller/service/quiz.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-quiz-preview',
@@ -13,13 +13,18 @@ import {Router} from '@angular/router';
 })
 export class QuizPreviewComponent implements OnInit {
 
-  i = 0;
-  value = 0;
+  private _i: number = 0;
+  private _value: number = 1;
+  private _selectedValue: string;
+  private _button: string;
+  private _noteQuiz: number = 0;
+  private _noteCheckbox: number;
+
+
+
+
   constructor(private  service: QuizService, private router: Router) { }
   get question(): Question {
-    if (this.service.question == null){
-      this.service.question = new Question();
-    }
     return this.service.question;
   }
 
@@ -34,12 +39,22 @@ export class QuizPreviewComponent implements OnInit {
     return this.service.questions;
   }
   get selected(): Quiz {
-    if (this.service.selected == null){
-      this.service.selected = new Quiz();
-    }
     return this.service.selected;
   }
+  get typeReponse(): string {
+    return this.service.typeReponse;
+  }
 
+  set typeReponse(value: string) {
+    this.service.typeReponse = value;
+  }
+  get numQuestion(): number {
+    return this.service.numQuestion;
+  }
+
+  set numQuestion(value: number) {
+    this.service.numQuestion = value;
+  }
   set selected(value: Quiz) {
     this.service.selected = value;
   }
@@ -50,11 +65,69 @@ export class QuizPreviewComponent implements OnInit {
     return this.service.reponse;
   }
 
+
+  get i(): number {
+    return this._i;
+  }
+
+  set i(value: number) {
+    this._i = value;
+  }
+
+  get noteCheckbox(): number {
+    return this._noteCheckbox;
+  }
+
+  set noteCheckbox(value: number) {
+    this._noteCheckbox = value;
+  }
+
+
+  get correctAnswers(): Array<Reponse> {
+    return this.service.correctAnswers;
+  }
+
+  set correctAnswers(value: Array<Reponse>) {
+    this.service.correctAnswers = value;
+  }
+  get selectedValue(): string {
+    return this._selectedValue;
+  }
+
+  set selectedValue(value: string) {
+    this._selectedValue = value;
+  }
+
+  get button(): string {
+    return this._button;
+  }
+
+  set button(value: string) {
+    this._button = value;
+  }
+
+  get myAnswer(): Reponse {
+    return this.service.myAnswer;
+  }
+
+  set myAnswer(value: Reponse) {
+    this.service.myAnswer = value;
+  }
+
+  get noteQuiz(): number {
+    return this._noteQuiz;
+  }
+
+  set noteQuiz(value: number) {
+    this._noteQuiz = value;
+  }
+
   get reponses(): Array<Reponse> {
-    if (this.service.reponses == null){
-      this.service.reponses = new Array<Reponse>();
-    }
-    return this.service.question.reponses;
+
+    return this.service.reponses;
+  }
+  set reponses(value: Array<Reponse>) {
+    this.service.reponses = value;
   }
 
   get type(): TypeDeQuestion {
@@ -95,14 +168,12 @@ export class QuizPreviewComponent implements OnInit {
   set items(value: Array<Quiz>) {
     this.service.items = value;
   }
-
-
   startTimer() {
     this.service.timer = setInterval(() => {
       this.service.seconds++;
     }, 1000);
   }
-  shuffle(reponses: Array<Reponse>) {
+ /* shuffle(reponses: Array<Reponse>) {
     let currentIndex = reponses.length, temporaryValue, randomIndex;
     while (0 !== currentIndex) {
       randomIndex = Math.floor(Math.random() * currentIndex);
@@ -112,10 +183,7 @@ export class QuizPreviewComponent implements OnInit {
       reponses[randomIndex] = temporaryValue;
     }
     return reponses;
-  }
-  Answer(n: number, rep: Question) {
-    this.service.questions[this.service.qnprogress].reponses = rep.reponses;
-  }
+  }*/
 
   get j(): number {
     return this.service.j;
@@ -124,71 +192,185 @@ export class QuizPreviewComponent implements OnInit {
   set j(value: number) {
     this.service.j = value;
   }
+  get typeQuestion(): string {
+    return this.service.typeQuestion;
+  }
 
-  NextQuestion() {
-    this.j ++;
-    this.i++;
-    this.service.a++;
-    this.service.qnprogress++;
-    this.value++;
-    this.i++;
-    // tslint:disable-next-line:triple-equals
-    if (this.service.qnprogress == this.service.questions.length) {
-      document.getElementById('container').style.visibility = 'hidden';
-      document.getElementById('mainCard').style.visibility = 'visible';
-      if (this.correctAnswerCount >= 10){
+  set typeQuestion(value: string) {
+    this.service.typeQuestion = value;
+  }
+
+
+  public next()
+  {
+    this.service.qnprogress ++;
+    this.service.findNextQuestion().subscribe(
+        data => {
+          this.question = data;
+          if(data.typeDeQuestion.ref == 't1')
+          {
+            this.typeReponse = 'radio';
+          }
+          else if(data.typeDeQuestion.ref == 't2')
+          {
+            this.typeReponse = 'checkbox';
+          }
+        }
+    );
+    this.service.findCorrectAnswers().subscribe(
+        data => {
+          this.correctAnswers = data;
+        }
+    );
+
+    if(this.question.typeDeQuestion.ref == 't1')
+    {
+      this.service.findMyAnswer(this.selectedValue).subscribe(
+          data => {
+            this.myAnswer = data;
+          }
+      );
+      for (let i = 0 ; i < this.correctAnswers.length ; i++)
+      {
+
+        if (this.correctAnswers[i].ref == this.selectedValue)
+        {
+          this.noteQuiz = this.noteQuiz + this.question.pointReponseJuste;
+        }
+        else {
+          this.noteQuiz = this.noteQuiz + this.question.pointReponsefausse;
+        }
+      }
+
+    }
+    else if (this.question.typeDeQuestion.ref == 't2')
+    {
+      this.noteCheckbox = 0;
+      for (let i = 0 ; i < this.correctAnswers.length ; i++)
+      {
+        for (let j = 0; j < this.reponses.length ; j++)
+        {
+          if (this.correctAnswers[i].ref == this.reponses[j].ref)
+          {
+            this.noteCheckbox = this.noteCheckbox + 1;
+          }
+        }
+      }
+      console.log('noteCheckbox = ' + this.noteCheckbox);
+      if(this.noteCheckbox == this.correctAnswers.length && this.reponses.length == this.correctAnswers.length)
+      {
+        this.noteQuiz = this.noteQuiz + this.question.pointReponseJuste;
+      }
+      else
+      {
+        this.noteQuiz = this.noteQuiz + this.question.pointReponsefausse;
+      }
+      for (let j = 0; j < this.reponses.length ; j++)
+      {
+      }
+    }
+
+
+    if (this.numQuestion == this.questions.length)
+    {
+      this.button = 'Finish the test';
+    }
+    else if (this.numQuestion > this.questions.length)
+    {
+      if (this.noteQuiz >= this.selected.seuilReussite){
         document.getElementById('congratulations3').style.visibility = 'visible';
         document.getElementById('hard-luck3').style.visibility = 'hidden';
       }else {
         document.getElementById('congratulations3').style.visibility = 'hidden';
         document.getElementById('hard-luck3').style.visibility = 'visible';
       }
-      clearInterval(this.service.timer);
+      document.getElementById('mainCard').style.visibility = 'visible';
+      document.getElementById('question').remove();
+
     }
+
+    this.service.findReponses().subscribe(
+        data => {
+          this.reponses = data;
+        }
+    );
   }
 
-  get correctAnswerCount(): number {
-    return this.service.correctAnswerCount;
+  public start()
+  {
+    this.noteQuiz = 0;
+    document.getElementById('start').remove();
+    document.getElementById('question').style.visibility = 'visible';
+    this.button = 'Next';
+    this.service.findFirstQuestion().subscribe(
+        data => {
+          this.question = data;
+          if(this.question.typeDeQuestion.ref == 't1')
+          {
+            this.typeReponse = 'radio';
+          }
+          else if(this.question.typeDeQuestion.ref == 't2')
+          {
+            this.typeReponse = 'checkbox';
+          }
+        }
+    );
+
+    this.service.findReponses().subscribe(
+        data => {
+          this.reponses = data;
+        }
+    );
+    this.service.findCorrectAnswers().subscribe(
+        data => {
+          this.correctAnswers = data;
+        }
+    );
+
   }
+
   ngOnInit(): void {
+    this.service.findConfig().subscribe( data => this.service.configurations = data);
+  //  this.service.findFirstReponse();
     this.service.seconds = 0;
     this.service.qnprogress = 0;
     this.service.findAll();
-
     this.startTimer();
     this.service.findQuiz();
-    // this.service.findReponses();
-    this.service.findByQuestionRef().subscribe(
-        data => {
-          this.question.reponses = data;
-          this.NextQuestion();
-        }
-    );
-    // this.service.findReponses1();
-
-    // this.service.CorrectAnswer();
+    this.Config();
   }
-  public getReponsesByQuestion(){
-    return this.service.getReponsesByQuestion();
+public Config(){
+  if (this.service.configuration.shuffleOptions == true){
+    this.service.shuffle(this.question.reponses);
+  } if (this.service.configuration.shuffleQuestions == true){
+    this.service.shuffleQuestion(this.questions);
+  }if (this.service.configuration.allowBack == true){
+    document.getElementById('backPage').style.visibility = 'visible';
   }
-  checked(e) {
-    // tslint:disable-next-line:triple-equals
-    if (e.target.checked == true){
-      this.service.correctAnswerCount++;
-    }else {
-      this.service.correctAnswerCount = 0;
-    }
-  }
+}
   public viewQuiz(){
     this.router.navigate(['/pages/quiz-create']);
   }
-
-  selectQuiz($event: Event , i: number) {
-    return this.service.selectQuiz(event , i);
-  }
-  public finByQuizRef(quiz: Quiz) {
-    return this.service.finByQuizRef(quiz);
-  }
-
+public backPage(){
+    this.service.qnprogress --;
 }
 
+  public selectionChanged(reponse: Reponse): void
+  {
+    this.selectedValue = reponse.ref;
+    for(let i=0 ; i < this.reponses.length ; i++)
+    {
+      if(reponse.ref == this.reponses[i].ref)
+      {
+        document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#a318ad';
+        document.getElementById('div-' + this.reponses[i].ref).style.width = '320px';
+        document.getElementById('div-' + this.reponses[i].ref).style.height = '43px';
+      }
+      else {
+        document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#9D8FEE';
+        document.getElementById('div-' + this.reponses[i].ref).style.width = '300px';
+        document.getElementById('div-' + this.reponses[i].ref).style.height = '40px';
+      }
+    }
+}
+}

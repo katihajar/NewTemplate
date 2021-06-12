@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import {Prof} from '../model/prof.model';
 import {Etudiant} from '../model/etudiant.model';
 import {RecommendTeacherVo} from '../model/recommend-teacher-vo.model';
+import {SalaryVo} from '../Model/salary-vo.model';
 
 
 @Injectable({
@@ -19,11 +20,12 @@ export class RecommendTeacherService {
   private _items: Array<RecommendTeacher>;
   private _itemsprof: Array<Prof>;
   private _itemsetudiant: Array<Etudiant>;
+  private _itemsStudent: Array<Etudiant>;
   private _prof: Prof;
   private _item: Array<RecommendTeacher>;
   private _recommendVo: RecommendTeacherVo;
   private _selectes: Array<RecommendTeacher>;
-
+  private _selectedsalaryVo: SalaryVo;
   private _createDialog: boolean;
   private _editDialog: boolean;
   private _viewDialog: boolean;
@@ -31,16 +33,19 @@ export class RecommendTeacherService {
   private _createDialogEtud: boolean;
 
   constructor(private http: HttpClient) { }
-  findByCriteria(){
-    console.log(this.recommendVo);
-    this.http.post<Array<RecommendTeacher>>('http://localhost:8036/learn/teacher/search', this.recommendVo).subscribe(
-        data => {
-          console.log(data);
-          this.items = data;
-        }, error => {
-          console.log('la fonction ne fonctionne pas');
-        }
-    );
+  findByCriteria(): Observable<Array<RecommendTeacher>>{
+    return this.http.post<Array<RecommendTeacher>>('http://localhost:8036/learn/teacher/search', this.recommendVo);
+  }
+
+  get selectedsalaryVo(): SalaryVo {
+    if (this._selectedsalaryVo ==  null){
+      this._selectedsalaryVo = new SalaryVo();
+    }
+    return this._selectedsalaryVo;
+  }
+
+  set selectedsalaryVo(value: SalaryVo) {
+    this._selectedsalaryVo = value;
   }
 
   get createDialogEtud(): boolean {
@@ -60,6 +65,17 @@ export class RecommendTeacherService {
 
   set recommendVo(value: RecommendTeacherVo) {
     this._recommendVo = value;
+  }
+
+  get itemsStudent(): Array<Etudiant> {
+    if (this._itemsStudent == null){
+      this._itemsStudent = new Array<Etudiant>();
+    }
+    return this._itemsStudent;
+  }
+
+  set itemsStudent(value: Array<Etudiant>) {
+    this._itemsStudent = value;
   }
 
   get itemsetudiant(): Array<Etudiant> {
@@ -195,6 +211,6 @@ export class RecommendTeacherService {
     return  this.http.get< Array<Prof> >('http://localhost:8036/learn/prof/');
   }
   public findAllEtudiantByProf(): Observable<Array<Etudiant>> {
-    return  this.http.get< Array<Etudiant> >('http://localhost:8036/learn/etudiant/prof/id/15');
+    return  this.http.get< Array<Etudiant> >('http://localhost:8036/learn/etudiant/prof/id/' +  this.prof.id);
   }
 }

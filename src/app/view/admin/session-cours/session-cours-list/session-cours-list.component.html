@@ -23,10 +23,7 @@
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         <h5 class="p-m-0">Manage Sessions</h5>
-                        <span class="p-input-icon-left">
-                        <i class="pi pi-search"></i>
-                        <input pInputText type="text"  placeholder="Search..." />
-                    </span>
+
                     </div>
                 </ng-template>
                 <ng-template pTemplate="header">
@@ -34,9 +31,8 @@
                         <th style="width: 3rem">
                             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                         </th>
-                        <th pSortableColumn="reference">Reference <p-sortIcon field="reference"></p-sortIcon></th>
-                        <th pSortableColumn="professor">Professor <p-sortIcon field="professor"></p-sortIcon></th>
-                        <th pSortableColumn="student">Student <p-sortIcon field="student"></p-sortIcon></th>
+                        <th pSortableColumn="professor">Teacher LastName <p-sortIcon field="professor"></p-sortIcon></th>
+                        <th pSortableColumn="student">Student LastName  <p-sortIcon field="student"></p-sortIcon></th>
                         <th pSortableColumn="start at">Start at <p-sortIcon field="dateDebut"></p-sortIcon></th>
                         <th pSortableColumn="student">finish at <p-sortIcon field="dateFin"></p-sortIcon></th>
                         <th pSortableColumn="duration">Duration <p-sortIcon field="duration"></p-sortIcon></th>
@@ -49,9 +45,8 @@
                         <td>
                             <p-tableCheckbox [value]="sessionCours"></p-tableCheckbox>
                         </td>
-                        <td>{{sessionCours.reference}}</td>
                         <td>{{sessionCours.prof.nom}}</td>
-                        <td>{{sessionCours.etudiant.prenom}}</td>
+                        <td>{{sessionCours.etudiant.nom}}</td>
                         <td>{{sessionCours.dateDebut}}</td>
                         <td>{{sessionCours.dateFin}}</td>
                         <td>{{sessionCours.duree}}</td>

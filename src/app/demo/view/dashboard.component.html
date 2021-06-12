@@ -1,7 +1,21 @@
-<div class="login-body" style="background-image: url('assets/layout/images/home.jpg')">
-    <div class="home">
-        We have been serving the Casablanca community for over 40 consecutive years. We are located on Moulay Youssef Boulevard across from the Place de la Liberté. In addition to the administration and our modern classrooms, our facility includes a large multimedia lab, a study center, a bookstore and a student café. Our classes are designed to help students improve their communication skills in English. We also offer business English, TOEFL preparation, BULATS preparation, TOEIC preparation courses. The American Language Center exists to give all of our students the best teaching and learning experience in Casablanca.
-    </div>
-</div>
-
+<p-galleria [(value)]="home" [responsiveOptions]="responsiveOptions" [containerStyle]="{'max-width': '100%'}" [numVisible]="3" [circular]="true"
+            [autoPlay]="true" [transitionInterval]="8000" cl>
+    <ng-template pTemplate="item" let-item>
+        <div class="home-back" style="width: 100%;height: 80vh;background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url('{{item.label}}');background-size: cover;background-position: center;">
+            <div class="home">
+                <h1>{{item.titre}}</h1>
+                <p>{{item.descreption}}</p><br>
+                <p>{{item.descreption2}}</p><br>
+                <p>{{item.descreption3}}</p><br>
+                <p>{{item.descreption4}}</p><br>
+                <p>{{item.descreption5}}</p><br>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="thumbnail" let-item>
+        <div class="p-grid p-nogutter p-justify-center" >
+            <img [src]="item.label" style="width: 30%;height: 10vh;background-size: cover;background-position: center; " />
+        </div>
+    </ng-template>
+</p-galleria>
 

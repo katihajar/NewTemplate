@@ -30,19 +30,29 @@ export class RecommendationComponent implements OnInit {
   public save() {
      this.selected.prof = this.serviceUser.prof;
      this.service.save().subscribe(data => {
+         // tslint:disable-next-line:no-shadowed-variable
+       this.service.findAll().subscribe(data => this.items = data);
       // @ts-ignore
-      this.items.push({...data});
-      console.log(this.selected);
-      console.log('meryem');
+       this.items.push({...data});
+       console.log(this.selected);
+       console.log('meryem');
     });
     // tslint:disable-next-line:no-unused-expression
      this.selected == null;
      this.selected.prof.id = this.serviceUser.prof.id;
      this.service.findAll().subscribe(data => this.items = data);
+     this.editDialog = false;
      this.selected = new RecommendTeacher();
   }
   // tslint:disable-next-line:adjacent-overload-signatures
   set selected(value: RecommendTeacher) {
     this.service.selected = value;
   }
+    get editDialog(): boolean {
+        return this.service.editDialog;
+    }
+
+    set editDialog(value: boolean) {
+        this.service.editDialog = value;
+    }
 }

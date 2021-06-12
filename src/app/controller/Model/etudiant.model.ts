@@ -3,6 +3,7 @@ import {QuizEtudiant} from './quiz-etudiant.model';
 import {EtatInscription} from './etat-inscription.model';
 import {Prof} from './prof.model';
 import {Centre} from './centre.model';
+import {EtatEtudiantSchedule} from "./etat-etudiant-schedule.model";
 
 export class Etudiant {
     public id: number;
@@ -16,7 +17,7 @@ export class Etudiant {
     public password: string;
     public parcours = new Parcours();
     public quizEtudiant = new Array<QuizEtudiant>();
-    public etatInscription = new EtatInscription();
+    public etatEtudiantSchedule = new EtatEtudiantSchedule();
     public prof = new Prof();
     public image: string;
 }

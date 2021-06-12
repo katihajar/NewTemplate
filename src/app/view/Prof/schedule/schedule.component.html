@@ -66,19 +66,24 @@
 <p-dialog [(visible)]="createDialog" [style]="{width: '450px'}"  [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="p-field">
-            <label >Name</label>
-            <input type="text" pInputText id="name" [(ngModel)]="selected.etudiant.nom" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !selected.etudiant.nom">name is required.</small>
+            <label for="id">Id</label>
+            <input type="text" pInputText id="id" [(ngModel)]="etudiant.id" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !etudiant.id">ref is required.</small>
         </div>
         <div class="p-field">
+            <label >Name</label>
+            <input type="text" pInputText id="name" [(ngModel)]="etudiant.nom" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !etudiant.nom">name is required.</small>
+        </div>
+
+        <div class="p-field">
              <label for="ref">Ref</label>
-             <input type="text" pInputText id="ref" [(ngModel)]="selected.ref" required autofocus />
-             <small class="p-invalid" *ngIf="submitted && !selected.ref">ref is required.</small>
+             <input type="text" pInputText id="ref" [(ngModel)]="etudiant.ref" required autofocus />
+             <small class="p-invalid" *ngIf="submitted && !etudiant.ref">ref is required.</small>
          </div>
          <div class="p-field">
-             <label for="ref">Etat ( ACTIVE :1 / Start : 2 )</label>
-             <input type="text" pInputText id="etat1" [(ngModel)]="selected.etat.id" required autofocus />
-             <small class="p-invalid" *ngIf="submitted && !selected.etat.id">ref is required.</small>
+             <label for="etat">Etat </label>
+             <p-dropdown inputId="etat"  [options]="etatEtudiantSchedule" [(ngModel)]="selected.etudiant.etatEtudiantSchedule" placeholder="Etat Etudiant" optionLabel="libelle"></p-dropdown>
          </div>
         <div class="p-field">
             <label for="start">Date Dabut</label>
@@ -95,6 +100,6 @@
     </ng-template>
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
-        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="addEvent()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="addStudent()"></button>
     </ng-template>
 </p-dialog>

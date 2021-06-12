@@ -18,6 +18,7 @@ export class InscriptionAdminComponent implements OnInit {
   }
 
   public save() {
+    this.submitted = true;
     this.service.save().subscribe(
         data => {
       console.log(this.selected);

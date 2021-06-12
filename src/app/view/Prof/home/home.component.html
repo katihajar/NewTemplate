@@ -19,13 +19,12 @@
             <ng-template pTemplate="header">
                 <img alt="Card" src="https://image.freepik.com/vecteurs-libre/organigramme-isometrique-education-ligne-livres-personnages-humains-appareils-informatiques-violet_1284-31780.jpg" [style]="{'height': '15rem'}">
             </ng-template>
-            <ul>
-                <li><p-dataView [value]="itemssalaryVo" >
-                    <ng-template let-s pTemplate="listItem" >
-                        <span style="color: green" >CURRENT PAY </span>
-                        <h4 >{{s.montantGlobale}} $</h4>
-                    </ng-template>
-                </p-dataView>
+            <ul style=" background-color: lavender ">
+                <li style=" background-color: lavender ">
+
+                        <span style="color: darkslateblue; background-color: lavender " >CURRENT PAY </span>
+                        <h4 style="  background-color: lavender;" >{{this.selectedsalaryVo.montantMensuel}} $</h4>
+
                 </li>
                 <li>
                     <i class="pi pi-chevron-circle-down"></i> <span style="color: darkslateblue">Workload </span>
@@ -35,7 +34,7 @@
                 <li>
 
                     <span style="color: darkslateblue" >PREMIEUM STUDENTS</span>
-                    <h4 > STUDENTS</h4>
+                    <h4 >{{this.items.length}} STUDENTS</h4>
 
                 </li>
 

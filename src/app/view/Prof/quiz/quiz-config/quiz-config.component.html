@@ -2,38 +2,37 @@
     <ng-template pTemplate="content">
         <div class="p-field">
             <div class="p-field-checkbox">
-                <p-checkbox name="group1" (change)="ProgressBar($event)" ></p-checkbox>
-                <label>Show progress bar</label>
+                <p-radioButton name="group1" (change)="ProgressBar($event)" ></p-radioButton>
+                <label>Afficher la barre de progression</label>
                 <br/>
-                <p-checkbox name="group1" (change)="itemChecked($event)" ></p-checkbox>
-                <label>Sort responses in random mode</label>
+                <p-radioButton name="group1" value="{{rep}}" [(ngModel)]="configuration.shuffleOptions" ></p-radioButton>
+                <label>Trier les reponses en mode aléatoire</label>
             </div>
         </div>
         <p style="justify-content: space-between"></p>
         <div class="p-field">
-            <h6>The respondent can see the following:</h6>
             <div class="p-field-checkbox">
-                <p-checkbox name="group2"  ></p-checkbox>
-                <label>Questions with incorrect answers</label>
+                <p-radioButton name="group2" value="{{qst}}" [(ngModel)]="configuration.shuffleOptions" ></p-radioButton>
+                <label>Trier les questions en mode aléatoire</label>
             </div>
             <div class="p-field-checkbox">
-                <p-checkbox name="group2"  ></p-checkbox>
-                <label>Correct answers</label>
+                <p-radioButton name="group2" value="{{back}}" [(ngModel)]="configuration.allowBack"  ></p-radioButton>
+                <label>Retourner en question précédente </label>
             </div>
             <div class="p-field-checkbox">
-                <p-checkbox name="group2"  ></p-checkbox>
-                <label>Number of points</label>
+                <p-radioButton name="group2"  ></p-radioButton>
+                <label>Nombre de points</label>
             </div>
         </div>
         <div class="p-field">
-            <h6>Publish the note:</h6>
+            <h6>Publier la note :</h6>
             <div class="p-field-radiobutton">
                 <p-radioButton name="note" value="option1" inputId="note1"></p-radioButton>
-                <label>Immediately after each shipment</label>
+                <label>Immédiatement après chaque envoi</label>
             </div>
             <div class="p-field-radiobutton">
                 <p-radioButton name="note" value="option2" inputId="note2"></p-radioButton>
-                <label>Later, after manual examination</label>
+                <label>Plus tard, après examen manuel</label>
             </div>
         </div>
     </ng-template>

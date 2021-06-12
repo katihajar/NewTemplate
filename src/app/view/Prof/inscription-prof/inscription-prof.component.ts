@@ -17,8 +17,16 @@ export class InscriptionProfComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  get submitted(): boolean {
+    return this.service.submitted;
+  }
+
+  set submitted(value: boolean) {
+    this.service.submitted = value;
+  }
   public save() {
-    this.selectedProf.categorieProf.id = 89;
+    this.selectedProf.categorieProf.id = 1;
+    this.submitted = true;
     this.service.save().subscribe(
         data => {
       console.log(this.selectedProf);
