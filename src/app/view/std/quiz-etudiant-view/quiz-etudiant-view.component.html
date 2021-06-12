@@ -26,7 +26,7 @@
                             </div>
                             <div class="question" id="question">
 
-                                <br><br><br><output style="margin-left: 200px"><B>{{questionView.numero}} - {{questionView.libelle}} </B></output>
+                                <br><br><br><output style="margin-left: 100px"><B>{{questionView.numero}} - {{questionView.libelle}} </B></output>
 
                                 <div *ngFor="let r of reponsesView" class="question_answer" id="rep-{{r.ref}}">
 
@@ -39,8 +39,8 @@
 
                         </div>
                         <div class="card-footer">
-                            <button pButton pRipple class="p-button-rounded p-mr-2" icon="pi pi-caret-left" id="btn-previous" style="background-color: #9D8FEE" label="Previous" (click)="previous()"></button>
-                            <button pButton pRipple class="p-button-rounded p-mr-2" icon="pi pi-caret-right" id="btn-next" style="background-color: #9D8FEE; margin-left: 800px" label="Next" (click)="next()"></button>
+                            <button pButton pRipple class="p-button-rounded p-mr-2" icon="pi pi-caret-left" id="btn-previous" style="background-color: #0C8990" label="Previous" (click)="previous()"></button>
+                            <button pButton pRipple class="p-button-rounded p-mr-2" icon="pi pi-caret-right" id="btn-next" style="background-color: #0C8990; margin-left: 800px" label="Next" (click)="next()"></button>
                         </div>
                     </div>
                 </div>

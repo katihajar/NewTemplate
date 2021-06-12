@@ -10,20 +10,20 @@ div{
   background-color: white;
 }
 .card-body{
-  height: 350px;
-  width: 775px;
+  height: 450px;
+  //width: 775px;
 }
 .card-header{
-  background-color: lavender;
+  background-color: black;
   height: 80px;
-  color: white;
+  color: cyan;
 }
 #quizGrammar{
   margin-left: 400px;
   margin-right: 80px;
   font-size: 30px;
   font-family: Algerian;
-  color: #9D8FEE;
+  color: cyan;
 }
 .start{
   visibility: visible;
@@ -40,7 +40,7 @@ div{
   margin-bottom: 10px;
   display: block;
   padding: 8px 15px;
-  background-color: #9D8FEE;
+  background-color: #90eef0;
   color: white;
   border-radius: 15px;
   transition: all 0.3s ease-out;

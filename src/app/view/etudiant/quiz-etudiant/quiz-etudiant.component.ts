@@ -355,10 +355,14 @@ export class QuizEtudiantComponent implements OnInit {
       if (this.noteQuiz >= this.quiz.seuilReussite)
       {
         this.quizEtudiant.resultat = 'validé';
+        document.getElementById('congratulations').style.visibility = 'visible';
+        document.getElementById('hard-luck').style.visibility = 'hidden';
       }
       else if (this.noteQuiz < this.quiz.seuilReussite)
       {
         this.quizEtudiant.resultat = 'non validé';
+        document.getElementById('congratulations').style.visibility = 'hidden';
+        document.getElementById('hard-luck').style.visibility = 'visible';
       }
       this.service.updateQuizEtudiant().subscribe(
           data => {
@@ -446,12 +450,12 @@ export class QuizEtudiantComponent implements OnInit {
           {
               if(reponse.ref == this.reponses[i].ref)
               {
-                  document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#a318ad';
+                  document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#598e8f';
                   document.getElementById('div-' + this.reponses[i].ref).style.width = '320px';
                   document.getElementById('div-' + this.reponses[i].ref).style.height = '43px';
               }
               else {
-                  document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#9D8FEE';
+                  document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#90eef0';
                   document.getElementById('div-' + this.reponses[i].ref).style.width = '300px';
                   document.getElementById('div-' + this.reponses[i].ref).style.height = '40px';
               }
@@ -474,7 +478,7 @@ export class QuizEtudiantComponent implements OnInit {
                 }
                 this.selectedValueCheckbox.push(reponse);
                 console.log(this.selectedValueCheckbox);
-                document.getElementById('div-' + reponse.ref).style.backgroundColor = '#a318ad';
+                document.getElementById('div-' + reponse.ref).style.backgroundColor = '#598e8f';
                 document.getElementById('div-' + reponse.ref).style.width = '320px';
                 document.getElementById('div-' + reponse.ref).style.height = '43px';
             }
@@ -482,7 +486,7 @@ export class QuizEtudiantComponent implements OnInit {
               {
                   this.selectedValueCheckbox = this.selectedValueCheckbox.filter(m=>m!=reponse);
                   console.log(this.selectedValueCheckbox);
-                  document.getElementById('div-' + reponse.ref).style.backgroundColor = '#9D8FEE';
+                  document.getElementById('div-' + reponse.ref).style.backgroundColor = '#90eef0';
                   document.getElementById('div-' + reponse.ref).style.width = '300px';
                   document.getElementById('div-' + reponse.ref).style.height = '40px';
               }
