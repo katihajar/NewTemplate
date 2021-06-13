@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
-import {Parcours} from '../../../../controller/Model/parcours.model';
-import {Cours} from '../../../../controller/Model/cours.model';
-import {Centre} from '../../../../controller/Model/centre.model';
+import {Parcours} from '../../../../controller/model/parcours.model';
+import {Cours} from '../../../../controller/model/cours.model';
+import {Centre} from '../../../../controller/model/centre.model';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
 
 
@@ -34,14 +34,15 @@ export class CoursCreateComponent implements OnInit {
       this.service.SaveCours().subscribe(data => {
         // @ts-ignore
         this.itemscours.push({...data});
+        // tslint:disable-next-line:no-shadowed-variable
+        this.service.afficheCours().subscribe(data => this.itemscours = data);
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
-          detail: 'Cours Update',
+          detail: 'Cours Created',
           life: 3000
         });
       });
-      this.service.afficheCours().subscribe(data => this.itemscours = data);
       this.createDialogCours = false;
       this.selectedcours = new Cours();
     }

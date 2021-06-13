@@ -14,6 +14,21 @@ export class FormLayoutDemoComponent {
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
                 private service: InscriptionService ) { }
+    get createDialog(): boolean {
+        return this.service.createDialog;
+    }
+
+    set createDialog(value: boolean) {
+        this.service.createDialog = value;
+    }
+
+    get submitted(): boolean {
+        return this.service.submitted;
+    }
+
+    set submitted(value: boolean) {
+        this.service.submitted = value;
+    }
     get selected(): Inscription {
         return this.service.selected;
     }
@@ -41,6 +56,7 @@ export class FormLayoutDemoComponent {
     }
     // tslint:disable-next-line:typedef
     public save(){
+        this.submitted = true;
         this.service.save().subscribe(data => {
                 // @ts-ignore
                 this.selectes.push({...data});

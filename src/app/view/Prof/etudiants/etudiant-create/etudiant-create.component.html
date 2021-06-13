@@ -18,7 +18,7 @@
         </div>
         <div class="p-field">
             <label for="parcours">Parcours</label><br>
-            <select type="text" class="btn btn-block btn-outline-light form-control" id="parcours"  name="Parcours"  style="width: 300px; height: 30px ; background-color: lavender;margin-left: 5px" (click)="findAllParcours()"  [(ngModel)]="selected.parcours.id" >
+            <select type="text" pInputText class="btn btn-block btn-outline-light form-control" id="parcours"  name="Parcours"  style=" background-color: gainsboro;margin-left: 5px" (click)="findAllParcours()"  [(ngModel)]="selected.parcours.id" >
                 <option  selected="selected" *ngFor="let p of parcoursList"  [ngValue]="p.id"> {{p.libelle}}</option>
 
             </select>            <small class="p-invalid" *ngIf="submitted && !selected.parcours.libelle">parcours is required.</small>

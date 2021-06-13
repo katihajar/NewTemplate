@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
-import {Parcours} from '../../../../controller/Model/parcours.model';
-import {Centre} from '../../../../controller/Model/centre.model';
-import {Cours} from '../../../../controller/Model/cours.model';
+import {Parcours} from '../../../../controller/model/parcours.model';
+import {Cours} from '../../../../controller/model/cours.model';
 
 @Component({
   selector: 'app-cours-edit',
@@ -26,7 +25,7 @@ export class CoursEditComponent implements OnInit {
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
-          detail: 'Commande Updated',
+          detail: 'Cours Updated',
           life: 3000
         });
       });

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {SessionCours} from '../../../../controller/model/session-cours.model';
 import {MessageService} from 'primeng/api';
 import {SessionCoursService} from '../../../../controller/service/session-cours.service';
+import {Prof} from '../../../../controller/Model/prof.model';
+import {Etudiant} from '../../../../controller/Model/etudiant.model';
 
 @Component({
   selector: 'app-session-cours-create',
@@ -23,9 +25,10 @@ export class SessionCoursCreateComponent implements OnInit {
 
    public save() {
      this.submitted = true;
-     if (this.selected.reference.trim()) {
-       this.service.save().subscribe(data => {
+     this.service.save().subscribe(data => {
          this.items.push({...data});
+         // tslint:disable-next-line:no-shadowed-variable
+         this.service.findAll().subscribe(data => this.items = data);
          this.messageService.add({
            severity: 'success',
            summary: 'Successful',
@@ -33,9 +36,8 @@ export class SessionCoursCreateComponent implements OnInit {
            life: 3000
          });
        });
-       this.createDialog = false;
-       this.selected = new SessionCours();
-     }
+     this.createDialog = false;
+     this.selected = new SessionCours();
    }
    get selected(): SessionCours {
      return this.service.selected;
@@ -57,10 +59,31 @@ export class SessionCoursCreateComponent implements OnInit {
      return this.service.submitted;
    }
 
+   public  findAllProf(){
+   this.service.findAllProf().subscribe( data => this.itemsProf = data);
+   }
+  public  findAllEtudiant(){
+    this.service.findAllEtudiant().subscribe( data => this.itemsEtudiant = data);
+  }
+  // tslint:disable-next-line:adjacent-overload-signatures
    set submitted(value: boolean) {
      this.service.submitted = value;
    }
+  get itemsProf(): Array<Prof> {
+    return this.service.itemsProf;
+  }
 
+  set itemsProf(value: Array<Prof>) {
+    this.service.itemsProf = value;
+  }
+
+  get itemsEtudiant(): Array<Etudiant> {
+    return this.service.itemsEtudiant;
+  }
+
+  set itemsEtudiant(value: Array<Etudiant>) {
+    this.service.itemsEtudiant = value;
+  }
    get items(): Array<SessionCours> {
      return this.service.items;
    }

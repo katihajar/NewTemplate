@@ -25,7 +25,7 @@ export class ProfesseurListComponent implements OnInit {
   public delete(selected: Prof) {
     this.selected = selected;
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete ' + selected.reference + '?',
+      message: 'Are you sure you want to delete ' + selected.ref + '?',
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
@@ -90,7 +90,9 @@ export class ProfesseurListComponent implements OnInit {
 
     ];
   }
-
+ public Search(){
+    this.service.Search().subscribe( data => this.items = data);
+  }
   get selected(): Prof {
     return this.service.selected;
   }

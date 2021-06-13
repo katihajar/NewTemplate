@@ -7,7 +7,7 @@ export class SalaryVo {
     public  nbrSessionMensuel: number ;
     public  nbrSessionGlobale: number ;
     public  responsable = new Prof();
-    public mois: Date = new Date();
-    public annee: Date = new Date();
+    public mois: string;
+    public annee: string;
     public  prof = new Prof();
 }

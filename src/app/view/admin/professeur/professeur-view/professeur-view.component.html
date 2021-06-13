@@ -1,8 +1,8 @@
 <p-dialog [(visible)]="viewDialog" [style]="{width: '450px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="p-field">
-            <label for="reference">Reference</label>
-            <input type="text" pInputText id="reference" [(ngModel)]="selected.reference" disabled />
+            <label for="reference">UserName</label>
+            <input type="text" pInputText id="reference" [(ngModel)]="selected.login" disabled />
         </div>
         <div class="p-field">
             <label for="firstName">First Name</label>
@@ -14,14 +14,17 @@
         </div>
         <div class="p-field">
             <label for="phoneNumber">Phone Number</label>
-            <input type="text" pInputText id="phoneNumber" [(ngModel)]="selected.phoneNumber" disabled />
+            <input type="text" pInputText id="phoneNumber" [(ngModel)]="selected.numero" disabled />
         </div>
 
         <div class="p-field">
             <label for="email">Email</label>
             <input type="text" pInputText id="email" [(ngModel)]="selected.email" disabled />
         </div>
-
+        <div class="p-field">
+            <label for="email">Address</label>
+            <input type="text" pInputText id="address" [(ngModel)]="selected.addresse" disabled />
+        </div>
     </ng-template>
 
     <ng-template pTemplate="footer">

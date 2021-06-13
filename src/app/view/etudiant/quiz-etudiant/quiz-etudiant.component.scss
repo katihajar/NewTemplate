@@ -14,19 +14,20 @@ div{
   width: 775px;
 }
 .card-header{
-  background-color: lavender;
+  background-color: black;
   height: 80px;
-  color: white;
+  color: cyan;
 }
 #quizGrammar{
   margin-left: 400px;
   margin-right: 80px;
   font-size: 30px;
   font-family: Algerian;
-  color: #9D8FEE;
+  color: cyan;
 }
 .start{
   visibility: visible;
+  font-size: 30px;
 }
 .question{
   visibility: hidden;
@@ -42,8 +43,8 @@ div{
   margin-bottom: 10px;
   display: block;
   padding: 8px 15px;
-  background-color: #9D8FEE;
-  color: white;
+  background-color: #90eef0;
+  color: black;
   border-radius: 15px;
   transition: all 0.3s ease-out;
   width: 300px;

@@ -48,6 +48,8 @@ export class NewsAdminViewComponent implements OnInit {
   public delete()
   {
     this.service.deleteByReference().subscribe();
+    this.viewDialogNews = false;
+    this.service.findAll().subscribe(data => this.items = data);
   }
 
   ngOnInit(): void {

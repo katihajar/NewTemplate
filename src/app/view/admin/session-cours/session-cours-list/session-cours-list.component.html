@@ -3,16 +3,16 @@
 
         <p-toast></p-toast>
 
-        <div class="card" style="background-color: lavender">
+        <div class="card" style="background-color: gainsboro">
             <p-toolbar styleClass="p-mb-4">
                 <ng-template pTemplate="left">
-                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openCreate()"></button>
+                    <button pButton pRipple label="New" icon="pi pi-plus" style="width: 90px" class="p-button-success p-mr-2 p-mb-2" (click)="openCreate()"></button>
                     <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length"></button>
                 </ng-template>
 
                 <ng-template pTemplate="right">
                     <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>
-                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help p-mb-2" (click)="dt.exportCSV()"></button>
+                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-info p-mb-2" (click)="dt.exportCSV()"></button>
                 </ng-template>
             </p-toolbar>
 
@@ -23,10 +23,7 @@
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         <h5 class="p-m-0">Manage Sessions</h5>
-                        <span class="p-input-icon-left">
-                        <i class="pi pi-search"></i>
-                        <input pInputText type="text"  placeholder="Search..." />
-                    </span>
+
                     </div>
                 </ng-template>
                 <ng-template pTemplate="header">
@@ -34,9 +31,8 @@
                         <th style="width: 3rem">
                             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                         </th>
-                        <th pSortableColumn="reference">Reference <p-sortIcon field="reference"></p-sortIcon></th>
-                        <th pSortableColumn="professor">Professor <p-sortIcon field="professor"></p-sortIcon></th>
-                        <th pSortableColumn="student">Student <p-sortIcon field="student"></p-sortIcon></th>
+                        <th pSortableColumn="professor">Teacher LastName <p-sortIcon field="professor"></p-sortIcon></th>
+                        <th pSortableColumn="student">Student LastName  <p-sortIcon field="student"></p-sortIcon></th>
                         <th pSortableColumn="start at">Start at <p-sortIcon field="dateDebut"></p-sortIcon></th>
                         <th pSortableColumn="student">finish at <p-sortIcon field="dateFin"></p-sortIcon></th>
                         <th pSortableColumn="duration">Duration <p-sortIcon field="duration"></p-sortIcon></th>
@@ -49,9 +45,8 @@
                         <td>
                             <p-tableCheckbox [value]="sessionCours"></p-tableCheckbox>
                         </td>
-                        <td>{{sessionCours.reference}}</td>
-                        <td>{{sessionCours.prof.lastName}}</td>
-                        <td>{{sessionCours.etudiant.prenom}}</td>
+                        <td>{{sessionCours.prof.nom}}</td>
+                        <td>{{sessionCours.etudiant.nom}}</td>
                         <td>{{sessionCours.dateDebut}}</td>
                         <td>{{sessionCours.dateFin}}</td>
                         <td>{{sessionCours.duree}}</td>
@@ -61,7 +56,7 @@
                         <td>
                             <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="edit(sessionCours)"></button>
                             <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2" (click)="view(sessionCours)"></button>
-                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="delete(sessionCours)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="delete(sessionCours)"></button>
                         </td>
                     </tr>
                 </ng-template>

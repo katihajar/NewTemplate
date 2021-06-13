@@ -2,11 +2,11 @@
     <h1 style="margin-left: 4%; margin-top: 1%; ">Classes</h1>
     <div class="p-col-11" style="margin-left: 4%; ">
         <p-toast></p-toast>
-        <div class="card" style="background-color: lavender">
+        <div class="card" style="background-color: gainsboro">
             <p-toolbar styleClass="p-mb-4 inline">
                 <ng-template pTemplate="right">
-                    <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>
-                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help p-mb-2" (click)="dt.exportCSV()"></button>
+                    <p-fileUpload mode="basic" accept="cvs/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>
+                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-info p-mb-2" (click)="dt.exportCSV()"></button>
                 </ng-template>
             </p-toolbar>
 

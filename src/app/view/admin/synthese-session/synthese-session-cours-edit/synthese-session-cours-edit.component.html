@@ -5,23 +5,19 @@
             <input type="text" pInputText id="reference" [(ngModel)]="selected.reference" required autofocus/>
             <small class="p-invalid" *ngIf="submitted && !selected.reference">reference is required.</small>
         </div>
-        <div class="p-field">
-            <label for="id">Id</label>
-            <input type="text" pInputText id="id" [(ngModel)]="selected.id" required autofocus/>
-            <small class="p-invalid" *ngIf="submitted && !selected.id">id is required.</small>
-        </div>
+
         <div class="p-field">
             <label for="username">Username</label>
             <input type="text" pInputText id="username" [(ngModel)]="selected.username" required autofocus/>
             <small class="p-invalid" *ngIf="submitted && !selected.username">id is required.</small>
         </div>
         <div class="p-field">
-            <label for="firstName">Username</label>
+            <label for="firstName">firstName</label>
             <input type="text" pInputText id="firstName" [(ngModel)]="selected.firstName" required autofocus/>
             <small class="p-invalid" *ngIf="submitted && !selected.firstName">first Name is required.</small>
         </div>
         <div class="p-field">
-            <label for="lastName">Username</label>
+            <label for="lastName">lastName</label>
             <input type="text" pInputText id="lastName" [(ngModel)]="selected.lastName" required autofocus/>
             <small class="p-invalid" *ngIf="submitted && !selected.lastName">Last Name is required.</small>
         </div>

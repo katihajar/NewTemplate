@@ -14,9 +14,9 @@
                 </div>
             </p-toolbar>
         </div>
-        <p-card   [style]="{width: '900px'}" id="mainCard" styleClass="p-card-shadow" class="container" >
+        <p-card   [style]="{width: '1200px'}" id="mainCard" styleClass="p-card-shadow" class="container" >
             <ng-template pTemplate="header">
-                <p-card [style]="{backgroundColor: ' lavender'}">
+                <p-card [style]="{backgroundColor: ' gainsboro'}">
                     <div>
                         <!--  <h1  style=" text-align: center" id="quizTitre">Quiz</h1>-->
                         <input type="text"  pInputText placeholder="Name Quiz" id="titleQuiz" [(ngModel)]="selected.lib">
@@ -51,8 +51,8 @@
                             <textarea type="text" rows="4" pInputTextarea  name="libelle{{i}}" [(ngModel)]="question.libelle"></textarea>
 
                         </div>
-                        <div class="p-col-12 " style="text-align: center; margin: 5px">
-                            <h5 class="reponseLib">Answers</h5>
+                        <div class="p-col-12 " style="text-align: center; margin: 5px; ">
+                            <h1 class="reponseLib" style="width: 100px"><b>Answers</b></h1>
                         </div>
                         <div class="p-formgroup-inline">
                             <div class="p-field p-col-12 p-md-3">

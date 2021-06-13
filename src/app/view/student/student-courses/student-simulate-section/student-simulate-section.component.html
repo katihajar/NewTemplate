@@ -2,9 +2,9 @@
 <div class=" card">
     <div class="p-grid">
         <div class="p-col">
-            <div class="product-grid-item card" style="background-color: lavender;">
+            <div class="product-grid-item card" style="background-color: gainsboro;">
                 <div class="product-grid-item-content" style="cursor: pointer">
-                    <div class="product-name" style="margin-bottom: 15px"><h1>{{this.selectedsection.libelle}}</h1></div>
+                    <div class="product-name" style="margin-bottom: 15px"><h1>-{{this.selectedsection.libelle}}-</h1></div>
                     <iframe [src]='photoURL()' width="500" height="360" frameborder="0"
                             webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                     <div class="product-description"><h6>{{this.selectedsection.urlVideo}}</h6></div>
@@ -24,13 +24,13 @@
                 <ng-template pTemplate="header">
                     <tr>
 
-                        <th pSortableColumn="libelle">CategorieSection<p-sortIcon field="libelle"></p-sortIcon></th>
+                        <th pSortableColumn="libelle" style="text-align: center">Categorie<p-sortIcon field="libelle"></p-sortIcon></th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-section>
                     <tr>
 
-                        <td [style.color]="(section.categorieSection.libelle) == (this.selectedsection.categorieSection.libelle)? 'green' :'orange' "  ><u >{{section.categorieSection.libelle}}</u></td>
+                        <td style ="text-align: center" [style.color]="(section.categorieSection.libelle) == (this.selectedsection.categorieSection.libelle)? 'green' :'orange' "  ><u >{{section.categorieSection.libelle}}</u></td>
 
 
                     </tr>
@@ -47,9 +47,9 @@
 
 
 
-    <div class="card-footer " style="margin-left: 500px" >
-        <button pButton pRipple type="button" label="Previous" class="p-button-rounded" (click)="PreviousSection()" ></button>
-        <button pButton pRipple type="button" id="quiz" label="{{this.passerQuiz}}" class="p-button-rounded" [routerLink]="quizView? ['/pages/quiz-view']: ['/pages/quiz-etudiant']"></button>
-        <button pButton pRipple type="button" label="Next" class="p-button-rounded" style="margin-left: 30px" (click)="NextSection()" ></button>
+    <div class="card-footer " >
+        <button pButton pRipple type="button" icon="pi pi-caret-left" style="margin-left: 15px; width: 120px" label="Previous" class="p-button-rounded" (click)="PreviousSection()" ></button>
+        <button pButton pRipple type="button" style="margin-left: 400px; width: 120px" id="quiz" label="{{this.passerQuiz}}" class="p-button-rounded" [routerLink]="quizView? ['/pages/quiz-view']: ['/pages/quiz-etudiant']"></button>
+        <button pButton pRipple type="button" icon="pi pi-caret-right" label="Next" style="margin-left: 420px; width: 120px" class="p-button-rounded" (click)="NextSection()" ></button>
     </div>
 </div>

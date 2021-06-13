@@ -1,14 +1,14 @@
-<p-dialog [(visible)]="viewDialogQuiz" [style]="{width: '800px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
+<p-dialog [(visible)]="viewDialogQuiz" [style]="{width: '1200px'}" header="Quiz Details" [modal]="true" styleClass="p-fluid">
     <div class="p-grid ">
         <div class="p-col">
             <p-toast></p-toast>
-            <div class="card" style="background-color: lavender">
+            <div class="card" style="background-color: gainsboro">
                 <p-toolbar styleClass="p-mb-4 inline">
 
 
                     <ng-template pTemplate="right">
                         <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>
-                        <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help p-mb-2" (click)="dt.exportCSV()"></button>
+                        <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-info p-mb-2" (click)="dt.exportCSV()"></button>
                     </ng-template>
                 </p-toolbar>
 

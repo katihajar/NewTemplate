@@ -290,12 +290,14 @@ export class ClassRoomService {
   public findSalary(): Observable <SalaryVo> {
     return this.http.get<SalaryVo> ('http://localhost:8036/learn/salary/prof/id/' + this.selectedsalaryVo.prof.id );
   }
-  public findSalaryByDate( mois, annee): Observable<Array<SalaryVo>> {
+  public findSalaryByDate( ): Observable<SalaryVo> {
     // tslint:disable-next-line:max-line-length
-    return this.http.get<Array<SalaryVo> >('http://localhost:8036/learn/salary/mois/' + mois + '/annee/' + annee );
+    return this.http.get<SalaryVo> ('http://localhost:8036/learn/salary/mois/{mois}/annee/{annee}/prof/id/{id}?annee=' + this.selectedsalaryVo.annee + '&id=' + this.selectedsalaryVo.prof.id + '&mois=' + this.selectedsalaryVo.mois);
   }
-  public findSalaryByDateAndProf( mois, annee): Observable<SalaryVo> {
+  public findSalaryByDateAndProf(): Observable<SalaryVo> {
+    console.log( (new Date().getMonth() + 1 ).toString());
+    console.log((new Date().getFullYear().toString()));
     // tslint:disable-next-line:max-line-length
-    return this.http.get<SalaryVo> ('http://localhost:8036/learn/salary/mois/' + (new Date().getMonth() + 1 ).toString() + '/annee/' + new Date().getFullYear().toString() + '/prof/id/' + this.selectedsalaryVo.prof.id  );
+    return this.http.get<SalaryVo> ('http://localhost:8036/learn/salary/mois/{mois}/annee/{annee}/prof/id/{id}?annee=' + new Date().getFullYear().toString() + '&id=' + this.selectedsalaryVo.prof.id + '&mois=' + (new Date().getMonth() + 1 ).toString() );
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NewsService} from '../../../../controller/service/news.service';
 import {News} from '../../../../controller/model/news.model';
+import {ConfirmationService, MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-news-admin-create',
@@ -120,19 +121,21 @@ export class NewsAdminCreateComponent implements OnInit {
     this.submittedNews = true;
     this.service.save().subscribe(data => {
       this.items.push({...data});
-      /*this.messageService.add({
+      // tslint:disable-next-line:no-shadowed-variable
+      this.service.findAll().subscribe(data => this.items = data);
+      this.messageService.add({
         severity: 'success',
         summary: 'Successful',
-        detail: 'Commande Created',
+        detail: 'News Created',
         life: 3000
-      })*/
+       });
     });
     this.createDialogNews = false;
     this.selected = new News();
   }
-  constructor(private service: NewsService) { }
+constructor(private service: NewsService, private messageService: MessageService, private confirmationService: ConfirmationService) { }
 
-  ngOnInit(): void {
+ngOnInit(): void {
   }
 
 }
