@@ -27,6 +27,9 @@ export class ScheduleService {
     private _clickedEvent = null;
     private _createDialog: boolean;
     private _submitted: boolean;
+    private _etudiants : Array<Etudiant>;
+
+
 
     constructor(private http: HttpClient) {
     }
@@ -53,6 +56,16 @@ export class ScheduleService {
 
     set selectedVo(value: ScheduleVo) {
         this._selectedVo = value;
+    }
+    get etudiants(): Array<Etudiant> {
+        if (this._etudiants == null){
+            this._etudiants = new Array<Etudiant>();
+        }
+        return this._etudiants;
+    }
+
+    set etudiants(value: Array<Etudiant>) {
+        this._etudiants = value;
     }
 
     get itemsVo(): Array<ScheduleVo> {
@@ -181,9 +194,11 @@ export class ScheduleService {
         this.changedEvent.end = this.clickedEvent.end;
     }
     public  addStudent(): Observable<ScheduleProf>{
-        return this.http.post<ScheduleProf>('http://localhost:8036/learn/scheduleProf/save/', this.selected);
+        return this.http.post<ScheduleProf>('http://localhost:8036/learn/scheduleProf/', this.selected);
     }
-
+public getStudents(): Observable<Array<Etudiant>>{
+        return this.http.get<Array<Etudiant>>('http://localhost:8036/learn/etudiant/');
+}
 
 public findEtat(): Observable<Array<EtatEtudiantSchedule>>{
         return this.http.get<Array<EtatEtudiantSchedule>>('http://localhost:8036/learn/etatEtudiantSchedule/');

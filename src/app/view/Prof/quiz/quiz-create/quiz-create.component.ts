@@ -64,9 +64,7 @@ export class QuizCreateComponent implements OnInit {
         }
         return this.service.types;
     }
-    get section(): Section {
-        return this.service.section;
-    }
+
     get createDialog(): boolean {
         return this.service.createDialog;
     }

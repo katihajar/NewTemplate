@@ -123,6 +123,13 @@ export class ScheduleComponent implements OnInit {
   set etudiant(value: Etudiant) {
     this.service.etudiant = value;
   }
+  get etudiants(): Array<Etudiant> {
+    return  this.service.etudiants;
+  }
+  set etudiants(value: Array<Etudiant>) {
+    this.service.etudiants = value;
+  }
+
   set itemsVo(value: Array<ScheduleVo>) {
     this.service.itemsVo = value;
   }
@@ -139,6 +146,7 @@ export class ScheduleComponent implements OnInit {
   ngOnInit() {
     this.service.findAll();
     this.service.findEtat().subscribe(data => this.service.etatEtudiantSchedule = data);
+    this.service.getStudents().subscribe(data => this.etudiants = data);
     this.changedEvent = {title: '', etat: '', start: null, end: '', allDay: null};
     this.options = {
       plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
@@ -168,8 +176,6 @@ export class ScheduleComponent implements OnInit {
       }
     };
   }
-
-
 
 
   save() {
