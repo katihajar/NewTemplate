@@ -10,7 +10,7 @@ export class Quiz {
   public dateFin: Date = new Date();
   public numero: number;
   public seuilReussite: number;
-  public section: Section;
+  public section = new Section();
   public quizEtudiant = new Array<QuizEtudiant>();
   public questions = new Array<Question>();
 }

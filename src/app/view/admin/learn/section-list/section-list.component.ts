@@ -3,6 +3,7 @@ import {Section} from '../../../../controller/model/section.model';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
 import {Router} from '@angular/router';
+import {QuizService} from '../../../../controller/service/quiz.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class SectionListComponent implements OnInit {
 
   cols: any[];
   // tslint:disable-next-line:max-line-length
-  constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private service: ParcoursService , private router: Router) { }
+  constructor(private serviceQuiz: QuizService, private messageService: MessageService, private confirmationService: ConfirmationService, private service: ParcoursService , private router: Router) { }
   ngOnInit(): void {
     this.initCol();
   }
@@ -143,7 +144,8 @@ export class SectionListComponent implements OnInit {
     });
   }
 
-    CreateQuiz() {
+    CreateQuiz(section: Section) {
+      this.serviceQuiz.sectionSelected = section;
       this.router.navigate(['/pages/quiz-create']);
     }
 }
