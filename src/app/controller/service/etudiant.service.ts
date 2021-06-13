@@ -25,6 +25,7 @@ export class EtudiantService {
   private _submitted: boolean;
   private _createDialog: boolean;
   private _items: Array<Etudiant>;
+  private _etudiantByProf: Array<Etudiant>;
   private _itemsprof: Array<Prof>;
 
   private _selectes: Array<Etudiant>;
@@ -40,6 +41,18 @@ export class EtudiantService {
 
 
   constructor(private http: HttpClient, public serviceUser: LoginService) { }
+
+
+  get etudiantByProf(): Array<Etudiant> {
+    if (this._etudiantByProf == null){
+      this._etudiantByProf = new  Array<Etudiant>();
+    }
+    return this._etudiantByProf;
+  }
+
+  set etudiantByProf(value: Array<Etudiant>) {
+    this._etudiantByProf = value;
+  }
 
   get centreList(): Array<Centre> {
     if (this._centreList == null){
