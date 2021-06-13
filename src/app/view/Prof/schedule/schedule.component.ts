@@ -11,6 +11,8 @@ import {EtatInscription} from "../../../controller/Model/etat-inscription.model"
 import {Etudiant} from "../../../controller/Model/etudiant.model";
 import {EtatEtudiantSchedule} from "../../../controller/Model/etat-etudiant-schedule.model";
 import {EtudiantService} from '../../../controller/service/etudiant.service';
+import {LoginService} from '../../../controller/service/login.service';
+import {Prof} from '../../../controller/Model/prof.model';
 
 @Component({
   selector: 'app-schedule',
@@ -20,7 +22,7 @@ import {EtudiantService} from '../../../controller/service/etudiant.service';
 
 })
 export class ScheduleComponent implements OnInit {
-  constructor(private service: ScheduleService, private messageService: MessageService) {
+  constructor(private service: ScheduleService, private messageService: MessageService, private etudiantService: EtudiantService, private loginService: LoginService) {
   }
 
   get selected(): ScheduleProf {
@@ -44,6 +46,15 @@ export class ScheduleComponent implements OnInit {
   set items(value: Array<ScheduleProf>) {
     this.service.items = value;
   }
+
+  get prof(): Prof {
+    return this.loginService.prof;
+  }
+
+  set prof(value: Prof) {
+    this.loginService.prof = value;
+  }
+
   get createDialog(): boolean {
     return this.service.createDialog;
   }
@@ -170,6 +181,15 @@ export class ScheduleComponent implements OnInit {
     };
   }
 
+  get etudiantByProf(): Array<Etudiant> {
+    return this.etudiantService.etudiantByProf;
+  }
+
+  set etudiantByProf(value: Array<Etudiant>) {
+    this.etudiantService.etudiantByProf = value;
+  }
+
+
   save() {
     return this.service.save();
   }
@@ -184,12 +204,28 @@ export class ScheduleComponent implements OnInit {
     this.submitted = false;
     this.createDialog = true;
   }
+
+  public findAllEtudiant() {
+    this.etudiantService.findetudiantProf().subscribe(
+        data => {
+          this.etudiantByProf = data;
+        }
+    );
+  }
   public hideCreateDialog() {
     this.createDialog = false;
     this.submitted = false;
   }
   public addStudent() {
     this.submitted = true;
+    this.selected.prof = this.loginService.prof;
+    this.selected.id = 1000;
+    console.log('id' + this.selected.id);
+    console.log('ref' + this.selected.ref);
+    console.log('prof' + this.selected.prof.id);
+    console.log('etudiant' + this.selected.etudiant.id);
+    console.log(this.selected.dateDebut);
+    console.log(this.selected.dateFin);
       this.service.addStudent().subscribe(data => {
         this.items.push({...data});
         this.messageService.add({
