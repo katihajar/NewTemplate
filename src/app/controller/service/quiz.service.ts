@@ -458,12 +458,23 @@ public findConfig(): Observable<Array<QuizConfig>>{
         this.questions.splice(index, 1);
     }
 
-    delete(index: number) {
-        const reponse = this.reponse[index];
-        this.question.reponses.splice(index, 1);
+    delete(reponse: Reponse) {
+        const index = this.question.reponses.findIndex(c => c.lib === reponse.lib);
+        if (index !== -1){
+            this.question.reponses.splice(index, 1);
+        }
     }
 
-
+    public findReponseIndexById(id: number): number {
+        let index = -1;
+        for (let i = 0; i < this.reponses.length; i++) {
+            if (this.reponses[i].id === id) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
     ProgressBar(event: any) {
         const p = document.getElementById('progressBar');
         if (event.target.checked){

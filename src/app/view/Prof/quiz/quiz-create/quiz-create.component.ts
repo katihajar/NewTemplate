@@ -184,8 +184,8 @@ z.append(doc);
     public addReponse() {
         return this.service.addReponse();
     }
-    delete(index: number) {
-        this.service.delete(index);
+    delete(reponse: Reponse) {
+        this.service.delete(reponse );
     }
     public openConfig(){
         this.createDialog = true;
