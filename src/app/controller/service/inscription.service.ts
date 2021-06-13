@@ -103,14 +103,8 @@ export class InscriptionService {
     return this.http.get< Array<Parcours> >('http://localhost:8036/learn/parcours/');
 
   }
-  public findAllEtat(){
-    this.http.get<Array<EtatInscription>>( 'http://localhost:8036/learn/etatInscription/').subscribe(
-        data => {
-          this.etatinscriptionslist = data;
-        }, error => {
-          console.log(error);
-        }
-    );
+  public findAllEtat(): Observable<Array<EtatInscription>>{
+    return this.http.get<Array<EtatInscription>>( 'http://localhost:8036/learn/etatInscription/');
   }
   get valideDialog(): boolean {
     return this._valideDialog;

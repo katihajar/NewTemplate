@@ -21,7 +21,15 @@ export class InscriptionEditComponent implements OnInit {
       this.service.findAllProf();
   }
   findAllEtat(): void {
-    this.service.findAllEtat();
+    this.service.findAllEtat().subscribe(
+        data => {
+          this.etatinscriptionslist = data;
+        }, error => {
+          console.log(error);
+        }
+    );
+    console.log(this.etatinscriptionslist);
+    console.log(this.selected.etatInscription.libelle);
   }
   get parcoursList(): Array<Parcours> {
     return this.service.parcoursList;
