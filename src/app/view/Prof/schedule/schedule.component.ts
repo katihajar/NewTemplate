@@ -193,8 +193,6 @@ export class ScheduleComponent implements OnInit {
   public addStudent() {
     this.submitted = true;
       this.service.addStudent().subscribe(data => {
-        this.selected.etudiant.id = this.etudiant.id;
-        console.log(this.selected.etudiant.id);
         this.items.push({...data});
         this.messageService.add({
           severity: 'success',

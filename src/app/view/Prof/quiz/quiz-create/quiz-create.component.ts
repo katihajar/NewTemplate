@@ -97,6 +97,7 @@ export class QuizCreateComponent implements OnInit {
         );
         this.service.findQuiz();
         this.initCol();
+        this.question = new Question();
         this.selected.questions.push(this.question);
     }
 
@@ -129,9 +130,8 @@ z.append(doc);
     }
 
     public addFormule() {
-     const question = {...this.question};
-     this.selected.questions.push(question);
-
+   this.question = new Question();
+     this.selected.questions.push(this.question);
     }
 
     public save() {

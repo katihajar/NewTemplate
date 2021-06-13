@@ -181,7 +181,7 @@ export class ScheduleService {
         this.changedEvent.end = this.clickedEvent.end;
     }
     public  addStudent(): Observable<ScheduleProf>{
-        return this.http.post<ScheduleProf>('http://localhost:8036/learn/scheduleProf/', this.selected);
+        return this.http.post<ScheduleProf>('http://localhost:8036/learn/scheduleProf/save/', this.selected);
     }
 
 
@@ -189,5 +189,15 @@ public findEtat(): Observable<Array<EtatEtudiantSchedule>>{
         return this.http.get<Array<EtatEtudiantSchedule>>('http://localhost:8036/learn/etatEtudiantSchedule/');
 }
 
+    public findIndexById(id: number): number {
+        let index = -1;
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].id === id) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
 
 }

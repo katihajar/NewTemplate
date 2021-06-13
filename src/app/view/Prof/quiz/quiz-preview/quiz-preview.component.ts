@@ -173,17 +173,7 @@ export class QuizPreviewComponent implements OnInit {
       this.service.seconds++;
     }, 1000);
   }
- /* shuffle(reponses: Array<Reponse>) {
-    let currentIndex = reponses.length, temporaryValue, randomIndex;
-    while (0 !== currentIndex) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-      temporaryValue = reponses[currentIndex];
-      reponses[currentIndex] = reponses[randomIndex];
-      reponses[randomIndex] = temporaryValue;
-    }
-    return reponses;
-  }*/
+
 
   get j(): number {
     return this.service.j;

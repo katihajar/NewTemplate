@@ -65,21 +65,17 @@
 </p-card>
 <p-dialog [(visible)]="createDialog" [style]="{width: '450px'}"  [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
-        <div class="p-field">
-            <label for="id">Id</label>
-            <input type="text" pInputText id="id" [(ngModel)]="etudiant.id" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !etudiant.id">ref is required.</small>
-        </div>
+
         <div class="p-field">
             <label >Name</label>
-            <input type="text" pInputText id="name" [(ngModel)]="etudiant.nom" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !etudiant.nom">name is required.</small>
+            <input type="text" pInputText id="name" [(ngModel)]="selected.etudiant.nom" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !selected.etudiant.nom">name is required.</small>
         </div>
 
         <div class="p-field">
              <label for="ref">Ref</label>
-             <input type="text" pInputText id="ref" [(ngModel)]="etudiant.ref" required autofocus />
-             <small class="p-invalid" *ngIf="submitted && !etudiant.ref">ref is required.</small>
+             <input type="text" pInputText id="ref" [(ngModel)]="selected.etudiant.ref" required autofocus />
+             <small class="p-invalid" *ngIf="submitted && !selected.etudiant.ref">ref is required.</small>
          </div>
          <div class="p-field">
              <label for="etat">Etat </label>

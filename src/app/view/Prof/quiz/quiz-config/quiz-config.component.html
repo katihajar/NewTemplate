@@ -5,18 +5,18 @@
                 <p-radioButton name="group1" (change)="ProgressBar($event)" ></p-radioButton>
                 <label>Afficher la barre de progression</label>
                 <br/>
-                <p-radioButton name="group1" value="{{rep}}" [(ngModel)]="configuration.shuffleOptions" ></p-radioButton>
+                <p-radioButton name="group1" value="{{configuration.shuffleOptions}}" (change)="onItemChange($event)" [(ngModel)]="configuration.shuffleOptions" ></p-radioButton>
                 <label>Trier les reponses en mode aléatoire</label>
             </div>
         </div>
         <p style="justify-content: space-between"></p>
         <div class="p-field">
             <div class="p-field-checkbox">
-                <p-radioButton name="group2" value="{{qst}}" [(ngModel)]="configuration.shuffleOptions" ></p-radioButton>
+                <p-radioButton name="group2" value="{{configuration.shuffleQuestions}}" (change)="onItemChange($event)" [(ngModel)]="configuration.shuffleQuestions" ></p-radioButton>
                 <label>Trier les questions en mode aléatoire</label>
             </div>
             <div class="p-field-checkbox">
-                <p-radioButton name="group2" value="{{back}}" [(ngModel)]="configuration.allowBack"  ></p-radioButton>
+                <p-radioButton name="group2" value="{{configuration.allowBack}}" (change)="onItemChange($event)" [(ngModel)]="configuration.allowBack"  ></p-radioButton>
                 <label>Retourner en question précédente </label>
             </div>
             <div class="p-field-checkbox">

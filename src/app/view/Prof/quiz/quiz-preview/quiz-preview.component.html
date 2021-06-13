@@ -41,8 +41,6 @@
             <div *ngFor="let r of reponses" class="question_answer" id="div-{{r.ref}}">
               <input type="{{this.typeReponse}}" (click)="selectionChanged(r)" value="{{r.ref}}" [(ngModel)]="selectedValue" name="groupname" ngModel>
                 <label>{{r.lib}}</label><br>
-                <!-- <p-radioButton id="radio"  (click)="selectionChanged(r)"  name="groupname" value="{{r.ref}}" [(ngModel)]="selectedValue"></p-radioButton>
-                      <label>{{r.lib}}</label><br>-->
                   </div>
               </ng-container>
           </div>

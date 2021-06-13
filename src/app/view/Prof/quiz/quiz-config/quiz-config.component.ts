@@ -16,6 +16,9 @@ export class QuizConfigComponent implements OnInit {
   constructor(private service: QuizService, private messageService: MessageService) { }
 
   ngOnInit(): void {
+    console.log(this.qst);
+    console.log(this.rep);
+    console.log(this.back);
   }
   get createDialog(): boolean {
     return this.service.createDialog;
@@ -71,5 +74,12 @@ this.service.saveConfig().subscribe(
 
   ProgressBar($event: any) {
     return this.service.ProgressBar(event);
+  }
+
+
+  onItemChange(event : any) {
+    if (event.target.checked){
+      console.log(event);
+    }
   }
 }
