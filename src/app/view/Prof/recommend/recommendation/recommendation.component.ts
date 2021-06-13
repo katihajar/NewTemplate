@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
-import {RecommendTeacher} from '../../../../controller/Model/recommend-teacher.model';
+import {RecommendTeacher} from '../../../../controller/model/recommend-teacher.model';
 import {RecommendTeacherService} from '../../../../controller/service/recommend-teacher.service';
 import {LoginService} from '../../../../controller/service/login.service';
 
@@ -36,13 +36,14 @@ export class RecommendationComponent implements OnInit {
        this.items.push({...data});
        console.log(this.selected);
        console.log('meryem');
+       this.selected.prof.id = this.serviceUser.prof.id;
+         // tslint:disable-next-line:no-shadowed-variable
+       this.service.findAll().subscribe(data => this.items = data);
+       this.selected = new RecommendTeacher();
     });
     // tslint:disable-next-line:no-unused-expression
      this.selected == null;
-     this.selected.prof.id = this.serviceUser.prof.id;
-     this.service.findAll().subscribe(data => this.items = data);
      this.editDialog = false;
-     this.selected = new RecommendTeacher();
   }
   // tslint:disable-next-line:adjacent-overload-signatures
   set selected(value: RecommendTeacher) {

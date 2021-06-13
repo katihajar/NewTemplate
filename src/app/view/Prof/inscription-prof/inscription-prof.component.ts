@@ -31,6 +31,7 @@ export class InscriptionProfComponent implements OnInit {
         data => {
       console.log(this.selectedProf);
       console.log('meryem');
+      this.selectedProf = new Prof();
     });
   }
   get selectedProf(): Prof {
