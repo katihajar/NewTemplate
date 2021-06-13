@@ -5,10 +5,8 @@ import {HttpClient} from '@angular/common/http';
 import {TypeDeQuestion} from '../model/type-de-question.model';
 import {Quiz} from '../model/quiz.model';
 import {Observable} from 'rxjs';
-import {QuizConfig} from "../model/quiz-config.model";
-import {ReponseEtudiant} from "../model/reponse-etudiant.model";
-import {QuizEtudiant} from "../model/quiz-etudiant.model";
-import {Section} from "../Model/section.model";
+import {QuizConfig} from '../model/quiz-config.model';
+import {Section} from '../model/section.model';
 
 
 
@@ -41,18 +39,27 @@ export class QuizService {
     private _configuration: QuizConfig;
     private _configurations: Array<QuizConfig>;
     private _seconds: number;
-    private _numCorrectAnswers= 0;
+    private _numCorrectAnswers = 0;
     private _correctAnswers: Array<Reponse>;
     private _typeQuestion: string;
     private _typeReponse: string;
     private _numReponses = 0;
     private _myAnswer: Reponse;
     private _numQuestion = 1;
-    private _sections : Array<Section>;
-    private _section : Section;
+    private _sections: Array<Section>;
+    private _sectionSelected: Section;
 
 
+    get sectionSelected(): Section {
+        if (this._sectionSelected == null){
+            this._sectionSelected = new Section();
+        }
+        return this._sectionSelected;
+    }
 
+    set sectionSelected(value: Section) {
+        this._sectionSelected = value;
+    }
 
     get numReponses(): number {
         return this._numReponses;
@@ -116,7 +123,7 @@ export class QuizService {
 
     get correctAnswers(): Array<Reponse> {
         if (this._correctAnswers == null){
-            this._correctAnswers =new Array<Reponse>();
+            this._correctAnswers = new Array<Reponse>();
         }
         return this._correctAnswers;
     }
@@ -144,7 +151,7 @@ export class QuizService {
 if (this._reponse == null){
     this._reponse = new Reponse();
 }
-        return this._reponse;
+return this._reponse;
     }
 
     set reponse(value: Reponse) {
@@ -166,24 +173,12 @@ if (this._reponse == null){
  if (this._question == null){
      this._question = new Question();
  }
-        return this._question;
+ return this._question;
     }
 
     set question(value: Question) {
         this._question = value;
     }
-
-    get section(): Section {
-        if (this._section == null){
-            this._section = new Section();
-        }
-        return this._section;
-    }
-
-    set section(value: Section) {
-        this._section = value;
-    }
-
     get sections(): Array<Section> {
         if (this._sections == null){
             this._sections = new Array<Section>();
@@ -214,7 +209,7 @@ if (this._reponse == null){
    if (this._questions == null){
        this._questions = new Array<Question>();
    }
-        return this._questions;
+   return this._questions;
     }
 
     set questions(value: Array<Question>) {
@@ -237,7 +232,7 @@ if (this._reponse == null){
 if (this._selected == null){
     this._selected = new Quiz();
 }
-        return this._selected;
+return this._selected;
     }
 
     set selected(value: Quiz) {
@@ -319,10 +314,10 @@ if (this._selected == null){
     public getReponses(): Observable<Array<Reponse>> {
         return this.http.get<any>(this._url + this._urlReponse + '/');
     }
-public saveConfig() : Observable<QuizConfig>{
+public saveConfig(): Observable<QuizConfig>{
         return this.http.post<QuizConfig>(this._url + 'learn/quizConfig/' , this.configuration);
 }
-public findConfig() : Observable<Array<QuizConfig>>{
+public findConfig(): Observable<Array<QuizConfig>>{
         return this.http.get<Array<QuizConfig>>(this._url + 'learn/quizConfig/');
 }
     public itemChecked(event: any) {
@@ -418,6 +413,7 @@ public findConfig() : Observable<Array<QuizConfig>>{
     public choixSelected(): void {
         console.log(this.types);
         for (let i = 0; i < this.types.length; i++) {
+            // tslint:disable-next-line:triple-equals
             if (this.types[i].lib == this.question.typeDeQuestion.lib) {
                 // @ts-ignore
                 this.question.typeDeQuestion = this.clone(this.types[i]);
@@ -432,7 +428,8 @@ public findConfig() : Observable<Array<QuizConfig>>{
         console.log(this.items);
         for (let i = 0; i < this.items.length; i++) {
             if (this.items[i].ref == this.question.quiz.ref) {
-                this.question.quiz = {...this.items[i]};
+                // @ts-ignore
+                this.question.quiz = this.clone(this.items[i]);
                 console.log(this.question.quiz.ref);
             }
         }
@@ -440,6 +437,15 @@ public findConfig() : Observable<Array<QuizConfig>>{
         console.log(this.items);
     }
 
+    public defaultchecked() {
+        this.reponse.etatReponse = 'Vrai';
+    }
+
+    checked(event: any) {
+        if (event.target.checked) {
+            this.reponse.etatReponse = 'true';
+        }
+    }
 
     public checkedFalse(event: any) {
         if (event.target.checked) {
@@ -452,14 +458,25 @@ public findConfig() : Observable<Array<QuizConfig>>{
         this.questions.splice(index, 1);
     }
 
-    delete(index: number) {
-        const reponse = this.reponse[index];
-        this.question.reponses.splice(index, 1);
+    delete(reponse: Reponse) {
+        const index = this.question.reponses.findIndex(c => c.lib === reponse.lib);
+        if (index !== -1){
+            this.question.reponses.splice(index, 1);
+        }
     }
 
-
+    public findReponseIndexById(id: number): number {
+        let index = -1;
+        for (let i = 0; i < this.reponses.length; i++) {
+            if (this.reponses[i].id === id) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
     ProgressBar(event: any) {
-        let p = document.getElementById('progressBar');
+        const p = document.getElementById('progressBar');
         if (event.target.checked){
             p.style.visibility = 'visible';
         }else {

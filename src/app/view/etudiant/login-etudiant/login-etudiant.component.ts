@@ -98,7 +98,6 @@ export class LoginEtudiantComponent implements OnInit {
           this.correct = true;
           this.model = [
             {label: 'Courses ', icon: 'pi pi-fw pi-briefcase', routerLink: ['/pages/etudiantparcours']},
-            {label: 'liste quiz ', icon: 'pi pi-fw pi-list', routerLink: ['/pages/classroom-liste']},
             {label: 'LogOut ', icon: 'pi pi-fw pi-sign-out', routerLink: ['']},
             ];
         },

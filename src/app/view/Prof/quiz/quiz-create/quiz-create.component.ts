@@ -6,7 +6,8 @@ import {TypeDeQuestion} from '../../../../controller/model/type-de-question.mode
 import {QuizService} from '../../../../controller/service/quiz.service';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
-import {Section} from "../../../../controller/Model/section.model";
+import {Section} from '../../../../controller/model/section.model';
+import {ParcoursService} from '../../../../controller/service/parcours.service';
 
 @Component({
   selector: 'app-quiz-create',
@@ -16,7 +17,8 @@ import {Section} from "../../../../controller/Model/section.model";
 })
 export class QuizCreateComponent implements OnInit {
 
-    constructor(private service: QuizService, private messageService: MessageService, private confirmationService: ConfirmationService, private router: Router) { }
+    // tslint:disable-next-line:max-line-length
+    constructor(private service: QuizService, private messageService: MessageService, private confirmationService: ConfirmationService, private router: Router, private serviceParcours: ParcoursService) { }
     cols: any[];
     get question(): Question {
         return this.service.question;
@@ -29,9 +31,6 @@ export class QuizCreateComponent implements OnInit {
         return this.service.questions;
     }
     get selected(): Quiz {
-        if (this.service.selected == null){
-            this.service.selected = new Quiz();
-        }
         return this.service.selected;
     }
 
@@ -93,6 +92,7 @@ export class QuizCreateComponent implements OnInit {
 
 
     ngOnInit(): void {
+        console.log(this.service.sectionSelected.id);
         this.service.findType().subscribe(
             data => {
                 console.log(data);
@@ -125,17 +125,25 @@ export class QuizCreateComponent implements OnInit {
     }
 
     public addCard(){
-var doc = document.getElementById('formCard');
-var z = document.getElementById('mainCard');
+let doc = document.getElementById('formCard');
+let z = document.getElementById('mainCard');
 z.append(doc);
     }
 
     public addFormule() {
    this.question = new Question();
-     this.selected.questions.push(this.question);
+   this.selected.questions.push(this.question);
+    }
+    get selectedsection(): Section {
+        return this.service.sectionSelected;
     }
 
+    set sectionSelected(value: Section) {
+        this.service.sectionSelected = value;
+    }
     public save() {
+        console.log(this.service.sectionSelected.id);
+        this.selected.section.id =  this.service.sectionSelected.id;
         this.service.save().subscribe(
             data => {
                 this.items.push({...data});
@@ -175,8 +183,8 @@ z.append(doc);
     public addReponse() {
         return this.service.addReponse();
     }
-    delete(index: number) {
-        this.service.delete(index);
+    delete(reponse: Reponse) {
+        this.service.delete(reponse );
     }
     public openConfig(){
         this.createDialog = true;

@@ -27,7 +27,7 @@ export class InscriptionListComponent implements OnInit {
   public delete(selected: Inscription) {
     this.selected = selected;
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete ' + selected.numeroInscription + '?',
+      message: 'Are you sure you want to delete ' + selected.nom + '?',
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
@@ -46,7 +46,7 @@ export class InscriptionListComponent implements OnInit {
   }
   public deleteMultiple() {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete the selected quizs?',
+      message: 'Are you sure you want to delete the selected inscription?',
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {

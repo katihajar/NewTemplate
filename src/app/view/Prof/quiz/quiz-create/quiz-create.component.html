@@ -47,7 +47,7 @@
                 </p-card>
             </ng-template>
             <div class="p-col-8 " style="margin: auto"  id="formCard">
-                <div class="card"*ngFor="let question of selected.questions ;let i = index " styleClass="p-card-shadow">
+                <div class="card"*ngFor="let question of selected.questions ; index as i " styleClass="p-card-shadow">
                     <div class="p-fluid p-formgrid p-grid" >
                         <div class="p-field p-col-12 p-md-6">
                             <p-inputNumber id="firstname6"  placeholder="Question Number" name="numero{{i}}" [(ngModel)]="question.numero"></p-inputNumber>
@@ -94,7 +94,7 @@
                         </div>
                     </div>
                     <div class="p-md-8" style="margin: auto">
-                        <p-table [value]="reponses">
+                        <p-table [value]="reponses"  >
                             <ng-template pTemplate="header">
                                 <tr>
                                     <th>Libelle Answer</th>
@@ -102,11 +102,11 @@
                                     <th>Action</th>
                                 </tr>
                             </ng-template>
-                            <ng-template pTemplate="body" let-reponse let-i>
-                                <tr >
+                            <ng-template pTemplate="body" let-reponse   >
+                                <tr  >
                                     <td>{{reponse.lib}}</td>
                                     <td>{{reponse.etatReponse}}</td>
-                                    <td><span (click)="delete(i)" style="cursor: pointer" class="pi pi-trash p-button-rounded p-button-danger" ></span></td>
+                                    <td><span (click)="delete(reponse)" style="cursor: pointer" class="pi pi-trash p-button-rounded p-button-danger" ></span></td>
                                 </tr>
                             </ng-template>
                         </p-table>
