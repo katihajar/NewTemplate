@@ -75,6 +75,8 @@ export class HomeComponent implements OnInit {
     {
       this.selectedsalaryVo = data;
     });
+    this.Selectedprof.id = this.serviceUser.prof.id;
+    this.serviceetudiant.findetudiantProf().subscribe(data => this.items = data);
   }
   get selectedsalaryVo(): SalaryVo {
     return this.seviceClass.selectedsalaryVo;
