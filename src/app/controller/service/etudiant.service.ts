@@ -92,7 +92,7 @@ export class EtudiantService {
   }
 
   public findetudiantProf(): Observable<Array<Etudiant>> {
-    return this.http.get<Array<Etudiant>>('http://localhost:8036/learn/etudiant/prof/id/' + this.serviceUser.prof.id );
+    return this.http.get<Array<Etudiant>>('http://localhost:8036/learn/etudiant/prof/id/' + this.selectedProf.id );
   }
 
   get selecteetudiant(): Array<Etudiant> {
