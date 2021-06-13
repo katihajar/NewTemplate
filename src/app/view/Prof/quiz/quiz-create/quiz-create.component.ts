@@ -42,7 +42,9 @@ export class QuizCreateComponent implements OnInit {
 
         return this.service.reponse;
     }
-
+    set reponse(value: Reponse) {
+        this.service.reponse = value;
+    }
     get reponses(): Array<Reponse> {
         if (this.service.question.reponses == null){
             this.service.question.reponses = new Array<Reponse>();
@@ -62,6 +64,9 @@ export class QuizCreateComponent implements OnInit {
             this.service.types = new Array<TypeDeQuestion>();
         }
         return this.service.types;
+    }
+    get section(): Section {
+        return this.service.section;
     }
     get createDialog(): boolean {
         return this.service.createDialog;
@@ -103,15 +108,9 @@ export class QuizCreateComponent implements OnInit {
         this.selected.questions.push(this.question);
     }
 
-    defaultchecked() {
-        return this.service.defaultchecked();
-    }
 
 
 
-    checked(event) {
-        return this.service.checked(event);
-    }
 
     public checkedFalse(event: any) {
         return this.service.checkedFalse(event);

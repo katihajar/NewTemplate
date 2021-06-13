@@ -49,6 +49,7 @@ export class QuizService {
     private _myAnswer: Reponse;
     private _numQuestion = 1;
     private _sections : Array<Section>;
+    private _section : Section;
 
 
 
@@ -171,6 +172,18 @@ if (this._reponse == null){
     set question(value: Question) {
         this._question = value;
     }
+
+    get section(): Section {
+        if (this._section == null){
+            this._section = new Section();
+        }
+        return this._section;
+    }
+
+    set section(value: Section) {
+        this._section = value;
+    }
+
     get sections(): Array<Section> {
         if (this._sections == null){
             this._sections = new Array<Section>();
@@ -419,8 +432,7 @@ public findConfig() : Observable<Array<QuizConfig>>{
         console.log(this.items);
         for (let i = 0; i < this.items.length; i++) {
             if (this.items[i].ref == this.question.quiz.ref) {
-                // @ts-ignore
-                this.question.quiz = this.clone(this.items[i]);
+                this.question.quiz = {...this.items[i]};
                 console.log(this.question.quiz.ref);
             }
         }
@@ -428,15 +440,6 @@ public findConfig() : Observable<Array<QuizConfig>>{
         console.log(this.items);
     }
 
-    public defaultchecked() {
-        this.reponse.etatReponse = 'Vrai';
-    }
-
-    checked(event: any) {
-        if (event.target.checked) {
-            this.reponse.etatReponse = 'true';
-        }
-    }
 
     public checkedFalse(event: any) {
         if (event.target.checked) {

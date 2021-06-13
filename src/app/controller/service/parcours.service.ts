@@ -8,6 +8,7 @@ import {CategorieSection} from '../model/categorie-section.model';
 import {SuperCategorieSection} from '../model/super-categorie-section.model';
 import {Centre} from '../model/centre.model';
 import {Observable} from 'rxjs';
+import {Quiz} from "../Model/quiz.model";
 
 
 
