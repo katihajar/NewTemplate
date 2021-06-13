@@ -17,23 +17,32 @@
         <p-card   [style]="{width: '1200px'}" id="mainCard" styleClass="p-card-shadow" class="container" >
             <ng-template pTemplate="header">
                 <p-card [style]="{backgroundColor: ' gainsboro'}">
-                    <div>
+                    <div class="container">
                         <!--  <h1  style=" text-align: center" id="quizTitre">Quiz</h1>-->
                         <input type="text"  pInputText placeholder="Name Quiz" id="titleQuiz" [(ngModel)]="selected.lib">
                     </div>
-                    <div class="p-formgroup-inline">
-                    <div class="p-field p-col">
-                        <input  type="text" pInputText placeholder="Reference Quiz" class="refQuiz" [(ngModel)]="selected.ref" >
+                    <br/><br/>
+                    <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col-12 p-md-3">
+                        <label class="labelFormat" >Reference Quiz</label><br/>
+                        <input  type="text" pInputText  class="refQuiz" [(ngModel)]="selected.ref" >
                     </div>
-                    <div class="p-field p-col">
-                        <p-calendar inputId="debut" class="refQuiz"  [showTime]="false" [(ngModel)]="selected.dateDebut" dateFormat="yy-mm-dd"></p-calendar>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label class="labelFormat">debut date</label><br/>
+                        <p-calendar inputId="debut"    [(ngModel)]="selected.dateDebut" dateFormat="yy-mm-dd"></p-calendar>
                     </div>
-                    <div class="p-field p-col">
-                        <p-calendar inputId="fin" class="refQuiz" [showTime]="false" [(ngModel)]="selected.dateFin" dateFormat="yy-mm-dd"></p-calendar>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label class="labelFormat">finish date</label><br/>
+                        <p-calendar inputId="fin" class="refQuiz" [(ngModel)]="selected.dateFin" dateFormat="yy-mm-dd"></p-calendar>
                     </div>
-                    <div class="p-field p-col">
-                        <p-inputNumber   placeholder="Question Number"class="refQuiz"   [(ngModel)]="selected.seuilReussite"></p-inputNumber>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label class="labelFormat" >success threshold</label><br/>
+                        <p-inputNumber    class="refQuiz"  [(ngModel)]="selected.seuilReussite"></p-inputNumber>
                     </div>
+                        <!--<div class="p-field p-col-12 p-md-2">
+                            <label class="labelFormat">Section</label><br/>
+                            <p-dropdown inputId="type"  [options]="sections" [(ngModel)]="selected.section"  optionLabel="libelle"></p-dropdown>
+                        </div>-->
                     </div>
                 </p-card>
             </ng-template>

@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
 import {QuizConfig} from "../model/quiz-config.model";
 import {ReponseEtudiant} from "../model/reponse-etudiant.model";
 import {QuizEtudiant} from "../model/quiz-etudiant.model";
+import {Section} from "../Model/section.model";
 
 
 
@@ -47,6 +48,8 @@ export class QuizService {
     private _numReponses = 0;
     private _myAnswer: Reponse;
     private _numQuestion = 1;
+    private _sections : Array<Section>;
+
 
 
 
@@ -167,6 +170,16 @@ if (this._reponse == null){
 
     set question(value: Question) {
         this._question = value;
+    }
+    get sections(): Array<Section> {
+        if (this._sections == null){
+            this._sections = new Array<Section>();
+        }
+        return this._sections;
+    }
+
+    set sections(value: Array<Section>) {
+        this._sections = value;
     }
     get myAnswer(): Reponse {
         return this._myAnswer;
@@ -321,6 +334,9 @@ public findConfig() : Observable<Array<QuizConfig>>{
 
     public saveReponse(): Observable<Reponse>{
         return this.http.post<Reponse>(this._url + this._urlReponse + '/' , this.reponse);
+    }
+    public findSections(): Observable<Array<Section>>{
+        return this.http.get<Array<Section>>(this._url + 'learn/section/');
     }
     public findIndexById(id: number): number {
         let index = -1;

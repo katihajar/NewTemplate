@@ -6,6 +6,7 @@ import {TypeDeQuestion} from '../../../../controller/model/type-de-question.mode
 import {QuizService} from '../../../../controller/service/quiz.service';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
+import {Section} from "../../../../controller/Model/section.model";
 
 @Component({
   selector: 'app-quiz-create',
@@ -81,9 +82,9 @@ export class QuizCreateComponent implements OnInit {
     set items(value: Array<Quiz>) {
         this.service.items = value;
     }
-
-
-
+    get sections(): Array<Section> {
+        return this.service.sections;
+    }
 
 
     ngOnInit(): void {
@@ -95,6 +96,7 @@ export class QuizCreateComponent implements OnInit {
                 console.log('can\'t bring data from database');
             }
         );
+       // this.service.findSections().subscribe(data => this.service.sections = data);
         this.service.findQuiz();
         this.initCol();
         this.question = new Question();
