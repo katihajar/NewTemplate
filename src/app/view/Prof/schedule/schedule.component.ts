@@ -7,9 +7,9 @@ import {ScheduleProf} from '../../../controller/model/calendrier-prof.model';
 import {ScheduleService} from '../../../controller/service/schedule.service';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ScheduleVo} from '../../../controller/model/schedule-vo.model';
-import {EtatInscription} from "../../../controller/Model/etat-inscription.model";
-import {Etudiant} from "../../../controller/Model/etudiant.model";
-import {EtatEtudiantSchedule} from "../../../controller/Model/etat-etudiant-schedule.model";
+import {EtatInscription} from '../../../controller/Model/etat-inscription.model';
+import {Etudiant} from '../../../controller/Model/etudiant.model';
+import {EtatEtudiantSchedule} from '../../../controller/Model/etat-etudiant-schedule.model';
 
 @Component({
   selector: 'app-schedule',
@@ -123,6 +123,7 @@ export class ScheduleComponent implements OnInit {
   set etudiant(value: Etudiant) {
     this.service.etudiant = value;
   }
+  // tslint:disable-next-line:adjacent-overload-signatures
   set itemsVo(value: Array<ScheduleVo>) {
     this.service.itemsVo = value;
   }
@@ -167,11 +168,8 @@ export class ScheduleComponent implements OnInit {
         this.changedEvent.end = this.clickedEvent.end;
       }
     };
+    console.log(this.service.selected.prof);
   }
-
-
-
-
   save() {
     return this.service.save();
   }
@@ -192,7 +190,7 @@ export class ScheduleComponent implements OnInit {
   }
   public addStudent() {
     this.submitted = true;
-      this.service.addStudent().subscribe(data => {
+    this.service.addStudent().subscribe(data => {
         this.items.push({...data});
         this.messageService.add({
           severity: 'success',
@@ -201,8 +199,7 @@ export class ScheduleComponent implements OnInit {
           life: 3000
         });
       });
-      this.createDialog = false;
-      this.selected = new ScheduleProf();
+    this.createDialog = false;
+    this.selected = new ScheduleProf();
     }
 }
-
