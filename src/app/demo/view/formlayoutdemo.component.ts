@@ -58,9 +58,10 @@ export class FormLayoutDemoComponent {
     public save(){
         this.submitted = true;
         this.service.save().subscribe(data => {
-                // @ts-ignore
-                this.selectes.push({...data});
-                this.messageService.add({
+            this.selectes.push({...data});
+            this.selected = new Inscription();
+            this.selected == null;
+            this.messageService.add({
                     severity: 'success',
                     summary: 'Successful',
                     detail: 'Cours Update',
