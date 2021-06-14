@@ -28,7 +28,16 @@ export class QuizEtudiantComponent implements OnInit {
   private _noteQuiz: number;
   private _noteCheckbox: number;
   private _numeroCheckBox: number;
+  private _numeroQuestion = 0;
 
+
+    get numeroQuestion(): number {
+        return this._numeroQuestion;
+    }
+
+    set numeroQuestion(value: number) {
+        this._numeroQuestion = value;
+    }
 
     get numeroCheckBox(): number {
         return this._numeroCheckBox;
@@ -222,11 +231,6 @@ export class QuizEtudiantComponent implements OnInit {
   public next()
   {
       this.numeroCheckBox = 0;
-      this.service.findCorrectAnswers().subscribe(
-          data => {
-              this.correctAnswers = data;
-          }
-      );
 
       if(this.selected.typeDeQuestion.ref == 't1')
       {
@@ -327,19 +331,30 @@ export class QuizEtudiantComponent implements OnInit {
           }*/
       }
 
-    this.service.findNextQuestion().subscribe(
-        data => {
-          this.selected = data;
-          if(data.typeDeQuestion.ref == 't1')
-          {
-            this.type = 'radio';
+      this.numQuestion = this.numQuestion + 1;
+      this.service.findQuestion(this.selectedQuiz.ref, this.numQuestion).subscribe(
+          data => {
+              this.selected = data;
+              if(this.selected.typeDeQuestion.ref == 't1')
+              {
+                  this.type = 'radio';
+              }
+              else if(this.selected.typeDeQuestion.ref == 't2')
+              {
+                  this.type = 'checkbox';
+              }
+              this.service.findReponses(this.selected.ref).subscribe(
+                  data => {
+                      this.reponses = data;
+                  }
+              );
+              this.service.findCorrectAnswers(this.selected.ref).subscribe(
+                  data => {
+                      this.correctAnswers = data;
+                  }
+              );
           }
-          else if(data.typeDeQuestion.ref == 't2')
-          {
-            this.type = 'checkbox';
-          }
-        }
-    );
+      );
       // tslint:disable-next-line:triple-equals
     if (this.numQuestion == this.items.length)
     {
@@ -369,13 +384,6 @@ export class QuizEtudiantComponent implements OnInit {
           }
       );
     }
-
-    this.service.findReponses().subscribe(
-        data => {
-          this.reponses = data;
-        }
-    );
-
       // tslint:disable-next-line:prefer-for-of
     this.service.findAllReponseEtudiant().subscribe(
         data => {
@@ -413,10 +421,14 @@ export class QuizEtudiantComponent implements OnInit {
           );
         }
     );
+    this.numeroQuestion = this.numQuestion + 1;
 
-    this.service.findFirstQuestion().subscribe(
+    console.log('numero = ' + this.numQuestion);
+    console.log('quiz = ' + this.selectedQuiz.ref);
+    this.service.findQuestion(this.selectedQuiz.ref, this.numQuestion).subscribe(
         data => {
           this.selected = data;
+          console.log(this.selected);
           if(this.selected.typeDeQuestion.ref == 't1')
           {
             this.type = 'radio';
@@ -425,17 +437,18 @@ export class QuizEtudiantComponent implements OnInit {
           {
             this.type = 'checkbox';
           }
-        }
-    );
-
-    this.service.findReponses().subscribe(
-        data => {
-          this.reponses = data;
-        }
-    );
-    this.service.findCorrectAnswers().subscribe(
-        data => {
-          this.correctAnswers = data;
+            this.service.findReponses(this.selected.ref).subscribe(
+                data => {
+                    this.reponses = data;
+                    console.log(this.reponses)
+                }
+            );
+            this.service.findCorrectAnswers(this.selected.ref).subscribe(
+                data => {
+                    this.correctAnswers = data;
+                    console.log(this.correctAnswers)
+                }
+            );
         }
     );
 
@@ -500,12 +513,7 @@ export class QuizEtudiantComponent implements OnInit {
         }
     );*/
       this.etudiant = this.login.etudiant;
-      this.service.findQuiz().subscribe(
-        data => {
-          this.quiz = data;
-        }
-    );
-      this.service.findAllQuestions().subscribe(
+      this.service.findAllQuestions(this.selectedQuiz.ref).subscribe(
         data => {
           this.items = data;
         }
