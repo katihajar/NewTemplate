@@ -20,6 +20,7 @@ export class QuizEtudiantViewComponent implements OnInit {
 
   ngOnInit(): void {
 
+
   }
 
 }
