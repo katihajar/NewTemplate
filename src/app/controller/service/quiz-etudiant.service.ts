@@ -377,29 +377,27 @@ export class QuizEtudiantService {
     return this.http.get<Question>(this.url + 'question/numero/1');
   }
 
-  public findNextQuestion(): Observable<Question>
+  /////////////////////
+  public findQuestion(quiz: string, numero: number): Observable<Question>
   {
-    this.numQuestion = this.numQuestion + 1;
-    return this.http.get<Question>(this.url + 'question/numero/' + this.numQuestion);
+    return this.http.get<Question>(this.url + 'question/quiz/ref/' + quiz + '/numero/' + numero);
   }
 
-  public findAllQuestions(): Observable<Array<Question>>
+  public findAllQuestions(quiz: string): Observable<Array<Question>>
   {
-    return this.http.get<Array<Question>>(this.url + 'question/');
+    return this.http.get<Array<Question>>(this.url + 'question/quiz/ref/' + quiz);
   }
 
-  public findReponses(): Observable<Array<Reponse>>
+  public findReponses(question: string): Observable<Array<Reponse>>
   {
-    this.numReponses = this.numReponses + 1;
-    return this.http.get<Array<Reponse>>(this.url + 'reponse/question/numero/' + this.numReponses);
+    return this.http.get<Array<Reponse>>(this.url + 'reponse/question/ref/' + question);
   }
 
-  public findCorrectAnswers(): Observable<Array<Reponse>>
+  public findCorrectAnswers(question: string): Observable<Array<Reponse>>
   {
-    this.numCorrectAnswers = this.numCorrectAnswers + 1;
-    return this.http.get<Array<Reponse>>(this.url + 'reponse/criteria/numero/' + this.numCorrectAnswers);
+    return this.http.get<Array<Reponse>>(this.url + 'reponse/criteria/ref/' + question);
   }
-
+///////////////////
   public findAllQuizEtudiant(): Observable<Array<QuizEtudiant>>
   {
     return this.http.get<Array<QuizEtudiant>>(this.url + 'quizEtudiant/');
