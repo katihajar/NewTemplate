@@ -205,4 +205,3 @@ export class ScheduleComponent implements OnInit {
       this.selected = new ScheduleProf();
     }
 }
-

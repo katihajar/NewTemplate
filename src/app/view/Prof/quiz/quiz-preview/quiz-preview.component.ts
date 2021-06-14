@@ -297,6 +297,8 @@ export class QuizPreviewComponent implements OnInit {
     this.service.findFirstQuestion().subscribe(
         data => {
           this.question = data;
+          console.log(this.service.question.id);
+          this.service.idQst = this.service.question.id;
           if (this.question.typeDeQuestion.ref == 't1')
           {
             this.typeReponse = 'radio';
@@ -305,7 +307,6 @@ export class QuizPreviewComponent implements OnInit {
           {
             this.typeReponse = 'checkbox';
           }
-          this.service.idQst = this.service.question.id;
         }
     );
 
