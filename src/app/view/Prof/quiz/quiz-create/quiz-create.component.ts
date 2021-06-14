@@ -41,7 +41,13 @@ export class QuizCreateComponent implements OnInit {
 
         return this.service.reponse;
     }
+    get refQuiz(): string {
+        return this.service.refQuiz;
+    }
 
+    set refQuiz(value: string) {
+        this.service.refQuiz = value;
+    }
     get reponses(): Array<Reponse> {
         if (this.service.question.reponses == null){
             this.service.question.reponses = new Array<Reponse>();
@@ -145,6 +151,8 @@ z.append(doc);
     public save() {
         console.log(this.service.sectionSelected.id);
         this.selected.section.id =  this.service.sectionSelected.id;
+        this.service.refQuiz = this.service.selected.ref;
+        this.service.idQuiz = this.service.selected.id;
         this.service.save().subscribe(
             data => {
                 this.items.push({...data});

@@ -207,11 +207,7 @@ export class QuizPreviewComponent implements OnInit {
           {
             this.typeReponse = 'checkbox';
           }
-        }
-    );
-    this.service.findCorrectAnswers().subscribe(
-        data => {
-          this.correctAnswers = data;
+          console.log(this.service.question.id);
         }
     );
 
@@ -297,6 +293,7 @@ export class QuizPreviewComponent implements OnInit {
     this.service.findFirstQuestion().subscribe(
         data => {
           this.question = data;
+
           if (this.question.typeDeQuestion.ref == 't1')
           {
             this.typeReponse = 'radio';
@@ -305,28 +302,21 @@ export class QuizPreviewComponent implements OnInit {
           {
             this.typeReponse = 'checkbox';
           }
-        }
-    );
+          console.log(this.service.question.id);
+          this.service.findReponses().subscribe(
+              // tslint:disable-next-line:no-shadowed-variable
+              data => {
 
-    this.service.findReponses().subscribe(
-        data => {
-          this.reponses = data;
+                this.reponses = data;
+              }
+          );
         }
     );
-    this.service.findCorrectAnswers().subscribe(
-        data => {
-          this.correctAnswers = data;
-        }
-    );
-
   }
 
   ngOnInit(): void {
-    this.service.findConfig().subscribe( data => this.service.configurations = data);
-  //  this.service.findFirstReponse();
     this.service.seconds = 0;
     this.service.qnprogress = 0;
-    this.service.findAll();
     this.startTimer();
     this.service.findQuiz();
     this.Config();
