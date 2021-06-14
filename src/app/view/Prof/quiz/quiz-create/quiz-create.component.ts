@@ -152,7 +152,6 @@ z.append(doc);
         console.log(this.service.sectionSelected.id);
         this.selected.section.id =  this.service.sectionSelected.id;
         this.service.refQuiz = this.service.selected.ref;
-        this.service.idQuiz = this.service.selected.id;
         this.service.save().subscribe(
             data => {
                 this.items.push({...data});
