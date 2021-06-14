@@ -367,13 +367,13 @@ export class QuizEtudiantComponent implements OnInit {
       document.getElementById('question').remove();
 
       this.quizEtudiant.note = this.noteQuiz;
-      if (this.noteQuiz >= this.quiz.seuilReussite)
+      if (this.noteQuiz >= this.selectedQuiz.seuilReussite)
       {
         this.quizEtudiant.resultat = 'validé';
         document.getElementById('congratulations').style.visibility = 'visible';
         document.getElementById('hard-luck').style.visibility = 'hidden';
       }
-      else if (this.noteQuiz < this.quiz.seuilReussite)
+      else if (this.noteQuiz < this.selectedQuiz.seuilReussite)
       {
         this.quizEtudiant.resultat = 'non validé';
         document.getElementById('congratulations').style.visibility = 'hidden';
