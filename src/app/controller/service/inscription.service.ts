@@ -293,3 +293,4 @@ export class InscriptionService {
     this._etudiant = value;
   }
 }
+
