@@ -48,7 +48,25 @@ export class QuizService {
     private _numQuestion = 1;
     private _sections: Array<Section>;
     private _sectionSelected: Section;
+    private _refQuiz: string;
+    private _idQst: number;
 
+
+    get idQst(): number {
+        return this._idQst;
+    }
+
+    set idQst(value: number) {
+        this._idQst = value;
+    }
+
+    get refQuiz(): string {
+        return this._refQuiz;
+    }
+
+    set refQuiz(value: string) {
+        this._refQuiz = value;
+    }
 
     get sectionSelected(): Section {
         if (this._sectionSelected == null){
@@ -383,10 +401,11 @@ public findConfig(): Observable<Array<QuizConfig>>{
     }
 
     public findQuiz() {
-        this.http.get<any>(this._url + this._urlQuiz + '/').subscribe(
+        console.log(this.refQuiz);
+        this.http.get<any>(this._url + this._urlQuiz + '/ref/' + this.refQuiz).subscribe(
             data => {
                 console.log(data);
-                this.items = data;
+                this.selected = data;
             }, error1 => {
                 console.log('can\'t bring data from database');
             }
@@ -406,8 +425,9 @@ public findConfig(): Observable<Array<QuizConfig>>{
 
     public findReponses(): Observable<Array<Reponse>>
     {
+        console.log(this.idQst);
         this.numReponses = this.numReponses + 1;
-        return this.http.get<Array<Reponse>>('http://localhost:8036/learn/reponse/question/numero/'  + this.numReponses);
+        return this.http.get<Array<Reponse>>('http://localhost:8036/learn/reponse/question/id/'  + this.idQst);
     }
 
     public choixSelected(): void {
@@ -491,7 +511,7 @@ public findConfig(): Observable<Array<QuizConfig>>{
     }
     public findFirstQuestion(): Observable<Question>
     {
-        return this.http.get<Question>(this._url + 'learn/question/numero/1');
+        return this.http.get<Question>(this._url + 'learn/question/numero/1/quiz/ref/' + this.refQuiz);
     }
     public findMyAnswer(ref: string): Observable<Reponse>
     {
@@ -501,7 +521,7 @@ public findConfig(): Observable<Array<QuizConfig>>{
     public findNextQuestion(): Observable<Question>
     {
         this.numQuestion = this.numQuestion + 1;
-        return this.http.get<Question>(this._url + this._urlQuestion + '/numero/' + this.numQuestion);
+        return this.http.get<Question>(this._url + this._urlQuestion + '/numero/' + this.numQuestion + '/quiz/ref/' + this.refQuiz);
     }
 
 }

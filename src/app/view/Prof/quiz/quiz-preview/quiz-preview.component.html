@@ -4,13 +4,13 @@
 <p-card [style]="{width: '900px'}" styleClass="p-card-shadow" class="container" id="start">
     <ng-template pTemplate="header">
         <div class="card" style="background-color: gainsboro">
-            <h1  style="text-align: center" class="quizTitre">{{items[i]?.lib}}</h1>
+            <h1  style="text-align: center" class="quizTitre">{{selected?.lib}}</h1>
             </div>
         <div class="start">
             <p class="styleOfp" id="welcome">Welcome</p><br>
-            <p class="styleOfp">In the {{items[i]?.lib}}'s quiz</p><br>
-            <p class="styleOfp">Quiz will start at {{this.items[i]?.dateDebut}}</p><br>
-            <p class="styleOfp">And will end at {{this.items[i]?.dateFin}}</p><br>
+            <p class="styleOfp">In the {{selected?.lib}}'s quiz</p><br>
+            <p class="styleOfp">Quiz will start at {{this.selected?.dateDebut}}</p><br>
+            <p class="styleOfp">And will end at {{this.selected?.dateFin}}</p><br>
             <p class="styleOfp">You have 1 hour</p><br>
             <p class="styleOfp">Good luck</p><br>
 
@@ -23,7 +23,7 @@
 
     <ng-template pTemplate="header">
         <div class="card" style="background-color: gainsboro">
-            <h1  style="text-align: center" class="quizTitre">{{items[i]?.lib}}</h1>
+            <h1  style="text-align: center" class="quizTitre">{{selected.lib}}</h1>
             <span class="m-auto float-left  dispalyTime" style="color: #2e2e33">Time : {{displayTime()}}</span>
             <div class="p-col-2 dispalyTime" style="float: right" >
                 <span style="margin: auto; color: #2e2e33" >{{qnprogress+1}}/{{this.questions.length}}</span>
@@ -55,7 +55,7 @@
       <p-card  [style]="{width: '900px'}" styleClass="p-card-shadow" id="mainCard" class="container">
           <ng-template pTemplate="header">
               <div class="card" style="background-color: gainsboro">
-              <h2 id="quizGrammar" style=" text-align: center" class="quizTitre" >{{items[i]?.lib}}</h2>
+              <h2 id="quizGrammar" style=" text-align: center" class="quizTitre" >{{selected.lib}}</h2>
               </div>
           </ng-template>
           <p class="styleOfp">You finish this quiz</p><br>

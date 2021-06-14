@@ -297,6 +297,8 @@ export class QuizPreviewComponent implements OnInit {
     this.service.findFirstQuestion().subscribe(
         data => {
           this.question = data;
+          console.log(this.service.question.id);
+          this.service.idQst = this.service.question.id;
           if (this.question.typeDeQuestion.ref == 't1')
           {
             this.typeReponse = 'radio';
@@ -326,7 +328,6 @@ export class QuizPreviewComponent implements OnInit {
   //  this.service.findFirstReponse();
     this.service.seconds = 0;
     this.service.qnprogress = 0;
-    this.service.findAll();
     this.startTimer();
     this.service.findQuiz();
     this.Config();
