@@ -1,10 +1,11 @@
+/* tslint:disable:triple-equals prefer-for-of variable-name align */
 import { Component, OnInit } from '@angular/core';
-import {Question} from "../../../../controller/Model/question.model";
-import {Quiz} from "../../../../controller/Model/quiz.model";
-import {TypeDeQuestion} from "../../../../controller/Model/type-de-question.model";
-import {Reponse} from "../../../../controller/Model/reponse.model";
-import {QuizService} from "../../../../controller/service/quiz.service";
-import {Router} from "@angular/router";
+import {Question} from '../../../../controller/Model/question.model';
+import {Quiz} from '../../../../controller/Model/quiz.model';
+import {TypeDeQuestion} from '../../../../controller/Model/type-de-question.model';
+import {Reponse} from '../../../../controller/Model/reponse.model';
+import {QuizService} from '../../../../controller/service/quiz.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-quiz-preview',
@@ -13,11 +14,11 @@ import {Router} from "@angular/router";
 })
 export class QuizPreviewComponent implements OnInit {
 
-  private _i: number = 0;
-  private _value: number = 1;
+  private _i = 0;
+  private _value = 1;
   private _selectedValue: string;
   private _button: string;
-  private _noteQuiz: number = 0;
+  private _noteQuiz = 0;
   private _noteCheckbox: number;
 
 
@@ -55,6 +56,7 @@ export class QuizPreviewComponent implements OnInit {
   set numQuestion(value: number) {
     this.service.numQuestion = value;
   }
+  // tslint:disable-next-line:adjacent-overload-signatures
   set selected(value: Quiz) {
     this.service.selected = value;
   }
@@ -197,11 +199,11 @@ export class QuizPreviewComponent implements OnInit {
     this.service.findNextQuestion().subscribe(
         data => {
           this.question = data;
-          if(data.typeDeQuestion.ref == 't1')
+          if (data.typeDeQuestion.ref == 't1')
           {
             this.typeReponse = 'radio';
           }
-          else if(data.typeDeQuestion.ref == 't2')
+          else if (data.typeDeQuestion.ref == 't2')
           {
             this.typeReponse = 'checkbox';
           }
@@ -213,7 +215,7 @@ export class QuizPreviewComponent implements OnInit {
         }
     );
 
-    if(this.question.typeDeQuestion.ref == 't1')
+    if (this.question.typeDeQuestion.ref == 't1')
     {
       this.service.findMyAnswer(this.selectedValue).subscribe(
           data => {
@@ -247,7 +249,7 @@ export class QuizPreviewComponent implements OnInit {
         }
       }
       console.log('noteCheckbox = ' + this.noteCheckbox);
-      if(this.noteCheckbox == this.correctAnswers.length && this.reponses.length == this.correctAnswers.length)
+      if (this.noteCheckbox == this.correctAnswers.length && this.reponses.length == this.correctAnswers.length)
       {
         this.noteQuiz = this.noteQuiz + this.question.pointReponseJuste;
       }
@@ -295,11 +297,11 @@ export class QuizPreviewComponent implements OnInit {
     this.service.findFirstQuestion().subscribe(
         data => {
           this.question = data;
-          if(this.question.typeDeQuestion.ref == 't1')
+          if (this.question.typeDeQuestion.ref == 't1')
           {
             this.typeReponse = 'radio';
           }
-          else if(this.question.typeDeQuestion.ref == 't2')
+          else if (this.question.typeDeQuestion.ref == 't2')
           {
             this.typeReponse = 'checkbox';
           }
@@ -348,16 +350,16 @@ public backPage(){
   public selectionChanged(reponse: Reponse): void
   {
     this.selectedValue = reponse.ref;
-    for(let i=0 ; i < this.reponses.length ; i++)
+    for (let i = 0 ; i < this.reponses.length ; i++)
     {
-      if(reponse.ref == this.reponses[i].ref)
+      if (reponse.ref == this.reponses[i].ref)
       {
-        document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#a318ad';
+        document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#2e2e33';
         document.getElementById('div-' + this.reponses[i].ref).style.width = '320px';
         document.getElementById('div-' + this.reponses[i].ref).style.height = '43px';
       }
       else {
-        document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#9D8FEE';
+        document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#dcdcdc';
         document.getElementById('div-' + this.reponses[i].ref).style.width = '300px';
         document.getElementById('div-' + this.reponses[i].ref).style.height = '40px';
       }
