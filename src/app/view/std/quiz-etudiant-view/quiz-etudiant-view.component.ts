@@ -172,33 +172,31 @@ export class QuizEtudiantViewComponent implements OnInit {
           this.service.findQuestion(this.selectedQuiz.ref, this.numero).subscribe(
               data => {
                 this.questionView = data;
-                this.service.findReponses(this.questionView.ref).subscribe(
+                this.service.findReponses(this.questionView.id).subscribe(
                     data => {
                       this.reponsesView = data;
                       this.service.findReponseEtudiantByNumero(this.quizEtudiantList, this.numero).subscribe(
                           // tslint:disable-next-line:no-shadowed-variable
                           data => {
                             this.reponsesEtudiantList = data;
-                            console.log(this.reponsesEtudiantList);
-                            console.log(this.reponsesEtudiantList.length);
                             for(let i = 0 ; i < this.reponsesEtudiantList.length ; i++)
                             {
                               console.log(this.reponsesEtudiantList);
                               if(this.reponsesEtudiantList[i].note > 0)
                               {
-                                console.log('ha wahd s7i7');
-                                document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#a5ee8f';
+                                  document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.id).style.backgroundColor = '#a5ee8f';
+                                  console.log('ha wahd s7i7');
                               }
                               else {
                                 console.log('ha wahd ghalat');
-                                document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#ee8f8f';
-                                this.service.findCorrectAnswers(this.questionView.ref).subscribe(
+                                document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.id).style.backgroundColor = '#ee8f8f';
+                                this.service.findCorrectAnswers(this.questionView.id).subscribe(
                                     data => {
                                       this.correctAnswerView = data;
                                       for (let j = 0; j < this.correctAnswerView.length; j++)
                                       {
                                         console.log('ha wahd s7i7');
-                                        document.getElementById('rep-' + this.correctAnswerView[i].ref).style.backgroundColor = '#a5ee8f';
+                                        document.getElementById('rep-' + this.correctAnswerView[i].id).style.backgroundColor = '#a5ee8f';
                                       }
                                     }
                                 );
@@ -235,7 +233,7 @@ export class QuizEtudiantViewComponent implements OnInit {
           this.service.findQuestion(this.selectedQuiz.ref, this.numero).subscribe(
               data => {
                 this.questionView = data;
-                this.service.findReponses(this.questionView.ref).subscribe(
+                this.service.findReponses(this.questionView.id).subscribe(
                     data => {
                       this.reponsesView = data;
                       this.service.findReponseEtudiantByNumero(this.quizEtudiantList, this.numero).subscribe(
@@ -250,18 +248,18 @@ export class QuizEtudiantViewComponent implements OnInit {
                               if(this.reponsesEtudiantList[i].note > 0)
                               {
                                 console.log('ha wahd s7i7');
-                                document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#a5ee8f';
+                                document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.id).style.backgroundColor = '#a5ee8f';
                               }
                               else {
                                 console.log('ha wahd ghalat');
-                                document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#ee8f8f';
-                                this.service.findCorrectAnswers(this.questionView.ref).subscribe(
+                                document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.id).style.backgroundColor = '#ee8f8f';
+                                this.service.findCorrectAnswers(this.questionView.id).subscribe(
                                     data => {
                                       this.correctAnswerView = data;
                                       for (let j = 0; j < this.correctAnswerView.length; j++)
                                       {
                                         console.log('ha wahd s7i7');
-                                        document.getElementById('rep-' + this.correctAnswerView[i].ref).style.backgroundColor = '#a5ee8f';
+                                        document.getElementById('rep-' + this.correctAnswerView[i].id).style.backgroundColor = '#a5ee8f';
                                       }
                                     }
                                 );
@@ -292,11 +290,11 @@ export class QuizEtudiantViewComponent implements OnInit {
               {
                   if(this.reponsesEtudiantList[i].note > 0)
                   {
-                    document.getElementById('btn-' + this.reponsesEtudiantList[i].reponse.question.ref).style.backgroundColor = '#a5ee8f';
+                    document.getElementById('btn-' + this.reponsesEtudiantList[i].reponse.question.id).style.backgroundColor = '#a5ee8f';
                     console.log('btn-' + this.reponsesEtudiantList[i].reponse.question.ref + ' s7i7');
                   }
                   else {
-                      document.getElementById('btn-' + this.reponsesEtudiantList[i].reponse.question.ref).style.backgroundColor = '#ee8f8f';
+                      document.getElementById('btn-' + this.reponsesEtudiantList[i].reponse.question.id).style.backgroundColor = '#ee8f8f';
                       console.log('btn-' + this.reponsesEtudiantList[i].reponse.question.ref + ' ghalat');
                   }
               }
@@ -333,7 +331,7 @@ export class QuizEtudiantViewComponent implements OnInit {
           this.service.findQuestion(this.selectedQuiz.ref, this.numero).subscribe(
               data => {
                 this.questionView = data;
-                this.service.findReponses(this.questionView.ref).subscribe(
+                this.service.findReponses(this.questionView.id).subscribe(
                     data => {
                       this.reponsesView = data;
                       this.service.findReponseEtudiantByNumero(this.quizEtudiantList, this.numero).subscribe(
@@ -348,18 +346,18 @@ export class QuizEtudiantViewComponent implements OnInit {
                               if(this.reponsesEtudiantList[i].note > 0)
                               {
                                 console.log('ha wahd s7i7');
-                                document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#a5ee8f';
+                                document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.id).style.backgroundColor = '#a5ee8f';
                               }
                               else {
                                 console.log('ha wahd ghalat');
-                                document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#ee8f8f';
-                                this.service.findCorrectAnswers(this.questionView.ref).subscribe(
+                                document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.id).style.backgroundColor = '#ee8f8f';
+                                this.service.findCorrectAnswers(this.questionView.id).subscribe(
                                     data => {
                                       this.correctAnswerView = data;
                                       for (let j = 0; j < this.correctAnswerView.length; j++)
                                       {
                                         console.log('ha wahd s7i7');
-                                        document.getElementById('rep-' + this.correctAnswerView[i].ref).style.backgroundColor = '#a5ee8f';
+                                        document.getElementById('rep-' + this.correctAnswerView[i].id).style.backgroundColor = '#a5ee8f';
                                       }
                                     }
                                 );
