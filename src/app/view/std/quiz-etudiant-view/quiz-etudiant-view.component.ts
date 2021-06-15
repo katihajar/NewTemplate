@@ -150,7 +150,7 @@ export class QuizEtudiantViewComponent implements OnInit {
 
   public next()
   {
-    this.service.findAllQuestions().subscribe(
+    this.service.findAllQuestions(this.selectedQuiz.ref).subscribe(
         data => {
           this.numero = this.numero + 1;
           if(this.numero == 1)
@@ -169,52 +169,52 @@ export class QuizEtudiantViewComponent implements OnInit {
           {
             document.getElementById('btn-next').style.visibility = 'visible';
           }
-          this.service.findQuestionByNumero(this.numero).subscribe(
+          this.service.findQuestion(this.selectedQuiz.ref, this.numero).subscribe(
               data => {
                 this.questionView = data;
-
-              }
-          );
-          this.service.findReponseByNumero(this.numero).subscribe(
-              data => {
-                this.reponsesView = data;
-              }
-          );
-            this.service.findReponseEtudiantByNumero(this.quizEtudiantList, this.numero).subscribe(
-                // tslint:disable-next-line:no-shadowed-variable
-                data => {
-                    this.reponsesEtudiantList = data;
-                    console.log(this.reponsesEtudiantList);
-                    console.log(this.reponsesEtudiantList.length);
-                    for(let i = 0 ; i < this.reponsesEtudiantList.length ; i++)
-                    {
-                        console.log(this.reponsesEtudiantList);
-                        if(this.reponsesEtudiantList[i].note > 0)
-                        {
-                            document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#a5ee8f';
-                        }
-                        else {
-                            document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#ee8f8f';
-                            this.service.findCorrectAnswersByNumero(this.numero).subscribe(
-                                data => {
-                                    this.correctAnswerView = data;
-                                    for (let j = 0; j < this.correctAnswerView.length; j++)
-                                    {
-                                        document.getElementById('rep-' + this.correctAnswerView[i].ref).style.backgroundColor = '#a5ee8f';
+                this.service.findReponses(this.questionView.id).subscribe(
+                    data => {
+                      this.reponsesView = data;
+                      this.service.findReponseEtudiantByNumero(this.quizEtudiantList, this.numero).subscribe(
+                          // tslint:disable-next-line:no-shadowed-variable
+                          data => {
+                            this.reponsesEtudiantList = data;
+                            for(let i = 0 ; i < this.reponsesEtudiantList.length ; i++)
+                            {
+                              console.log(this.reponsesEtudiantList);
+                              if(this.reponsesEtudiantList[i].note > 0)
+                              {
+                                  document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.id).style.backgroundColor = '#a5ee8f';
+                                  console.log('ha wahd s7i7');
+                              }
+                              else {
+                                console.log('ha wahd ghalat');
+                                document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.id).style.backgroundColor = '#ee8f8f';
+                                this.service.findCorrectAnswers(this.questionView.id).subscribe(
+                                    data => {
+                                      this.correctAnswerView = data;
+                                      for (let j = 0; j < this.correctAnswerView.length; j++)
+                                      {
+                                        console.log('ha wahd s7i7');
+                                        document.getElementById('rep-' + this.correctAnswerView[i].id).style.backgroundColor = '#a5ee8f';
+                                      }
                                     }
-                                }
-                            );
-                        }
+                                );
+                              }
+                            }
+                          }
+                      );
                     }
-                }
-            );
+                );
+              }
+          );
         }
   );
   }
 
   public previous()
   {
-    this.service.findAllQuestions().subscribe(
+    this.service.findAllQuestions(this.selectedQuiz.ref).subscribe(
         data => {
           this.numero = this.numero - 1;
           if (this.numero == 1) {
@@ -230,49 +230,52 @@ export class QuizEtudiantViewComponent implements OnInit {
           {
             document.getElementById('btn-next').style.visibility = 'visible';
           }
-          this.service.findQuestionByNumero(this.numero).subscribe(
+          this.service.findQuestion(this.selectedQuiz.ref, this.numero).subscribe(
               data => {
                 this.questionView = data;
-              }
-          );
-          this.service.findReponseByNumero(this.numero).subscribe(
-              data => {
-                this.reponsesView = data;
-              }
-          );
-            this.service.findReponseEtudiantByNumero(this.quizEtudiantList, this.numero).subscribe(
-                // tslint:disable-next-line:no-shadowed-variable
-                data => {
-                    this.reponsesEtudiantList = data;
-                    console.log(this.reponsesEtudiantList);
-                    console.log(this.reponsesEtudiantList.length);
-                    for(let i = 0 ; i < this.reponsesEtudiantList.length ; i++)
-                    {
-                        console.log(this.reponsesEtudiantList);
-                        if(this.reponsesEtudiantList[i].note > 0)
-                        {
-                            document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#a5ee8f';
-                        }
-                        else {
-                            document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#ee8f8f';
-                            this.service.findCorrectAnswersByNumero(this.numero).subscribe(
-                                data => {
-                                    this.correctAnswerView = data;
-                                    for (let j = 0; j < this.correctAnswerView.length; j++)
-                                    {
-                                        document.getElementById('rep-' + this.correctAnswerView[i].ref).style.backgroundColor = '#a5ee8f';
+                this.service.findReponses(this.questionView.id).subscribe(
+                    data => {
+                      this.reponsesView = data;
+                      this.service.findReponseEtudiantByNumero(this.quizEtudiantList, this.numero).subscribe(
+                          // tslint:disable-next-line:no-shadowed-variable
+                          data => {
+                            this.reponsesEtudiantList = data;
+                            console.log(this.reponsesEtudiantList);
+                            console.log(this.reponsesEtudiantList.length);
+                            for(let i = 0 ; i < this.reponsesEtudiantList.length ; i++)
+                            {
+                              console.log(this.reponsesEtudiantList);
+                              if(this.reponsesEtudiantList[i].note > 0)
+                              {
+                                console.log('ha wahd s7i7');
+                                document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.id).style.backgroundColor = '#a5ee8f';
+                              }
+                              else {
+                                console.log('ha wahd ghalat');
+                                document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.id).style.backgroundColor = '#ee8f8f';
+                                this.service.findCorrectAnswers(this.questionView.id).subscribe(
+                                    data => {
+                                      this.correctAnswerView = data;
+                                      for (let j = 0; j < this.correctAnswerView.length; j++)
+                                      {
+                                        console.log('ha wahd s7i7');
+                                        document.getElementById('rep-' + this.correctAnswerView[i].id).style.backgroundColor = '#a5ee8f';
+                                      }
                                     }
-                                }
-                            );
-                        }
+                                );
+                              }
+                            }
+                          }
+                      );
                     }
-                }
-            );
+                );
+              }
+          );
         });
   }
   public findAllQuestions()
   {
-    this.service.findAllQuestions().subscribe(
+    this.service.findAllQuestions(this.selectedQuiz.ref).subscribe(
         data => {
           this.items = data;
         }
@@ -287,10 +290,12 @@ export class QuizEtudiantViewComponent implements OnInit {
               {
                   if(this.reponsesEtudiantList[i].note > 0)
                   {
-                      document.getElementById('btn-' + this.reponsesEtudiantList[i].reponse.question.ref).style.backgroundColor = '#a5ee8f';
+                    document.getElementById('btn-' + this.reponsesEtudiantList[i].reponse.question.id).style.backgroundColor = '#a5ee8f';
+                    console.log('btn-' + this.reponsesEtudiantList[i].reponse.question.ref + ' s7i7');
                   }
                   else {
-                      document.getElementById('btn-' + this.reponsesEtudiantList[i].reponse.question.ref).style.backgroundColor = '#ee8f8f';
+                      document.getElementById('btn-' + this.reponsesEtudiantList[i].reponse.question.id).style.backgroundColor = '#ee8f8f';
+                      console.log('btn-' + this.reponsesEtudiantList[i].reponse.question.ref + ' ghalat');
                   }
               }
           }
@@ -298,13 +303,13 @@ export class QuizEtudiantViewComponent implements OnInit {
 
     /*this.service.findQuizEtudiant(this.login.etudiant, this.service.selectedQuizClassroom.quiz).subscribe(
         data => {
-          this.quizEtudiantList = data;
+          this.quizEtudiantList = data;#ee8f8f
         },error => console.log('erreuuuuuuuuuuuur'));*/
   }
 
   public choose(numero: number)
   {
-    this.service.findAllQuestions().subscribe(
+    this.service.findAllQuestions(this.selectedQuiz.ref).subscribe(
         data => {
           this.numero = numero;
           if(this.numero == 1)
@@ -323,44 +328,47 @@ export class QuizEtudiantViewComponent implements OnInit {
           {
             document.getElementById('btn-next').style.visibility = 'visible';
           }
-          this.service.findQuestionByNumero(this.numero).subscribe(
+          this.service.findQuestion(this.selectedQuiz.ref, this.numero).subscribe(
               data => {
                 this.questionView = data;
-              }
-          );
-          this.service.findReponseByNumero(this.numero).subscribe(
-              data => {
-                this.reponsesView = data;
-              }
-          );
-            this.service.findReponseEtudiantByNumero(this.quizEtudiantList, this.numero).subscribe(
-                // tslint:disable-next-line:no-shadowed-variable
-                data => {
-                    this.reponsesEtudiantList = data;
-                    console.log(this.reponsesEtudiantList);
-                    console.log(this.reponsesEtudiantList.length);
-                    for(let i = 0 ; i < this.reponsesEtudiantList.length ; i++)
-                    {
-                        console.log(this.reponsesEtudiantList);
-                        if(this.reponsesEtudiantList[i].note > 0)
-                        {
-                            document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#a5ee8f';
-                        }
-                        else {
-                            document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.ref).style.backgroundColor = '#ee8f8f';
-                            this.service.findCorrectAnswersByNumero(this.numero).subscribe(
-                                data => {
-                                    this.correctAnswerView = data;
-                                    for (let j = 0; j < this.correctAnswerView.length; j++)
-                                    {
-                                        document.getElementById('rep-' + this.correctAnswerView[i].ref).style.backgroundColor = '#a5ee8f';
+                this.service.findReponses(this.questionView.id).subscribe(
+                    data => {
+                      this.reponsesView = data;
+                      this.service.findReponseEtudiantByNumero(this.quizEtudiantList, this.numero).subscribe(
+                          // tslint:disable-next-line:no-shadowed-variable
+                          data => {
+                            this.reponsesEtudiantList = data;
+                            console.log(this.reponsesEtudiantList);
+                            console.log(this.reponsesEtudiantList.length);
+                            for(let i = 0 ; i < this.reponsesEtudiantList.length ; i++)
+                            {
+                              console.log(this.reponsesEtudiantList);
+                              if(this.reponsesEtudiantList[i].note > 0)
+                              {
+                                console.log('ha wahd s7i7');
+                                document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.id).style.backgroundColor = '#a5ee8f';
+                              }
+                              else {
+                                console.log('ha wahd ghalat');
+                                document.getElementById('rep-' + this.reponsesEtudiantList[i].reponse.id).style.backgroundColor = '#ee8f8f';
+                                this.service.findCorrectAnswers(this.questionView.id).subscribe(
+                                    data => {
+                                      this.correctAnswerView = data;
+                                      for (let j = 0; j < this.correctAnswerView.length; j++)
+                                      {
+                                        console.log('ha wahd s7i7');
+                                        document.getElementById('rep-' + this.correctAnswerView[i].id).style.backgroundColor = '#a5ee8f';
+                                      }
                                     }
-                                }
-                            );
-                        }
+                                );
+                              }
+                            }
+                          }
+                      );
                     }
-                }
-            );
+                );
+              }
+          );
         }
     );
   }

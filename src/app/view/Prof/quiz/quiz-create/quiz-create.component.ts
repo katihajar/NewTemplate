@@ -41,8 +41,12 @@ export class QuizCreateComponent implements OnInit {
 
         return this.service.reponse;
     }
-    set reponse(value: Reponse) {
-        this.service.reponse = value;
+    get refQuiz(): string {
+        return this.service.refQuiz;
+    }
+
+    set refQuiz(value: string) {
+        this.service.refQuiz = value;
     }
     get reponses(): Array<Reponse> {
         if (this.service.question.reponses == null){
@@ -64,7 +68,6 @@ export class QuizCreateComponent implements OnInit {
         }
         return this.service.types;
     }
-
     get createDialog(): boolean {
         return this.service.createDialog;
     }
@@ -106,9 +109,15 @@ export class QuizCreateComponent implements OnInit {
         this.selected.questions.push(this.question);
     }
 
+    defaultchecked() {
+        return this.service.defaultchecked();
+    }
 
 
 
+    checked(event) {
+        return this.service.checked(event);
+    }
 
     public checkedFalse(event: any) {
         return this.service.checkedFalse(event);
@@ -142,6 +151,7 @@ z.append(doc);
     public save() {
         console.log(this.service.sectionSelected.id);
         this.selected.section.id =  this.service.sectionSelected.id;
+        this.service.refQuiz = this.service.selected.ref;
         this.service.save().subscribe(
             data => {
                 this.items.push({...data});
