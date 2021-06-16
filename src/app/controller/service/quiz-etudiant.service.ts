@@ -388,14 +388,14 @@ export class QuizEtudiantService {
     return this.http.get<Array<Question>>(this.url + 'question/quiz/ref/' + quiz);
   }
 
-  public findReponses(question: string): Observable<Array<Reponse>>
+  public findReponses(question: number): Observable<Array<Reponse>>
   {
-    return this.http.get<Array<Reponse>>(this.url + 'reponse/question/ref/' + question);
+    return this.http.get<Array<Reponse>>(this.url + 'reponse/question/id/' + question);
   }
 
-  public findCorrectAnswers(question: string): Observable<Array<Reponse>>
+  public findCorrectAnswers(question: number): Observable<Array<Reponse>>
   {
-    return this.http.get<Array<Reponse>>(this.url + 'reponse/criteria/ref/' + question);
+    return this.http.get<Array<Reponse>>(this.url + 'reponse/criteria/id/' + question);
   }
 ///////////////////
   public findAllQuizEtudiant(): Observable<Array<QuizEtudiant>>
@@ -413,9 +413,9 @@ export class QuizEtudiantService {
     return this.http.post<QuizEtudiant>(this.url + 'quizEtudiant/' , this.quizEtudiant);
   }
 
-  public insertReponseEtudiant(): Observable<ReponseEtudiant>
+  public insertReponseEtudiant(reponseEtudiant: ReponseEtudiant): Observable<ReponseEtudiant>
   {
-    return this.http.post<ReponseEtudiant>(this.url + 'reponseEtudiant/' , this.reponseEtudiant);
+    return this.http.post<ReponseEtudiant>(this.url + 'reponseEtudiant/' , reponseEtudiant);
   }
 
   public findAllReponseEtudiant(): Observable<Array<ReponseEtudiant>>
@@ -428,9 +428,9 @@ export class QuizEtudiantService {
     return this.http.get<ReponseEtudiant>(this.url + 'reponseEtudiant/ref/re1');
   }
 
-  public findMyAnswer(ref: string): Observable<Reponse>
+  public findMyAnswer(id: number): Observable<Reponse>
   {
-    return this.http.get<Reponse>(this.url + 'reponse/ref/' + ref);
+    return this.http.get<Reponse>(this.url + 'reponse/id/' + id);
   }
 
   public updateQuizEtudiant(): Observable<QuizEtudiant>

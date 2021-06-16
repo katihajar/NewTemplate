@@ -18,7 +18,7 @@ export class QuizEtudiantComponent implements OnInit {
 
   constructor(private service: QuizEtudiantService, private login: LoginService) { }
 
-  private selectedValue: string;
+  private selectedValue: number;
   private _selectedValueCheckbox: Array<Reponse>;
   private _type: string;
   private _button: string;
@@ -28,7 +28,7 @@ export class QuizEtudiantComponent implements OnInit {
   private _noteQuiz: number;
   private _noteCheckbox: number;
   private _numeroCheckBox: number;
-  private _numeroQuestion = 0;
+  private _numeroQuestion : number;
 
 
     get numeroQuestion(): number {
@@ -238,12 +238,10 @@ export class QuizEtudiantComponent implements OnInit {
               // tslint:disable-next-line:no-shadowed-variable
               data => {
                   this.myAnswer = data;
-              }
-          );
           for (let i = 0 ; i < this.correctAnswers.length ; i++)
           {
               // tslint:disable-next-line:triple-equals
-              if (this.correctAnswers[i].ref == this.selectedValue)
+              if (this.correctAnswers[i].id == this.selectedValue)
               {
                   this.noteQst = this.selected.pointReponseJuste;
                   this.noteQuiz = this.noteQuiz + this.selected.pointReponseJuste;
@@ -253,22 +251,24 @@ export class QuizEtudiantComponent implements OnInit {
                   this.noteQuiz = this.noteQuiz + this.selected.pointReponsefausse;
               }
           }
-
           this.service.findAllReponseEtudiant().subscribe(
               data => {
                   this.reponsesEtudiant = data;
+                  console.log('length dyal re = ' + this.reponsesEtudiant.length);
 
                   this.reponseEtudiant.quizEtudiant = this.quizEtudiant;
                   this.reponseEtudiant.note = this.noteQst;
                   this.reponseEtudiant.reponse = this.myAnswer;
                   this.reponseEtudiant.ref = 're' + (this.reponsesEtudiant.length + 1);
-                  this.reponseEtudiant.id = this.reponseEtudiant.id + (this.reponsesEtudiant.length + 1);
+                  this.reponseEtudiant.id = this.reponsesEtudiant.length + 1;
                   console.log(this.reponseEtudiant);
-                  this.service.insertReponseEtudiant().subscribe(
+                  this.service.insertReponseEtudiant(this.reponseEtudiant).subscribe(
                       // tslint:disable-next-line:no-shadowed-variable
                       data => {
                       }
                   );
+              }
+          );
               }
           );
       }
@@ -310,7 +310,7 @@ export class QuizEtudiantComponent implements OnInit {
                       this.reponseEtudiant.ref = 're' + (this.reponsesEtudiant.length + 1 + j);
                       this.reponseEtudiant.id = this.reponseEtudiant.id + (this.reponsesEtudiant.length + 1);
                       console.log(this.reponseEtudiant);
-                      this.service.insertReponseEtudiant().subscribe(
+                      this.service.insertReponseEtudiant(this.reponseEtudiant).subscribe(
                           // tslint:disable-next-line:no-shadowed-variable
                           data => {
                               this.numeroCheckBox = this.numeroCheckBox + 1;
@@ -343,12 +343,12 @@ export class QuizEtudiantComponent implements OnInit {
               {
                   this.type = 'checkbox';
               }
-              this.service.findReponses(this.selected.ref).subscribe(
+              this.service.findReponses(this.selected.id).subscribe(
                   data => {
                       this.reponses = data;
                   }
               );
-              this.service.findCorrectAnswers(this.selected.ref).subscribe(
+              this.service.findCorrectAnswers(this.selected.id).subscribe(
                   data => {
                       this.correctAnswers = data;
                   }
@@ -437,13 +437,13 @@ export class QuizEtudiantComponent implements OnInit {
           {
             this.type = 'checkbox';
           }
-            this.service.findReponses(this.selected.ref).subscribe(
+            this.service.findReponses(this.selected.id).subscribe(
                 data => {
                     this.reponses = data;
                     console.log(this.reponses)
                 }
             );
-            this.service.findCorrectAnswers(this.selected.ref).subscribe(
+            this.service.findCorrectAnswers(this.selected.id).subscribe(
                 data => {
                     this.correctAnswers = data;
                     console.log(this.correctAnswers)
@@ -458,19 +458,19 @@ export class QuizEtudiantComponent implements OnInit {
   {
       if(this.selected.typeDeQuestion.ref == 't1')
       {
-          this.selectedValue = reponse.ref;
+          this.selectedValue = reponse.id;
           for(let i=0 ; i < this.reponses.length ; i++)
           {
-              if(reponse.ref == this.reponses[i].ref)
+              if(reponse.id == this.reponses[i].id)
               {
-                  document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#598e8f';
-                  document.getElementById('div-' + this.reponses[i].ref).style.width = '320px';
-                  document.getElementById('div-' + this.reponses[i].ref).style.height = '43px';
+                  document.getElementById('div-' + this.reponses[i].id).style.backgroundColor = '#598e8f';
+                  document.getElementById('div-' + this.reponses[i].id).style.width = '320px';
+                  document.getElementById('div-' + this.reponses[i].id).style.height = '43px';
               }
               else {
-                  document.getElementById('div-' + this.reponses[i].ref).style.backgroundColor = '#90eef0';
-                  document.getElementById('div-' + this.reponses[i].ref).style.width = '300px';
-                  document.getElementById('div-' + this.reponses[i].ref).style.height = '40px';
+                  document.getElementById('div-' + this.reponses[i].id).style.backgroundColor = '#90eef0';
+                  document.getElementById('div-' + this.reponses[i].id).style.width = '300px';
+                  document.getElementById('div-' + this.reponses[i].id).style.height = '40px';
               }
           }
           console.log('hada ljawab dyal radio : ' + this.selectedValue);
@@ -491,17 +491,17 @@ export class QuizEtudiantComponent implements OnInit {
                 }
                 this.selectedValueCheckbox.push(reponse);
                 console.log(this.selectedValueCheckbox);
-                document.getElementById('div-' + reponse.ref).style.backgroundColor = '#598e8f';
-                document.getElementById('div-' + reponse.ref).style.width = '320px';
-                document.getElementById('div-' + reponse.ref).style.height = '43px';
+                document.getElementById('div-' + reponse.id).style.backgroundColor = '#598e8f';
+                document.getElementById('div-' + reponse.id).style.width = '320px';
+                document.getElementById('div-' + reponse.id).style.height = '43px';
             }
           else
               {
                   this.selectedValueCheckbox = this.selectedValueCheckbox.filter(m=>m!=reponse);
                   console.log(this.selectedValueCheckbox);
-                  document.getElementById('div-' + reponse.ref).style.backgroundColor = '#90eef0';
-                  document.getElementById('div-' + reponse.ref).style.width = '300px';
-                  document.getElementById('div-' + reponse.ref).style.height = '40px';
+                  document.getElementById('div-' + reponse.id).style.backgroundColor = '#90eef0';
+                  document.getElementById('div-' + reponse.id).style.width = '300px';
+                  document.getElementById('div-' + reponse.id).style.height = '40px';
               }
       }
   }
@@ -512,6 +512,7 @@ export class QuizEtudiantComponent implements OnInit {
           this.etudiant = data;
         }
     );*/
+      this.numQuestion = 1;
       this.etudiant = this.login.etudiant;
       this.service.findAllQuestions(this.selectedQuiz.ref).subscribe(
         data => {

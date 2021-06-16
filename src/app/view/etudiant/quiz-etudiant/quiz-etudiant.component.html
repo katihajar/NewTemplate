@@ -20,8 +20,8 @@
 
                 <br><br><br><output><B>{{selected.numero}} - {{selected.libelle}} </B></output>
 
-                <div *ngFor="let r of reponses" class="question_answer" id="div-{{r.ref}}">
-                    <input type="{{this.type}}" (click)="selectionChanged($event,r)" value="{{r.ref}}" [(ngModel)]="selectedValue" name="groupname" ngModel>
+                <div *ngFor="let r of reponses" class="question_answer" id="div-{{r.id}}">
+                    <input type="{{this.type}}" (click)="selectionChanged($event,r)" value="{{r.id}}" [(ngModel)]="selectedValue" name="groupname" ngModel>
                     <label>{{r.lib}}</label><br>
                 </div>
             </div>

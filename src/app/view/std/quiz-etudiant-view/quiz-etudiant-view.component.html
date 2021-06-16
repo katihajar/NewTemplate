@@ -2,7 +2,7 @@
     <div class="p-grid">
         <div class="p-col-fixed" style="width:100px">
             <div class="box">
-                <div *ngFor="let q of items" id="btn-{{q.ref}}">
+                <div *ngFor="let q of items" id="btn-{{q.id}}">
                     <button pButton pRipple type="button" style="width: 75px" label="{{q.numero}}" (click)="choose(q.numero)" class="p-button-outlined"></button>
                 </div>
             </div>
@@ -28,7 +28,7 @@
 
                                 <br><br><br><output style="margin-left: 100px"><B>{{questionView.numero}} - {{questionView.libelle}} </B></output>
 
-                                <div *ngFor="let r of reponsesView" class="question_answer" id="rep-{{r.ref}}">
+                                <div *ngFor="let r of reponsesView" class="question_answer" id="rep-{{r.id}}">
 
                                     <input type="radio" value="{{r.ref}}" name="groupname" ngModel>
                                     <label>{{r.lib}}</label><br>
