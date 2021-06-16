@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import {Prof} from '../model/prof.model';
 import {Etudiant} from '../model/etudiant.model';
 import {RecommendTeacherVo} from '../model/recommend-teacher-vo.model';
-import {SalaryVo} from '../Model/salary-vo.model';
+import {SalaryVo} from '../model/salary-vo.model';
 
 
 @Injectable({
@@ -23,6 +23,8 @@ export class RecommendTeacherService {
   private _itemsStudent: Array<Etudiant>;
   private _prof: Prof;
   private _item: Array<RecommendTeacher>;
+  private _itemsRecommend: Array<RecommendTeacher>;
+  private _selectesRecommend: Array<RecommendTeacher>;
   private _recommendVo: RecommendTeacherVo;
   private _selectes: Array<RecommendTeacher>;
   private _selectedsalaryVo: SalaryVo;
@@ -35,6 +37,28 @@ export class RecommendTeacherService {
   constructor(private http: HttpClient) { }
   findByCriteria(): Observable<Array<RecommendTeacher>>{
     return this.http.post<Array<RecommendTeacher>>('http://localhost:8036/learn/teacher/search', this.recommendVo);
+  }
+
+  get itemsRecommend(): Array<RecommendTeacher> {
+    if ( this._itemsRecommend == null){
+      this._itemsRecommend = new Array<RecommendTeacher>();
+    }
+    return this._itemsRecommend;
+  }
+
+  set itemsRecommend(value: Array<RecommendTeacher>) {
+    this._itemsRecommend = value;
+  }
+
+  get selectesRecommend(): Array<RecommendTeacher> {
+    if (this._selectesRecommend == null){
+      this._selectesRecommend = new Array<RecommendTeacher>();
+    }
+    return this._selectesRecommend;
+  }
+
+  set selectesRecommend(value: Array<RecommendTeacher>) {
+    this._selectesRecommend = value;
   }
 
   get selectedsalaryVo(): SalaryVo {
@@ -209,6 +233,9 @@ export class RecommendTeacherService {
   }
   public findAllProf(): Observable<Array<Prof>> {
     return  this.http.get< Array<Prof> >('http://localhost:8036/learn/prof/');
+  }
+  public findAllRecommend(): Observable<Array<RecommendTeacher>> {
+    return  this.http.get< Array<RecommendTeacher> >('http://localhost:8036/learn/teacher/');
   }
   public findAllEtudiantByProf(): Observable<Array<Etudiant>> {
     return  this.http.get< Array<Etudiant> >('http://localhost:8036/learn/etudiant/prof/id/' +  this.prof.id);

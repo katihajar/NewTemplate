@@ -75,6 +75,8 @@ import {EtudiantSectionsComponent} from './view/student/student-courses/etudiant
 import {EtudiantParcoursComponent} from './view/student/student-courses/etudiant-parcours/etudiant-parcours.component';
 import {EtudiantCoursesComponent} from './view/student/student-courses/etudiant-courses/etudiant-courses.component';
 import {StudentSimulateSectionComponent} from './view/student/student-courses/student-simulate-section/student-simulate-section.component';
+import {RecommendAdminComponent} from './view/admin/recommend-admin/recommend-admin.component';
+
 
 
 
@@ -93,6 +95,7 @@ import {StudentSimulateSectionComponent} from './view/student/student-courses/st
                 children: [
                     {path: '', component: DashboardDemoComponent},
                     {path: 'pages/etudiant', component: EtudiantsComponent},
+                    {path: 'pages/recommendAdmin', component: RecommendAdminComponent},
                     {path: 'pages/session', component: SessionCoursComponent},
                     {path: 'pages/synthese', component: SyntheseSessionComponent},
                     {path: 'view/teacherLists', component: ProfesseurListComponent},
