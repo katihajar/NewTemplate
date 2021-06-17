@@ -60,7 +60,7 @@ export class InscriptionEditComponent implements OnInit {
     this.items[this.service.findIndexById(this.service.selected.id)] = this.selected;
     this.service.valider().subscribe(data => {
           this.selected = data;
-      // tslint:disable-next-line:no-shadowed-variable
+          // tslint:disable-next-line:no-shadowed-variable
           this.service.findAll().subscribe(data => this.items = data);
           this.messageService.add({
             severity: 'success',
@@ -69,10 +69,20 @@ export class InscriptionEditComponent implements OnInit {
             life: 3000
           });
         });
+    // tslint:disable-next-line:no-shadowed-variable triple-equals
+    if (this.selected.etatInscription.id == '2'){
+          this.delete(this.selected);
+      }
     this.editDialog = false;
     this.selected = new Inscription();
   }
-
+    public delete(selected: Inscription) {
+        this.selected = selected;
+        this.service.deleteByNumeroInscription().subscribe(data => {
+                    this.items = this.items.filter(val => val.id !== this.selected.id);
+                    this.selected = new Inscription();
+                });
+    }
   public hideEditDialog() {
     this.editDialog = false;
   }
