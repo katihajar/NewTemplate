@@ -34,7 +34,21 @@ export class SectionSimulateComponent implements OnInit {
   set image(value: string) {
     this.service.image = value;
   }
-
+  URLVideo() {
+    this.service.video = '';
+    // tslint:disable-next-line:prefer-for-of
+    for (let m = 0; m < 24 ; m++)
+    {
+      this.service.video += this.selectedsection.urlVideo[m];
+    }
+    this.service.video += 'embed/';
+    for (let m = 32; m < 43 ; m++)
+    {
+      this.service.video += this.selectedsection.urlVideo[m];
+    }
+    console.log( this.service.video);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.service.video);
+  }
   ngOnInit(): void {
     console.log(this.selectedsection.id );
     console.log(this.selectedsection.urlVideo );
