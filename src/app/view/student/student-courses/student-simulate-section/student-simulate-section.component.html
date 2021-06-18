@@ -47,8 +47,8 @@
 
 
     <div class="card-footer " >
-        <button pButton pRipple type="button" icon="pi pi-caret-left" style="margin-left: 15px; width: 120px" label="Previous" class="p-button-rounded" (click)="PreviousSection()" ></button>
+        <button pButton pRipple type="button" icon="pi pi-caret-left" style="margin-left: 15px; width: 120px" label="Previous"  class="p-button-rounded" *ngIf="this.selectedsection.numeroOrder != 1"  (click)="PreviousSection()" ></button>
         <button pButton pRipple type="button" style="margin-left: 400px; width: 120px" id="quiz" label="{{this.passerQuiz}}" class="p-button-rounded" [routerLink]="quizView? ['/pages/quiz-view']: ['/pages/quiz-etudiant']"></button>
-        <button pButton pRipple type="button" icon="pi pi-caret-right" label="Next" style="margin-left: 420px; width: 120px" class="p-button-rounded" (click)="NextSection()" ></button>
+        <button pButton pRipple type="button" icon="pi pi-caret-right" label="Next" style="margin-left: 420px; width: 120px" class="p-button-rounded" *ngIf="this.selectedsection.numeroOrder < this.itemssection2.length" (click)="NextSection()" ></button>
     </div>
 </div>

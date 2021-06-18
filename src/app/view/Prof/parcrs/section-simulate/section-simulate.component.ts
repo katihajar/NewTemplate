@@ -67,7 +67,7 @@ export class SectionSimulateComponent implements OnInit {
   set progress(value: number) {
     this.service.progress = value;
   }
-  NextSection() {
+  PreviousSection() {
     this.service.affichelistSection().subscribe(
         data => {
           this.itemssection2 = data;
@@ -78,7 +78,7 @@ export class SectionSimulateComponent implements OnInit {
     if (this.selectedsection.numeroOrder != 0){
       this.service.afficheOneSection2().subscribe( data => { this.selectedsection = data; });
     }else{
-      this.selectedsection.numeroOrder = 6;
+      this.selectedsection.numeroOrder = this.itemssection2.length + 1;
       this.NextSection();
     }
   }
@@ -113,7 +113,7 @@ export class SectionSimulateComponent implements OnInit {
     console.log(this.service.contenu );
     return this.service.contenu;
   }
-  PreviousSection() {
+  NextSection() {
     this.service.affichelistSection().subscribe(
         data => {
           this.itemssection2 = data;
@@ -121,7 +121,7 @@ export class SectionSimulateComponent implements OnInit {
         });
     this.selectedsection.numeroOrder = this.selectedsection.numeroOrder + 1;
     // tslint:disable-next-line:triple-equals
-    if (this.selectedsection.numeroOrder != 6){
+    if (this.selectedsection.numeroOrder <= this.itemssection2.length ){
       this.service.afficheOneSection2().subscribe( data => { this.selectedsection = data; });
     }else{
       this.selectedsection.numeroOrder = 0;
