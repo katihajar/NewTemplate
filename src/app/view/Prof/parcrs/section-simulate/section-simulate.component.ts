@@ -36,7 +36,8 @@ export class SectionSimulateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    console.log(this.selectedsection.id );
+    console.log(this.selectedsection.urlVideo );
   }
   get progress(): number {
     return this.service.progress;
@@ -74,7 +75,8 @@ export class SectionSimulateComponent implements OnInit {
       this.service.image += this.selectedsection.urlImage[j];
     }
     this.service.image += 'preview';
-    console.log(this.service.image );
+    console.log(this.selectedsection.id );
+    // const blob = UrlFetch(this.image,{headers})
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.service.image);
   }
   Contenu() {

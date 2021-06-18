@@ -134,7 +134,15 @@ export class StudentSimulateSectionComponent implements OnInit {
     this.service.image += 'preview';
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.service.image);
   }
-
+    URLVideo() {
+        this.service.video = '';
+        // tslint:disable-next-line:prefer-for-of
+        for (let m = 0; m < this.selectedsection.urlVideo.length ; m++)
+        {
+            this.service.video += this.selectedsection.urlVideo[m];
+        }
+        return this.sanitizer.bypassSecurityTrustResourceUrl(this.service.video);
+    }
   PreviousSection() {
     this.service.affichelistSection().subscribe(
         data => {
