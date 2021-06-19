@@ -77,6 +77,8 @@ import {EtudiantCoursesComponent} from './view/student/student-courses/etudiant-
 import {StudentSimulateSectionComponent} from './view/student/student-courses/student-simulate-section/student-simulate-section.component';
 import {RecommendAdminComponent} from './view/admin/recommend-admin/recommend-admin.component';
 import {FaqCreateComponent} from './view/admin/faq-admin/faq-create/faq-create.component';
+import {FaqStudentListComponent} from './view/std/faq-student/faq-student-list/faq-student-list.component';
+import {FaqAdminListComponent} from './view/admin/faq-admin/faq-admin-list/faq-admin-list.component';
 
 
 
@@ -121,9 +123,11 @@ import {FaqCreateComponent} from './view/admin/faq-admin/faq-create/faq-create.c
                     {path: 'pages/sectionsSimulate', component: SectionSimulateComponent},
                     {path: 'pages/faq-admin', component: FaqAnswerComponent},
                     {path: 'pages/faq-create', component: FaqCreateComponent},
+                    {path: 'pages/faq-admin-list', component: FaqAdminListComponent},
                     {path: 'pages/news-admin', component: NewsAdminListComponent},
                     {path: 'pages/news-teacher', component: NewsTeacherListComponent},
                     {path: 'pages/faq-teacher', component: FaqListComponent},
+                    {path: 'pages/faq-student', component: FaqStudentListComponent},
                     {path: 'pages/login-admin', component: LoginAdminComponent},
                     {path: 'pages/login-prof', component: LoginProfComponent},
                     {path: 'pages/login-etudiant', component: LoginEtudiantComponent},

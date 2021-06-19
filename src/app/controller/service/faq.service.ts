@@ -15,7 +15,7 @@ export class FaqService {
   private _selected: Faq;
   private _itemsType: Array<FaqType>;
   private _selectedType: FaqType;
-  private _ref: string;
+  private _id: number;
   private _viewDialogFaqContact: boolean;
   private _selectedFaqProf: FaqProf;
   private _itemsFaqProf: Array<FaqProf>;
@@ -53,12 +53,12 @@ export class FaqService {
     this._viewDialogFaqContact = value;
   }
 
-  get ref(): string {
-    return this._ref;
+  get id(): number {
+    return this._id;
   }
 
-  set ref(value: string) {
-    this._ref = value;
+  set id(value: number) {
+    this._id = value;
   }
 
   get items(): Array<Faq> {
@@ -84,20 +84,6 @@ export class FaqService {
   set selected(value: Faq) {
     this._selected = value;
   }
-
-  public findFirstFaq(): Observable<Array<Faq>> {
-    return this.http.get<Array<Faq>>(this.url + 'faq/faqType/ref/ft1');
-  }
-
-  public findByFaqType(ref: string): Observable<Array<Faq>> {
-    console.log(ref);
-    return this.http.get<Array<Faq>>(this.url + 'faq/faqType/ref/' + ref);
-  }
-
-  public findByRef(): Observable<Faq> {
-    return this.http.get<Faq>(this.url + 'faq/ref/' + this.selected.id);
-  }
-
 
   get itemsType(): Array<FaqType> {
     if(this._itemsType == null)
@@ -125,6 +111,18 @@ export class FaqService {
 
   public findTypes(destinataire): Observable<Array<FaqType>> {
     return this.http.get<Array<FaqType>>(this.url + 'faqType/destinataire/' + destinataire);
+  }
+
+  public findFirstFaq(): Observable<Array<Faq>> {
+    return this.http.get<Array<Faq>>(this.url + 'faq/faqType/ref/ft1');
+  }
+
+  public findByFaqType(id: number): Observable<Array<Faq>> {
+    return this.http.get<Array<Faq>>(this.url + 'faq/faqType/id/' + id);
+  }
+
+  public findByRef(): Observable<Faq> {
+    return this.http.get<Faq>(this.url + 'faq/ref/' + this.selected.id);
   }
 
   public findFaqProf(): Observable<Array<FaqProf>>

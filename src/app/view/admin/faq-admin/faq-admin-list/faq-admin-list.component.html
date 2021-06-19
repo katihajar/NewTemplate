@@ -1,3 +1,6 @@
+<div>
+    <p-dropdown id="destinataire" pInputText [options]="utilisateurs" [(ngModel)]="utilisateur" (click)="findTypes()" optionLabel="label"></p-dropdown>
+</div>
 <p-tabMenu [model]="menu" [activeItem]="menu[0]" (click)="init()"></p-tabMenu>
 <p-tree [value]="nodes">
     <ng-template let-node pTemplate="default" >
@@ -6,9 +9,5 @@
     <ng-template let-node pTemplate="string" >
         <b class="description" style="color: blue">{{node.label}}</b>
     </ng-template>
-
 </p-tree>
-<button pButton pRipple class="p-button-text" label="Contact us" (click)="viewContact()"></button>
-
-<app-faq-contact></app-faq-contact>
-
+<button pButton pRipple class="p-button-rounded p-button-success p-mr-2" style="background-color: #0C8990" label="Create new FAQ" [routerLink]="['/pages/faq-create']"></button>

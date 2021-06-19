@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import {MenuItem, TreeNode} from 'primeng/api';
 import {HttpClient} from '@angular/common/http';
 import {FaqService} from '../../../../controller/service/faq.service';
 import {FaqType} from '../../../../controller/Model/faq-type.model';
 import {Faq} from '../../../../controller/Model/faq.model';
-import {MenuItem, TreeNode} from 'primeng/api';
 
 @Component({
-  selector: 'app-faq-list',
-  templateUrl: './faq-list.component.html',
-  styleUrls: ['./faq-list.component.scss']
+  selector: 'app-faq-student-list',
+  templateUrl: './faq-student-list.component.html',
+  styleUrls: ['./faq-student-list.component.scss']
 })
-export class FaqListComponent implements OnInit {
+export class FaqStudentListComponent implements OnInit {
 
   nodes: TreeNode[];
   menu: MenuItem[];
@@ -78,7 +78,7 @@ export class FaqListComponent implements OnInit {
 
   public initType()
   {
-    this.service.findTypes('teacher').subscribe(data => {
+    this.service.findTypes('student').subscribe(data => {
       this.itemsType = data;
       this.menu = [
       ];
@@ -113,7 +113,7 @@ export class FaqListComponent implements OnInit {
   }
   public findFirstFaq()
   {
-    this.service.findTypes('teacher').subscribe(data => {
+    this.service.findTypes('student').subscribe(data => {
       this.itemsType = data;
       this.service.findByFaqType(this.itemsType[0].id).subscribe(data => {
         this.items = data;

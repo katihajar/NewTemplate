@@ -26,12 +26,12 @@ export class FaqCreateComponent implements OnInit {
     this.service.viewDialogFaqContact = value;
   }
 
-  get ref(): string {
-    return this.service.ref;
+  get id(): number {
+    return this.service.id;
   }
 
-  set ref(value: string) {
-    this.service.ref = value;
+  set id(value: number) {
+    this.service.id = value;
   }
 
   get selectedType(): FaqType {
