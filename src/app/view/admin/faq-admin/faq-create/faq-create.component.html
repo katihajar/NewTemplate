@@ -9,10 +9,10 @@
             <label for="type" style="margin-left: 300px">Type of question : </label>
             <p-dropdown id="type" pInputText [options]="itemsType" optionLabel="libelle" [(ngModel)]="type" (click)="findTypes()"></p-dropdown>
             <div class="p-grid" style="margin-top: 10px">
-                <div class="p-col" >  <label for="libelle" >Question :  </label>
+                <div class="p-col" >  <label  >Question :  </label>
                 <textarea id="libelle" [rows]="10" [cols]="50"  style="margin-top: 10px" pInputTextarea [(ngModel)]="libelle"></textarea>
                 </div>
-                <div class="p-col" > <label for="description"style="margin-left: 10px" >Answer : </label>
+                <div class="p-col" > <label style="margin-left: 10px" >Answer : </label>
                 <textarea id="description" [rows]="10" [cols]="50" style="margin-top: 10px" pInputTextarea [(ngModel)]="description"></textarea>
                 </div>
         </div>
