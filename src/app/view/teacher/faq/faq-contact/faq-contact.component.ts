@@ -11,7 +11,7 @@ import {FaqProf} from '../../../../controller/Model/faq-prof.model';
 })
 export class FaqContactComponent implements OnInit {
 
-  types: Array<FaqType>;
+  /*types: Array<FaqType>;
   selectedType: FaqType;
   menu: MenuItem[];
   nodes: TreeNode[];
@@ -114,10 +114,10 @@ export class FaqContactComponent implements OnInit {
           }
         }
     );
-  }
+  }*/
 
   ngOnInit(): void {
-    this.initType();
+    /*this.initType();
     this.menu = [
       {label: 'New Question', icon: 'pi pi-plus-circle', command: (event) => {
           document.getElementById('new-question').style.visibility = 'visible';
@@ -133,7 +133,7 @@ export class FaqContactComponent implements OnInit {
           this.findFaqProf();
         }}
     ];
-    this.findFaqProf();
+    this.findFaqProf();*/
   }
 
 }

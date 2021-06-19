@@ -76,6 +76,7 @@ import {EtudiantParcoursComponent} from './view/student/student-courses/etudiant
 import {EtudiantCoursesComponent} from './view/student/student-courses/etudiant-courses/etudiant-courses.component';
 import {StudentSimulateSectionComponent} from './view/student/student-courses/student-simulate-section/student-simulate-section.component';
 import {RecommendAdminComponent} from './view/admin/recommend-admin/recommend-admin.component';
+import {FaqCreateComponent} from './view/admin/faq-admin/faq-create/faq-create.component';
 
 
 
@@ -119,6 +120,7 @@ import {RecommendAdminComponent} from './view/admin/recommend-admin/recommend-ad
                     {path: 'pages/sections', component: SectionsComponent},
                     {path: 'pages/sectionsSimulate', component: SectionSimulateComponent},
                     {path: 'pages/faq-admin', component: FaqAnswerComponent},
+                    {path: 'pages/faq-create', component: FaqCreateComponent},
                     {path: 'pages/news-admin', component: NewsAdminListComponent},
                     {path: 'pages/news-teacher', component: NewsTeacherListComponent},
                     {path: 'pages/faq-teacher', component: FaqListComponent},

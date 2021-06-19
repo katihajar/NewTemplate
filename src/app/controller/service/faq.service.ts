@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Faq} from '../model/faq.model';
-import {FaqType} from '../model/faq-type.model';
-import {FaqProf} from '../model/faq-prof.model';
+import {Faq} from '../Model/faq.model';
+import {FaqType} from '../Model/faq-type.model';
+import {FaqProf} from '../Model/faq-prof.model';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
@@ -22,6 +22,10 @@ export class FaqService {
 
 
   get selectedFaqProf(): FaqProf {
+    if(this._selectedFaqProf == null)
+    {
+      this._selectedFaqProf = new FaqProf();
+    }
     return this._selectedFaqProf;
   }
 
@@ -30,6 +34,10 @@ export class FaqService {
   }
 
   get itemsFaqProf(): Array<FaqProf> {
+    if(this._itemsFaqProf == null)
+    {
+      this._itemsFaqProf = new Array<FaqProf>();
+    }
     return this._itemsFaqProf;
   }
 
@@ -54,6 +62,10 @@ export class FaqService {
   }
 
   get items(): Array<Faq> {
+    if(this._items == null)
+    {
+      this._items = new Array<Faq>();
+    }
     return this._items;
   }
 
@@ -62,6 +74,10 @@ export class FaqService {
   }
 
   get selected(): Faq {
+    if(this._selected == null)
+    {
+      this._selected = new Faq();
+    }
     return this._selected;
   }
 
@@ -79,11 +95,15 @@ export class FaqService {
   }
 
   public findByRef(): Observable<Faq> {
-    return this.http.get<Faq>(this.url + 'faq/ref/' + this.selected.ref);
+    return this.http.get<Faq>(this.url + 'faq/ref/' + this.selected.id);
   }
 
 
   get itemsType(): Array<FaqType> {
+    if(this._itemsType == null)
+    {
+      this._itemsType = new Array<FaqType>();
+    }
     return this._itemsType;
   }
 
@@ -92,6 +112,10 @@ export class FaqService {
   }
 
   get selectedType(): FaqType {
+    if(this._selectedType == null)
+    {
+      this._selectedType = new FaqType();
+    }
     return this._selectedType;
   }
 
@@ -99,8 +123,8 @@ export class FaqService {
     this._selectedType = value;
   }
 
-  public findAll(): Observable<Array<FaqType>> {
-    return this.http.get<Array<FaqType>>(this.url + 'faqType/');
+  public findTypes(destinataire): Observable<Array<FaqType>> {
+    return this.http.get<Array<FaqType>>(this.url + 'faqType/destinataire/' + destinataire);
   }
 
   public findFaqProf(): Observable<Array<FaqProf>>
@@ -131,5 +155,9 @@ export class FaqService {
     return this.http.get<FaqType>(this.url + 'ref/' + this.selected.ref);
   }*/
 
+  public save(faq: Faq): Observable<Faq>
+  {
+    return this.http.post<Faq>(this.url + 'faq/' , faq);
+  }
   constructor(private http: HttpClient) { }
 }

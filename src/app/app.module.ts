@@ -234,6 +234,7 @@ import {QuizStudentListComponent} from './view/student/quiz-student-list/quiz-st
 import {ClassroomStudentListComponent} from './view/student/classroom-student-list/classroom-student-list.component';
 import {SyntheseSessionHistoryComponent} from './view/admin/synthese-session/synthese-session-history/synthese-session-history.component';
 import {RecommendAdminComponent} from './view/admin/recommend-admin/recommend-admin.component';
+import { FaqCreateComponent } from './view/admin/faq-admin/faq-create/faq-create.component';
 
 
 
@@ -470,7 +471,8 @@ import {RecommendAdminComponent} from './view/admin/recommend-admin/recommend-ad
         StudentSimulateSectionComponent,
         SyntheseSessionHistoryComponent,
         StudentChooseViewComponent,
-        RecommendAdminComponent
+        RecommendAdminComponent,
+        FaqCreateComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

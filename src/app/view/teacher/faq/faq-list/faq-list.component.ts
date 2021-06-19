@@ -17,7 +17,7 @@ export class FaqListComponent implements OnInit {
 
   constructor(private http: HttpClient, private service: FaqService) { }
 
-  get viewDialogFaqContact(): boolean {
+  /*get viewDialogFaqContact(): boolean {
     return this.service.viewDialogFaqContact;
   }
 
@@ -129,11 +129,11 @@ export class FaqListComponent implements OnInit {
         );
       }
     });
-  }
+  }*/
 
   ngOnInit(): void {
-    this.initType();
-    this.findFirstFaq();
+    /*this.initType();
+    this.findFirstFaq();*/
   }
 
 }

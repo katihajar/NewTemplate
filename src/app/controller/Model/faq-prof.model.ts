@@ -4,7 +4,6 @@ import {Admin} from './admin.model';
 
 export class FaqProf {
     public id: number;
-    public ref: string;
     public libelle: string;
     public description: string;
     public  faqType = new FaqType();

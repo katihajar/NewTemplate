@@ -10,21 +10,10 @@ import {FaqProf} from '../../../../controller/Model/faq-prof.model';
 })
 export class FaqAnswerComponent implements OnInit {
 
-  nodes: TreeNode[];
-  private _answer: string;
-
-
-  get answer(): string {
-    return this._answer;
-  }
-
-  set answer(value: string) {
-    this._answer = value;
-  }
 
   constructor(private service: FaqService) { }
 
-  get selectedFaqProf(): FaqProf {
+  /*get selectedFaqProf(): FaqProf {
     return this.service.selectedFaqProf;
   }
 
@@ -61,10 +50,10 @@ export class FaqAnswerComponent implements OnInit {
   {
     this.selectedFaqProf = {...faqProf};
     console.log(this.selectedFaqProf.faqType);
-  }
+  }*/
 
   ngOnInit(): void {
-    this.service.findFaqProf().subscribe(
+    /*this.service.findFaqProf().subscribe(
         data => {
           this.itemsFaqProf = data;
           this.nodes = [];
@@ -80,7 +69,7 @@ export class FaqAnswerComponent implements OnInit {
             );
           }
         }
-    );
+    );*/
   }
 
 }
