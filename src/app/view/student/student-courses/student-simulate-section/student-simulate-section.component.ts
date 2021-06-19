@@ -204,4 +204,5 @@ export class StudentSimulateSectionComponent implements OnInit {
   set selectessection(value: Array<Section>) {
     this.service.selectessection = value;
   }
+
 }
