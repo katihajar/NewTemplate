@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Faq} from '../Model/faq.model';
 import {FaqType} from '../Model/faq-type.model';
-import {FaqProf} from '../Model/faq-prof.model';
+import {FaqProf} from '../model/faq-prof.model';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
@@ -9,7 +9,6 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class FaqService {
-
   private url = 'http://localhost:8036/learn/';
   private _items: Array<Faq>;
   private _selected: Faq;
@@ -121,30 +120,20 @@ export class FaqService {
     return this.http.get<Array<Faq>>(this.url + 'faq/faqType/id/' + id);
   }
 
-  public findByRef(): Observable<Faq> {
-    return this.http.get<Faq>(this.url + 'faq/ref/' + this.selected.id);
-  }
-
   public findFaqProf(): Observable<Array<FaqProf>>
   {
     return this.http.get<Array<FaqProf>>(this.url + 'faqProf/');
   }
 
-  public saveFaqProf(): Observable<FaqProf>
+  public saveFaqProf(faqProf: FaqProf): Observable<FaqProf>
   {
-    return this.http.post<FaqProf>(this.url + 'faqProf/' , this.selectedFaqProf);
+    return this.http.post<FaqProf>(this.url + 'faqProf/' , faqProf);
   }
 
-  public findFirstFaqProf(): Observable<FaqProf>
+  public findMyQuestions(prof: number, type: number): Observable<Array<FaqProf>>
   {
-    return this.http.get<FaqProf>(this.url + '/faqProf/ref/fp1');
+    return this.http.get<Array<FaqProf>>(this.url + 'faqProf/critere/prof/{idProf}/type/{idType}?idProf=' + prof + '&idType=' + type);
   }
-
-  public findFaqProfByRef(ref: string): Observable<FaqProf>
-  {
-    return this.http.get<FaqProf>(this.url + '/faqProf/ref/' + ref);
-  }
-
   public updateFaqrof(): Observable<FaqProf>
   {
     return this.http.put<FaqProf>(this.url + 'faqProf/' , this.selectedFaqProf);

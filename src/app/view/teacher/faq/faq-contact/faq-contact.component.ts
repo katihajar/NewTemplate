@@ -3,6 +3,7 @@ import {FaqType} from '../../../../controller/Model/faq-type.model';
 import {MenuItem, TreeNode} from 'primeng/api';
 import {FaqService} from '../../../../controller/service/faq.service';
 import {FaqProf} from '../../../../controller/Model/faq-prof.model';
+import {LoginService} from '../../../../controller/service/login.service';
 
 @Component({
   selector: 'app-faq-contact',
@@ -11,13 +12,13 @@ import {FaqProf} from '../../../../controller/Model/faq-prof.model';
 })
 export class FaqContactComponent implements OnInit {
 
-  /*types: Array<FaqType>;
+  types: Array<FaqType>;
   selectedType: FaqType;
   menu: MenuItem[];
   nodes: TreeNode[];
   question: string;
 
-  constructor(private service: FaqService) { }
+  constructor(private service: FaqService, private login: LoginService) { }
 
   get selectedFaqProf(): FaqProf {
     return this.service.selectedFaqProf;
@@ -43,6 +44,15 @@ export class FaqContactComponent implements OnInit {
     this.service.viewDialogFaqContact = value;
   }
 
+  get id(): number {
+    return this.service.id;
+  }
+
+  set id(value: number) {
+    this.service.id = value;
+  }
+
+
   public hideViewDialog() {
     this.viewDialogFaqContact = false;
   }
@@ -57,38 +67,36 @@ export class FaqContactComponent implements OnInit {
 
   public initType()
   {
-    this.service.findAll().subscribe(data => {
+    console.log('hello');
+    this.service.findTypes('teacher').subscribe(data => {
       this.itemsType = data;
       this.types = [
       ];
-      for( let i = 0 ; i < this.itemsType.length ; i++)
+      // tslint:disable-next-line:prefer-for-of
+      for ( let i = 0 ; i < this.itemsType.length ; i++)
       {
-        this.types.push({libelle: this.itemsType[i].libelle, ref: this.itemsType[i].ref, id: this.itemsType[i].id, faq: this.itemsType[i].faq});
+        this.types.push({libelle: this.itemsType[i].libelle, id: this.itemsType[i].id, destinataire: this.itemsType[i].destinataire, faq: this.itemsType[i].faq });
       }
-    });
+    }, error => console.log('erreur'));
   }
 
   public save() {
-    this.service.findFirstFaqProf().subscribe(
-        data => {
-          this.selectedFaqProf = data;
-
-          this.selectedFaqProf.faqType = this.selectedType;
-          this.selectedFaqProf.libelle = this.question;
-          this.selectedFaqProf.admin = null;
-          this.selectedFaqProf.prof = null;
-          this.selectedFaqProf.ref = 'fp' + (this.itemsFaqProf.length + 1);
-          this.selectedFaqProf.description = null;
-          this.selectedFaqProf.id = this.selectedFaqProf.id + (this.itemsFaqProf.length + 1) ;
-          console.log(this.selectedFaqProf);
-          this.service.saveFaqProf().subscribe(data => {
-            this.itemsFaqProf.push({...data});
-          },error => {
-            console.log('erreuuuuuuuuuur');
-          });
-        }
-    )
-    this.selectedFaqProf = new FaqProf();
+    if(this.selectedType == null)
+    {
+      this.selectedType = this.itemsType[0];
+    }
+    this.selectedFaqProf.faqType = this.selectedType;
+    this.selectedFaqProf.libelle = this.question;
+    this.selectedFaqProf.admin = null;
+    this.selectedFaqProf.prof = this.login.prof;
+    this.selectedFaqProf.description = null;
+    this.selectedFaqProf.id = 1;
+    console.log(this.selectedFaqProf.id);
+    this.service.saveFaqProf(this.selectedFaqProf).subscribe(data => {
+      this.itemsFaqProf.push({...data});
+      },error => {
+      console.log('erreuuuuuuuuuur');
+    });
   }
 
   public findFaqProf()
@@ -114,26 +122,19 @@ export class FaqContactComponent implements OnInit {
           }
         }
     );
-  }*/
+  }
 
   ngOnInit(): void {
-    /*this.initType();
+    this.initType();
     this.menu = [
       {label: 'New Question', icon: 'pi pi-plus-circle', command: (event) => {
           document.getElementById('new-question').style.visibility = 'visible';
           document.getElementById('new-question').style.height = '150px';
           document.getElementById('my-questions').style.visibility = 'hidden';
           document.getElementById('my-questions').style.height = '10px';
-        }},
-      {label: 'My Questions', icon: 'pi pi-envelope', command: (event) => {
-          document.getElementById('new-question').style.visibility = 'hidden';
-          document.getElementById('new-question').style.height = '10px';
-          document.getElementById('my-questions').style.visibility = 'visible';
-          document.getElementById('my-questions').style.height = '100px';
-          this.findFaqProf();
         }}
     ];
-    this.findFaqProf();*/
+    this.findFaqProf();
   }
 
 }

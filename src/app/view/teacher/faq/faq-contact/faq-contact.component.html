@@ -1,4 +1,4 @@
-<!--<p-dialog [(visible)]="viewDialogFaqContact" [style]="{width: '800px', height: '400px'}"  [modal]="true" styleClass="p-fluid">
+<p-dialog [(visible)]="viewDialogFaqContact" [style]="{width: '800px', height: '400px'}"  [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="header">
         <h3>Question</h3>
     </ng-template>
@@ -24,6 +24,7 @@
 
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+        <button pButton pRipple label="View My Question" icon="pi pi-times" class="p-button-text" [routerLink]="['/pages/faq-teacher-answer']" (click)="hideViewDialog()"></button>
     </ng-template>
 </p-dialog>
--->
+
