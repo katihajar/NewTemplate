@@ -5,17 +5,22 @@
             <select pInputText type="text" class="btn btn-block btn-outline-light form-control" id="cours" style="background-color: lavender" name="Parcours" (click)="findAllCours()" [(ngModel)]="selectedsection.cours.id" >
                 <option  selected="selected" *ngFor="let c of itemscours"  [ngValue]="c.id"> {{c.libelle}}</option>
             </select>
-            <small class="p-invalid" *ngIf="submittedSection && !selectedsection.cours.libelle">parcours is required.</small>
+            <small class="p-invalid" *ngIf="submittedSection && !selectedsection.cours.libelle">cours is required.</small>
             <label for="categorie" > CategorieSections </label>
             <select pInputText type="text" class="btn btn-block btn-outline-light form-control" id="categorie" style="background-color: lavender" name="Parcours" (click)="findAllCategorie()" [(ngModel)]="selectedsection.categorieSection.id" >
                 <option  selected="selected" *ngFor="let s of itemscategoriesection"  [ngValue]="s.id"> {{s.libelle}}</option>
             </select>
-            <small class="p-invalid" *ngIf="submittedSection && !selectedsection.categorieSection.libelle">parcours is required.</small>
+            <small class="p-invalid" *ngIf="submittedSection && !selectedsection.categorieSection.libelle">categorie is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="Number">Number</label>
+            <input type="text" pInputText id="Number" [(ngModel)]="selectedsection.numeroOrder" required autofocus />
+            <small class="p-invalid" *ngIf="submittedSection && !selectedsection.numeroOrder">Number is required.</small>
         </div>
         <div class="p-field">
             <label for="libelle">Title</label>
             <input type="text" pInputText id="libelle" [(ngModel)]="selectedsection.libelle" required autofocus />
-            <small class="p-invalid" *ngIf="submittedSection && !selectedsection.libelle">ref is required.</small>
+            <small class="p-invalid" *ngIf="submittedSection && !selectedsection.libelle">Title is required.</small>
         </div>
         <div class="p-field">
             <label for="contenu">Content</label>

@@ -1,3 +1,4 @@
+/* tslint:disable:no-shadowed-variable whitespace */
 import { Component, OnInit } from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {Section} from '../../../../controller/Model/section.model';
@@ -19,7 +20,7 @@ import {QuizEtudiant} from '../../../../controller/Model/quiz-etudiant.model';
 export class StudentSimulateSectionComponent implements OnInit {
 
 
-  // tslint:disable-next-line:max-line-lengthg
+    // tslint:disable-next-line:max-line-lengthg max-line-length
   constructor(private messageService: MessageService, private sanitizer: DomSanitizer, private confirmationService: ConfirmationService, private service: ParcoursService, private http: HttpClient, private quizService: QuizEtudiantService, private loginService: LoginService) { }
   value = 0;
 
@@ -89,7 +90,7 @@ export class StudentSimulateSectionComponent implements OnInit {
     this.quizService.quizView = value;
   }
 
-  NextSection() {
+  PreviousSection() {
     this.service.affichelistSection().subscribe(
         data => {
           this.itemssection2 = data;
@@ -121,7 +122,7 @@ export class StudentSimulateSectionComponent implements OnInit {
             );
           });
     }else{
-      this.selectedsection.numeroOrder = 6;
+      this.selectedsection.numeroOrder = this.itemssection2.length + 1 ;
       this.NextSection();
     }
   }
@@ -134,8 +135,22 @@ export class StudentSimulateSectionComponent implements OnInit {
     this.service.image += 'preview';
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.service.image);
   }
-
-  PreviousSection() {
+    URLVideo() {
+        this.service.video = '';
+        // tslint:disable-next-line:prefer-for-of
+        for (let m = 0; m < 24 ; m++)
+        {
+            this.service.video += this.selectedsection.urlVideo[m];
+        }
+        this.service.video += 'embed/';
+        for (let m = 32; m < 43 ; m++)
+        {
+            this.service.video += this.selectedsection.urlVideo[m];
+        }
+        console.log( this.service.video);
+        return this.sanitizer.bypassSecurityTrustResourceUrl(this.service.video);
+    }
+    NextSection() {
     this.service.affichelistSection().subscribe(
         data => {
           this.itemssection2 = data;
@@ -143,7 +158,7 @@ export class StudentSimulateSectionComponent implements OnInit {
         });
     this.selectedsection.numeroOrder = this.selectedsection.numeroOrder + 1;
     // tslint:disable-next-line:triple-equals
-    if (this.selectedsection.numeroOrder != 6){
+    if (this.selectedsection.numeroOrder <= this.itemssection2.length ){
       this.service.afficheOneSection2().subscribe(
           data => {
             this.selectedsection = data;

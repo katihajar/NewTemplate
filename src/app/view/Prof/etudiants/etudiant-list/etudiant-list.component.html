@@ -25,9 +25,9 @@
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         <div class="p-col"> <h5 class="p-m-0">Manage Students</h5><br>
                         <span >
-                        <input pInputText type="text"  placeholder="Search by LastName" [(ngModel)]="etudiantVo.nom  " style="margin-right: 10px;width: 250px"/>
-                        <input pInputText type="text"  placeholder="Search by FirstName" [(ngModel)]="etudiantVo.prenom  " style="margin-right: 10px;width: 250px"/>
-                        <input pInputText type="text"  placeholder="Search by UserName" [(ngModel)]="etudiantVo.login  " style="margin-right: 10px;width: 250px"/>
+                        <input pInputText type="text"  placeholder="Search by LastName" [(ngModel)]="etudiantVo.nom  " style="margin-right: 10px;width: 200px"/>
+                        <input pInputText type="text"  placeholder="Search by FirstName" [(ngModel)]="etudiantVo.prenom  " style="margin-right: 10px;width: 200px"/>
+                        <input pInputText type="text"  placeholder="Search by UserName" [(ngModel)]="etudiantVo.login  " style="margin-right: 10px;width: 200px"/>
 
              <i class="pi pi-search"  (click)="findByCriteria()"></i>
 
@@ -42,6 +42,7 @@
                         <th pSortableColumn="nom">LastName <p-sortIcon field="nom"></p-sortIcon></th>
                         <th pSortableColumn="prenom">FirsName <p-sortIcon field="prenom"></p-sortIcon></th>
                         <th pSortableColumn="login">Username<p-sortIcon field="login"></p-sortIcon></th>
+                        <th pSortableColumn="prenom">Teacher Name <p-sortIcon field="prenom"></p-sortIcon></th>
                         <th pSortableColumn="Parcours">Parcours<p-sortIcon field="Parcours"></p-sortIcon></th>
                         <th pSortableColumn="centre">Center<p-sortIcon field="centre"></p-sortIcon></th>
                         <th></th>
@@ -55,6 +56,7 @@
                         <td>{{etudiant.nom}}</td>
                         <td>{{etudiant.prenom}}</td>
                         <td>{{etudiant.login}}</td>
+                        <td>{{etudiant.prof.nom}} {{etudiant.prof.prenom}}</td>
                         <td>{{etudiant.parcours.libelle}}</td>
                         <td>{{etudiant.parcours.centre.libelle}}</td>
 
