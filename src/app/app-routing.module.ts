@@ -80,6 +80,8 @@ import {FaqCreateComponent} from './view/admin/faq-admin/faq-create/faq-create.c
 import {FaqStudentListComponent} from './view/std/faq-student/faq-student-list/faq-student-list.component';
 import {FaqAdminListComponent} from './view/admin/faq-admin/faq-admin-list/faq-admin-list.component';
 import {FaqContactListComponent} from './view/teacher/faq/faq-contact-list/faq-contact-list.component';
+import {FaqStudentContactComponent} from './view/std/faq/faq-student-contact/faq-student-contact.component';
+import {FaqStudentContactListeComponent} from './view/std/faq/faq-student-contact-liste/faq-student-contact-liste.component';
 
 
 
@@ -130,6 +132,8 @@ import {FaqContactListComponent} from './view/teacher/faq/faq-contact-list/faq-c
                     {path: 'pages/faq-teacher', component: FaqListComponent},
                     {path: 'pages/faq-teacher-answer', component: FaqContactListComponent},
                     {path: 'pages/faq-student', component: FaqStudentListComponent},
+                    {path: 'pages/faq-student-contact', component: FaqStudentContactComponent},
+                    {path: 'pages/faq-student-contact-list', component: FaqStudentContactListeComponent},
                     {path: 'pages/login-admin', component: LoginAdminComponent},
                     {path: 'pages/login-prof', component: LoginProfComponent},
                     {path: 'pages/login-etudiant', component: LoginEtudiantComponent},

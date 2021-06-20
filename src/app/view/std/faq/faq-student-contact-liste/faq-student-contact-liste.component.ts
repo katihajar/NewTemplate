@@ -2,20 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import {MenuItem, TreeNode} from 'primeng/api';
 import {HttpClient} from '@angular/common/http';
 import {FaqService} from '../../../../controller/service/faq.service';
+import {LoginService} from '../../../../controller/service/login.service';
 import {FaqType} from '../../../../controller/Model/faq-type.model';
 import {Faq} from '../../../../controller/Model/faq.model';
 
 @Component({
-  selector: 'app-faq-student-list',
-  templateUrl: './faq-student-list.component.html',
-  styleUrls: ['./faq-student-list.component.scss']
+  selector: 'app-faq-student-contact-liste',
+  templateUrl: './faq-student-contact-liste.component.html',
+  styleUrls: ['./faq-student-contact-liste.component.scss']
 })
-export class FaqStudentListComponent implements OnInit {
+export class FaqStudentContactListeComponent implements OnInit {
 
   nodes: TreeNode[];
   menu: MenuItem[];
 
-  constructor(private http: HttpClient, private service: FaqService) { }
+  constructor(private http: HttpClient, private service: FaqService, private login: LoginService) { }
 
   get viewDialogFaqContact(): boolean {
     return this.service.viewDialogFaqContact;
@@ -65,13 +66,6 @@ export class FaqStudentListComponent implements OnInit {
     this.service.itemsType = value;
   }
 
-  get viewDialogFaqEtudiantContact(): boolean {
-    return this.service.viewDialogFaqEtudiantContact;
-  }
-
-  set viewDialogFaqEtudiantContact(value: boolean) {
-    this.service.viewDialogFaqEtudiantContact = value;
-  }
 
   public view(faqType: FaqType) {
     this.selectedType = {...faqType};
@@ -79,7 +73,7 @@ export class FaqStudentListComponent implements OnInit {
   }
 
   public viewContact() {
-    this.viewDialogFaqEtudiantContact = true ;
+    this.viewDialogFaqContact = true ;
   }
 
 
@@ -87,6 +81,7 @@ export class FaqStudentListComponent implements OnInit {
   {
     this.service.findTypes('student').subscribe(data => {
       this.itemsType = data;
+      console.log(this.itemsType);
       this.menu = [
       ];
       // tslint:disable-next-line:prefer-for-of
@@ -95,14 +90,19 @@ export class FaqStudentListComponent implements OnInit {
         this.menu.push({label: this.itemsType[i].libelle, command: (event) => {
             this.selectedType = this.itemsType[i];
             this.id = this.itemsType[i].id;
+            console.log('heeeello ' + this.itemsType[i].id);
           }});
       }
     }, error => console.log('erreur'));
   }
   public init()
   {
-    this.service.findByFaqType(this.id).subscribe(data => {
+    console.log(this.login.etudiant.id);
+    console.log(this.id);
+    console.log(this.itemsType);
+    this.service.findMyQuestionsEtudiant(this.login.etudiant.id, this.id).subscribe(data => {
       this.items = data;
+      console.log(this.items);
       this.nodes = [];
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0 ; i < this.items.length ; i++)
@@ -122,8 +122,11 @@ export class FaqStudentListComponent implements OnInit {
   {
     this.service.findTypes('student').subscribe(data => {
       this.itemsType = data;
-      this.service.findByFaqType(this.itemsType[0].id).subscribe(data => {
+      console.log(this.login.etudiant.id);
+      console.log(this.itemsType[0].id);
+      this.service.findMyQuestionsEtudiant(this.login.etudiant.id, this.itemsType[0].id).subscribe(data => {
         this.items = data;
+        console.log(this.items);
         this.nodes = [];
         // tslint:disable-next-line:prefer-for-of
         for (let i = 0 ; i < this.items.length ; i++)
