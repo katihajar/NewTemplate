@@ -240,6 +240,7 @@ import { FaqAdminListComponent } from './view/admin/faq-admin/faq-admin-list/faq
 import { FaqContactListComponent } from './view/teacher/faq/faq-contact-list/faq-contact-list.component';
 import { FaqStudentContactComponent } from './view/std/faq/faq-student-contact/faq-student-contact.component';
 import { FaqStudentContactListeComponent } from './view/std/faq/faq-student-contact-liste/faq-student-contact-liste.component';
+import {DictionaryCreateComponent} from './view/etudiant/dictionary-create/dictionary-create.component';
 
 
 
@@ -482,7 +483,8 @@ import { FaqStudentContactListeComponent } from './view/std/faq/faq-student-cont
         FaqAdminListComponent,
         FaqContactListComponent,
         FaqStudentContactComponent,
-        FaqStudentContactListeComponent
+        FaqStudentContactListeComponent,
+        DictionaryCreateComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

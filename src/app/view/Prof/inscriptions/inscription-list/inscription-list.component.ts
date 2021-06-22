@@ -44,6 +44,9 @@ export class InscriptionListComponent implements OnInit {
       }
     });
   }
+  public findByCriteria(){
+    return this.service.findByCriteria().subscribe( data => this.items= data);
+  }
   public deleteMultiple() {
     this.confirmationService.confirm({
       message: 'Are you sure you want to delete the selected inscription?',

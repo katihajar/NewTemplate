@@ -82,6 +82,7 @@ import {FaqAdminListComponent} from './view/admin/faq-admin/faq-admin-list/faq-a
 import {FaqContactListComponent} from './view/teacher/faq/faq-contact-list/faq-contact-list.component';
 import {FaqStudentContactComponent} from './view/std/faq/faq-student-contact/faq-student-contact.component';
 import {FaqStudentContactListeComponent} from './view/std/faq/faq-student-contact-liste/faq-student-contact-liste.component';
+import {DictionaryCreateComponent} from './view/etudiant/dictionary-create/dictionary-create.component';
 
 
 
@@ -101,6 +102,7 @@ import {FaqStudentContactListeComponent} from './view/std/faq/faq-student-contac
                 children: [
                     {path: '', component: DashboardDemoComponent},
                     {path: 'pages/etudiant', component: EtudiantsComponent},
+                    {path: 'pages/DictionaryCreate', component: DictionaryCreateComponent},
                     {path: 'pages/recommendAdmin', component: RecommendAdminComponent},
                     {path: 'pages/session', component: SessionCoursComponent},
                     {path: 'pages/synthese', component: SyntheseSessionComponent},

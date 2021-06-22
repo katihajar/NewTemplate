@@ -21,9 +21,8 @@ export class InscriptionAdminComponent implements OnInit {
     this.submitted = true;
     this.service.save().subscribe(
         data => {
-      console.log(this.selected);
-      console.log('meryem');
       this.selected = new Admin();
+      console.log('meryem');
           // tslint:disable-next-line:no-unused-expression
       this.selected == null;
     });

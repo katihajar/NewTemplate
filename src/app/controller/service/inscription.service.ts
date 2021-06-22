@@ -42,7 +42,9 @@ export class InscriptionService {
   // }
   constructor(private http: HttpClient) {
   }
-
+  findByCriteria(): Observable<Array<Inscription>>{
+    return this.http.post<Array<Inscription>>('http://localhost:8036/learn/inscription/search', this.selected);
+  }
   get selectedetudiant(): Etudiant {
     if (this._selectedetudiant == null){
       this._selectedetudiant = new Etudiant();

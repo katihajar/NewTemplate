@@ -22,11 +22,15 @@
                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
-                        <h5 class="p-m-0">Manage Professors</h5>
+                        <div class="p-col"><h5 class="p-m-0">Manage Professors</h5><br>
                         <span >
-                        <input pInputText type="text"  placeholder="Search by LastName" [(ngModel)]="selected.nom" style="margin-right: 10px;width: 250px" />
-                            <i class="pi pi-search"  (click)="this.Search()"></i>
-                    </span>
+                        <input pInputText type="text"  placeholder="Search by LastName" [(ngModel)]="selected.nom  " style="margin-right: 10px;width: 200px"/>
+                        <input pInputText type="text"  placeholder="Search by FirstName" [(ngModel)]="selected.prenom  " style="margin-right: 10px;width: 200px"/>
+                        <input pInputText type="text"  placeholder="Search by UserName" [(ngModel)]="selected.login  " style="margin-right: 10px;width: 200px"/>
+
+             <i class="pi pi-search"  (click)="findByCriteria()"></i>
+
+                        </span></div>
                     </div>
                 </ng-template>
                 <ng-template pTemplate="header">
