@@ -51,6 +51,9 @@ export class ScheduleService {
     }
 
     get selectedVo(): ScheduleVo {
+        if (this._selectedVo == null){
+            this._selectedVo = new ScheduleVo();
+        }
         return this._selectedVo;
     }
 
@@ -174,19 +177,28 @@ export class ScheduleService {
         });
     }
 
+public remove(){
 
-
+        this.clickedEvent.remove();
+}
+public delete(): Observable<number>{
+       return  this.http.delete<number>('http://localhost:8036/learn/scheduleProf/id'+ this.selected.id);
+}
     save() {
         this.eventDialog = false;
-
         this.clickedEvent.setProp('title', this.changedEvent.title);
         this.clickedEvent.setStart(this.changedEvent.start);
         this.clickedEvent.setEnd(this.changedEvent.end);
         this.clickedEvent.setAllDay(this.changedEvent.allDay);
-
+         this.selected.dateDebut = this.clickedEvent.start;
+         console.log(this.selected.dateDebut);
+         this.selected.dateFin = this.clickedEvent.end;
+         console.log(this.selected.dateFin);
         this.changedEvent = {title: '', start: null, end: '', allDay: null};
     }
-
+public edit(){
+        this.http.put('http://localhost:8036/learn/scheduleProf/', this.selected);
+}
 
     reset() {
         this.changedEvent.title = this.clickedEvent.title;

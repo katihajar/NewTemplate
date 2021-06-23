@@ -20,6 +20,7 @@ export class QuizCreateComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     constructor(private service: QuizService, private messageService: MessageService, private confirmationService: ConfirmationService, private router: Router, private serviceParcours: ParcoursService) { }
     cols: any[];
+    num: number=0;
     get question(): Question {
         return this.service.question;
     }
@@ -103,7 +104,7 @@ export class QuizCreateComponent implements OnInit {
             }
         );
        // this.service.findSections().subscribe(data => this.service.sections = data);
-        this.service.findQuiz();
+        this.service.findQuizByRef(this.selected.ref);
         this.initCol();
         this.question = new Question();
         this.selected.questions.push(this.question);
@@ -131,14 +132,11 @@ export class QuizCreateComponent implements OnInit {
         this.service.quizSelected();
     }
 
-    public addCard(){
-let doc = document.getElementById('formCard');
-let z = document.getElementById('mainCard');
-z.append(doc);
-    }
+
 
     public addFormule() {
    this.question = new Question();
+   this.num++;
    this.selected.questions.push(this.question);
     }
     get selectedsection(): Section {

@@ -11,6 +11,7 @@ import {EtatInscription} from "../../../controller/Model/etat-inscription.model"
 import {Etudiant} from "../../../controller/Model/etudiant.model";
 import {EtatEtudiantSchedule} from "../../../controller/Model/etat-etudiant-schedule.model";
 import {Prof} from '../../../controller/Model/prof.model';
+import {Calendar} from "primeng/calendar";
 
 @Component({
   selector: 'app-schedule',
@@ -20,9 +21,9 @@ import {Prof} from '../../../controller/Model/prof.model';
 
 })
 export class ScheduleComponent implements OnInit {
-  constructor(private service: ScheduleService, private messageService: MessageService) {
+  constructor(private service: ScheduleService, private messageService: MessageService,private confirmationService: ConfirmationService) {
   }
-
+ calendar: FullCalendar;
   get selected(): ScheduleProf {
     if (this.service.selected == null){
       this.service.selected = new ScheduleProf();
@@ -136,9 +137,9 @@ export class ScheduleComponent implements OnInit {
     this.service.selectedVo = value;
   }
 
-  @ViewChild('fc') fc: FullCalendar;
 
   ngOnInit() {
+
     this.service.findAll();
     this.service.findEtat().subscribe(data => this.service.etatEtudiantSchedule = data);
     this.changedEvent = {title: '', etat: '', start: null, end: '', allDay: null};
@@ -162,15 +163,24 @@ export class ScheduleComponent implements OnInit {
         this.eventDialog = true;
 
         this.clickedEvent = e.event;
-
+        this.service.findAll();
+        this.service.findEtat().subscribe(data => this.service.etatEtudiantSchedule = data);
         this.changedEvent.title = this.clickedEvent.title;
-        this.changedEvent.etat = this.clickedEvent.etat;
         this.changedEvent.start = this.clickedEvent.start;
         this.changedEvent.end = this.clickedEvent.end;
       }
     };
   }
-
+  public findIndexById(id: number): number {
+    let index = -1;
+    for (let i = 0; i < this.items.length; i++) {
+      if (this.items[i].id === id) {
+        index = i;
+        break;
+      }
+    }
+    return index;
+  }
 
   save() {
     return this.service.save();
@@ -204,4 +214,28 @@ export class ScheduleComponent implements OnInit {
       this.createDialog = false;
       this.selected = new ScheduleProf();
     }
+  public delete(selected: ScheduleProf) {
+    this.selected = selected;
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to delete ' + selected.ref + '?',
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.service.delete().subscribe(data => {
+          this.items = this.items.filter(val => val.id !== this.selected.id);
+          this.itemsVo = this.itemsVo.filter(val => val.id !== this.selected.id);
+          this.selected = new ScheduleProf();
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Successful',
+            detail: 'Student Deleted',
+            life: 3000
+          });
+        });
+      }
+    });
+     this.calendar.getCalendar().getEvents().forEach(event => event.remove());
+    this.eventDialog = false ;
+  }
+
 }

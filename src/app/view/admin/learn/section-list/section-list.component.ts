@@ -4,6 +4,7 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
 import {Router} from '@angular/router';
 import {QuizService} from '../../../../controller/service/quiz.service';
+import {VocabularyService} from "../../../../controller/service/vocabulary.service";
 
 
 @Component({
@@ -16,7 +17,7 @@ export class SectionListComponent implements OnInit {
 
   cols: any[];
   // tslint:disable-next-line:max-line-length
-  constructor(private serviceQuiz: QuizService, private messageService: MessageService, private confirmationService: ConfirmationService, private service: ParcoursService , private router: Router) { }
+  constructor(private serviceQuiz: QuizService, private messageService: MessageService, private confirmationService: ConfirmationService, private service: ParcoursService , private router: Router,private VocabularyService: VocabularyService) { }
   ngOnInit(): void {
     this.initCol();
   }
@@ -143,9 +144,21 @@ export class SectionListComponent implements OnInit {
       }
     });
   }
+  CreateQuizVocabulary(section: Section){
+    this.VocabularyService.sectionSelected =section;
+    console.log(this.VocabularyService.sectionSelected);
+    this.router.navigate(['/view/quiz-create-vocabulary']);
+  }
 
     CreateQuiz(section: Section) {
+    if (this.selectedsection.categorieSection.libelle == 'Vocabulary'){
+      this.VocabularyService.sectionSelected =section;
+      console.log(this.VocabularyService.sectionSelected);
+      this.router.navigate(['/view/quiz-create-vocabulary']);
+    }else {
       this.serviceQuiz.sectionSelected = section;
       this.router.navigate(['/pages/quiz-create']);
+    }
+
     }
 }

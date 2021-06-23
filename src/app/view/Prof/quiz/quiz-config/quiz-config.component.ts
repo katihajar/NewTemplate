@@ -16,9 +16,6 @@ export class QuizConfigComponent implements OnInit {
   constructor(private service: QuizService, private messageService: MessageService) { }
 
   ngOnInit(): void {
-    console.log(this.qst);
-    console.log(this.rep);
-    console.log(this.back);
   }
   get createDialog(): boolean {
     return this.service.createDialog;
@@ -77,9 +74,8 @@ this.service.saveConfig().subscribe(
   }
 
 
-  onItemChange(event : any) {
-    if (event.target.checked){
-      console.log(event);
-    }
+
+  checkCheckBoxvalue(event){
+    console.log(event.target.checked)
   }
 }

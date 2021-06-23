@@ -104,6 +104,8 @@ export class LoginAdminComponent implements OnInit {
                   {label: 'Professor Recommendation', icon: 'pi pi-fw pi-user-plus', routerLink: ['/pages/recommendAdmin']},
                   {label: 'FAQ ANSWER', icon: 'pi pi-fw pi-reply', routerLink: ['/pages/faq-admin']},
                   {label: 'CREATE NEWS', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/pages/news-admin']},
+                  {label: 'Create Quiz Vocabulary', icon: 'pi pi-fw pi-pencil', routerLink: [ '/view/quiz-create-vocabulary']},
+                  {label: ' Quiz Vocabulary', icon: 'pi pi-fw pi-table', routerLink: [ '/view/quiz-vocabulary']},
                   {label: 'LogOut ', icon: 'pi pi-fw pi-sign-out', routerLink: ['']},
             ];
             document.getElementById('log-pass').style.visibility = 'hidden';

@@ -76,6 +76,8 @@ import {EtudiantParcoursComponent} from './view/student/student-courses/etudiant
 import {EtudiantCoursesComponent} from './view/student/student-courses/etudiant-courses/etudiant-courses.component';
 import {StudentSimulateSectionComponent} from './view/student/student-courses/student-simulate-section/student-simulate-section.component';
 import {RecommendAdminComponent} from './view/admin/recommend-admin/recommend-admin.component';
+import {QuizVocabularyComponent} from "./view/Prof/quiz/quiz-vocabulary/quiz-vocabulary.component";
+import { QuizCreateVocabularyComponent } from './view/Prof/quiz/quiz-create-vocabulary/quiz-create-vocabulary.component';
 
 
 
@@ -131,6 +133,8 @@ import {RecommendAdminComponent} from './view/admin/recommend-admin/recommend-ad
                     {path: 'pages/quiz-liste', component: QuizEtudiantListComponent},
                     {path: 'pages/quiz-view', component: QuizEtudiantViewComponent},
                     {path: 'view/quiz-preview', component: QuizPreviewComponent},
+                    {path: 'view/quiz-create-vocabulary', component: QuizCreateVocabularyComponent},
+                    {path: 'view/quiz-vocabulary', component: QuizVocabularyComponent},
                     {path: 'view/schedule', component: ScheduleComponent},
                     {path: 'inscriptionEtudiant', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
