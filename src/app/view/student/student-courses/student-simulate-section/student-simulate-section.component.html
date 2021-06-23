@@ -40,7 +40,7 @@
             <div class="p-card" style="width: 250px;margin-top: 20px; height: 300px">
         <h1 style="width: 100px;margin-top: 3px; margin-left: 35px">Dictionary</h1><br>
          <span class="p-input-icon-left" style="margin-top: 3px; margin-left: 25px">
-             <input type="text" style="width: 200px" pInputText placeholder="Search"/>
+             <input type="text" [(ngModel)]="word" style="width: 200px" pInputText placeholder="Search"/>
              <p-button  (click)="findByWord()" style="margin-left: 60px; margin-top: 10px" >Search</p-button>
              <p-button  (click)="openCreateDict()" style="margin-left: 10px; margin-top: 10px">Add</p-button>
          </span>
