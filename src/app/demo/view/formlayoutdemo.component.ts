@@ -58,8 +58,9 @@ export class FormLayoutDemoComponent {
     public save(){
         this.submitted = true;
         this.service.save().subscribe(data => {
-            this.selectes.push({...data});
             this.selected = new Inscription();
+            this.selectes.push({...data});
+            // tslint:disable-next-line:no-unused-expression
             this.selected == null;
             this.messageService.add({
                     severity: 'success',

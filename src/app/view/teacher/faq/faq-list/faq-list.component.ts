@@ -25,12 +25,12 @@ export class FaqListComponent implements OnInit {
     this.service.viewDialogFaqContact = value;
   }
 
-  get ref(): string {
-    return this.service.ref;
+  get id(): number {
+    return this.service.id;
   }
 
-  set ref(value: string) {
-    this.service.ref = value;
+  set id(value: number) {
+    this.service.id = value;
   }
 
   get selectedType(): FaqType {
@@ -78,7 +78,7 @@ export class FaqListComponent implements OnInit {
 
   public initType()
   {
-    this.service.findAll().subscribe(data => {
+    this.service.findTypes('teacher').subscribe(data => {
       this.itemsType = data;
       this.menu = [
       ];
@@ -87,14 +87,14 @@ export class FaqListComponent implements OnInit {
       {
         this.menu.push({label: this.itemsType[i].libelle, command: (event) => {
             this.selectedType = this.itemsType[i];
-            this.ref = this.itemsType[i].ref;
+            this.id = this.itemsType[i].id;
           }});
       }
     }, error => console.log('erreur'));
   }
   public init()
   {
-    this.service.findByFaqType(this.ref).subscribe(data => {
+    this.service.findByFaqType(this.id).subscribe(data => {
       this.items = data;
       this.nodes = [];
       // tslint:disable-next-line:prefer-for-of
@@ -113,22 +113,25 @@ export class FaqListComponent implements OnInit {
   }
   public findFirstFaq()
   {
-    this.service.findFirstFaq().subscribe(data => {
-      this.items = data;
-      this.nodes = [];
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0 ; i < this.items.length ; i++)
-      {
-        this.nodes.push(
-            {
-              label: this.items[i].libelle,
-              children: [
-                {label: this.items[i].description, type: 'string'}
-              ]
-            }
-        );
-      }
-    });
+    this.service.findTypes('teacher').subscribe(data => {
+      this.itemsType = data;
+      this.service.findByFaqType(this.itemsType[0].id).subscribe(data => {
+        this.items = data;
+        this.nodes = [];
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0 ; i < this.items.length ; i++)
+        {
+          this.nodes.push(
+              {
+                label: this.items[i].libelle,
+                children: [
+                  {label: this.items[i].description, type: 'string'}
+                ]
+              }
+          );
+        }
+      });
+    }, error => console.log('erreur'));
   }
 
   ngOnInit(): void {

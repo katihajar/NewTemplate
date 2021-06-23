@@ -29,9 +29,8 @@ export class InscriptionProfComponent implements OnInit {
     this.submitted = true;
     this.service.save().subscribe(
         data => {
-      console.log(this.selectedProf);
-      console.log('meryem');
-      this.selectedProf = new Prof();
+          this.selectedProf = new Prof();
+          console.log('meryem');
     });
   }
   get selectedProf(): Prof {

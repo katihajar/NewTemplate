@@ -16,7 +16,9 @@ export class ProfesseurListComponent implements OnInit {
   constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
               private service: ProfessorService) {
   }
-
+    public findByCriteria() {
+        return this.service.findByCriteria().subscribe( data => this.items = data);
+    }
   ngOnInit(): void {
     this.initCol();
     this.service.findAll().subscribe(data => this.items = data);

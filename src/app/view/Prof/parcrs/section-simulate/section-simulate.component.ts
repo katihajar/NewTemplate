@@ -34,9 +34,24 @@ export class SectionSimulateComponent implements OnInit {
   set image(value: string) {
     this.service.image = value;
   }
-
+  URLVideo() {
+    this.service.video = '';
+    // tslint:disable-next-line:prefer-for-of
+    for (let m = 0; m < 24 ; m++)
+    {
+      this.service.video += this.selectedsection.urlVideo[m];
+    }
+    this.service.video += 'embed/';
+    for (let m = 32; m < 43 ; m++)
+    {
+      this.service.video += this.selectedsection.urlVideo[m];
+    }
+    console.log( this.service.video);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.service.video);
+  }
   ngOnInit(): void {
-
+    console.log(this.selectedsection.id );
+    console.log(this.selectedsection.urlVideo );
   }
   get progress(): number {
     return this.service.progress;
@@ -52,7 +67,7 @@ export class SectionSimulateComponent implements OnInit {
   set progress(value: number) {
     this.service.progress = value;
   }
-  NextSection() {
+  PreviousSection() {
     this.service.affichelistSection().subscribe(
         data => {
           this.itemssection2 = data;
@@ -63,7 +78,7 @@ export class SectionSimulateComponent implements OnInit {
     if (this.selectedsection.numeroOrder != 0){
       this.service.afficheOneSection2().subscribe( data => { this.selectedsection = data; });
     }else{
-      this.selectedsection.numeroOrder = 6;
+      this.selectedsection.numeroOrder = this.itemssection2.length + 1;
       this.NextSection();
     }
   }
@@ -74,7 +89,8 @@ export class SectionSimulateComponent implements OnInit {
       this.service.image += this.selectedsection.urlImage[j];
     }
     this.service.image += 'preview';
-    console.log(this.service.image );
+    console.log(this.selectedsection.id );
+    // const blob = UrlFetch(this.image,{headers})
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.service.image);
   }
   Contenu() {
@@ -97,7 +113,7 @@ export class SectionSimulateComponent implements OnInit {
     console.log(this.service.contenu );
     return this.service.contenu;
   }
-  PreviousSection() {
+  NextSection() {
     this.service.affichelistSection().subscribe(
         data => {
           this.itemssection2 = data;
@@ -105,7 +121,7 @@ export class SectionSimulateComponent implements OnInit {
         });
     this.selectedsection.numeroOrder = this.selectedsection.numeroOrder + 1;
     // tslint:disable-next-line:triple-equals
-    if (this.selectedsection.numeroOrder != 6){
+    if (this.selectedsection.numeroOrder <= this.itemssection2.length ){
       this.service.afficheOneSection2().subscribe( data => { this.selectedsection = data; });
     }else{
       this.selectedsection.numeroOrder = 0;

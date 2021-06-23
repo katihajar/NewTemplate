@@ -60,4 +60,5 @@ export class SectionsComponent implements OnInit {
 
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.service.image2);
   }
+
 }

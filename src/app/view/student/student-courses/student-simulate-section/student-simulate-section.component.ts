@@ -1,192 +1,244 @@
+/* tslint:disable:no-shadowed-variable whitespace */
 import { Component, OnInit } from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
-import {Section} from '../../../../controller/Model/section.model';
-import {Cours} from '../../../../controller/Model/cours.model';
+import {Section} from '../../../../controller/model/section.model';
+import {Cours} from '../../../../controller/model/cours.model';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
 import {HttpClient} from '@angular/common/http';
 import {QuizEtudiantService} from '../../../../controller/service/quiz-etudiant.service';
-import {Quiz} from '../../../../controller/Model/quiz.model';
+import {Quiz} from '../../../../controller/model/quiz.model';
 import {LoginService} from '../../../../controller/service/login.service';
-import {Etudiant} from '../../../../controller/Model/etudiant.model';
-import {QuizEtudiant} from '../../../../controller/Model/quiz-etudiant.model';
+import {Etudiant} from '../../../../controller/model/etudiant.model';
+import {QuizEtudiant} from '../../../../controller/model/quiz-etudiant.model';
+import {DictionaryService} from '../../../../controller/service/dictionary.service';
+import {Dictionary} from '../../../../controller/model/dictionary.model';
 
 @Component({
-  selector: 'app-student-simulate-section',
-  templateUrl: './student-simulate-section.component.html',
-  styleUrls: ['./student-simulate-section.component.scss']
+    selector: 'app-student-simulate-section',
+    templateUrl: './student-simulate-section.component.html',
+    styleUrls: ['./student-simulate-section.component.scss']
 })
 export class StudentSimulateSectionComponent implements OnInit {
 
 
-  // tslint:disable-next-line:max-line-lengthg
-  constructor(private messageService: MessageService, private sanitizer: DomSanitizer, private confirmationService: ConfirmationService, private service: ParcoursService, private http: HttpClient, private quizService: QuizEtudiantService, private loginService: LoginService) { }
-  value = 0;
+    // tslint:disable-next-line:max-line-lengthg max-line-length
+    constructor(private messageService: MessageService, private dictionnaryService: DictionaryService, private sanitizer: DomSanitizer, private confirmationService: ConfirmationService, private service: ParcoursService, private http: HttpClient, private quizService: QuizEtudiantService, private loginService: LoginService) { }
+    value = 0;
+    get itemsDict(): Array<Dictionary> {
+        return this.dictionnaryService.itemsDict;
+    }
 
-  get image(): string {
-    return this.service.image;
-  }
+    set itemsDict(value: Array<Dictionary>) {
+        this.dictionnaryService.itemsDict = value;
+    }
+    get image(): string {
+        return this.service.image;
+    }
 
-  set image(value: string) {
-    this.service.image = value;
-  }
+    set image(value: string) {
+        this.service.image = value;
+    }
+    public findByWord(){
+        return this.dictionnaryService.FindByWord().subscribe( data=> this.selectedDict = data );
+    }
+    get selectedDict(): Dictionary {
+        return this.dictionnaryService.selectedDict;
+    }
 
-  ngOnInit(): void {
+    set selectedDict(value: Dictionary) {
+        this.dictionnaryService.selectedDict = value;
+    }
+    public openCreateDict() {
+        this.submittedDict = false;
+        this.createDialogDict = true;
+        this.selectedDict = new Dictionary();
+    }
+    ngOnInit(): void {
+    }
+    get submittedDict(): boolean {
+        return this.dictionnaryService.submittedDict;
+    }
 
-  }
-  get progress(): number {
-    return this.service.progress;
-  }
-  get selectedsection(): Section {
-    return this.service.selectedsection;
-  }
+    set submittedDict(value: boolean) {
+        this.dictionnaryService.submittedDict = value;
+    }
 
-  set selectedsection(value: Section) {
-    this.service.selectedsection = value;
-  }
-  // tslint:disable-next-line:adjacent-overload-signatures
-  set progress(value: number) {
-    this.service.progress = value;
-  }
+    get createDialogDict(): boolean {
+        return this.dictionnaryService.createDialogDict;
+    }
 
-  get selectedQuiz(): Quiz {
-    return this.quizService.selectedQuiz;
-  }
+    set createDialogDict(value: boolean) {
+        this.dictionnaryService.createDialogDict = value;
+    }
+    get progress(): number {
+        return this.service.progress;
+    }
+    get selectedsection(): Section {
+        return this.service.selectedsection;
+    }
 
-  set selectedQuiz(value: Quiz) {
-    this.quizService.selectedQuiz = value;
-  }
+    set selectedsection(value: Section) {
+        this.service.selectedsection = value;
+    }
+    // tslint:disable-next-line:adjacent-overload-signatures
+    set progress(value: number) {
+        this.service.progress = value;
+    }
 
-  get etudiant(): Etudiant {
-    return this.loginService.etudiant;
-  }
+    get selectedQuiz(): Quiz {
+        return this.quizService.selectedQuiz;
+    }
 
-  set etudiant(value: Etudiant) {
-    this.loginService.etudiant = value;
-  }
+    set selectedQuiz(value: Quiz) {
+        this.quizService.selectedQuiz = value;
+    }
 
-  get quizEtudiantList(): QuizEtudiant {
-    return this.quizService.quizEtudiantList;
-  }
+    get etudiant(): Etudiant {
+        return this.loginService.etudiant;
+    }
 
-  set quizEtudiantList(value: QuizEtudiant) {
-    this.quizService.quizEtudiantList = value;
-  }
+    set etudiant(value: Etudiant) {
+        this.loginService.etudiant = value;
+    }
 
-  get passerQuiz(): string {
-    return this.quizService.passerQuiz;
-  }
+    get quizEtudiantList(): QuizEtudiant {
+        return this.quizService.quizEtudiantList;
+    }
 
-  set passerQuiz(value: string) {
-    this.quizService.passerQuiz = value;
-  }
+    set quizEtudiantList(value: QuizEtudiant) {
+        this.quizService.quizEtudiantList = value;
+    }
 
-  get quizView(): boolean {
-    return this.quizService.quizView;
-  }
+    get passerQuiz(): string {
+        return this.quizService.passerQuiz;
+    }
 
-  set quizView(value: boolean) {
-    this.quizService.quizView = value;
-  }
+    set passerQuiz(value: string) {
+        this.quizService.passerQuiz = value;
+    }
 
-  NextSection() {
-    this.service.affichelistSection().subscribe(
-        data => {
-          this.itemssection2 = data;
-          // tslint:disable-next-line:no-shadowed-variable
-        });
-    this.selectedsection.numeroOrder = this.selectedsection.numeroOrder - 1;
-    // tslint:disable-next-line:triple-equals
-    if (this.selectedsection.numeroOrder != 0){
-      this.service.afficheOneSection2().subscribe(
-          data => {
-            this.selectedsection = data;
-            this.quizService.findQuizBySectionId(this.selectedsection).subscribe(
+    get quizView(): boolean {
+        return this.quizService.quizView;
+    }
+
+    set quizView(value: boolean) {
+        this.quizService.quizView = value;
+    }
+
+    PreviousSection() {
+        this.service.affichelistSection().subscribe(
+            data => {
+                this.itemssection2 = data;
+                // tslint:disable-next-line:no-shadowed-variable
+            });
+        this.selectedsection.numeroOrder = this.selectedsection.numeroOrder - 1;
+        // tslint:disable-next-line:triple-equals
+        if (this.selectedsection.numeroOrder != 0){
+            this.service.afficheOneSection2().subscribe(
                 data => {
-                  this.selectedQuiz = data;
-                  document.getElementById('quiz').style.visibility = 'visible'
-                  this.quizService.findQuizEtudiant(this.loginService.etudiant, this.selectedQuiz).subscribe(
-                      data => {
-                        this.quizEtudiantList = data;
-                        console.log(this.quizEtudiantList);
-                        this.passerQuiz = 'View Quiz';
-                        this.quizView = true;
-                      },error =>
-                      {
-                        this.passerQuiz = 'Passer Quiz';
-                        this.quizView = false;
-                      }
-                  );
-                },error => document.getElementById('quiz').style.visibility = 'hidden'
-            );
-          });
-    }else{
-      this.selectedsection.numeroOrder = 6;
-      this.NextSection();
+                    this.selectedsection = data;
+                    this.quizService.findQuizBySectionId(this.selectedsection).subscribe(
+                        data => {
+                            this.selectedQuiz = data;
+                            document.getElementById('quiz').style.visibility = 'visible';
+                            this.quizService.findQuizEtudiant(this.loginService.etudiant, this.selectedQuiz).subscribe(
+                                data => {
+                                    this.quizEtudiantList = data;
+                                    console.log(this.quizEtudiantList);
+                                    this.passerQuiz = 'View Quiz';
+                                    this.quizView = true;
+                                },error =>
+                                {
+                                    this.passerQuiz = 'Passer Quiz';
+                                    this.quizView = false;
+                                }
+                            );
+                        },error => document.getElementById('quiz').style.visibility = 'hidden'
+                    );
+                });
+        }else{
+            this.selectedsection.numeroOrder = this.itemssection2.length + 1 ;
+            this.NextSection();
+        }
     }
-  }
-  photoURL() {
-    this.service.image = '';
-    for (let j = 0; j < 66 ; j++)
-    {
-      this.service.image += this.selectedsection.urlImage[j];
+    photoURL() {
+        this.service.image = '';
+        for (let j = 0; j < 66 ; j++)
+        {
+            this.service.image += this.selectedsection.urlImage[j];
+        }
+        this.service.image += 'preview';
+        return this.sanitizer.bypassSecurityTrustResourceUrl(this.service.image);
     }
-    this.service.image += 'preview';
-    return this.sanitizer.bypassSecurityTrustResourceUrl(this.service.image);
-  }
-
-  PreviousSection() {
-    this.service.affichelistSection().subscribe(
-        data => {
-          this.itemssection2 = data;
-          // tslint:disable-next-line:no-shadowed-variable
-        });
-    this.selectedsection.numeroOrder = this.selectedsection.numeroOrder + 1;
-    // tslint:disable-next-line:triple-equals
-    if (this.selectedsection.numeroOrder != 6){
-      this.service.afficheOneSection2().subscribe(
-          data => {
-            this.selectedsection = data;
-            this.quizService.findQuizBySectionId(this.selectedsection).subscribe(
+    URLVideo() {
+        this.service.video = '';
+        // tslint:disable-next-line:prefer-for-of
+        for (let m = 0; m < 24 ; m++)
+        {
+            this.service.video += this.selectedsection.urlVideo[m];
+        }
+        this.service.video += 'embed/';
+        for (let m = 32; m < 43 ; m++)
+        {
+            this.service.video += this.selectedsection.urlVideo[m];
+        }
+        console.log( this.service.video);
+        return this.sanitizer.bypassSecurityTrustResourceUrl(this.service.video);
+    }
+    NextSection() {
+        this.service.affichelistSection().subscribe(
+            data => {
+                this.itemssection2 = data;
+                // tslint:disable-next-line:no-shadowed-variable
+            });
+        this.selectedsection.numeroOrder = this.selectedsection.numeroOrder + 1;
+        // tslint:disable-next-line:triple-equals
+        if (this.selectedsection.numeroOrder <= this.itemssection2.length ){
+            this.service.afficheOneSection2().subscribe(
                 data => {
-                  this.selectedQuiz = data;
-                  document.getElementById('quiz').style.visibility = 'visible'
-                  this.quizService.findQuizEtudiant(this.loginService.etudiant, this.selectedQuiz).subscribe(
-                      data => {
-                        this.quizEtudiantList = data;
-                        console.log(this.quizEtudiantList);
-                        this.passerQuiz = 'View Quiz';
-                        this.quizView = true;
-                      },error =>
-                      {
-                        this.passerQuiz = 'Passer Quiz';
-                        this.quizView = false;
-                      }
-                  );
-                },error => document.getElementById('quiz').style.visibility = 'hidden'
-            );
-          });
-    }else{
-      this.selectedsection.numeroOrder = 0;
-      this.PreviousSection();
+                    this.selectedsection = data;
+                    this.quizService.findQuizBySectionId(this.selectedsection).subscribe(
+                        data => {
+                            this.selectedQuiz = data;
+                            document.getElementById('quiz').style.visibility = 'visible';
+                            this.quizService.findQuizEtudiant(this.loginService.etudiant, this.selectedQuiz).subscribe(
+                                data => {
+                                    this.quizEtudiantList = data;
+                                    console.log(this.quizEtudiantList);
+                                    this.passerQuiz = 'View Quiz';
+                                    this.quizView = true;
+                                },error =>
+                                {
+                                    this.passerQuiz = 'Passer Quiz';
+                                    this.quizView = false;
+                                }
+                            );
+                        },error => document.getElementById('quiz').style.visibility = 'hidden'
+                    );
+                });
+        }else{
+            this.selectedsection.numeroOrder = 0;
+            this.PreviousSection();
+        }
     }
-  }
-  set selectedcours(value: Cours) {
-    this.service.selectedcours = value;
-  }
-  get selectedcours(): Cours{
-    return this.service.selectedcours;
-  }
-  set itemssection2(value: Array<Section>) {
-    this.service.itemssection2 = value;
-  }
-  get itemssection2(): Array<Section> {
-    return this.service.itemssection2;
-  }
-  get selectessection(): Array<Section> {
-    return this.service.selectessection;
-  }
-  set selectessection(value: Array<Section>) {
-    this.service.selectessection = value;
-  }
+    set selectedcours(value: Cours) {
+        this.service.selectedcours = value;
+    }
+    get selectedcours(): Cours{
+        return this.service.selectedcours;
+    }
+    set itemssection2(value: Array<Section>) {
+        this.service.itemssection2 = value;
+    }
+    get itemssection2(): Array<Section> {
+        return this.service.itemssection2;
+    }
+    get selectessection(): Array<Section> {
+        return this.service.selectessection;
+    }
+    set selectessection(value: Array<Section>) {
+        this.service.selectessection = value;
+    }
+
 }

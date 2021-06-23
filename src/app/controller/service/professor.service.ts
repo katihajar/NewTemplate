@@ -25,6 +25,9 @@ export class ProfessorService {
     // }
     constructor(private http: HttpClient) {
     }
+    findByCriteria(): Observable<Array<Prof>>{
+        return this.http.post<Array<Prof>>('http://localhost:8036/learn/prof/search', this.selected);
+    }
 
     public findAll(): Observable<Array<Prof>> {
         return this.http.get<Array<Prof>>('http://localhost:8036/learn/prof/');

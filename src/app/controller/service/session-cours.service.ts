@@ -29,7 +29,9 @@ private url = environment.baseUrl + 'session/';
   // }
   constructor(private http: HttpClient) {
   }
-
+  findByCriteria(): Observable<Array<SessionCours>>{
+    return this.http.post<Array<SessionCours>>('http://localhost:8036/learn/session/search', this.selected);
+  }
   get itemsProf(): Array<Prof> {
     if (this._itemsProf == null){
       this._itemsProf = new Array<Prof>();

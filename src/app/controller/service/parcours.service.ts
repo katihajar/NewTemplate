@@ -58,8 +58,17 @@ export class ParcoursService {
   private _contenu = '';
   private _image2 = '';
   private _image3 = '';
+  private _video = '';
   constructor(private http: HttpClient ) {  }
 
+
+  get video(): string {
+    return this._video;
+  }
+
+  set video(value: string) {
+    this._video = value;
+  }
 
   get contenu(): string {
     return this._contenu;

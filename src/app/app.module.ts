@@ -234,8 +234,13 @@ import {QuizStudentListComponent} from './view/student/quiz-student-list/quiz-st
 import {ClassroomStudentListComponent} from './view/student/classroom-student-list/classroom-student-list.component';
 import {SyntheseSessionHistoryComponent} from './view/admin/synthese-session/synthese-session-history/synthese-session-history.component';
 import {RecommendAdminComponent} from './view/admin/recommend-admin/recommend-admin.component';
-import { QuizCreateVocabularyComponent } from './view/Prof/quiz/quiz-create-vocabulary/quiz-create-vocabulary.component';
-import { QuizVocabularyComponent } from './view/Prof/quiz/quiz-vocabulary/quiz-vocabulary.component';
+import { FaqCreateComponent } from './view/admin/faq-admin/faq-create/faq-create.component';
+import { FaqStudentListComponent } from './view/std/faq-student/faq-student-list/faq-student-list.component';
+import { FaqAdminListComponent } from './view/admin/faq-admin/faq-admin-list/faq-admin-list.component';
+import { FaqContactListComponent } from './view/teacher/faq/faq-contact-list/faq-contact-list.component';
+import { FaqStudentContactComponent } from './view/std/faq/faq-student-contact/faq-student-contact.component';
+import { FaqStudentContactListeComponent } from './view/std/faq/faq-student-contact-liste/faq-student-contact-liste.component';
+import {DictionaryCreateComponent} from './view/etudiant/dictionary-create/dictionary-create.component';
 
 
 
@@ -473,8 +478,13 @@ import { QuizVocabularyComponent } from './view/Prof/quiz/quiz-vocabulary/quiz-v
         SyntheseSessionHistoryComponent,
         StudentChooseViewComponent,
         RecommendAdminComponent,
-        QuizCreateVocabularyComponent,
-        QuizVocabularyComponent
+        FaqCreateComponent,
+        FaqStudentListComponent,
+        FaqAdminListComponent,
+        FaqContactListComponent,
+        FaqStudentContactComponent,
+        FaqStudentContactListeComponent,
+        DictionaryCreateComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
