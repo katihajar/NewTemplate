@@ -64,7 +64,10 @@ export class DictionaryService {
     return this._submitted;
   }
   public FindByWord(word: string): Observable<Dictionary> {
-    return this.http.get<Dictionary >('http://localhost:8036/learn/dictionary/word/' + word);
+    console.log(this.serviceUser.etudiant.id);
+    console.log(word);
+    // tslint:disable-next-line:max-line-length
+    return this.http.get<Dictionary >('http://localhost:8036/learn/dictionary/word/' + word + '/Etudiant/id/' + this.serviceUser.etudiant.id);
   }
   // tslint:disable-next-line:adjacent-overload-signatures
   set submitted(value: boolean) {
