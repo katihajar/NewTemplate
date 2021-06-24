@@ -39,14 +39,17 @@
             </p-table>
             <div class="p-card" style="width: 250px;margin-top: 20px; height: 300px">
         <h1 style="width: 100px;margin-top: 3px; margin-left: 35px">Dictionary</h1><br>
-         <span class="p-input-icon-left" style="margin-top: 3px; margin-left: 25px">
-             <input type="text" [(ngModel)]="word" style="width: 200px" pInputText placeholder="Search"/>
-            <p-button  (click)="findByWord()" style="margin-left: 60px; margin-top: 10px" >Search</p-button>
-             <p-button  (click)="openCreateDict()" style="margin-left: 5px; margin-top: 10px">Add</p-button>
-            </span>
-                   <ng-template pTemplate="content" style="width: 150px; margin-left: 10px" id="dict" >
-                        <h4 id="dict1"><u>{{this.selectedDict.word}}</u> : {{this.selectedDict.definition}}</h4>
-                    </ng-template>
+         <span class="p-input-icon-left" style="margin-top: 3px; margin-left: 25px;margin-bottom: 8px">
+             <input type="text" [(ngModel)]="word" style="width: 200px; margin-bottom: 8px" pInputText placeholder="Search"/>
+             <p-button  (click)="findByWord()" style="margin-left: 40px; margin-top: 10px" >Search</p-button>
+             <p-button  (click)="openCreateDict()" style="margin-left: 10px; margin-top: 10px">Add</p-button>
+
+         </span>
+                <div  id="dictionary" class="p-grid" style="margin-top: 10px;margin-bottom: 5px; margin-left: 10px">
+                    <h6 ><u>{{this.selectedDict.word}}</u> : {{this.selectedDict.definition}}</h6>
+
+                </div>
+
         </div>
         </div>
 
