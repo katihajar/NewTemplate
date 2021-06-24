@@ -41,6 +41,7 @@ export class StudentSimulateSectionComponent implements OnInit {
     }
     public findByWord(){
         return this.dictionnaryService.FindByWord().subscribe( data=> this.selectedDict = data );
+        document.getElementById('dict1').style.visibility = 'visible';
     }
     get selectedDict(): Dictionary {
         return this.dictionnaryService.selectedDict;
