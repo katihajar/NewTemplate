@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import {News} from '../../../../controller/Model/news.model';
 import {NewsService} from '../../../../controller/service/news.service';
-import {News} from '../../../../controller/model/news.model';
 import {ConfirmationService, MessageService} from 'primeng/api';
 
 @Component({
-  selector: 'app-news-admin-create',
-  templateUrl: './news-admin-create.component.html',
-  styleUrls: ['./news-admin-create.component.scss']
+  selector: 'app-news-admin-edit',
+  templateUrl: './news-admin-edit.component.html',
+  styleUrls: ['./news-admin-edit.component.scss']
 })
-export class NewsAdminCreateComponent implements OnInit {
+export class NewsAdminEditComponent implements OnInit {
 
   private _title: string;
   private _ref: string;
@@ -118,6 +118,11 @@ export class NewsAdminCreateComponent implements OnInit {
     this.submittedNews = false;
   }
 
+  public hideEditDialog()
+  {
+    this.editDialogNews = false;
+    this.submittedNews = false;
+  }
   public save()
   {
     for(let j = 0 ; j < this.destinataire.length ; j++)
@@ -127,10 +132,8 @@ export class NewsAdminCreateComponent implements OnInit {
         this.selected.destinataire = this.destinataire[j].label;
       }
     }
-    console.log(this.selected.destinataire);
     this.submittedNews = true;
-    this.service.save().subscribe(data => {
-      this.items.push({...data});
+    this.service.edit().subscribe(data => {
       // tslint:disable-next-line:no-shadowed-variable
       this.service.findAll().subscribe(data => this.items = data);
       this.messageService.add({
@@ -138,19 +141,19 @@ export class NewsAdminCreateComponent implements OnInit {
         summary: 'Successful',
         detail: 'News Created',
         life: 3000
-       });
+      });
     });
-    this.createDialogNews = false;
+    this.editDialogNews = false;
     this.selected = new News();
   }
-constructor(private service: NewsService, private messageService: MessageService, private confirmationService: ConfirmationService) { }
+  constructor(private service: NewsService, private messageService: MessageService, private confirmationService: ConfirmationService) { }
 
-ngOnInit(): void {
-  this.destinataire = [
-    {label: 'teacher'},
-    {label: 'student'},
-  ];
-  this.des = 'teacher';
+  ngOnInit(): void {
+    this.destinataire = [
+      {label: 'teacher'},
+      {label: 'student'},
+    ];
   }
+
 
 }

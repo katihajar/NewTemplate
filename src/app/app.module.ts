@@ -241,6 +241,10 @@ import { FaqContactListComponent } from './view/teacher/faq/faq-contact-list/faq
 import { FaqStudentContactComponent } from './view/std/faq/faq-student-contact/faq-student-contact.component';
 import { FaqStudentContactListeComponent } from './view/std/faq/faq-student-contact-liste/faq-student-contact-liste.component';
 import {DictionaryCreateComponent} from './view/etudiant/dictionary-create/dictionary-create.component';
+import { NewsEtudiantListComponent } from './view/std/news-etudiant/news-etudiant-list/news-etudiant-list.component';
+import { NewsEtudiantViewComponent } from './view/std/news-etudiant/news-etudiant-view/news-etudiant-view.component';
+import { NewsAdminEditComponent } from './view/admin/news-admin/news-admin-edit/news-admin-edit.component';
+import { NewsAdminDeleteComponent } from './view/admin/news-admin/news-admin-delete/news-admin-delete.component';
 
 
 
@@ -484,7 +488,11 @@ import {DictionaryCreateComponent} from './view/etudiant/dictionary-create/dicti
         FaqContactListComponent,
         FaqStudentContactComponent,
         FaqStudentContactListeComponent,
-        DictionaryCreateComponent
+        DictionaryCreateComponent,
+        NewsEtudiantListComponent,
+        NewsEtudiantViewComponent,
+        NewsAdminEditComponent,
+        NewsAdminDeleteComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

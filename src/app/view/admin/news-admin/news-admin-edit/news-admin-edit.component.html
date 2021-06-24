@@ -1,4 +1,4 @@
-<p-dialog [(visible)]="createDialogNews" [style]="{width: '800px'}"  [modal]="true" styleClass="p-fluid">
+<p-dialog [(visible)]="editDialogNews" [style]="{width: '800px'}"  [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="box">
             <h1>Create a news</h1>
@@ -37,7 +37,7 @@
     </ng-template>
 
     <ng-template pTemplate="footer">
-        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideEditDialog()"></button>
         <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
     </ng-template>
 </p-dialog>

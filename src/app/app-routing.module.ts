@@ -83,6 +83,7 @@ import {FaqContactListComponent} from './view/teacher/faq/faq-contact-list/faq-c
 import {FaqStudentContactComponent} from './view/std/faq/faq-student-contact/faq-student-contact.component';
 import {FaqStudentContactListeComponent} from './view/std/faq/faq-student-contact-liste/faq-student-contact-liste.component';
 import {DictionaryCreateComponent} from './view/etudiant/dictionary-create/dictionary-create.component';
+import {NewsEtudiantListComponent} from './view/std/news-etudiant/news-etudiant-list/news-etudiant-list.component';
 
 
 
@@ -131,6 +132,7 @@ import {DictionaryCreateComponent} from './view/etudiant/dictionary-create/dicti
                     {path: 'pages/faq-admin-list', component: FaqAdminListComponent},
                     {path: 'pages/news-admin', component: NewsAdminListComponent},
                     {path: 'pages/news-teacher', component: NewsTeacherListComponent},
+                    {path: 'pages/news-student', component: NewsEtudiantListComponent},
                     {path: 'pages/faq-teacher', component: FaqListComponent},
                     {path: 'pages/faq-teacher-answer', component: FaqContactListComponent},
                     {path: 'pages/faq-student', component: FaqStudentListComponent},

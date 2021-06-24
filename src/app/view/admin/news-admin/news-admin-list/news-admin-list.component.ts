@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NewsService} from '../../../../controller/service/news.service';
 import {News} from '../../../../controller/model/news.model';
+import {ConfirmationService, MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-news-admin-list',
@@ -81,6 +82,45 @@ export class NewsAdminListComponent implements OnInit {
     this.viewDialogNews = true ;
   }
 
+  /*public delete(parcour: Parcours) {
+    this.selectedparcours = parcour;
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to delete ' + parcour.libelle + '?',
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.service.deleteParcours().subscribe(data => {
+          this.itemsparcours = this.itemsparcours.filter(val => val.id !== this.selectedparcours.id);
+          this.selectedparcours = new Parcours();
+          this.itemscours = null;
+          this.itemssection = null;
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Successful',
+            detail: 'Parcours Deleted',
+            life: 3000
+          });
+        });
+      }
+    });
+  }*/
+  public delete(newss: News) {
+
+        this.service.deleteByReference(newss.ref).subscribe(data => {
+          this.items = this.items.filter(val => val.id !== this.selected.id);
+          this.service.findAll().subscribe(
+              data => {
+                this.items = data;
+              }
+          );
+    });
+  }
+
+  public edit(newss: News) {
+    this.selected = {...newss};
+    this.editDialogNews = true ;
+  }
+
   public findByRef()
   {
     this.service.findByRef().subscribe(data => {
@@ -94,7 +134,7 @@ export class NewsAdminListComponent implements OnInit {
   }
 
 
-  constructor(private service: NewsService) { }
+  constructor(private messageService: MessageService, private confirmationService: ConfirmationService,private service: NewsService) { }
 
   ngOnInit(): void {
     this.service.findAll().subscribe(

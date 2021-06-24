@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {NewsService} from '../../../../controller/service/news.service';
-import {News} from '../../../../controller/model/news.model';
+import {News} from '../../../../controller/Model/news.model';
 
 @Component({
-  selector: 'app-news-admin-view',
-  templateUrl: './news-admin-view.component.html',
-  styleUrls: ['./news-admin-view.component.scss']
+  selector: 'app-news-etudiant-view',
+  templateUrl: './news-etudiant-view.component.html',
+  styleUrls: ['./news-etudiant-view.component.scss']
 })
-export class NewsAdminViewComponent implements OnInit {
+export class NewsEtudiantViewComponent implements OnInit {
 
   constructor(private service: NewsService) { }
 
@@ -44,14 +44,6 @@ export class NewsAdminViewComponent implements OnInit {
       this.selected = data;
     });
   }
-
-  public delete()
-  {
-    //this.service.deleteByReference().subscribe();
-    this.viewDialogNews = false;
-    this.service.findAll().subscribe(data => this.items = data);
-  }
-
   ngOnInit(): void {
   }
 
