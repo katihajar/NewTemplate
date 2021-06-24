@@ -42,7 +42,6 @@ export class StudentSimulateSectionComponent implements OnInit {
         this.service.image = value;
     }
     public findByWord(){
-        this.selectedDict.etudiant.id = this.loginService.etudiant.id;
         this.dictionnaryService.FindByWord(this.word).subscribe(
             data=>{
                 this.selectedDict = data;
