@@ -44,12 +44,11 @@
              <p-button  (click)="findByWord()" style="margin-left: 60px; margin-top: 10px" >Search</p-button>
              <p-button  (click)="openCreateDict()" style="margin-left: 10px; margin-top: 10px">Add</p-button>
          </span>
+                <div id="dictionary" style="width: 150px; margin-left: 10px; visibility: hidden">
 
-                   <ng-template pTemplate="content" style="width: 150px; margin-left: 10px">
+                    <h4><u>{{this.selectedDict.word}}</u> : {{this.selectedDict.definition}}</h4>
 
-                        <h4><u>{{this.selectedDict.word}}</u> : {{this.selectedDict.definition}}</h4>
-
-                    </ng-template>
+                </div>
 
         </div>
         </div>
