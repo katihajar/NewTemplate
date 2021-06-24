@@ -47,7 +47,7 @@ export class StudentSimulateSectionComponent implements OnInit {
                 this.selectedDict = data;
                 document.getElementById('dictionary').style.visibility = 'visible';
             },error => console.log('erreeeeeeeeeeeeeeeeur') );
-        document.getElementById('dictionary').style.visibility = 'visible';
+        document.getElementById('dictionary').style.visibility = 'hidden';
     }
     get selectedDict(): Dictionary {
         return this.dictionnaryService.selectedDict;
@@ -57,11 +57,13 @@ export class StudentSimulateSectionComponent implements OnInit {
         this.dictionnaryService.selectedDict = value;
     }
     public openCreateDict() {
+        document.getElementById('dictionary').style.visibility = 'hidden';
         this.submittedDict = false;
         this.createDialogDict = true;
         this.selectedDict = new Dictionary();
     }
     ngOnInit(): void {
+        document.getElementById('dictionary').style.visibility = 'hidden';
     }
     get submittedDict(): boolean {
         return this.dictionnaryService.submittedDict;
