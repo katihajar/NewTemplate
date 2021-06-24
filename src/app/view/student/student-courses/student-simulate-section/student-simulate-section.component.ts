@@ -25,6 +25,8 @@ export class StudentSimulateSectionComponent implements OnInit {
     // tslint:disable-next-line:max-line-lengthg max-line-length
     constructor(private messageService: MessageService, private dictionnaryService: DictionaryService, private sanitizer: DomSanitizer, private confirmationService: ConfirmationService, private service: ParcoursService, private http: HttpClient, private quizService: QuizEtudiantService, private loginService: LoginService) { }
     value = 0;
+    word: string;
+
     get itemsDict(): Array<Dictionary> {
         return this.dictionnaryService.itemsDict;
     }
@@ -40,8 +42,11 @@ export class StudentSimulateSectionComponent implements OnInit {
         this.service.image = value;
     }
     public findByWord(){
-        return this.dictionnaryService.FindByWord().subscribe( data=> this.selectedDict = data );
-        document.getElementById('dict1').style.visibility = 'visible';
+        this.dictionnaryService.FindByWord(this.word).subscribe(
+            data=>{
+                this.selectedDict = data;
+                console.log(this.selectedDict.definition);
+            },error => console.log('erreeeeeeeeeeeeeeeeur') );
     }
     get selectedDict(): Dictionary {
         return this.dictionnaryService.selectedDict;
