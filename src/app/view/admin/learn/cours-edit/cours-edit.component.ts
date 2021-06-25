@@ -22,6 +22,8 @@ export class CoursEditComponent implements OnInit {
       this.itemscours[this.service.findCoursIndexById(this.selectedcours.id)] = this.selectedcours;
       this.service.updateCours().subscribe(data => {
         this.selectedcours = data;
+        // tslint:disable-next-line:no-shadowed-variable
+        this.service.afficheCours().subscribe(data => this.itemscours = data);
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',

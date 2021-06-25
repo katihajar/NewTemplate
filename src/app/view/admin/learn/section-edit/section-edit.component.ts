@@ -23,6 +23,10 @@ export class SectionEditComponent implements OnInit {
       this.itemssection[this.service.findSectionIndexById(this.selectedsection.id)] = this.selectedsection;
       this.service.updateSection().subscribe(data => {
         this.selectedsection = data;
+        // tslint:disable-next-line:no-shadowed-variable
+        this.service.afficheCours().subscribe(data => this.itemscours = data);
+        // tslint:disable-next-line:no-shadowed-variable
+        this.service.affichelistSection().subscribe(data => this.itemssection = data);
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
