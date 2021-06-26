@@ -329,14 +329,15 @@ export class QuizPreviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.findAllByQuizRef(this.selected.ref).subscribe(data => this.questions = data);
+    this.service.findAll();
+   // this.service.findAllByQuizRef(this.selected.ref).subscribe(data => this.questions = data);
     this.service.findConfig().subscribe( data => this.service.configurations = data);
   //  this.service.findFirstReponse();
     this.service.seconds = 0;
     this.service.qnprogress = 0;
     this.startTimer();
    // this.service.findQuizByRef(this.selected.ref);
-    //this.service.findQuiz().subscribe(data => this.items = data);
+    this.service.findQuiz().subscribe(data => this.items = data);
     this.Config();
   }
 public Config(){
@@ -352,7 +353,8 @@ public Config(){
     this.router.navigate(['/pages/quiz-create']);
   }
 public backPage(){
-    this.service.qnprogress --;
+    -- this.service.numReponses;
+   -- this.service.qnprogress;
 }
 
   public selectionChanged(reponse: Reponse): void

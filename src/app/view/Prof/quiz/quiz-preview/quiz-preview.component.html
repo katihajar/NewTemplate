@@ -4,7 +4,7 @@
 <p-card [style]="{width: '900px'}" styleClass="p-card-shadow" class="container" id="start">
     <ng-template pTemplate="header">
         <div class="card" style="background-color: gainsboro">
-            <h1  style="text-align: center" class="quizTitre">{{selected?.lib}}</h1>
+            <h1  style="text-align: center" class="quizTitre">{{items[0]?.lib}}</h1>
             </div>
         <div class="start">
             <p class="styleOfp" id="welcome">Welcome</p><br>
@@ -36,7 +36,7 @@
     <div class="p-fieldset-content displayTime">
         <div class="p-grid">
         <span class="p-card-title p-col-1" style="font-family: Palatino Linotype, serif; margin-left: 5px">{{qnprogress+1}} - </span>
-        <p class="p-col"  style="font-family: Palatino Linotype,serif; font-size: 20px">{{question.libelle}}</p>
+        <p class="p-col"  style="font-family: Palatino Linotype,serif; font-size: 20px">{{questions[qnprogress]?.libelle}}</p>
     </div>
         <ng-container  class="reponse-radio" style="margin: auto" >
             <div *ngFor="let r of reponses" class="question_answer" id="div-{{r.ref}}">

@@ -33,29 +33,25 @@
                         <div class="p-fluid">
                             <div class="p-field">
                                 <label for="title">Title</label>
-                                <input id="title" type="text" pInputText *ngIf="clickedEvent" [(ngModel)]="changedEvent.title" disabled>
+                                <input id="title" type="text" pInputText  [(ngModel)]="selectedVo.title" disabled>
                             </div>
                             <div class="p-field">
-                                <label for="etat">Etat</label>
-                                <input id="etat" type="text" pInputText *ngIf="clickedEvent" [(ngModel)]="changedEvent.etat" [required]="true">
+                                <label >State </label>
+                                <p-dropdown inputId="etat"  [options]="etatEtudiantSchedule" [(ngModel)]="selected.etudiant.etatEtudiantSchedule" placeholder="State of student" optionLabel="libelle"></p-dropdown>
                             </div>
                             <div class="p-field">
                                 <label for="start">From</label>
-                                <p-calendar id="start" *ngIf="clickedEvent" [(ngModel)]="changedEvent.start" [showTime]="true" appendTo="body"></p-calendar>
+                                <p-calendar id="start" [(ngModel)]="selectedVo.startTime" [timeOnly]="true" inputId="timeonly"></p-calendar>
                             </div>
                             <div class="p-field">
                                 <label for="end">To</label>
-                                <p-calendar id="end" *ngIf="clickedEvent" [(ngModel)]="changedEvent.end" [showTime]="true" appendTo="body"></p-calendar>
-                            </div>
-                            <div class="p-field-checkbox">
-                                <p-checkbox id="allday" *ngIf="clickedEvent" [(ngModel)]="changedEvent.allday"></p-checkbox>
-                                <label for="allday">All Day</label>
+                                <p-calendar id="end"  [(ngModel)]="selectedVo.endTime" [timeOnly]="true" inputId="timeonly" appendTo="body"></p-calendar>
                             </div>
                         </div>
                     </ng-template>
 
                     <ng-template pTemplate="footer">
-                        <button pButton label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+                        <button pButton label="Save" icon="pi pi-check" class="p-button-text" (click)="edit()"></button>
                         <button pButton label="Reset" icon="pi pi-refresh" class="p-button-text" (click)="reset()"></button>
                         <button pButton label="Delete" icon="pi pi-trash" class="p-button-text" (click)="delete(selected)"></button>
                     </ng-template>
@@ -69,30 +65,40 @@
 
         <div class="p-field">
             <label >Name</label>
-            <input type="text" pInputText id="name" [(ngModel)]="selected.etudiant.nom" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !selected.etudiant.nom">name is required.</small>
+            <p-dropdown [(ngModel)]="selected.etudiant" [options]="students" placeholder="Name of student" optionLabel="nom"></p-dropdown>
         </div>
 
         <div class="p-field">
-             <label for="ref">Ref</label>
-             <input type="text" pInputText id="ref" [(ngModel)]="selected.etudiant.ref" required autofocus />
-             <small class="p-invalid" *ngIf="submitted && !selected.etudiant.ref">ref is required.</small>
+             <label for="ref">Reference</label>
+             <input type="text" pInputText id="ref" [(ngModel)]="selected.ref" required autofocus />
+             <small class="p-invalid" *ngIf="submitted && !selected.ref">ref is required.</small>
          </div>
          <div class="p-field">
-             <label for="etat">Etat </label>
+             <label >State </label>
              <p-dropdown inputId="etat"  [options]="etatEtudiantSchedule" [(ngModel)]="selected.etudiant.etatEtudiantSchedule" placeholder="Etat Etudiant" optionLabel="libelle"></p-dropdown>
          </div>
         <div class="p-field">
-            <label for="start">Date Dabut</label>
-            <p-calendar inputId="start" [showTime]="true" [(ngModel)]="selected.dateDebut" dateFormat="yy-mm-dd"></p-calendar>
-            <small class="p-invalid" *ngIf="submitted && !selected.dateDebut">start date is required.</small>
+            <label for="start">Debut Date</label>
+            <p-calendar inputId="start" [showTime]="false" [(ngModel)]="selected.startRecur" dateFormat="yy-mm-dd"></p-calendar>
+            <small class="p-invalid" *ngIf="submitted && !selected.startRecur">start date is required.</small>
         </div>
         <div class="p-formgrid p-grid">
             <div class="p-field p-col">
-                <label for="end">Date Fin</label>
-                <p-calendar inputId="basic" [showTime]="true" [(ngModel)]="selected.dateFin" dateFormat="yy-mm-dd"></p-calendar>
-                <small class="p-invalid" *ngIf="submitted && !selected.dateFin">end date is required.</small>
+                <label for="end">Finish Date </label>
+                <p-calendar inputId="basic" [showTime]="false" [(ngModel)]="selected.endRecur" dateFormat="yy-mm-dd"></p-calendar>
+                <small class="p-invalid" *ngIf="submitted && !selected.endRecur">end date is required.</small>
             </div>
+            <div class="p-field p-col">
+                <label >Start time</label>
+                <p-calendar [timeOnly]="true" inputId="timeonly" [showTime]="true" [(ngModel)]="selected.startTime" ></p-calendar>
+                <small class="p-invalid" *ngIf="submitted && !selected.startTime">start time is required.</small>
+            </div>
+            <div class="p-field p-col">
+                <label >End time</label>
+                <p-calendar [timeOnly]="true" inputId="timeonly" [(ngModel)]="selected.endTime" ></p-calendar>
+                <small class="p-invalid" *ngIf="submitted && !selected.endTime">end time is required.</small>
+            </div>
+
         </div>
     </ng-template>
     <ng-template pTemplate="footer">

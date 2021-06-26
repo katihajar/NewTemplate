@@ -144,21 +144,29 @@ export class SectionListComponent implements OnInit {
       }
     });
   }
-  CreateQuizVocabulary(section: Section){
-    this.VocabularyService.sectionSelected =section;
-    console.log(this.VocabularyService.sectionSelected);
-    this.router.navigate(['/view/quiz-create-vocabulary']);
-  }
-
-    CreateQuiz(section: Section) {
-    if (this.selectedsection.categorieSection.libelle == 'Vocabulary'){
-      this.VocabularyService.sectionSelected =section;
+public getSection(section : Section){
+    console.log(section);
+    console.log(section.categorieSection.id);
+    if (section.categorieSection.id == 6){
+      this.VocabularyService.sectionSelected = section;
       console.log(this.VocabularyService.sectionSelected);
       this.router.navigate(['/view/quiz-create-vocabulary']);
     }else {
       this.serviceQuiz.sectionSelected = section;
+      console.log(this.serviceQuiz.sectionSelected);
       this.router.navigate(['/pages/quiz-create']);
     }
-
+}
+  public getValue(d :number){
+    if (d == 6){
+      this.VocabularyService.sectionSelected.id = d;
+      console.log(this.VocabularyService.sectionSelected.id);
+      this.router.navigate(['/view/quiz-create-vocabulary']);
+    }else {
+      this.serviceQuiz.selected.section.id = d;
+      console.log(this.serviceQuiz.selected.section.id);
+      this.router.navigate(['/pages/quiz-create']);
     }
+  }
+
 }

@@ -3,15 +3,13 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import {FullCalendar} from 'primeng/fullcalendar';
-import {ScheduleProf} from '../../../controller/model/calendrier-prof.model';
 import {ScheduleService} from '../../../controller/service/schedule.service';
 import {ConfirmationService, MessageService} from 'primeng/api';
-import {ScheduleVo} from '../../../controller/model/schedule-vo.model';
-import {EtatInscription} from "../../../controller/Model/etat-inscription.model";
 import {Etudiant} from "../../../controller/Model/etudiant.model";
-import {EtatEtudiantSchedule} from "../../../controller/Model/etat-etudiant-schedule.model";
-import {Prof} from '../../../controller/Model/prof.model';
-import {Calendar} from "primeng/calendar";
+import {EtatEtudiantSchedule} from "../../../controller/model/etat-etudiant-schedule.model";
+import {CalendrierProf} from "../../../controller/model/schedule-prof.model";
+import {CalendrierVo} from "../../../controller/model/calendrier-vo.model";
+import {Commande} from "../../../controller/Model/commande.model";
 
 @Component({
   selector: 'app-schedule',
@@ -24,29 +22,39 @@ export class ScheduleComponent implements OnInit {
   constructor(private service: ScheduleService, private messageService: MessageService,private confirmationService: ConfirmationService) {
   }
  calendar: FullCalendar;
-  get selected(): ScheduleProf {
-    if (this.service.selected == null){
-      this.service.selected = new ScheduleProf();
+
+    get selectedVo(): CalendrierVo {
+        return this.service.selectedVo;
     }
-    return this.service.selected;
-  }
 
-  set selected(value: ScheduleProf) {
-    this.service.selected = value;
-  }
-
-  get items(): Array<ScheduleProf> {
-    if (this.service.items == null){
-      this.service.items = new Array<ScheduleProf>();
+    set selectedVo(value: CalendrierVo) {
+        this.service.selectedVo = value;
     }
-    return this.service.items;
-  }
 
-  set items(value: Array<ScheduleProf>) {
-    this.service.items = value;
-  }
+    get itemsVo(): Array<CalendrierVo> {
+        return this.service.itemsVo;
+    }
 
-  get createDialog(): boolean {
+    set itemsVo(value: Array<CalendrierVo>) {
+        this.service.itemsVo = value;
+    }
+    get selected(): CalendrierProf {
+        return this.service.selected;
+    }
+
+    set selected(value: CalendrierProf) {
+        this.service.selected = value;
+    }
+
+    get items(): Array<CalendrierProf> {
+        return this.service.items;
+    }
+
+    set items(value: Array<CalendrierProf>) {
+        this.service.items = value;
+    }
+
+    get createDialog(): boolean {
     return this.service.createDialog;
   }
 
@@ -117,29 +125,43 @@ export class ScheduleComponent implements OnInit {
   set clickedEvent(value: any) {
     this.service.clickedEvent = value;
   }
-  get itemsVo(): Array<ScheduleVo> {
-    return this.service.itemsVo;
-  }
+
   get etudiant(): Etudiant {
     return this.service.etudiant;
   }
   set etudiant(value: Etudiant) {
     this.service.etudiant = value;
   }
-  set itemsVo(value: Array<ScheduleVo>) {
-    this.service.itemsVo = value;
-  }
-  get selectedVo(): ScheduleVo {
-    return this.service.selectedVo;
-  }
 
-  set selectedVo(value: ScheduleVo) {
-    this.service.selectedVo = value;
-  }
 
+    get schedule(): CalendrierProf {
+        return this.service.selected;
+    }
+
+    set schedule(value: CalendrierProf) {
+        this.service.selected = value;
+    }
+
+    get schedules(): Array<CalendrierProf> {
+        return this.service.items;
+    }
+
+    set schedules(value: Array<CalendrierProf>) {
+        this.service.items = value;
+    }
+
+    get scheduleVo(): CalendrierVo {
+        return this.service.selectedVo;
+    }
+    get students(): Array<Etudiant> {
+        return this.service.students;
+    }
+    set students(value: Array<Etudiant>) {
+        this.service.students = value;
+    }
 
   ngOnInit() {
-
+ this.service.getStudents().subscribe(data => this.students = data);
     this.service.findAll();
     this.service.findEtat().subscribe(data => this.service.etatEtudiantSchedule = data);
     this.changedEvent = {title: '', etat: '', start: null, end: '', allDay: null};
@@ -159,18 +181,36 @@ export class ScheduleComponent implements OnInit {
       events: {
         rendering: 'background'
       },
-      eventClick: (e) => {
-        this.eventDialog = true;
-
-        this.clickedEvent = e.event;
-        this.service.findAll();
-        this.service.findEtat().subscribe(data => this.service.etatEtudiantSchedule = data);
-        this.changedEvent.title = this.clickedEvent.title;
-        this.changedEvent.start = this.clickedEvent.start;
-        this.changedEvent.end = this.clickedEvent.end;
+      eventClick:  (e) => {
+        this.editEvent(e.event);
       }
     };
   }
+    public editEvent(selectedVo: CalendrierVo) {
+        this.selectedVo = {...selectedVo};
+        this.eventDialog = true;
+    }
+
+    public edit() {
+        this.submitted = true;
+            if (this.selectedVo.id) {
+                this.service.edit().subscribe(data => {
+                    this.selected.startTime = this.selectedVo.startTime;
+                    this.selected.endTime = this.selectedVo.endTime;
+                    this.selected = data;
+                    this.messageService.add({
+                        severity: 'success',
+                        summary: 'Successful',
+                        detail: 'EVENT Updated',
+                        life: 3000
+                    });
+                });
+            }
+            this.eventDialog = false;
+            this.selected = new CalendrierProf();
+            this.selectedVo = new CalendrierVo();
+
+    }
   public findIndexById(id: number): number {
     let index = -1;
     for (let i = 0; i < this.items.length; i++) {
@@ -204,6 +244,7 @@ export class ScheduleComponent implements OnInit {
   public addStudent() {
       this.service.addStudent().subscribe(data => {
         this.items.push({...data});
+        console.log(this.selected);
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
@@ -212,9 +253,9 @@ export class ScheduleComponent implements OnInit {
         });
       });
       this.createDialog = false;
-      this.selected = new ScheduleProf();
+      this.selected = new CalendrierProf();
     }
-  public delete(selected: ScheduleProf) {
+  public delete(selected: CalendrierProf) {
     this.selected = selected;
     this.confirmationService.confirm({
       message: 'Are you sure you want to delete ' + selected.ref + '?',
@@ -224,7 +265,7 @@ export class ScheduleComponent implements OnInit {
         this.service.delete().subscribe(data => {
           this.items = this.items.filter(val => val.id !== this.selected.id);
           this.itemsVo = this.itemsVo.filter(val => val.id !== this.selected.id);
-          this.selected = new ScheduleProf();
+          this.selected = new CalendrierProf();
           this.messageService.add({
             severity: 'success',
             summary: 'Successful',

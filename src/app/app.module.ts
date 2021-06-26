@@ -241,11 +241,8 @@ import { FaqContactListComponent } from './view/teacher/faq/faq-contact-list/faq
 import { FaqStudentContactComponent } from './view/std/faq/faq-student-contact/faq-student-contact.component';
 import { FaqStudentContactListeComponent } from './view/std/faq/faq-student-contact-liste/faq-student-contact-liste.component';
 import {DictionaryCreateComponent} from './view/etudiant/dictionary-create/dictionary-create.component';
-
-
-
-
-
+import {QuizCreateVocabularyComponent} from "./view/Prof/quiz/quiz-create-vocabulary/quiz-create-vocabulary.component";
+import {QuizVocabularyComponent} from "./view/Prof/quiz/quiz-vocabulary/quiz-vocabulary.component";
 
 @NgModule({
     imports: [
@@ -484,7 +481,9 @@ import {DictionaryCreateComponent} from './view/etudiant/dictionary-create/dicti
         FaqContactListComponent,
         FaqStudentContactComponent,
         FaqStudentContactListeComponent,
-        DictionaryCreateComponent
+        DictionaryCreateComponent,
+        QuizCreateVocabularyComponent,
+        QuizVocabularyComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

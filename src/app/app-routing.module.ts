@@ -83,6 +83,8 @@ import {FaqContactListComponent} from './view/teacher/faq/faq-contact-list/faq-c
 import {FaqStudentContactComponent} from './view/std/faq/faq-student-contact/faq-student-contact.component';
 import {FaqStudentContactListeComponent} from './view/std/faq/faq-student-contact-liste/faq-student-contact-liste.component';
 import {DictionaryCreateComponent} from './view/etudiant/dictionary-create/dictionary-create.component';
+import {QuizCreateVocabularyComponent} from "./view/Prof/quiz/quiz-create-vocabulary/quiz-create-vocabulary.component";
+import {QuizVocabularyComponent} from "./view/Prof/quiz/quiz-vocabulary/quiz-vocabulary.component";
 
 
 
@@ -145,6 +147,8 @@ import {DictionaryCreateComponent} from './view/etudiant/dictionary-create/dicti
                     {path: 'pages/quiz-liste', component: QuizEtudiantListComponent},
                     {path: 'pages/quiz-view', component: QuizEtudiantViewComponent},
                     {path: 'view/quiz-preview', component: QuizPreviewComponent},
+                    {path: 'view/quiz-create-vocabulary', component: QuizCreateVocabularyComponent},
+                    {path: 'view/quiz-vocabulary', component: QuizVocabularyComponent},
                     {path: 'view/schedule', component: ScheduleComponent},
                     {path: 'inscriptionEtudiant', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
