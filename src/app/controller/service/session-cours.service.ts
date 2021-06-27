@@ -13,6 +13,7 @@ export class SessionCoursService {
 
 private url = environment.baseUrl + 'session/';
   private _items: Array<SessionCours>;
+  private _selectedItems: Array<SessionCours>;
   private _itemsProf: Array<Prof>;
   private _itemsEtudiant: Array<Etudiant>;
   private _selected: SessionCours;
@@ -71,6 +72,10 @@ private url = environment.baseUrl + 'session/';
     return this.http.put<SessionCours>(this.url, this.selected);
   }
 
+  public update(session: SessionCours): Observable<SessionCours> {
+    return this.http.put<SessionCours>(this.url, session);
+  }
+
   public deleteByReference(): Observable<number> {
     return this.http.delete<number>(this.url + 'id/' + this.selected.id);
   }
@@ -109,6 +114,17 @@ private url = environment.baseUrl + 'session/';
 
   set items(value: Array<SessionCours>) {
     this._items = value;
+  }
+
+  get selectedItems(): Array<SessionCours> {
+    if (this._selectedItems == null){
+      this._selectedItems = new Array<SessionCours>();
+    }
+    return this._selectedItems;
+  }
+
+  set selectedItems(value: Array<SessionCours>) {
+    this._selectedItems = value;
   }
 
   get selected(): SessionCours {

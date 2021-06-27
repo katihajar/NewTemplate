@@ -8,5 +8,6 @@ public id: number;
     public prof = new Prof();
     public dateDebut: string;
     public dateFin: string;
-    public duree: string;
+    public duree: number;
+    public payer: string;
 }

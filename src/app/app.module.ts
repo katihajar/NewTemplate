@@ -245,6 +245,8 @@ import { NewsEtudiantListComponent } from './view/std/news-etudiant/news-etudian
 import { NewsEtudiantViewComponent } from './view/std/news-etudiant/news-etudiant-view/news-etudiant-view.component';
 import { NewsAdminEditComponent } from './view/admin/news-admin/news-admin-edit/news-admin-edit.component';
 import { NewsAdminDeleteComponent } from './view/admin/news-admin/news-admin-delete/news-admin-delete.component';
+import { PaiementComponent } from './view/admin/paiement/paiement.component';
+import { PaiementListComponent } from './view/admin/paiement/paiement-list/paiement-list.component';
 
 
 
@@ -492,7 +494,9 @@ import { NewsAdminDeleteComponent } from './view/admin/news-admin/news-admin-del
         NewsEtudiantListComponent,
         NewsEtudiantViewComponent,
         NewsAdminEditComponent,
-        NewsAdminDeleteComponent
+        NewsAdminDeleteComponent,
+        PaiementComponent,
+        PaiementListComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

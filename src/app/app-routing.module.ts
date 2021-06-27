@@ -84,6 +84,7 @@ import {FaqStudentContactComponent} from './view/std/faq/faq-student-contact/faq
 import {FaqStudentContactListeComponent} from './view/std/faq/faq-student-contact-liste/faq-student-contact-liste.component';
 import {DictionaryCreateComponent} from './view/etudiant/dictionary-create/dictionary-create.component';
 import {NewsEtudiantListComponent} from './view/std/news-etudiant/news-etudiant-list/news-etudiant-list.component';
+import {PaiementComponent} from './view/admin/paiement/paiement.component';
 
 
 
@@ -146,6 +147,7 @@ import {NewsEtudiantListComponent} from './view/std/news-etudiant/news-etudiant-
                     {path: 'pages/classroom-liste', component: ClassroomEtudiantComponent},
                     {path: 'pages/quiz-liste', component: QuizEtudiantListComponent},
                     {path: 'pages/quiz-view', component: QuizEtudiantViewComponent},
+                    {path: 'pages/paiement', component: PaiementComponent},
                     {path: 'view/quiz-preview', component: QuizPreviewComponent},
                     {path: 'view/schedule', component: ScheduleComponent},
                     {path: 'inscriptionEtudiant', component: FormLayoutDemoComponent},
