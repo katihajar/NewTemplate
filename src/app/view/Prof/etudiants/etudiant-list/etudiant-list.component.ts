@@ -149,5 +149,5 @@ export class EtudiantListComponent implements OnInit {
   public findByCriteria(){
     return this.service.findByCriteria();
   }
-
+// search
 }
