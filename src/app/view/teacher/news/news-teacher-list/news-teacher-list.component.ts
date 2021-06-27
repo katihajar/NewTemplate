@@ -49,7 +49,7 @@ export class NewsTeacherListComponent implements OnInit {
 
   ngOnInit(): void {
     //this.initCol();
-    this.service.findAll().subscribe(data => {
+    this.service.findNews('teacher').subscribe(data => {
       this.items = data;
     }, error => console.log('erreur'));
   }

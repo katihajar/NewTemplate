@@ -116,7 +116,7 @@ export class SectionListComponent implements OnInit {
           this.messageService.add({
             severity: 'success',
             summary: 'Successful',
-            detail: 'Parcours Deleted',
+            detail: 'Section Deleted',
             life: 3000
           });
         });

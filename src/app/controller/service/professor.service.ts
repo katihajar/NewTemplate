@@ -3,6 +3,8 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Prof} from '../model/prof.model';
+import {Paiement} from '../model/paiement.model';
+import {SessionCours} from '../Model/session-cours.model';
 
 
 @Injectable({
@@ -18,6 +20,54 @@ export class ProfessorService {
     private _editDialog: boolean;
     private _viewDialog: boolean;
     private _submitted: boolean;
+    private _itemsPaiement: Array<Paiement>;
+    private _selectedPaiement :Paiement;
+
+    private _paiement: Paiement;
+
+
+    get paiement(): Paiement {
+        if(this._paiement == null)
+        {
+            this._paiement = new Paiement();
+        }
+        return this._paiement;
+    }
+
+    set paiement(value: Paiement) {
+        this._paiement = value;
+    }
+
+    /*paiement*/
+    public paiementProf(): Observable<Array<Paiement>> {
+        return this.http.get<Array<Paiement>>('http://localhost:8036/learn//prof/paiement');
+    }
+
+
+
+
+    get selectedPaiement(): Paiement {
+        if (this._selectedPaiement == null){
+            this._selectedPaiement = new Paiement();
+        }
+        return this._selectedPaiement;
+    }
+
+    set selectedPaiement(value: Paiement) {
+        this._selectedPaiement = value;
+    }
+    get itemsPaiement(): Array<Paiement> {
+        if (this._itemsPaiement == null){
+            this._itemsPaiement = new Array<Paiement>();
+        }
+        return this._itemsPaiement;
+    }
+
+    set itemsPaiement(value: Array<Paiement>) {
+        this._itemsPaiement = value;
+    }
+
+
 
 
     // constructor(private messageService: MessageService,
@@ -51,6 +101,13 @@ export class ProfessorService {
         return this.http.post<number>(this.url + 'delete-multiple-by-id', this.selectes);
     }
 
+    public payer(paiement: Paiement): Observable<Paiement> {
+        return this.http.post<Paiement>('http://localhost:8036/learn/paiement/', paiement);
+    }
+
+    public findSessionNonPayer(id: number): Observable<Array<SessionCours>> {
+    return this.http.get<Array<SessionCours>>('http://localhost:8036/learn/prof/sessionNonPayer/prof/id/' + id);
+}
     public findIndexById(id: number): number {
         let index = -1;
         for (let i = 0; i < this.items.length; i++) {

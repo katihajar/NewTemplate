@@ -83,8 +83,8 @@ import {FaqContactListComponent} from './view/teacher/faq/faq-contact-list/faq-c
 import {FaqStudentContactComponent} from './view/std/faq/faq-student-contact/faq-student-contact.component';
 import {FaqStudentContactListeComponent} from './view/std/faq/faq-student-contact-liste/faq-student-contact-liste.component';
 import {DictionaryCreateComponent} from './view/etudiant/dictionary-create/dictionary-create.component';
-import {QuizCreateVocabularyComponent} from "./view/Prof/quiz/quiz-create-vocabulary/quiz-create-vocabulary.component";
-import {QuizVocabularyComponent} from "./view/Prof/quiz/quiz-vocabulary/quiz-vocabulary.component";
+import {NewsEtudiantListComponent} from './view/std/news-etudiant/news-etudiant-list/news-etudiant-list.component';
+import {PaiementComponent} from './view/admin/paiement/paiement.component';
 
 
 
@@ -133,6 +133,7 @@ import {QuizVocabularyComponent} from "./view/Prof/quiz/quiz-vocabulary/quiz-voc
                     {path: 'pages/faq-admin-list', component: FaqAdminListComponent},
                     {path: 'pages/news-admin', component: NewsAdminListComponent},
                     {path: 'pages/news-teacher', component: NewsTeacherListComponent},
+                    {path: 'pages/news-student', component: NewsEtudiantListComponent},
                     {path: 'pages/faq-teacher', component: FaqListComponent},
                     {path: 'pages/faq-teacher-answer', component: FaqContactListComponent},
                     {path: 'pages/faq-student', component: FaqStudentListComponent},
@@ -146,9 +147,8 @@ import {QuizVocabularyComponent} from "./view/Prof/quiz/quiz-vocabulary/quiz-voc
                     {path: 'pages/classroom-liste', component: ClassroomEtudiantComponent},
                     {path: 'pages/quiz-liste', component: QuizEtudiantListComponent},
                     {path: 'pages/quiz-view', component: QuizEtudiantViewComponent},
+                    {path: 'pages/paiement', component: PaiementComponent},
                     {path: 'view/quiz-preview', component: QuizPreviewComponent},
-                    {path: 'view/quiz-create-vocabulary', component: QuizCreateVocabularyComponent},
-                    {path: 'view/quiz-vocabulary', component: QuizVocabularyComponent},
                     {path: 'view/schedule', component: ScheduleComponent},
                     {path: 'inscriptionEtudiant', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},

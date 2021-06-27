@@ -160,6 +160,10 @@ export class FaqService {
   {
     return this.http.get<Array<FaqProf>>(this.url + 'faqProf/');
   }
+  public findFaqEtudiant(): Observable<Array<FaqEtudiant>>
+    {
+      return this.http.get<Array<FaqEtudiant>>(this.url + 'faqEtudiant/');
+    }
 
   public saveFaqProf(faqProf: FaqProf): Observable<FaqProf>
   {
@@ -202,9 +206,10 @@ export class FaqService {
     return this.http.get<FaqProf>(this.url + 'faqEtudiant/id/' + id);
   }
 
-  public findFaqEtudiantByLibelle(libelle: string): Observable<FaqProf> {
-    return this.http.get<FaqProf>(this.url + 'faqEtudiant/libelle/' + libelle);
+  public findFaqEtudiantByLibelle(libelle: string): Observable<FaqEtudiant> {
+    return this.http.get<FaqEtudiant>(this.url + 'faqEtudiant/libelle/' + libelle);
   }
+
   /*public findByRef(): Observable<FaqType> {
     return this.http.get<FaqType>(this.url + 'ref/' + this.selected.ref);
   }*/

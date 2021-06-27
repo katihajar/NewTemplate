@@ -88,6 +88,10 @@ export class NewsService {
     return this.http.get<Array<News>>(this.url);
   }
 
+  public findNews(destinataire: string): Observable<Array<News>> {
+    return this.http.get<Array<News>>(this.url + 'critere/destinataire/' + destinataire);
+  }
+
   public findByRef(): Observable<News> {
     return this.http.get<News>(this.url + 'ref/' + this.selected.ref);
   }
@@ -101,8 +105,8 @@ export class NewsService {
     return this.http.put<News>(this.url, this.selected);
   }
 
-  public deleteByReference(): Observable<number> {
-    return this.http.delete<number>(this.url + 'ref/' + this.selected.ref);
+  public deleteByReference(ref: string): Observable<number> {
+    return this.http.delete<number>(this.url + 'ref/' + ref);
   }
 
   /*public deleteMultipleByReference(): Observable<number> {

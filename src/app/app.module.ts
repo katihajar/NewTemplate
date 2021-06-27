@@ -241,8 +241,17 @@ import { FaqContactListComponent } from './view/teacher/faq/faq-contact-list/faq
 import { FaqStudentContactComponent } from './view/std/faq/faq-student-contact/faq-student-contact.component';
 import { FaqStudentContactListeComponent } from './view/std/faq/faq-student-contact-liste/faq-student-contact-liste.component';
 import {DictionaryCreateComponent} from './view/etudiant/dictionary-create/dictionary-create.component';
-import {QuizCreateVocabularyComponent} from "./view/Prof/quiz/quiz-create-vocabulary/quiz-create-vocabulary.component";
-import {QuizVocabularyComponent} from "./view/Prof/quiz/quiz-vocabulary/quiz-vocabulary.component";
+import { NewsEtudiantListComponent } from './view/std/news-etudiant/news-etudiant-list/news-etudiant-list.component';
+import { NewsEtudiantViewComponent } from './view/std/news-etudiant/news-etudiant-view/news-etudiant-view.component';
+import { NewsAdminEditComponent } from './view/admin/news-admin/news-admin-edit/news-admin-edit.component';
+import { NewsAdminDeleteComponent } from './view/admin/news-admin/news-admin-delete/news-admin-delete.component';
+import { PaiementComponent } from './view/admin/paiement/paiement.component';
+import { PaiementListComponent } from './view/admin/paiement/paiement-list/paiement-list.component';
+
+
+
+
+
 
 @NgModule({
     imports: [
@@ -482,8 +491,12 @@ import {QuizVocabularyComponent} from "./view/Prof/quiz/quiz-vocabulary/quiz-voc
         FaqStudentContactComponent,
         FaqStudentContactListeComponent,
         DictionaryCreateComponent,
-        QuizCreateVocabularyComponent,
-        QuizVocabularyComponent
+        NewsEtudiantListComponent,
+        NewsEtudiantViewComponent,
+        NewsAdminEditComponent,
+        NewsAdminDeleteComponent,
+        PaiementComponent,
+        PaiementListComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

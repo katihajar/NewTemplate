@@ -85,12 +85,13 @@ export class FaqStudentContactListeComponent implements OnInit {
       this.menu = [
       ];
       // tslint:disable-next-line:prefer-for-of
-      for ( let i = 0 ; i < this.itemsType.length ; i++)
+      for ( let j = 0 ; j < this.itemsType.length ; j++)
       {
-        this.menu.push({label: this.itemsType[i].libelle, command: (event) => {
-            this.selectedType = this.itemsType[i];
-            this.id = this.itemsType[i].id;
-            console.log('heeeello ' + this.itemsType[i].id);
+        console.log('avant ' + this.itemsType[j].id);
+        this.menu.push({label: this.itemsType[j].libelle, command: (event) => {
+            this.selectedType = this.itemsType[j];
+            this.id = this.itemsType[j].id;
+            console.log('apres ' + this.itemsType[j].id);
           }});
       }
     }, error => console.log('erreur'));
