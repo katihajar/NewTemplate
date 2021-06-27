@@ -27,11 +27,7 @@
             <i class="pi pi-volume-up" style="font-size: 1.5rem; cursor: pointer" (click)="sound1(tsword.value)"></i>
         </div>
         <audio src="" id="speach" hidden></audio>
- <!--  <div class="p-field p-col-2">
-            <br/>
-            <button pRipple pButton icon="pi pi-undo " class="p-button-success p-button-rounded p-button-raised" label="translate" (click)="finByRef(selected)"></button>
-        </div>-->
-    </div>
+
     <div class="p-grid">
         <div class="p-col-4">
             <p-panel header="Explanation">
@@ -47,7 +43,7 @@
         <div class="p-col-4">
             <p-panel header="Image">
                 <div class="p-col-12">
-                <input  pInputText placeholder="Enter Image URL" [(ngModel)]="selected.image">
+                <input  pInputText placeholder="Enter Image URL" [(ngModel)]="selected.image" >
                 </div>
                 <img [src]="'assets/demo/images/product/picture-icon.png'" alt="image" style="width: 200px; height: 200px" />
             </p-panel>
@@ -59,29 +55,3 @@
         <button pButton pRipple class="p-button p-col-3 p-button-secondary p-button-raised" id="buttonSave" label="save" (click)="save()"></button>
     </ng-template>
 </p-card>
-<!--<div class="container">
-    <div class="row pt-3">
-        <div class="col-sm-12">
-            <h2 class="text-center mb-4">Translator Project using Google API</h2>
-
-        </div>
-    </div>
-    <div class="row mt-5">
-        <div class="col-sm-6">
-            <form #translator="ngForm" (ngSubmit)="send()">
-
-
-                    <textarea pInputTextarea name="spanish" placeholder="Text to translate to Spanish"  minlength="5" rows="10" required [(ngModel)]="selected.q"></textarea>
-
-                <div class="d-flex justify-content-between">
-                    <button type="button" pButton pRipple class="p-button-secondary" (click)="selected.q = ''; result = ''">Erase</button>
-                    <button type="submit" id="btnSubmit" pButton pRipple class="p-button-success" [disabled]="!translator.valid">Translate</button>
-                </div>
-            </form>
-        </div>
-        <div class="col-sm-6">
-            <label class="font-weight-bold">Result:</label>
-            <p>{{result}}</p>
-        </div>
-    </div>
-</div>-->

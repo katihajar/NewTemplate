@@ -182,7 +182,14 @@ export class ScheduleComponent implements OnInit {
         rendering: 'background'
       },
       eventClick:  (e) => {
-        this.editEvent(e.event);
+       // this.editEvent(e.event);
+          this.eventDialog = true;
+
+          this.clickedEvent = e.event;
+
+          this.changedEvent.title = this.clickedEvent.title;
+         this.changedEvent.start = this.clickedEvent.start;
+         this.changedEvent.end = this.clickedEvent.end;
       }
     };
   }

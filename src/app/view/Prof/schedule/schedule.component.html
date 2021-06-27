@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <div class="card toolbar-demo">
     <p-toolbar >
         <div class="p-toolbar-group-left" >
@@ -28,7 +29,7 @@
             <div class="card " >
                 <p-fullCalendar #fc [events]="itemsVo" [options]="options"></p-fullCalendar>
 
-                <p-dialog [(visible)]="eventDialog" [style]="{width: '450px'}" header="Event Details" [modal]="true" [closable]="true">
+               <!-- <p-dialog [(visible)]="eventDialog" [style]="{width: '450px'}" header="Event Details" [modal]="true" [closable]="true">
                     <ng-template pTemplate="content">
                         <div class="p-fluid">
                             <div class="p-field">
@@ -55,18 +56,50 @@
                         <button pButton label="Reset" icon="pi pi-refresh" class="p-button-text" (click)="reset()"></button>
                         <button pButton label="Delete" icon="pi pi-trash" class="p-button-text" (click)="delete(selected)"></button>
                     </ng-template>
+                </p-dialog>-->
+                <p-dialog [(visible)]="eventDialog" [style]="{width: '450px'}" header="Event Details" [modal]="true" [closable]="true">
+                    <ng-template pTemplate="content">
+                        <div class="p-fluid">
+                            <div class="p-field">
+                                <label for="title">Title</label>
+                                <input id="title" type="text" pInputText *ngIf="clickedEvent" [(ngModel)]="changedEvent.title" [required]="true" disabled>
+                            </div>
+
+                            <div class="p-field">
+                                <label for="start">From</label>
+                                <p-calendar id="start" *ngIf="clickedEvent" [(ngModel)]="changedEvent.start" [showTime]="true" appendTo="body"></p-calendar>
+                            </div>
+                            <div class="p-field">
+                                <label for="end">To</label>
+                                <p-calendar id="end" *ngIf="clickedEvent" [(ngModel)]="changedEvent.end" [showTime]="true" appendTo="body"></p-calendar>
+                            </div>
+                            <div class="p-field-checkbox">
+                                <p-checkbox id="allday" *ngIf="clickedEvent" [(ngModel)]="changedEvent.allday"></p-checkbox>
+                                <label for="allday">All Day</label>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template pTemplate="footer">
+                        <button pButton label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+                        <button pButton label="Reset" icon="pi pi-refresh" class="p-button-text" (click)="reset()"></button>
+                    </ng-template>
                 </p-dialog>
             </div>
         </div>
     </div>
 </p-card>
-<p-dialog [(visible)]="createDialog" [style]="{width: '450px'}"  [modal]="true" styleClass="p-fluid">
+<p-dialog [(visible)]="createDialog" [style]="{width: '700px'}" id="addStudent"  [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
 
         <div class="p-field">
             <label >Name</label>
             <p-dropdown [(ngModel)]="selected.etudiant" [options]="students" placeholder="Name of student" optionLabel="nom"></p-dropdown>
         </div>
+      <!--  <div class="p-field">
+            <label >Name</label>
+            <p-dropdown [(ngModel)]="selected.prof" [options]="students" placeholder="Name of professor" optionLabel="nom"></p-dropdown>
+        </div>-->
 
         <div class="p-field">
              <label for="ref">Reference</label>
@@ -79,26 +112,26 @@
          </div>
         <div class="p-field">
             <label for="start">Debut Date</label>
-            <p-calendar inputId="start" [showTime]="false" [(ngModel)]="selected.startRecur" dateFormat="yy-mm-dd"></p-calendar>
+            <p-calendar inputId="start" [showTime]="false" [(ngModel)]="selected.startRecur" dateFormat="yyyy-mm-dd"></p-calendar>
             <small class="p-invalid" *ngIf="submitted && !selected.startRecur">start date is required.</small>
         </div>
-        <div class="p-formgrid p-grid">
-            <div class="p-field p-col">
+
+            <div class="p-field ">
                 <label for="end">Finish Date </label>
-                <p-calendar inputId="basic" [showTime]="false" [(ngModel)]="selected.endRecur" dateFormat="yy-mm-dd"></p-calendar>
+                <p-calendar inputId="basic" [showTime]="false" [(ngModel)]="selected.endRecur" dateFormat="yyyy-mm-dd"></p-calendar>
                 <small class="p-invalid" *ngIf="submitted && !selected.endRecur">end date is required.</small>
             </div>
+        <div class="p-fluid p-formgrid p-grid">
             <div class="p-field p-col">
-                <label >Start time</label>
-                <p-calendar [timeOnly]="true" inputId="timeonly" [showTime]="true" [(ngModel)]="selected.startTime" ></p-calendar>
+                <label >Start time (hh:mm:sss)</label>
+                <input pInputText type="text" required autofocus [(ngModel)]="selected.startTime">
                 <small class="p-invalid" *ngIf="submitted && !selected.startTime">start time is required.</small>
             </div>
             <div class="p-field p-col">
-                <label >End time</label>
-                <p-calendar [timeOnly]="true" inputId="timeonly" [(ngModel)]="selected.endTime" ></p-calendar>
+                <label >End time (hh:mm:sss)</label>
+              <input pInputText type="text" required autofocus [(ngModel)]="selected.endTime">
                 <small class="p-invalid" *ngIf="submitted && !selected.endTime">end time is required.</small>
             </div>
-
         </div>
     </ng-template>
     <ng-template pTemplate="footer">

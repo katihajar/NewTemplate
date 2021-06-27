@@ -7,6 +7,7 @@ import {Etudiant} from "../model/etudiant.model";
 import {EtatEtudiantSchedule} from "../model/etat-etudiant-schedule.model";
 import {CalendrierProf} from "../model/schedule-prof.model";
 import {CalendrierVo} from "../Model/calendrier-vo.model";
+import {Prof} from "../Model/prof.model";
 
 @Injectable({
     providedIn: 'root'
@@ -29,6 +30,7 @@ export class ScheduleService {
     private _createDialog: boolean;
     private _submitted: boolean;
 private _students: Array<Etudiant>;
+private _professors: Array<Prof>;
 
 
 
@@ -164,10 +166,14 @@ get etatEtudiantSchedule(): Array<EtatEtudiantSchedule> {
     }
 
     get items(): Array<CalendrierProf> {
+        if (this._items == null){
+            this._items = new Array<CalendrierProf>();
+        }
         return this._items;
     }
 
     set items(value: Array<CalendrierProf>) {
+        
         this._items = value;
     }
 
@@ -208,10 +214,13 @@ public edit() : Observable<CalendrierProf>{
         this.changedEvent.end = this.clickedEvent.end;
     }
     public  addStudent(): Observable<CalendrierProf>{
-        return this.http.post<CalendrierProf>('http://localhost:8036/learn/celendrierProf/', this.selected);
+        return this.http.post<CalendrierProf>('http://localhost:8036/learn/calendrierProf/', this.selected);
     }
 public getStudents(): Observable<Array<Etudiant>>{
         return this.http.get<Array<Etudiant>>('http://localhost:8036/learn/etudiant/');
+}
+public getProf():Observable<Array<Prof>>{
+        return this.http.get<Array<Prof>>('http://localhost:8036/learn/prof');
 }
 
 public findEtat(): Observable<Array<EtatEtudiantSchedule>>{

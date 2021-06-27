@@ -145,6 +145,13 @@ public flipAnyway(){
       document.getElementById('vocabulary').style.visibility = 'hidden';
       document.getElementById('mainCard').style.visibility = 'visible';
       document.getElementById('translated').style.visibility = 'hidden';
+      if (this.note >= 10){
+        document.getElementById('congrats').style.visibility = 'visible';
+        document.getElementById('nextTime').style.visibility = 'hidden';
+      }else {
+        document.getElementById('congrats').style.visibility = 'hidden';
+        document.getElementById('nextTime').style.visibility = 'visible';
+      }
 
     }
     this.result = null;

@@ -11,6 +11,6 @@ export class CalendrierProf {
     public endRecur: Date =  new Date();
     public daysOfWeek = [];
     public etudiant = new Etudiant();
-    public prof = new Prof();
+   // public prof = new Prof();
 
 }

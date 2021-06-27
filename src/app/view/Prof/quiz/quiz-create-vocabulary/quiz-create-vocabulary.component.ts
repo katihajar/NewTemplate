@@ -131,6 +131,7 @@ urls=[];
 }
 public finByRef(selected : Vocabulary){
     this.service.findByRef(selected).subscribe( data => this.selected = data);
+    console.log(this.selected);
 }
 public sound(word :string){
 let text = encodeURIComponent(word);
