@@ -85,6 +85,8 @@ import {FaqStudentContactListeComponent} from './view/std/faq/faq-student-contac
 import {DictionaryCreateComponent} from './view/etudiant/dictionary-create/dictionary-create.component';
 import {NewsEtudiantListComponent} from './view/std/news-etudiant/news-etudiant-list/news-etudiant-list.component';
 import {PaiementComponent} from './view/admin/paiement/paiement.component';
+import {QuizVocabularyComponent} from "./view/Prof/quiz/quiz-vocabulary/quiz-vocabulary.component";
+import {QuizCreateVocabularyComponent} from "./view/Prof/quiz/quiz-create-vocabulary/quiz-create-vocabulary.component";
 
 
 
@@ -147,6 +149,8 @@ import {PaiementComponent} from './view/admin/paiement/paiement.component';
                     {path: 'pages/classroom-liste', component: ClassroomEtudiantComponent},
                     {path: 'pages/quiz-liste', component: QuizEtudiantListComponent},
                     {path: 'pages/quiz-view', component: QuizEtudiantViewComponent},
+                    {path: 'view/quiz-create-vocabulary', component: QuizCreateVocabularyComponent},
+                    {path: 'view/quiz-vocabulary', component: QuizVocabularyComponent},
                     {path: 'pages/paiement', component: PaiementComponent},
                     {path: 'view/quiz-preview', component: QuizPreviewComponent},
                     {path: 'view/schedule', component: ScheduleComponent},

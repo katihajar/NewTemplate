@@ -112,13 +112,13 @@
          </div>
         <div class="p-field">
             <label for="start">Debut Date</label>
-            <p-calendar inputId="start" [showTime]="false" [(ngModel)]="selected.startRecur" dateFormat="yyyy-mm-dd"></p-calendar>
+            <p-calendar inputId="start" [showTime]="false" [(ngModel)]="selected.startRecur" dateFormat="yy-mm-dd"></p-calendar>
             <small class="p-invalid" *ngIf="submitted && !selected.startRecur">start date is required.</small>
         </div>
 
             <div class="p-field ">
                 <label for="end">Finish Date </label>
-                <p-calendar inputId="basic" [showTime]="false" [(ngModel)]="selected.endRecur" dateFormat="yyyy-mm-dd"></p-calendar>
+                <p-calendar inputId="basic" [showTime]="false" [(ngModel)]="selected.endRecur" dateFormat="yy-mm-dd"></p-calendar>
                 <small class="p-invalid" *ngIf="submitted && !selected.endRecur">end date is required.</small>
             </div>
         <div class="p-fluid p-formgrid p-grid">

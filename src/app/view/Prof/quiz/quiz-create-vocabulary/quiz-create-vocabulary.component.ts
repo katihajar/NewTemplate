@@ -62,15 +62,16 @@ urls=[];
 
   public save() {
     this.submitted = true;
-      this.service.save().subscribe(data => {
+    /*  this.service.save().subscribe(data => {
         this.items.push({...data});
         console.log(data);
+      });*/
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
           detail: 'Vocabulary Created',
           life: 3000
-        });
+
       });
 
       this.selected = null;

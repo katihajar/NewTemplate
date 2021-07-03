@@ -143,12 +143,12 @@ export class QuizCreateComponent implements OnInit {
         return this.service.sectionSelected;
     }
 
-    set sectionSelected(value: Section) {
+    /*set sectionSelected(value: Section) {
         this.service.sectionSelected = value;
-    }
+    }*/
     public save() {
-        console.log(this.sectionSelected.id);
-        this.selected.section.id =  this.sectionSelected.id;
+        //console.log(this.sectionSelected.id);
+        this.selected.section.id =  this.selectedsection.id;
         console.log(this.selected.section.id);
         this.service.refQuiz = this.service.selected.ref;
         this.service.save().subscribe(
