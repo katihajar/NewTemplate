@@ -99,7 +99,7 @@ export class FaqCreateComponent implements OnInit {
     this.selected.faqType = this.type;
     this.selected.description = this.description;
     this.selected.libelle = this.libelle;
-    this.service.save(this.selected).subscribe(data => console.log('succes'));
+    this.service.save(this.selected).subscribe(data => this.selected = new Faq());
   }
 
   ngOnInit(): void {

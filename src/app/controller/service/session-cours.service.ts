@@ -3,8 +3,8 @@ import {Observable} from 'rxjs';
 import {SessionCours} from '../model/session-cours.model';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-import {Etudiant} from '../Model/etudiant.model';
-import {Prof} from '../Model/prof.model';
+import {Etudiant} from '../model/etudiant.model';
+import {Prof} from '../model/prof.model';
 
 @Injectable({
   providedIn: 'root'
