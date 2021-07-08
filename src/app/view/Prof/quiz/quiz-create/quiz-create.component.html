@@ -5,7 +5,7 @@
         <div class="card toolbar-demo">
             <p-toolbar>
                 <div class="p-toolbar-group-left">
-                    <button pButton pRipple  icon="pi pi-cog" class="p-button-secondary p-button-rounded p-mr-2 p-mb-2" (click)="openConfig()"></button>
+                  <!--  <button pButton pRipple  icon="pi pi-cog" class="p-button-secondary p-button-rounded p-mr-2 p-mb-2" (click)="openConfig()"></button>-->
                     <button pButton pRipple  icon="pi pi-eye" class="p-button-secondary p-button-rounded p-mr-2 p-mb-2" (click)="openPreview()"></button>
                 </div>
 
@@ -50,7 +50,7 @@
                 <div class="card"*ngFor="let question of selected.questions ; index as i " styleClass="p-card-shadow">
                     <div class="p-fluid p-formgrid p-grid" >
                         <div class="p-field p-col-12 p-md-6">
-                            <p-inputNumber id="firstname6"  placeholder="Question Number" name="numero{{i}}" [(ngModel)]="question.numero"></p-inputNumber>
+                            <p-inputNumber id="firstname6" placeholder="Question number" name="numero{{i}}" [(ngModel)]="question.numero"></p-inputNumber>
                         </div>
                         <div class="p-field p-col-12 p-md-6">
                             <p-dropdown inputId="type"  [options]="types" [(ngModel)]="question.typeDeQuestion" name="typeDeQuestion{{i}}" placeholder="Type of Question" optionLabel="lib"></p-dropdown>
@@ -93,7 +93,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="p-md-8" style="margin: auto">
+                    <div class="p-md-12" style="margin: auto">
                         <p-table [value]="reponses"  >
                             <ng-template pTemplate="header">
                                 <tr>

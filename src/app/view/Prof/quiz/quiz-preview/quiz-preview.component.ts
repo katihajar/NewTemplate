@@ -37,8 +37,13 @@ export class QuizPreviewComponent implements OnInit {
     if (this.service.questions == null){
       this.service.questions = new Array<Question>();
     }
+
     return this.service.questions;
   }
+  set questions(value: Array<Question>) {
+    this.service.questions = value;
+  }
+
   get selected(): Quiz {
     return this.service.selected;
   }
@@ -209,7 +214,7 @@ export class QuizPreviewComponent implements OnInit {
           }
         }
     );
-    this.service.findCorrectAnswers().subscribe(
+    this.service.findCorrectAnswers(this.question.id).subscribe(
         data => {
           this.correctAnswers = data;
         }
@@ -315,7 +320,7 @@ export class QuizPreviewComponent implements OnInit {
           this.reponses = data;
         }
     );
-    this.service.findCorrectAnswers().subscribe(
+    this.service.findCorrectAnswers(this.question.id).subscribe(
         data => {
           this.correctAnswers = data;
         }
@@ -324,12 +329,15 @@ export class QuizPreviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.service.findAll();
+   // this.service.findAllByQuizRef(this.selected.ref).subscribe(data => this.questions = data);
     this.service.findConfig().subscribe( data => this.service.configurations = data);
   //  this.service.findFirstReponse();
     this.service.seconds = 0;
     this.service.qnprogress = 0;
     this.startTimer();
-    this.service.findQuiz();
+   // this.service.findQuizByRef(this.selected.ref);
+    this.service.findQuiz().subscribe(data => this.items = data);
     this.Config();
   }
 public Config(){
@@ -345,7 +353,8 @@ public Config(){
     this.router.navigate(['/pages/quiz-create']);
   }
 public backPage(){
-    this.service.qnprogress --;
+    -- this.service.numReponses;
+   -- this.service.qnprogress;
 }
 
   public selectionChanged(reponse: Reponse): void

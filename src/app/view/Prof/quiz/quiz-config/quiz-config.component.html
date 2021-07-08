@@ -2,25 +2,25 @@
     <ng-template pTemplate="content">
         <div class="p-field">
             <div class="p-field-checkbox">
-                <p-radioButton name="group1" (change)="ProgressBar($event)" ></p-radioButton>
+                <p-checkbox name="group1" (change)="ProgressBar($event)" ></p-checkbox>
                 <label>Afficher la barre de progression</label>
                 <br/>
-                <p-radioButton name="group1" value="{{configuration.shuffleOptions}}" (change)="onItemChange($event)" [(ngModel)]="configuration.shuffleOptions" ></p-radioButton>
+                <p-checkbox name="group1" value="{{configuration.shuffleOptions}}" (change)="checkCheckBoxvalue($event)" [(ngModel)]="configuration.shuffleOptions" ></p-checkbox>
                 <label>Trier les reponses en mode aléatoire</label>
             </div>
         </div>
         <p style="justify-content: space-between"></p>
         <div class="p-field">
             <div class="p-field-checkbox">
-                <p-radioButton name="group2" value="{{configuration.shuffleQuestions}}" (change)="onItemChange($event)" [(ngModel)]="configuration.shuffleQuestions" ></p-radioButton>
+                <p-checkbox name="group2" value="{{configuration.shuffleQuestions}}" (change)="checkCheckBoxvalue($event)" [(ngModel)]="configuration.shuffleQuestions" ></p-checkbox>
                 <label>Trier les questions en mode aléatoire</label>
             </div>
             <div class="p-field-checkbox">
-                <p-radioButton name="group2" value="{{configuration.allowBack}}" (change)="onItemChange($event)" [(ngModel)]="configuration.allowBack"  ></p-radioButton>
+                <p-checkbox name="group2" value="{{configuration.allowBack}}" (change)="checkCheckBoxvalue($event)" [(ngModel)]="configuration.allowBack"  ></p-checkbox>
                 <label>Retourner en question précédente </label>
             </div>
             <div class="p-field-checkbox">
-                <p-radioButton name="group2"  ></p-radioButton>
+                <p-checkbox name="group2" (change)="checkCheckBoxvalue($event)" ></p-checkbox>
                 <label>Nombre de points</label>
             </div>
         </div>

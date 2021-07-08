@@ -5,17 +5,19 @@ import {ScheduleVo} from '../model/schedule-vo.model';
 import {Observable} from "rxjs";
 import {Etudiant} from "../model/etudiant.model";
 import {EtatEtudiantSchedule} from "../model/etat-etudiant-schedule.model";
+import {CalendrierProf} from "../model/schedule-prof.model";
+import {CalendrierVo} from "../Model/calendrier-vo.model";
+import {Prof} from "../Model/prof.model";
 
 @Injectable({
     providedIn: 'root'
 })
 export class ScheduleService {
 
-
-    private _selected: ScheduleProf;
-    private _items: Array<ScheduleProf>;
-    private _selectedVo: ScheduleVo;
-    private _itemsVo: Array<ScheduleVo>;
+    private _selected: CalendrierProf;
+    private _items: Array<CalendrierProf>;
+    private _selectedVo : CalendrierVo;
+    private _itemsVo : Array<CalendrierVo>;
     private _etatEtudiantSchedule: Array<EtatEtudiantSchedule>;
     private _etudiant: Etudiant;
     private _displayBasic: boolean;
@@ -27,38 +29,40 @@ export class ScheduleService {
     private _clickedEvent = null;
     private _createDialog: boolean;
     private _submitted: boolean;
+private _students: Array<Etudiant>;
+private _professors: Array<Prof>;
+
+
+
 
     constructor(private http: HttpClient) {
     }
-
-    get selected(): ScheduleProf {
-        return this._selected;
-    }
-
-    set selected(value: ScheduleProf) {
-        this._selected = value;
-    }
-
-    get items(): Array<ScheduleProf> {
-        return this._items;
-    }
-
-    set items(value: Array<ScheduleProf>) {
-        this._items = value;
-    }
-
-    get selectedVo(): ScheduleVo {
+    get selectedVo(): CalendrierVo {
         return this._selectedVo;
     }
 
-    set selectedVo(value: ScheduleVo) {
+    set selectedVo(value: CalendrierVo) {
         this._selectedVo = value;
     }
 
-    get itemsVo(): Array<ScheduleVo> {
+    get itemsVo(): Array<CalendrierVo> {
         return this._itemsVo;
     }
-    get etatEtudiantSchedule(): Array<EtatEtudiantSchedule> {
+
+    set itemsVo(value: Array<CalendrierVo>) {
+        this._itemsVo = value;
+    }
+    get students(): Array<Etudiant> {
+        if (this._students == null){
+            this._students = new Array<Etudiant>();
+        }
+        return this._students;
+    }
+
+    set students(value: Array<Etudiant>) {
+        this._students = value;
+    }
+get etatEtudiantSchedule(): Array<EtatEtudiantSchedule> {
         if (this._etatEtudiantSchedule == null){
             this._etatEtudiantSchedule =new Array<EtatEtudiantSchedule>();
         }
@@ -69,9 +73,7 @@ export class ScheduleService {
         this._etatEtudiantSchedule = value;
     }
 
-    set itemsVo(value: Array<ScheduleVo>) {
-        this._itemsVo = value;
-    }
+
     get etudiant(): Etudiant {
         if (this._etudiant == null){
             this._etudiant = new Etudiant();
@@ -152,27 +154,58 @@ export class ScheduleService {
     set clickedEvent(value: any) {
         this._clickedEvent = value;
     }
+    get selected(): CalendrierProf {
+        if (this._selected == null){
+            this._selected =  new CalendrierProf();
+        }
+        return this._selected;
+    }
+
+    set selected(value: CalendrierProf) {
+        this._selected = value;
+    }
+
+    get items(): Array<CalendrierProf> {
+        if (this._items == null){
+            this._items = new Array<CalendrierProf>();
+        }
+        return this._items;
+    }
+
+    set items(value: Array<CalendrierProf>) {
+        
+        this._items = value;
+    }
 
     public findAll() {
 
-        return this.http.get<Array<ScheduleVo>>('http://localhost:8036/learn/scheduleProf/vo/').subscribe(data => {
+        return this.http.get<Array<CalendrierVo>>('http://localhost:8036/learn/calendrierProf/vo/').subscribe(data => {
             this.itemsVo = data;
             console.log(this.itemsVo);
         });
     }
 
+public remove(){
 
-
+        this.clickedEvent.remove();
+}
+public delete(): Observable<number>{
+       return  this.http.delete<number>('http://localhost:8036/learn/calendrierProf/id'+ this.selected.id);
+}
     save() {
         this.eventDialog = false;
-
-        this.clickedEvent.setProp('title', this.changedEvent.title);
-        this.clickedEvent.setStart(this.changedEvent.start);
-        this.clickedEvent.setEnd(this.changedEvent.end);
-        this.clickedEvent.setAllDay(this.changedEvent.allDay);
-
-        this.changedEvent = {title: '', start: null, end: '', allDay: null};
+        this.selected.etudiant.nom = this.selectedVo.title;
+      this.selected.startTime = this.selectedVo.startTime;
+      this.selected.endTime = this.selectedVo.endTime;
+      this.http.post<CalendrierProf>('http://localhost:8036/learn/calendrierProf/', this.selected).subscribe(
+          data =>{
+              this.items.push({...data});
+          }
+      );
     }
+public edit() : Observable<CalendrierProf>{
+        return this.http.put<CalendrierProf>('http://localhost:8036/learn/calendrierProf/', this.selected);
+}
 
 
     reset() {
@@ -180,24 +213,31 @@ export class ScheduleService {
         this.changedEvent.start = this.clickedEvent.start;
         this.changedEvent.end = this.clickedEvent.end;
     }
-    public  addStudent(): Observable<ScheduleProf>{
-        return this.http.post<ScheduleProf>('http://localhost:8036/learn/scheduleProf/save/', this.selected);
+    public  addStudent(): Observable<CalendrierProf>{
+        return this.http.post<CalendrierProf>('http://localhost:8036/learn/calendrierProf/', this.selected);
     }
-
+public getStudents(): Observable<Array<Etudiant>>{
+        return this.http.get<Array<Etudiant>>('http://localhost:8036/learn/etudiant/');
+}
+public getProf():Observable<Array<Prof>>{
+        return this.http.get<Array<Prof>>('http://localhost:8036/learn/prof');
+}
 
 public findEtat(): Observable<Array<EtatEtudiantSchedule>>{
         return this.http.get<Array<EtatEtudiantSchedule>>('http://localhost:8036/learn/etatEtudiantSchedule/');
 }
 
+
     public findIndexById(id: number): number {
         let index = -1;
-        for (let i = 0; i < this.items.length; i++) {
-            if (this.items[i].id === id) {
+        for (let i = 0; i < this.itemsVo.length; i++) {
+            if (this.itemsVo[i].id === id) {
                 index = i;
                 break;
             }
         }
         return index;
     }
+
 
 }

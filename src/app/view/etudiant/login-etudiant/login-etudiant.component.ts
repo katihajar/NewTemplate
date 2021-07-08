@@ -100,6 +100,8 @@ export class LoginEtudiantComponent implements OnInit {
             {label: 'Courses ', icon: 'pi pi-fw pi-briefcase', routerLink: ['/pages/etudiantparcours']},
             {label: 'FAQ ', icon: 'pi pi-fw pi-question-circle', routerLink: ['/pages/faq-student']},
             {label: 'News ', icon: 'pi pi-fw pi-clock', routerLink: ['/pages/news-student']},
+            {label: ' Quiz Vocabulary', icon: 'pi pi-fw pi-table', routerLink: [ '/view/quiz-vocabulary']},
+            {label: 'DictionaryCreate ', icon: 'pi pi-fw pi-question', routerLink: ['/pages/DictionaryCreate']},
             {label: 'LogOut ', icon: 'pi pi-fw pi-sign-out', routerLink: ['']},
             ];
         },

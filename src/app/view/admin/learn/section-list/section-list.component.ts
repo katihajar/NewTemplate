@@ -4,6 +4,7 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
 import {Router} from '@angular/router';
 import {QuizService} from '../../../../controller/service/quiz.service';
+import {VocabularyService} from "../../../../controller/service/vocabulary.service";
 
 
 @Component({
@@ -16,7 +17,7 @@ export class SectionListComponent implements OnInit {
 
   cols: any[];
   // tslint:disable-next-line:max-line-length
-  constructor(private serviceQuiz: QuizService, private messageService: MessageService, private confirmationService: ConfirmationService, private service: ParcoursService , private router: Router) { }
+  constructor(private serviceQuiz: QuizService, private messageService: MessageService, private confirmationService: ConfirmationService, private service: ParcoursService , private router: Router,private VocabularyService: VocabularyService) { }
   ngOnInit(): void {
     this.initCol();
   }
@@ -143,9 +144,29 @@ export class SectionListComponent implements OnInit {
       }
     });
   }
-
-    CreateQuiz(section: Section) {
+public getSection(section : Section){
+    console.log(section);
+    console.log(section.categorieSection.id);
+    if (section.categorieSection.id == 6){
+      this.VocabularyService.sectionSelected = section;
+      console.log(this.VocabularyService.sectionSelected);
+      this.router.navigate(['/view/quiz-create-vocabulary']);
+    }else {
       this.serviceQuiz.sectionSelected = section;
+      console.log(this.serviceQuiz.sectionSelected);
       this.router.navigate(['/pages/quiz-create']);
     }
+}
+  public getValue(d :number){
+    if (d == 6){
+      this.VocabularyService.sectionSelected.id = d;
+      console.log(this.VocabularyService.sectionSelected.id);
+      this.router.navigate(['/view/quiz-create-vocabulary']);
+    }else {
+      this.serviceQuiz.selected.section.id = d;
+      console.log(this.serviceQuiz.selected.section.id);
+      this.router.navigate(['/pages/quiz-create']);
+    }
+  }
+
 }
