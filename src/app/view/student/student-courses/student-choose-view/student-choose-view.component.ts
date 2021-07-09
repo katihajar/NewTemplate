@@ -95,8 +95,9 @@ export class StudentChooseViewComponent implements OnInit {
           this.quizService.findQuizBySectionId(this.selectedsection).subscribe(
               data => {
                 this.selectedQuiz = data;
-                document.getElementById('dict1').style.visibility = 'hidden';
-                document.getElementById('quiz').style.visibility = 'visible';
+                //document.getElementById('dict1').style.visibility = 'hidden';
+                //document.getElementById('quiz').style.visibility = 'visible';
+                  console.log('teeeeeeeeest');
                 this.quizService.findQuizEtudiant(this.loginService.etudiant, this.selectedQuiz).subscribe(
                     data => {
                       this.quizEtudiantList = data;
