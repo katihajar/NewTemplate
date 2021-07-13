@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {VocabularyService} from "../../../../controller/service/vocabulary.service";
-import {Vocabulary} from "../../../../controller/model/vocabulary.model";
-import {ConfirmationService, MessageService} from "primeng/api";
-import {Section} from "../../../../controller/Model/section.model";
+import {VocabularyService} from '../../../../controller/service/vocabulary.service';
+import {Vocabulary} from '../../../../controller/model/vocabulary.model';
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {Section} from '../../../../controller/model/section.model';
 
 
 
@@ -10,13 +10,12 @@ import {Section} from "../../../../controller/Model/section.model";
   selector: 'app-quiz-create-vocabulary',
   templateUrl: './quiz-create-vocabulary.component.html',
   styleUrls: ['./quiz-create-vocabulary.component.scss'],
-  providers: [VocabularyService]
 })
 export class QuizCreateVocabularyComponent implements OnInit {
-  fileToUpload: File = null;
-  url: "assets/demo/images/product/blue-t-shirt.jpg";
-urls=[];
-  constructor(private service: VocabularyService,private messageService: MessageService,private confirmationService: ConfirmationService) { }
+  url: 'assets/demo/images/product/blue-t-shirt.jpg';
+urls = [];
+  // tslint:disable-next-line:max-line-length
+  constructor(private service: VocabularyService, private messageService: MessageService, private confirmationService: ConfirmationService) { }
   public result = '';
   private btnSubmit: any;
 
@@ -39,11 +38,20 @@ urls=[];
   set selected(value: Vocabulary) {
     this.service.selected = value;
   }
+  set selected2(value: Vocabulary) {
+    this.service.selected2 = value;
+  }
   get sectionSelected(): Section {
     return this.service.sectionSelected;
   }
   set sectionSelected(value: Section) {
     this.service.sectionSelected = value;
+  }
+  get sectionSelected2(): Section {
+    return this.service.sectionSelected2;
+  }
+  set sectionSelected2(value: Section) {
+    this.service.sectionSelected2 = value;
   }
   get items(): Array<Vocabulary> {
     return this.service.items;
@@ -53,34 +61,42 @@ urls=[];
     this.service.items = value;
   }
   ngOnInit(): void {
-    console.log(this.sectionSelected.id);
-    this.items.push(this.selected);
-    this.btnSubmit = document.getElementById('btnSubmit');
+    console.log('id section ', this.idSection);
+    // this.items.push(this.selected);
+   // this.btnSubmit = document.getElementById('btnSubmit');
    // this.service.findAll().subscribe(data => this.items = data);
   }
 
+  get idSection(): number {
+    return this.service.idSection;
+  }
 
+  set idSection(value: number) {
+    this.service.idSection = value;
+  }
   public save() {
+    console.log(this.idSection);
+    // this.selected2.section.id = this.idSection;
+    console.log(this.selected.section.id);
     this.submitted = true;
     this.service.save().subscribe(data => {
         this.items.push({...data});
         console.log(data);
-
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
           detail: 'Vocabulary Created',
           life: 3000
-   })
+   });
       });
 
-      this.selected = null;
+    this.selected = null;
 
   }
   public edit() {
     this.submitted = true;
 
-      if (this.selected.id) {
+    if (this.selected.id) {
         this.items[this.service.findIndexById(this.selected.id)] = this.selected;
         this.service.edit().subscribe(data => {
           this.selected = data;
@@ -93,7 +109,7 @@ urls=[];
         });
       }
 
-      this.selected = new Vocabulary();
+    this.selected = new Vocabulary();
 
   }
   public delete(selected: Vocabulary) {
@@ -118,34 +134,34 @@ urls=[];
   }
   handleFileInput(event) {
     if (event.target.files){
-      for (let i=0; i>File.length; i++){
-        var reader = new FileReader();
+      for (let i = 0; i > File.length; i++){
+        const reader = new FileReader();
         reader.readAsDataURL(event.target.files[i]);
-        reader.onload=(events:any)=>{
+        reader.onload = (events: any) => {
           this.urls.push(events.target.result);
-        }
+        };
       }
 
     }
 
 
 }
-public finByRef(selected : Vocabulary){
+public finByRef(selected: Vocabulary){
     this.service.findByRef(selected).subscribe( data => this.selected = data);
     console.log(this.selected);
 }
-public sound(word :string){
-let text = encodeURIComponent(word);
+public sound(word: string){
+const text = encodeURIComponent(word);
 console.log(text);
-var url = 'http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q='+text+'&tl=En-gb';
-var audio = new Audio(url);
+const url = 'http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q=' + text + '&tl=En-gb';
+const audio = new Audio(url);
 audio.play();
 }
-  public sound1(word :string){
-    let text = encodeURIComponent(word);
+  public sound1(word: string){
+    const text = encodeURIComponent(word);
     console.log(text);
-    var url = 'http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q='+text+'&tl=ar';
-    var audio = new Audio(url);
+    const url = 'http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q=' + text + '&tl=ar';
+    const audio = new Audio(url);
     audio.play();
   }
 

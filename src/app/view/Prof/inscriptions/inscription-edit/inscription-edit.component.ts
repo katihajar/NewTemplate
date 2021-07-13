@@ -69,10 +69,6 @@ export class InscriptionEditComponent implements OnInit {
             life: 3000
           });
         });
-    // tslint:disable-next-line:no-shadowed-variable triple-equals
-    if (this.selected.etatInscription.id == '2'){
-          this.delete(this.selected);
-      }
     this.editDialog = false;
     this.selected = new Inscription();
   }

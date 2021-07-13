@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {SessionCours} from '../../../../controller/model/session-cours.model';
 import {MessageService} from 'primeng/api';
 import {SessionCoursService} from '../../../../controller/service/session-cours.service';
-import {Prof} from '../../../../controller/Model/prof.model';
-import {Etudiant} from '../../../../controller/Model/etudiant.model';
+import {Prof} from '../../../../controller/model/prof.model';
+import {Etudiant} from '../../../../controller/model/etudiant.model';
 
 @Component({
   selector: 'app-session-cours-create',

@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {MessageService} from 'primeng/api';
 import {EtudiantService} from '../../../../controller/service/etudiant.service';
 import {Etudiant} from '../../../../controller/model/etudiant.model';
-import {Centre} from '../../../../controller/Model/centre.model';
-import {Parcours} from '../../../../controller/Model/parcours.model';
+import {Centre} from '../../../../controller/model/centre.model';
+import {Parcours} from '../../../../controller/model/parcours.model';
+import {Prof} from '../../../../controller/model/prof.model';
 
 
 
@@ -39,6 +40,16 @@ export class EtudiantCreateComponent implements OnInit {
       this.createDialogEtud = false;
       this.selected = new Etudiant();
     }
+  }
+  get itemsprof(): Array<Prof> {
+    return this.service.itemsprof;
+  }
+
+  set itemsprof(value: Array<Prof>) {
+    this.service.itemsprof = value;
+  }
+  public findAllProf(){
+    this.service.findAllProf().subscribe( data => this.itemsprof = data);
   }
   public findAllCentre(){
     this.service.findAllCentre().subscribe(data => this.centreList = data);

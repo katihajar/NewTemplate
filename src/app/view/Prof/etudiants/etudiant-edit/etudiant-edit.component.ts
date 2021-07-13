@@ -6,6 +6,7 @@ import {EtudiantService} from '../../../../controller/service/etudiant.service';
 import {Etudiant} from '../../../../controller/model/etudiant.model';
 import {Centre} from '../../../../controller/Model/centre.model';
 import {Parcours} from '../../../../controller/Model/parcours.model';
+import {Prof} from '../../../../controller/Model/prof.model';
 
 @Component({
   selector: 'app-etudiant-edit',
@@ -23,6 +24,16 @@ export class EtudiantEditComponent implements OnInit {
   }
   public findAllParcours(){
     this.service.findAllParcours().subscribe(data => this.parcoursList = data);
+  }
+  get itemsprof(): Array<Prof> {
+    return this.service.itemsprof;
+  }
+
+  set itemsprof(value: Array<Prof>) {
+    this.service.itemsprof = value;
+  }
+  public findAllProf(){
+    this.service.findAllProf().subscribe( data => this.itemsprof = data);
   }
   get centreList(): Array<Centre> {
 

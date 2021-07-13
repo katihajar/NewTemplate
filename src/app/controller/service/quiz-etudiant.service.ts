@@ -402,7 +402,6 @@ export class QuizEtudiantService {
   {
     return this.http.get<Array<QuizEtudiant>>(this.url + 'quizEtudiant/');
   }
-
   public findFirstQuizEtudiant(): Observable<QuizEtudiant>
   {
     return this.http.get<QuizEtudiant>(this.url + 'quizEtudiant/ref/qe1');

@@ -4,7 +4,7 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
 import {Router} from '@angular/router';
 import {QuizService} from '../../../../controller/service/quiz.service';
-import {VocabularyService} from "../../../../controller/service/vocabulary.service";
+import {VocabularyService} from '../../../../controller/service/vocabulary.service';
 
 
 @Component({
@@ -16,10 +16,17 @@ import {VocabularyService} from "../../../../controller/service/vocabulary.servi
 export class SectionListComponent implements OnInit {
 
   cols: any[];
-  // tslint:disable-next-line:max-line-length
-  constructor(private serviceQuiz: QuizService, private messageService: MessageService, private confirmationService: ConfirmationService, private service: ParcoursService , private router: Router,private VocabularyService: VocabularyService) { }
+  // tslint:disable-next-line:max-line-length no-shadowed-variable
+  constructor(private serviceQuiz: QuizService, private messageService: MessageService, private confirmationService: ConfirmationService, private service: ParcoursService , private router: Router, private VocabularyService: VocabularyService) { }
   ngOnInit(): void {
     this.initCol();
+  }
+  get idSection(): number {
+    return this.VocabularyService.idSection;
+  }
+
+  set idSection(value: number) {
+    this.VocabularyService.idSection = value;
   }
   private initCol() {
     this.cols = [
@@ -43,7 +50,6 @@ export class SectionListComponent implements OnInit {
   set selectedsection(value: Section) {
     this.service.selectedsection = value;
   }
-
   set itemssection(value: Array<Section>) {
     this.service.itemssection = value;
   }
@@ -144,29 +150,19 @@ export class SectionListComponent implements OnInit {
       }
     });
   }
-public getSection(section : Section){
+public getSection(section: Section){
     console.log(section);
     console.log(section.categorieSection.id);
-    if (section.categorieSection.id == 6){
-      this.VocabularyService.sectionSelected = section;
-      console.log(this.VocabularyService.sectionSelected);
-      this.router.navigate(['/view/quiz-create-vocabulary']);
-    }else {
-      this.serviceQuiz.sectionSelected = section;
-      console.log(this.serviceQuiz.sectionSelected);
-      this.router.navigate(['/pages/quiz-create']);
-    }
+    this.serviceQuiz.sectionSelected = section;
+    console.log(this.serviceQuiz.sectionSelected);
+    this.router.navigate(['/pages/quiz-create']);
 }
-  public getValue(d :number){
-    if (d == 6){
-      this.VocabularyService.sectionSelected.id = d;
-      console.log(this.VocabularyService.sectionSelected.id);
-      this.router.navigate(['/view/quiz-create-vocabulary']);
-    }else {
-      this.serviceQuiz.selected.section.id = d;
-      console.log(this.serviceQuiz.selected.section.id);
-      this.router.navigate(['/pages/quiz-create']);
-    }
-  }
 
+    createVocab(id: number) {
+    console.log(id);
+    this.VocabularyService.idSection = id;
+    this.VocabularyService.selected.section.id = id;
+    console.log('id section ', this.VocabularyService.idSection);
+    this.router.navigate(['/pages/quiz-create-vocabulary']);
+    }
 }

@@ -29,29 +29,28 @@
         <audio src="" id="speach" hidden></audio>
 </div>
     <div class="p-grid">
-        <div class="p-col-4">
+        <div class="p-col-6">
             <p-panel header="Explanation">
 
-                <textarea rows="12" cols="43" pInputTextarea autoResize="autoResize" [(ngModel)]="selected.explication"></textarea>
+                    <textarea cols="75" pInputTextarea autoResize="autoResize" [(ngModel)]="selected.explication"></textarea>
             </p-panel>
         </div>
-        <div class="p-col-4">
+        <div class="p-col-6">
             <p-panel header="Exemple">
-                <textarea rows="12" cols="43" pInputTextarea autoResize="autoResize" [(ngModel)]="selected.exemple"></textarea>
+                    <textarea cols="75" pInputTextarea autoResize="autoResize" [(ngModel)]="selected.exemple"></textarea>
             </p-panel>
-        </div>
-        <div class="p-col-4">
+        </div> </div>
+        <div class="p-col-12">
             <p-panel header="Image">
-                    <textarea rows="2" cols="43" pInputTextarea placeholder="Enter Image URL" autoResize="autoResize" [(ngModel)]="selected.image" ></textarea>
-
+                    <textarea  cols="160" pInputTextarea placeholder="Enter Image URL" autoResize="autoResize" [(ngModel)]="selected.image" ></textarea>
                 <br/>
-                <div class="p-col">
-                <img [src]="'assets/demo/images/product/picture-icon.png'" alt="image" style="width: 200px; height: 200px" />
+                <div class="p-col" *ngIf="selected.image != null">
+                <img *ngIf="selected.image != null" src="{{selected.image}}" alt="image" style="width: 600px; height: 400px; margin-left: 250px" />
                 </div>
             </p-panel>
            <!-- <input type="file" multiple  accept="image/*" [(ngModel)]="selected.image"  (click)=" handleFileInput($event)"  >-->
         </div>
-    </div>
+
 
     <ng-template pTemplate="footer">
         <button pButton pRipple class="p-button p-col-3 p-button-secondary p-button-raised" id="buttonSave" label="save" (click)="save()"></button>

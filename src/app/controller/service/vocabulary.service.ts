@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Vocabulary} from "../model/vocabulary.model";
-import {Observable} from "rxjs";
-import {Section} from "../model/section.model";
+import {HttpClient} from '@angular/common/http';
+import {Vocabulary} from '../model/vocabulary.model';
+import {Observable} from 'rxjs';
+import {Section} from '../model/section.model';
 
 
 
@@ -11,13 +11,24 @@ import {Section} from "../model/section.model";
 })
 export class VocabularyService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
     private _sectionSelected: Section;
+    private _sectionSelected2: Section;
     private _selected: Vocabulary;
+    private _selected2: Vocabulary;
 private _items: Array<Vocabulary>;
     private _submitted: boolean;
     private _numVocabulary = 1;
+    private _idSection: number;
 
+
+    get idSection(): number {
+        return this._idSection;
+    }
+
+    set idSection(value: number) {
+        this._idSection = value;
+    }
 
     get numVocabulary(): number {
         return this._numVocabulary;
@@ -25,6 +36,17 @@ private _items: Array<Vocabulary>;
 
     set numVocabulary(value: number) {
         this._numVocabulary = value;
+    }
+
+    get selected2(): Vocabulary {
+        if ( this._selected2 == null){
+            this._selected2 = new Vocabulary();
+        }
+        return this._selected2;
+    }
+
+    set selected2(value: Vocabulary) {
+        this._selected2 = value;
     }
 
     get submitted(): boolean {
@@ -69,13 +91,13 @@ private _items: Array<Vocabulary>;
 public findByFirstNumero(): Observable<Vocabulary>{
         return this.http.get<Vocabulary>('http://localhost:8036/learn/vocabulary/numero/1');
 }
-public findByNextNumero():Observable<Vocabulary>{
+public findByNextNumero(): Observable<Vocabulary>{
         this.numVocabulary = this.numVocabulary + 1;
-        return this.http.get<Vocabulary>('http://localhost:8036/learn/vocabulary/numero/'+ this.numVocabulary);
+        return this.http.get<Vocabulary>('http://localhost:8036/learn/vocabulary/numero/' + this.numVocabulary);
 
 }
-public findByRef(selected : Vocabulary) : Observable<Vocabulary>{
-        return this.http.get<Vocabulary>('http://localhost:8036/learn/vocabulary/ref/'+ selected.ref);
+public findByRef(selected: Vocabulary): Observable<Vocabulary>{
+        return this.http.get<Vocabulary>('http://localhost:8036/learn/vocabulary/ref/' + selected.ref);
 }
     public edit(): Observable<Vocabulary> {
         return this.http.put<Vocabulary>('http://localhost:8036/learn/vocabulary/', this.selected);
@@ -102,7 +124,16 @@ public findByRef(selected : Vocabulary) : Observable<Vocabulary>{
         this.items.splice(this.findIndexById(id), 1);
     }
 
+    get sectionSelected2(): Section {
+        if (this._sectionSelected2 == null){
+            this._sectionSelected2 =  new Section();
+        }
+        return this._sectionSelected2;
+    }
 
+    set sectionSelected2(value: Section) {
+        this._sectionSelected2 = value;
+    }
     get sectionSelected(): Section {
         if (this._sectionSelected == null){
             this._sectionSelected =  new Section();

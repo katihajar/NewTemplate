@@ -27,7 +27,6 @@ export class EtudiantService {
   private _items: Array<Etudiant>;
   private _etudiantByProf: Array<Etudiant>;
   private _itemsprof: Array<Prof>;
-
   private _selectes: Array<Etudiant>;
   private _editDialog: boolean;
   private _viewDialog: boolean;
@@ -84,7 +83,10 @@ export class EtudiantService {
     return this.http.get< Array<Parcours> >('http://localhost:8036/learn/parcours/');
 
   }
+  public findAllProf(): Observable<Array<Prof>> {
+    return this.http.get< Array<Prof> >('http://localhost:8036/learn/prof/');
 
+  }
   get submittedetudiant(): Etudiant {
     return this._submittedetudiant;
   }

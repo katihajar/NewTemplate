@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {EtudiantService} from '../../../../controller/service/etudiant.service';
 import {Etudiant} from '../../../../controller/model/etudiant.model';
-import {EtudiantVo} from '../../../../controller/Model/etudiant-vo.model';
+import {EtudiantVo} from '../../../../controller/model/etudiant-vo.model';
 
 
 
