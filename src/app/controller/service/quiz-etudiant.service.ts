@@ -485,7 +485,7 @@ export class QuizEtudiantService {
 
   public findQuizBySectionId(section: Section): Observable<Quiz>
   {
-    return this.http.get<Quiz>(this.url + 'quiz/section/code/{code}?id=' + section.id);
+    return this.http.get<Quiz>(this.url + 'quiz/section/id/' + section.id);
   }
   constructor(private http: HttpClient) { }
 }
