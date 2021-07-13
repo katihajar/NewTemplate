@@ -21,6 +21,8 @@ export class QuizEtudiantService {
   private url = 'http://localhost:8036/learn/';
   private _etudiant: Etudiant;
   private _quiz: Quiz;
+  private _section: Section;
+  private _quizSelct: Quiz;
   private _items: Array<Question>;
   private _selected: Question;
   private _reponses: Array<Reponse>;
@@ -48,6 +50,28 @@ export class QuizEtudiantService {
   private _passerQuiz: string;
   private _quizView: boolean;
 
+
+  get section(): Section {
+    if (this._section == null){
+      this._section = new Section();
+    }
+    return this._section;
+  }
+
+  set section(value: Section) {
+    this._section = value;
+  }
+
+  get quizSelct(): Quiz {
+    if (this._quizSelct == null){
+      this._quizSelct = new Quiz();
+    }
+    return this._quizSelct;
+  }
+
+  set quizSelct(value: Quiz) {
+    this._quizSelct = value;
+  }
 
   get quizView(): boolean {
     return this._quizView;
@@ -405,6 +429,10 @@ export class QuizEtudiantService {
   public findFirstQuizEtudiant(): Observable<QuizEtudiant>
   {
     return this.http.get<QuizEtudiant>(this.url + 'quizEtudiant/ref/qe1');
+  }
+  public findQuizSection(): Observable<Quiz>
+  {
+    return this.http.get<Quiz>(this.url + 'quiz/section/id/' + this.section.id);
   }
 
   public insertQuizEtudiant(): Observable<QuizEtudiant>

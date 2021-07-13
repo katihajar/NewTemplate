@@ -62,11 +62,12 @@ export class StudentSimulateSectionComponent implements OnInit {
         this.selectedDict = new Dictionary();
     }
     ngOnInit(): void {
+        this.quizService.section.id = this.selectedsection.id;
+        this.quizService.findQuizSection().subscribe( data => this.selectedQuiz);
     }
     get submittedDict(): boolean {
         return this.dictionnaryService.submittedDict;
     }
-
     set submittedDict(value: boolean) {
         this.dictionnaryService.submittedDict = value;
     }
@@ -84,7 +85,14 @@ export class StudentSimulateSectionComponent implements OnInit {
     get selectedsection(): Section {
         return this.service.selectedsection;
     }
+    get section(): Section {
+        return this.quizService.section;
+    }
 
+    set section(value: Section) {
+        this.quizService.section = value;
+    }
+    // tslint:disable-next-line:adjacent-overload-signatures
     set selectedsection(value: Section) {
         this.service.selectedsection = value;
     }
