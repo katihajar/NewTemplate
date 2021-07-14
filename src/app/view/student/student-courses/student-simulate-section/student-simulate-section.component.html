@@ -62,7 +62,7 @@
         <button pButton pRipple type="button" icon="pi pi-caret-left" style="margin-left: 15px; width: 120px" label="Previous"  class="p-button-rounded" *ngIf="this.selectedsection.numeroOrder != 1"  (click)="PreviousSection()" ></button>
         <button pButton pRipple type="button" style="margin-left: 360px; width: 120px" id="quiz" *ngIf=" this.selectedQuiz!=null && this.selectedsection.categorieSection.libelle != 'Vocabulary' " label="{{this.passerQuiz}}"  class="p-button-rounded" [routerLink]="quizView? ['/pages/quiz-view']: ['/pages/quiz-etudiant']"></button>
         <button pButton pRipple type="button" icon="pi pi-caret-right" label="Next" style="margin-left: 360px; width: 120px" class="p-button-rounded" *ngIf="this.selectedsection.numeroOrder < this.itemssection2.length" (click)="NextSection()" ></button>
-        <button pButton pRipple type="button" icon="pi pi-caret-right"  label="Vocabulary" style="margin-left: 360px; width: 120px" *ngIf="this.selectedsection.categorieSection.libelle == 'Vocabulary'" class="p-button-rounded"  ></button>
+        <button pButton pRipple type="button" icon="pi pi-caret-right"  label="Vocabulary" style="margin-left: 360px; width: 120px" *ngIf="this.selectedsection.categorieSection.libelle == 'Vocabulary'" class="p-button-rounded" (click)="Vocab(this.selectedsection.id)" ></button>
    </div>
     <app-dictionary-create></app-dictionary-create>
 </div>

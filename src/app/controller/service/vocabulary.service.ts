@@ -20,7 +20,16 @@ private _items: Array<Vocabulary>;
     private _submitted: boolean;
     private _numVocabulary = 1;
     private _idSection: number;
+    private _nombreVocab: number;
 
+
+    get nombreVocab(): number {
+        return this._nombreVocab;
+    }
+
+    set nombreVocab(value: number) {
+        this._nombreVocab = value;
+    }
 
     get idSection(): number {
         return this._idSection;
@@ -87,7 +96,13 @@ private _items: Array<Vocabulary>;
     public findAll(): Observable<Array<Vocabulary>> {
         return this.http.get<Array<Vocabulary>>('http://localhost:8036/learn/vocabulary/');
     }
-
+    public findAllVocabSection(): Observable<Array<Vocabulary>> {
+        return this.http.get<Array<Vocabulary>>('http://localhost:8036/learn/vocabulary/section/id/2009');
+    }
+    public findVocabularybySection(): Observable<Array<Vocabulary>> {
+        // tslint:disable-next-line:max-line-length
+        return this.http.get<Array<Vocabulary>>('http://localhost:8036/learn/vocabulary/numero/' + this.selected.numero + '/section/id/' + this.selected.section.id);
+    }
 public findByFirstNumero(): Observable<Vocabulary>{
         return this.http.get<Vocabulary>('http://localhost:8036/learn/vocabulary/numero/1');
 }
@@ -96,6 +111,11 @@ public findByNextNumero(): Observable<Vocabulary>{
         return this.http.get<Vocabulary>('http://localhost:8036/learn/vocabulary/numero/' + this.numVocabulary);
 
 }
+    public findByNextNumeroSection(): Observable<Array<Vocabulary>>{
+        this.numVocabulary = this.numVocabulary + 1;
+        // tslint:disable-next-line:max-line-length
+        return this.http.get<Array<Vocabulary>>('http://localhost:8036/learn/vocabulary/numero/' + this.numVocabulary + '/section/id/' + this.selected.section.id);
+    }
 public findByRef(selected: Vocabulary): Observable<Vocabulary>{
         return this.http.get<Vocabulary>('http://localhost:8036/learn/vocabulary/ref/' + selected.ref);
 }

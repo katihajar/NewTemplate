@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {VocabularyService} from "../../../../controller/service/vocabulary.service";
-import {Vocabulary} from "../../../../controller/model/vocabulary.model";
+import {VocabularyService} from '../../../../controller/service/vocabulary.service';
+import {Vocabulary} from '../../../../controller/model/vocabulary.model';
 
 @Component({
   selector: 'app-quiz-vocabulary',
@@ -12,12 +12,12 @@ export class QuizVocabularyComponent implements OnInit {
   constructor(private service: VocabularyService) { }
   private _button: string;
   private _numVocabulary = 1;
-  private _qnprogress =0;
+  private _qnprogress = 0;
   private _seconds: number;
   private _timer;
-  private word:string = '';
-  private note: number =0;
-  result:string;
+  private word = '';
+  private note = 0;
+  result: string;
 
   get timer() {
     return this._timer;
@@ -82,9 +82,13 @@ export class QuizVocabularyComponent implements OnInit {
     this.service.items = value;
   }
   ngOnInit(): void {
-    this.service.findAll().subscribe(data => {
+    console.log(this.service.nombreVocab);
+    this.selected.numero = 1;
+    this.service.findVocabularybySection().subscribe(data => {
         this.items = data;
         console.log(this.items);
+    });
+    this.service.findAllVocabSection().subscribe(data => {this.service.nombreVocab = data.length;
     });
    // this.service.findByVocabularyQuizRef(this.selected).subscribe(data => this.items = data);
     this.seconds = 0;
@@ -110,64 +114,70 @@ export class QuizVocabularyComponent implements OnInit {
 
   }
 
-  public flip(d : string, v: string) {
-   let t= String(d);
-    let f = String(v);
-         if (t.valueOf().trim() == f.valueOf().trim()){
+  public flip(d: string, v: string) {
+   const t = String(d);
+   const f = String(v);
+    // tslint:disable-next-line:triple-equals
+   if (t.valueOf().trim() == f.valueOf().trim()){
            document.getElementById('translated').style.visibility = 'visible';
            document.getElementById('image').style.filter = 'blur(0px)';
            document.getElementById('correct').style.visibility = 'visible';
+           document.getElementById('incorrect').style.visibility = 'hidden';
            this.note = this.note + 1;
           }
           else {
            document.getElementById('incorrect').style.visibility = 'visible';
+           document.getElementById('correct').style.visibility = 'hidden';
            document.getElementById('filpAnyway').style.visibility = 'visible';
           }
   }
 public flipAnyway(){
   document.getElementById('translated').style.visibility = 'visible';
   document.getElementById('image').style.filter = 'blur(0px)';
+  document.getElementById('incorrect').style.visibility = 'hidden';
+  document.getElementById('correct').style.visibility = 'hidden';
 }
   next() {
-    this.qnprogress ++;
     document.getElementById('translated').style.visibility = 'hidden';
     document.getElementById('image').style.filter = 'blur(15px)';
-  /*  this.service.findByNextNumero().subscribe(data =>{
-      this.selected = data;
-      console.log(this.selected);
-    });*/
-    if (this.qnprogress == this.items.length-1)
+    this.service.findByNextNumeroSection().subscribe(data => {
+      this.items = data;
+      console.log(this.items);
+    });
+      // tslint:disable-next-line:triple-equals
+    if (this.items[this.qnprogress]?.numero == this.service.nombreVocab - 1  )
     {
       this.button = 'Finish the test';
     }
-    else if (this.qnprogress == this.items.length)
+    // tslint:disable-next-line:triple-equals
+   else if (this.items[this.qnprogress]?.numero == this.service.nombreVocab || this.items[this.qnprogress]?.numero == null)
     {
       document.getElementById('vocabulary').style.visibility = 'hidden';
       document.getElementById('mainCard').style.visibility = 'visible';
       document.getElementById('translated').style.visibility = 'hidden';
-      if (this.note >= 10){
+      if (this.note >= this.service.nombreVocab){
         document.getElementById('congrats').style.visibility = 'visible';
         document.getElementById('nextTime').style.visibility = 'hidden';
       }else {
         document.getElementById('congrats').style.visibility = 'hidden';
         document.getElementById('nextTime').style.visibility = 'visible';
       }
-
+      this.numVocabulary = 1;
     }
     this.result = null;
     document.getElementById('filpAnyway').style.visibility = 'hidden';
     document.getElementById('incorrect').style.visibility = 'hidden';
     document.getElementById('correct').style.visibility = 'hidden';
   }
-public getWord(d : string, v: string){
+public getWord(d: string, v: string){
     console.log(d);
     console.log(v);
 }
-  public sound(word :string){
-    let text = encodeURIComponent(word);
+  public sound(word: string){
+    const text = encodeURIComponent(word);
     console.log(text);
-    var url = 'http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q='+text+'&tl=En-gb';
-    var audio = new Audio(url);
+    const url = 'http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q=' + text + '&tl=En-gb';
+    const audio = new Audio(url);
     audio.play();
   }
 

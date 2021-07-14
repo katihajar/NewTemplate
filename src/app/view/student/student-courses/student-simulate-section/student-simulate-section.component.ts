@@ -13,6 +13,8 @@ import {Etudiant} from '../../../../controller/model/etudiant.model';
 import {QuizEtudiant} from '../../../../controller/model/quiz-etudiant.model';
 import {DictionaryService} from '../../../../controller/service/dictionary.service';
 import {Dictionary} from '../../../../controller/model/dictionary.model';
+import {VocabularyService} from '../../../../controller/service/vocabulary.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-student-simulate-section',
@@ -23,7 +25,7 @@ export class StudentSimulateSectionComponent implements OnInit {
 
 
     // tslint:disable-next-line:max-line-lengthg max-line-length
-    constructor(private messageService: MessageService, private dictionnaryService: DictionaryService, private sanitizer: DomSanitizer, private confirmationService: ConfirmationService, private service: ParcoursService, private http: HttpClient, private quizService: QuizEtudiantService, private loginService: LoginService) { }
+    constructor(private messageService: MessageService, private router: Router, private dictionnaryService: DictionaryService, private sanitizer: DomSanitizer, private confirmationService: ConfirmationService, private service: ParcoursService, private http: HttpClient, private quizService: QuizEtudiantService, private loginService: LoginService, private  vocab: VocabularyService) { }
     value = 0;
     word: string;
 
@@ -64,6 +66,8 @@ export class StudentSimulateSectionComponent implements OnInit {
     ngOnInit(): void {
         this.quizService.section.id = this.selectedsection.id;
         this.quizService.findQuizSection().subscribe( data => this.selectedQuiz);
+        this.vocab.findAllVocabSection().subscribe(data => {this.vocab.nombreVocab = data.length;
+        });
     }
     get submittedDict(): boolean {
         return this.dictionnaryService.submittedDict;
@@ -71,7 +75,15 @@ export class StudentSimulateSectionComponent implements OnInit {
     set submittedDict(value: boolean) {
         this.dictionnaryService.submittedDict = value;
     }
-
+    Vocab(id: number) {
+        console.log(id);
+        this.vocab.selected.section.id = id;
+        console.log('id section ',  this.vocab.selected.section.id);
+        this.vocab.findAllVocabSection().subscribe(data => {this.vocab.nombreVocab = data.length;
+        });
+        console.log(this.vocab.nombreVocab);
+        this.router.navigate(['/view/quiz-vocabulary']);
+    }
     get createDialogDict(): boolean {
         return this.dictionnaryService.createDialogDict;
     }

@@ -9,6 +9,7 @@ import {SuperCategorieSection} from '../model/super-categorie-section.model';
 import {Centre} from '../model/centre.model';
 import {Observable} from 'rxjs';
 import {Quiz} from "../Model/quiz.model";
+import {Vocabulary} from '../Model/vocabulary.model';
 
 
 
@@ -19,6 +20,7 @@ export class ParcoursService {
   private _selectedparcours: Parcours;
   private _selecteddparcours: Parcours;
   private _itemsparcours: Array<Parcours>;
+  private _itemsvocab: Array<Vocabulary>;
   private _selectesparcours: Array<Parcours>;
   private _selectescours: Array<Cours>;
   private _selectesscours: Array<Cours>;
@@ -61,6 +63,17 @@ export class ParcoursService {
   private _video = '';
   constructor(private http: HttpClient ) {  }
 
+
+  get itemsvocab(): Array<Vocabulary> {
+    if (this._itemsvocab == null) {
+      this._itemsvocab = new Array<Vocabulary>();
+    }
+    return this._itemsvocab;
+  }
+
+  set itemsvocab(value: Array<Vocabulary>) {
+    this._itemsvocab = value;
+  }
 
   get video(): string {
     return this._video;
