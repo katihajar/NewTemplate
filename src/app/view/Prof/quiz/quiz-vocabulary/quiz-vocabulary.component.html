@@ -1,15 +1,5 @@
 <meta name="referrer" content="no-referrer">
-<p-card  [style]="{width: '900px'}" styleClass="p-card-shadow" id="mainCard" class="container">
-    <ng-template pTemplate="header">
-        <div class="card" style="background-color: gainsboro">
-            <h2 id="quizGrammar" style=" text-align: center" class="quizTitre" >VOCABULARY</h2>
-        </div>
-    </ng-template>
-    <p class="styleOfp">You finish this quiz</p><br>
-    <p class="styleOfp" id="congrats">Congratulations</p><br>
-    <p class="styleOfp" id="nextTime">Hard-luck next time</p><br>
-    <p class="styleOfp">Your result is = {{this.note}}/{{this.service.nombreVocab}}</p><br>
-</p-card>
+
 
 <p-card [style]="{width: '900px'}" styleClass="p-card-shadow" class="container" id="start">
     <ng-template pTemplate="header">
@@ -74,4 +64,16 @@
     <ng-template pTemplate="footer" style="float: left" class="displayTime">
         <p-button label="{{this.button}}"  class="p-button-rounded p-button-raised " style="  margin-left: 715px;" (click)="next()" ngDefaultControl></p-button>
     </ng-template>
+</p-card>
+
+<p-card  [style]="{width: '900px'}" styleClass="p-card-shadow" id="mainCard" class="container">
+    <ng-template pTemplate="header">
+        <div class="card" style="background-color: gainsboro">
+            <h2 id="quizGrammar" style=" text-align: center" class="quizTitre" >VOCABULARY</h2>
+        </div>
+    </ng-template>
+    <p class="styleOfp">You finish this quiz</p><br>
+    <p class="styleOfp" id="congrats">Congratulations</p><br>
+    <p class="styleOfp" id="nextTime">Hard-luck next time</p><br>
+    <p class="styleOfp">Your result is = {{this.note}}/{{this.service.nombreVocab}}</p><br>
 </p-card>

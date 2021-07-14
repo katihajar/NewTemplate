@@ -139,6 +139,7 @@ public flipAnyway(){
 }
   next() {
     document.getElementById('translated').style.visibility = 'hidden';
+    document.getElementById('translated').style.height = '0px';
     document.getElementById('image').style.filter = 'blur(15px)';
     this.service.findByNextNumeroSection().subscribe(data => {
       this.items = data;
@@ -153,13 +154,16 @@ public flipAnyway(){
    else if (this.items[this.qnprogress]?.numero == this.service.nombreVocab || this.items[this.qnprogress]?.numero == null)
     {
       document.getElementById('vocabulary').style.visibility = 'hidden';
+      document.getElementById('vocabulary').style.height = '0px';
       document.getElementById('mainCard').style.visibility = 'visible';
       document.getElementById('translated').style.visibility = 'hidden';
       if (this.note >= this.service.nombreVocab){
         document.getElementById('congrats').style.visibility = 'visible';
         document.getElementById('nextTime').style.visibility = 'hidden';
+        document.getElementById('nextTime').style.height = '0px';
       }else {
         document.getElementById('congrats').style.visibility = 'hidden';
+        document.getElementById('congrats').style.height = '0px';
         document.getElementById('nextTime').style.visibility = 'visible';
       }
       this.numVocabulary = 1;
