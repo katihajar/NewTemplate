@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {VocabularyService} from '../../../../controller/service/vocabulary.service';
 import {Vocabulary} from '../../../../controller/model/vocabulary.model';
 
+
 @Component({
   selector: 'app-quiz-vocabulary',
   templateUrl: './quiz-vocabulary.component.html',
@@ -82,13 +83,13 @@ export class QuizVocabularyComponent implements OnInit {
     this.service.items = value;
   }
   ngOnInit(): void {
+    this.service.findAllVocabSection().subscribe(data => {this.service.nombreVocab = data.length;
+    });
     console.log(this.service.nombreVocab);
-    this.selected.numero = 1;
+    this.numVocabulary = 1;
     this.service.findVocabularybySection().subscribe(data => {
         this.items = data;
         console.log(this.items);
-    });
-    this.service.findAllVocabSection().subscribe(data => {this.service.nombreVocab = data.length;
     });
    // this.service.findByVocabularyQuizRef(this.selected).subscribe(data => this.items = data);
     this.seconds = 0;
@@ -174,9 +175,7 @@ public flipAnyway(){
     this.result = null;
     document.getElementById('filpAnyway').style.visibility = 'hidden';
     document.getElementById('incorrect').style.visibility = 'hidden';
-    document.getElementById('incorrect').style.height = '0px';
     document.getElementById('correct').style.visibility = 'hidden';
-    document.getElementById('correct').style.height = '0px';
   }
 public getWord(d: string, v: string){
     console.log(d);

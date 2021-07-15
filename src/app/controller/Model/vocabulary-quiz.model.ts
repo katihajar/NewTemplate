@@ -1,5 +1,4 @@
-import {Vocabulary} from "./vocabulary.model";
-import {Section} from "./section.model";
+import {Vocabulary} from './vocabulary.model';
 
 export class VocabularyQuiz {
     public id: number;
@@ -8,6 +7,4 @@ export class VocabularyQuiz {
     public dateDebut: Date = new Date();
     public dateFin: Date = new Date();
     public vocabularies = new Array<Vocabulary>();
-
-
 }

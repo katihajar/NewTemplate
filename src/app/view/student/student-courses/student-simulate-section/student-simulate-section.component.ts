@@ -13,8 +13,8 @@ import {Etudiant} from '../../../../controller/model/etudiant.model';
 import {QuizEtudiant} from '../../../../controller/model/quiz-etudiant.model';
 import {DictionaryService} from '../../../../controller/service/dictionary.service';
 import {Dictionary} from '../../../../controller/model/dictionary.model';
-import {VocabularyService} from '../../../../controller/service/vocabulary.service';
 import {Router} from '@angular/router';
+import {VocabularyService} from '../../../../controller/service/vocabulary.service';
 
 @Component({
     selector: 'app-student-simulate-section',
@@ -77,8 +77,9 @@ export class StudentSimulateSectionComponent implements OnInit {
     }
     Vocab(id: number) {
         console.log(id);
-        this.vocab.selected.section.id = id;
-        console.log('id section ',  this.vocab.selected.section.id);
+        this.vocab.numVocabulary = 1;
+        this.vocab.idSection = id;
+        console.log('id section ',  this.vocab.idSection );
         this.vocab.findAllVocabSection().subscribe(data => {this.vocab.nombreVocab = data.length;
         });
         console.log(this.vocab.nombreVocab);

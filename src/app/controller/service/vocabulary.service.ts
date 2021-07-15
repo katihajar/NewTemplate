@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Vocabulary} from '../model/vocabulary.model';
+import {Section} from '../Model/section.model';
+import {Vocabulary} from '../Model/vocabulary.model';
 import {Observable} from 'rxjs';
-import {Section} from '../model/section.model';
+
 
 
 
@@ -97,11 +98,11 @@ private _items: Array<Vocabulary>;
         return this.http.get<Array<Vocabulary>>('http://localhost:8036/learn/vocabulary/');
     }
     public findAllVocabSection(): Observable<Array<Vocabulary>> {
-        return this.http.get<Array<Vocabulary>>('http://localhost:8036/learn/vocabulary/section/id/2009');
+        return this.http.get<Array<Vocabulary>>('http://localhost:8036/learn/vocabulary/section/id/' + this.idSection );
     }
     public findVocabularybySection(): Observable<Array<Vocabulary>> {
         // tslint:disable-next-line:max-line-length
-        return this.http.get<Array<Vocabulary>>('http://localhost:8036/learn/vocabulary/numero/' + this.selected.numero + '/section/id/' + this.selected.section.id);
+        return this.http.get<Array<Vocabulary>>('http://localhost:8036/learn/vocabulary/numero/' + this.numVocabulary + '/section/id/' + this.idSection);
     }
 public findByFirstNumero(): Observable<Vocabulary>{
         return this.http.get<Vocabulary>('http://localhost:8036/learn/vocabulary/numero/1');
@@ -114,7 +115,7 @@ public findByNextNumero(): Observable<Vocabulary>{
     public findByNextNumeroSection(): Observable<Array<Vocabulary>>{
         this.numVocabulary = this.numVocabulary + 1;
         // tslint:disable-next-line:max-line-length
-        return this.http.get<Array<Vocabulary>>('http://localhost:8036/learn/vocabulary/numero/' + this.numVocabulary + '/section/id/' + this.selected.section.id);
+        return this.http.get<Array<Vocabulary>>('http://localhost:8036/learn/vocabulary/numero/' + this.numVocabulary + '/section/id/' + this.idSection);
     }
 public findByRef(selected: Vocabulary): Observable<Vocabulary>{
         return this.http.get<Vocabulary>('http://localhost:8036/learn/vocabulary/ref/' + selected.ref);
