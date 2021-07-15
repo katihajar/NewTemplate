@@ -75,7 +75,6 @@ urls = [];
     this.service.idSection = value;
   }
   public save() {
-    console.log(this.idSection);
     // this.selected2.section.id = this.idSection;
     console.log(this.selected.section.id);
     this.submitted = true;

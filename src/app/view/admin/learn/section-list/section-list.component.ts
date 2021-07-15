@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Section} from '../../../../controller/model/section.model';
 import {ConfirmationService, MessageService} from 'primeng/api';
-import {ParcoursService} from '../../../../controller/service/parcours.service';
-import {Router} from '@angular/router';
+import {Section} from '../../../../controller/model/section.model';
 import {QuizService} from '../../../../controller/service/quiz.service';
+import {Router} from '@angular/router';
+import {ParcoursService} from '../../../../controller/service/parcours.service';
 import {VocabularyService} from '../../../../controller/service/vocabulary.service';
+
 
 
 @Component({
@@ -160,9 +161,8 @@ public getSection(section: Section){
 
     createVocab(id: number) {
     console.log(id);
-    this.VocabularyService.idSection = id;
     this.VocabularyService.selected.section.id = id;
-    console.log('id section ', this.VocabularyService.idSection);
+    console.log('id section ', this.VocabularyService.selected.section.id);
     this.router.navigate(['/pages/quiz-create-vocabulary']);
     }
 }
