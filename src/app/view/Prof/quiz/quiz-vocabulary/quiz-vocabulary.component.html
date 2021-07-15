@@ -23,6 +23,11 @@
         <div class="card" style="background-color: gainsboro">
             <h1  style="text-align: center" class="quizTitre">VOCABULARY</h1>
             <span class="m-auto float-left  dispalyTime" style="color: #2e2e33">Time : {{displayTime()}}</span>
+            <div class="p-col-2 dispalyTime" style="float: right" >
+              <span style="margin: auto; color: #2e2e33" >{{this.items[qnprogress].numero}}/{{this.service.nombreVocab}}</span>
+                <p-progressBar  [value]="this.items[qnprogress].numero*100/this.service.nombreVocab" id="progressBar" ></p-progressBar>
+
+            </div>
         </div>
     </ng-template>
 
@@ -54,13 +59,13 @@
         <p style="color: red;margin-left: 360px" id="incorrect">The word is incorrect</p>
         <p style="color: #0e9f59; margin-left: 360px" id="correct">That's correct!</p>
             <i class="pi pi-volume-up" style="font-size:2px"></i>
-
-        <p-panel id="translated" >
+<div class="p-card" id="translated">
+        <p-panel>
             <p><span class="styleH">Translated word :</span> {{items[qnprogress]?.result}}</p><br/>
             <p><span class="styleH">Explanation : </span> {{items[qnprogress]?.explication}}</p><br/>
             <p><span class="styleH">Example :</span> {{items[qnprogress]?.exemple}}</p><br/>
         </p-panel>
-    </div>
+    </div></div>
     <ng-template pTemplate="footer" style="float: left" class="displayTime">
         <p-button label="{{this.button}}"  class="p-button-rounded p-button-raised " style="  margin-left: 715px;" (click)="next()" ngDefaultControl></p-button>
     </ng-template>

@@ -119,8 +119,10 @@ export class QuizVocabularyComponent implements OnInit {
    const f = String(v);
     // tslint:disable-next-line:triple-equals
    if (t.valueOf().trim() == f.valueOf().trim()){
+           document.getElementById('translated').style.height = '200px';
            document.getElementById('translated').style.visibility = 'visible';
            document.getElementById('image').style.filter = 'blur(0px)';
+           document.getElementById('correct').style.height = '20px';
            document.getElementById('correct').style.visibility = 'visible';
            document.getElementById('incorrect').style.visibility = 'hidden';
            this.note = this.note + 1;
@@ -132,6 +134,7 @@ export class QuizVocabularyComponent implements OnInit {
           }
   }
 public flipAnyway(){
+  document.getElementById('translated').style.height = '200px';
   document.getElementById('translated').style.visibility = 'visible';
   document.getElementById('image').style.filter = 'blur(0px)';
   document.getElementById('incorrect').style.visibility = 'hidden';
@@ -158,12 +161,12 @@ public flipAnyway(){
       document.getElementById('mainCard').style.visibility = 'visible';
       document.getElementById('translated').style.visibility = 'hidden';
       if (this.note >= this.service.nombreVocab){
+        document.getElementById('congrats').style.height = '20px';
         document.getElementById('congrats').style.visibility = 'visible';
         document.getElementById('nextTime').style.visibility = 'hidden';
-        document.getElementById('nextTime').style.height = '0px';
       }else {
         document.getElementById('congrats').style.visibility = 'hidden';
-        document.getElementById('congrats').style.height = '0px';
+        document.getElementById('nextTime').style.height = '20px';
         document.getElementById('nextTime').style.visibility = 'visible';
       }
       this.numVocabulary = 1;
@@ -171,7 +174,9 @@ public flipAnyway(){
     this.result = null;
     document.getElementById('filpAnyway').style.visibility = 'hidden';
     document.getElementById('incorrect').style.visibility = 'hidden';
+    document.getElementById('incorrect').style.height = '0px';
     document.getElementById('correct').style.visibility = 'hidden';
+    document.getElementById('correct').style.height = '0px';
   }
 public getWord(d: string, v: string){
     console.log(d);

@@ -5,6 +5,7 @@
 }
 #translated{
   visibility: hidden;
+  height: 0px;
 }
 #container {
   display: flex;
@@ -55,16 +56,20 @@
  }
 #incorrect{
   visibility: hidden;
+  height: 0px;
 }
 #filpAnyway{
   visibility: hidden;
 }
 #correct{
   visibility: hidden;
+  height: 0px;
 }
 #nextTime{
   visibility: hidden;
+  height: 0px;
 }
 #congrats{
   visibility: hidden;
+  height: 0px;
 }
