@@ -51,6 +51,29 @@ export class StudentSimulateSectionComponent implements OnInit {
             },error => console.log('erreeeeeeeeeeeeeeeeur') );
         document.getElementById('dictionary').style.visibility = 'visible';
     }
+    public Section(libelle: string){
+        this.service.afficheSection(libelle).subscribe(
+            data=>{
+                this.selectedsection = data;
+                this.quizService.findQuizBySectionId(this.selectedsection).subscribe(
+                    data => {
+                        this.selectedQuiz = data;
+                        this.quizService.findQuizEtudiant(this.loginService.etudiant, this.selectedQuiz).subscribe(
+                            data => {
+                                this.quizEtudiantList = data;
+                                console.log(this.quizEtudiantList);
+                                this.passerQuiz = 'View Quiz';
+                                this.quizView = true;
+                            },error =>
+                            {
+                                this.passerQuiz = 'Passer Quiz';
+                                this.quizView = false;
+                            }
+                        );
+                    },
+                );
+            },error => console.log('erreeeeeeeeeeeeeeeeur') );
+    }
     get selectedDict(): Dictionary {
         return this.dictionnaryService.selectedDict;
     }
@@ -64,6 +87,7 @@ export class StudentSimulateSectionComponent implements OnInit {
         this.selectedDict = new Dictionary();
     }
     ngOnInit(): void {
+
         this.quizService.section.id = this.selectedsection.id;
         this.quizService.findQuizSection().subscribe( data => this.selectedQuiz);
         this.vocab.findAllVocabSection().subscribe(data => {this.vocab.nombreVocab = data.length;
@@ -169,7 +193,6 @@ export class StudentSimulateSectionComponent implements OnInit {
                     this.quizService.findQuizBySectionId(this.selectedsection).subscribe(
                         data => {
                             this.selectedQuiz = data;
-                            document.getElementById('quiz').style.visibility = 'visible';
                             this.quizService.findQuizEtudiant(this.loginService.etudiant, this.selectedQuiz).subscribe(
                                 data => {
                                     this.quizEtudiantList = data;
@@ -182,7 +205,7 @@ export class StudentSimulateSectionComponent implements OnInit {
                                     this.quizView = false;
                                 }
                             );
-                        },error => document.getElementById('quiz').style.visibility = 'hidden'
+                        },
                     );
                 });
         }else{
@@ -229,7 +252,7 @@ export class StudentSimulateSectionComponent implements OnInit {
                     this.quizService.findQuizBySectionId(this.selectedsection).subscribe(
                         data => {
                             this.selectedQuiz = data;
-                            document.getElementById('quiz').style.visibility = 'visible';
+
                             this.quizService.findQuizEtudiant(this.loginService.etudiant, this.selectedQuiz).subscribe(
                                 data => {
                                     this.quizEtudiantList = data;
@@ -242,7 +265,7 @@ export class StudentSimulateSectionComponent implements OnInit {
                                     this.quizView = false;
                                 }
                             );
-                        },error => document.getElementById('quiz').style.visibility = 'hidden'
+                        },
                     );
                 });
         }else{

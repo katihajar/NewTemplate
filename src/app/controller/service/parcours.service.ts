@@ -638,16 +638,20 @@ export class ParcoursService {
     return this.http.get<Array<Cours>>('http://localhost:8036/learn/cours/parcours/id/5' );
   }
   public afficheCours(): Observable<Array<Cours>> {
-   return this.http.get<Array<Cours>>('http://localhost:8036/learn/cours/parcours/id/' + this.selectedparcours.id );
+   return this.http.get<Array<Cours>>('http://localhost:8036/learn/cours/order/id/' + this.selectedparcours.id );
   }
 
   affichelistSection(): Observable<Array<Section>> {
-    return this.http.get<Array<Section>>('http://localhost:8036/learn/section/cours/id/' + this.selectedcours.id  );
+    return this.http.get<Array<Section>>('http://localhost:8036/learn/section/order/id/' + this.selectedcours.id  );
   }
   afficheOneSection2(): Observable<Section> {
     this.selectedsection.numeroOrder = this.selectedsection.numeroOrder++;
     // tslint:disable-next-line:max-line-length
     return this.http.get<Section>('http://localhost:8036/learn/section/cours/id/' + this.selectedcours.id + '/numeroOrder/' + this.selectedsection.numeroOrder   );
+  }
+  afficheSection( libelle: string): Observable<Section> {
+    // tslint:disable-next-line:max-line-length
+    return this.http.get<Section>('http://localhost:8036/learn/section/cours/id/' + this.selectedcours.id + '/categorie/libelle/' + libelle );
   }
   afficheOneSection(): Observable<Section> {
     // tslint:disable-next-line:max-line-length

@@ -247,8 +247,8 @@ import { NewsAdminEditComponent } from './view/admin/news-admin/news-admin-edit/
 import { NewsAdminDeleteComponent } from './view/admin/news-admin/news-admin-delete/news-admin-delete.component';
 import { PaiementComponent } from './view/admin/paiement/paiement.component';
 import { PaiementListComponent } from './view/admin/paiement/paiement-list/paiement-list.component';
-import {QuizCreateVocabularyComponent} from './view/Prof/quiz/quiz-create-vocabulary/quiz-create-vocabulary.component';
 import {QuizVocabularyComponent} from './view/Prof/quiz/quiz-vocabulary/quiz-vocabulary.component';
+import {QuizCreateVocabularyComponent} from './view/Prof/quiz/quiz-create-vocabulary/quiz-create-vocabulary.component';
 
 
 

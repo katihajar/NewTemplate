@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Section} from '../model/section.model';
-import {Vocabulary} from '../model/vocabulary.model';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {Vocabulary} from '../model/vocabulary.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +13,11 @@ export class VocabularyService {
   private _sectionSelected: Section;
   private _sectionSelected2: Section;
   private _selected: Vocabulary;
-  private _selected2: Vocabulary;
   private _items: Array<Vocabulary>;
   private _submitted: boolean;
   private _numVocabulary = 1;
   private _idSection: number;
   private _nombreVocab: number;
-
 
   get nombreVocab(): number {
     return this._nombreVocab;
@@ -27,7 +25,7 @@ export class VocabularyService {
 
   get selected(): Vocabulary {
     if (this._selected == null){
-      this._selected = new Vocabulary();
+       this._selected = new Vocabulary();
     }
     return this._selected;
   }
@@ -57,18 +55,7 @@ export class VocabularyService {
     this._numVocabulary = value;
   }
 
-  get selected2(): Vocabulary {
-    if ( this._selected2 == null){
-      this._selected2 = new Vocabulary();
-    }
-    return this._selected2;
-  }
-
-  set selected2(value: Vocabulary) {
-    this._selected2 = value;
-  }
-
-  get submitted(): boolean {
+   get submitted(): boolean {
     return this._submitted;
   }
 

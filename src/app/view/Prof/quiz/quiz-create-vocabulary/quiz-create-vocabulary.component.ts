@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {VocabularyService} from '../../../../controller/service/vocabulary.service';
-import {Vocabulary} from '../../../../controller/model/vocabulary.model';
 import {ConfirmationService, MessageService} from 'primeng/api';
-import {Section} from '../../../../controller/model/section.model';
+import {Vocabulary} from '../../../../controller/model/vocabulary.model';
 
 
 
@@ -38,21 +37,6 @@ urls = [];
   set selected(value: Vocabulary) {
     this.service.selected = value;
   }
-  set selected2(value: Vocabulary) {
-    this.service.selected2 = value;
-  }
-  get sectionSelected(): Section {
-    return this.service.sectionSelected;
-  }
-  set sectionSelected(value: Section) {
-    this.service.sectionSelected = value;
-  }
-  get sectionSelected2(): Section {
-    return this.service.sectionSelected2;
-  }
-  set sectionSelected2(value: Section) {
-    this.service.sectionSelected2 = value;
-  }
   get items(): Array<Vocabulary> {
     return this.service.items;
   }
@@ -75,7 +59,6 @@ urls = [];
     this.service.idSection = value;
   }
   public save() {
-    // this.selected2.section.id = this.idSection;
     console.log(this.selected.section.id);
     this.submitted = true;
     this.service.save().subscribe(data => {
@@ -152,14 +135,14 @@ public finByRef(selected: Vocabulary){
 public sound(word: string){
 const text = encodeURIComponent(word);
 console.log(text);
-const url = 'http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q=' + text + '&tl=En-gb';
+const url = 'https://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q=' + text + '&tl=En-gb';
 const audio = new Audio(url);
 audio.play();
 }
   public sound1(word: string){
     const text = encodeURIComponent(word);
     console.log(text);
-    const url = 'http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q=' + text + '&tl=ar';
+    const url = 'https://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q=' + text + '&tl=ar';
     const audio = new Audio(url);
     audio.play();
   }

@@ -11,4 +11,5 @@ export class Vocabulary {
     public  exemple: string;
     public image: string ;
     public ref: string;
+    constructor() {}
 }
